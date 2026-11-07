@@ -1,0 +1,80 @@
+{
+  "headline": "SERVICES",
+  "subheadline": "End-to-end visual production crafted inside a multidisciplinary studio workflow — from live-action camera direction and precision editorial cutting to kinetic motion graphics and AI-native storytelling.",
+  "primaryGroups": [
+    {
+      "id": "video-editing",
+      "number": "01",
+      "title": "VIDEO EDITING",
+      "tagline": "Cinematic Cuts, Commercial Pacing & Documentary Storytelling",
+      "shortDescription": "Rhythmic, story-first post-production engineered for commercial ads, podcasts, public-figure campaigns, brand films, and high-retention vertical reels.",
+      "capabilities": [
+        "Commercial & Meta Ad Editing",
+        "Multi-Cam Podcast & Broadcast Interview Post-Production",
+        "Documentary & Public-Figure Campaign Storytelling",
+        "Colour Grading & Cinematic Look Development",
+        "Sound Design, Dialogue Mastering & Beat Sync",
+        "On-Location Videography, Pre-Wedding & Event Direction"
+      ],
+      "driveCategories": ["AD - Shoot", "BRANDS", "Govt. Projects", "INFLUENCERS", "Pre Wed", "TELEVISION BYTE"],
+      "enquiryServiceValue": "Video Editing & Post-Production"
+    },
+    {
+      "id": "graphic-design",
+      "number": "02",
+      "title": "GRAPHIC DESIGN",
+      "tagline": "Brand Identity Systems, Campaign Posters, Social Creatives & Photography",
+      "shortDescription": "Editorial typography, high-converting campaign banners, culinary & product layouts, creator thumbnails, print brochures, and studio/location photography.",
+      "capabilities": [
+        "Campaign Key Visuals & Company Banners",
+        "Food, Hospitality & Product Creative Direction",
+        "High-CTR YouTube & Instagram Thumbnail Systems",
+        "Social Media Carousels & Festival Brand Posts",
+        "Print Brochures & Institutional Collateral",
+        "Commercial, Wildlife & Portrait Photography"
+      ],
+      "driveCategories": ["Graphics", "pictures"],
+      "enquiryServiceValue": "Graphic Design & Branding"
+    },
+    {
+      "id": "motion-design",
+      "number": "03",
+      "title": "MOTION DESIGN",
+      "tagline": "After Effects Compositing, 3D Camera Tracking & Kinetic Typography",
+      "shortDescription": "Custom motion systems, planar and 3D camera-tracked callouts, animated mockup banners, VFX atmospheric composites, and kinetic caption choreography.",
+      "capabilities": [
+        "After Effects Motion Graphics & Title Design",
+        "3D Camera Tracking & Live-Action Callout Integration",
+        "Retention-Engineered Kinetic Captions",
+        "3D Product & Banner Mockup Animation",
+        "Visual Effects Compositing (Rain, Light, Grading)"
+      ],
+      "driveCategories": ["Advance Motion Graphics", "Studio Showcase"],
+      "enquiryServiceValue": "Motion Graphics & VFX"
+    },
+    {
+      "id": "ai-production",
+      "number": "04",
+      "title": "AI-POWERED CREATIVE PRODUCTION",
+      "tagline": "Generative Commercial Films, Character Narratives & Prompt Engineering",
+      "shortDescription": "Concept-to-master AI video commercials, stylized 3D narratives, product visualizations, and custom prompt pipelines blended seamlessly with traditional post-production.",
+      "capabilities": [
+        "AI Commercial & Brand Film Direction",
+        "Prompt Engineering for Consistent Characters & Worlds",
+        "Pixar-Style & Stylized 3D Narrative Spots",
+        "Hybrid AI + After Effects Product Advertising",
+        "Social Media Content Scaling & Creative Strategy"
+      ],
+      "driveCategories": ["AI- Artificial Intelligence"],
+      "enquiryServiceValue": "AI-Powered Creative Production"
+    }
+  ],
+  "additionalDisciplines": [
+    "Commercial Photography",
+    "On-Location Videography",
+    "Social Media Management",
+    "AI Visual Content",
+    "Prompt Engineering",
+    "Branding & Advertising"
+  ]
+}

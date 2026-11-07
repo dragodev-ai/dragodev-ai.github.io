@@ -1,0 +1,551 @@
+{
+  "voice": "en-IN-PrabhatNeural",
+  "totalDuration": 39.688,
+  "fullAudioUrl": "/audio/intro-full.mp3",
+  "segments": [
+    {
+      "id": "intro-01",
+      "file": "/audio/intro-01.mp3",
+      "text": "Hi, I'm Dev. I'm a video editor, graphic designer, AI generalist, social media manager, and prompt engineer.",
+      "start": 0.0,
+      "end": 10.296,
+      "duration": 10.296,
+      "gesture": "welcome"
+    },
+    {
+      "id": "intro-02",
+      "file": "/audio/intro-02.mp3",
+      "text": "I love transforming ideas into powerful visual experiences.",
+      "start": 10.576,
+      "end": 15.952,
+      "duration": 5.376,
+      "gesture": "emphasis"
+    },
+    {
+      "id": "intro-03",
+      "file": "/audio/intro-03.mp3",
+      "text": "From cinematic video editing and motion graphics to creative branding, photography, and AI-powered content, I bring ideas to life through visual storytelling.",
+      "start": 16.232,
+      "end": 27.92,
+      "duration": 11.688,
+      "gesture": "showcase"
+    },
+    {
+      "id": "intro-04",
+      "file": "/audio/intro-04.mp3",
+      "text": "Take a look around my studio and explore some of my work.",
+      "start": 28.2,
+      "end": 33.24,
+      "duration": 5.04,
+      "gesture": "sweep"
+    },
+    {
+      "id": "intro-05",
+      "file": "/audio/intro-05.mp3",
+      "text": "And when you find something you like, let's create something extraordinary together.",
+      "start": 33.52,
+      "end": 39.688,
+      "duration": 6.168,
+      "gesture": "invite"
+    }
+  ],
+  "words": [
+    {
+      "word": "Hi,",
+      "start": 0.05,
+      "end": 0.575,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "I'm",
+      "start": 0.647,
+      "end": 1.172,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "Dev.",
+      "start": 1.244,
+      "end": 1.769,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "I'm",
+      "start": 1.84,
+      "end": 2.366,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "a",
+      "start": 2.437,
+      "end": 2.963,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "video",
+      "start": 3.034,
+      "end": 3.559,
+      "viseme": "round",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "editor,",
+      "start": 3.631,
+      "end": 4.156,
+      "viseme": "round",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "graphic",
+      "start": 4.228,
+      "end": 4.753,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "designer,",
+      "start": 4.825,
+      "end": 5.35,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "AI",
+      "start": 5.421,
+      "end": 5.947,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "generalist,",
+      "start": 6.018,
+      "end": 6.543,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "social",
+      "start": 6.615,
+      "end": 7.14,
+      "viseme": "round",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "media",
+      "start": 7.212,
+      "end": 7.737,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "manager,",
+      "start": 7.809,
+      "end": 8.334,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "and",
+      "start": 8.406,
+      "end": 8.931,
+      "viseme": "open",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "prompt",
+      "start": 9.002,
+      "end": 9.528,
+      "viseme": "round",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "engineer.",
+      "start": 9.599,
+      "end": 10.124,
+      "viseme": "wide",
+      "segmentId": "intro-01"
+    },
+    {
+      "word": "I",
+      "start": 10.626,
+      "end": 11.201,
+      "viseme": "wide",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "love",
+      "start": 11.279,
+      "end": 11.854,
+      "viseme": "round",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "transforming",
+      "start": 11.933,
+      "end": 12.507,
+      "viseme": "round",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "ideas",
+      "start": 12.586,
+      "end": 13.161,
+      "viseme": "open",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "into",
+      "start": 13.239,
+      "end": 13.814,
+      "viseme": "round",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "powerful",
+      "start": 13.892,
+      "end": 14.467,
+      "viseme": "round",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "visual",
+      "start": 14.546,
+      "end": 15.12,
+      "viseme": "round",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "experiences.",
+      "start": 15.199,
+      "end": 15.774,
+      "viseme": "wide",
+      "segmentId": "intro-02"
+    },
+    {
+      "word": "From",
+      "start": 16.282,
+      "end": 16.744,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "cinematic",
+      "start": 16.806,
+      "end": 17.268,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "video",
+      "start": 17.331,
+      "end": 17.792,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "editing",
+      "start": 17.855,
+      "end": 18.317,
+      "viseme": "wide",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "and",
+      "start": 18.38,
+      "end": 18.841,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "motion",
+      "start": 18.904,
+      "end": 19.366,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "graphics",
+      "start": 19.429,
+      "end": 19.89,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "to",
+      "start": 19.953,
+      "end": 20.415,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "creative",
+      "start": 20.478,
+      "end": 20.939,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "branding,",
+      "start": 21.002,
+      "end": 21.464,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "photography,",
+      "start": 21.527,
+      "end": 21.988,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "and",
+      "start": 22.051,
+      "end": 22.513,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "AI-powered",
+      "start": 22.575,
+      "end": 23.037,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "content,",
+      "start": 23.1,
+      "end": 23.561,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "I",
+      "start": 23.624,
+      "end": 24.086,
+      "viseme": "wide",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "bring",
+      "start": 24.149,
+      "end": 24.61,
+      "viseme": "wide",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "ideas",
+      "start": 24.673,
+      "end": 25.135,
+      "viseme": "open",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "to",
+      "start": 25.198,
+      "end": 25.659,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "life",
+      "start": 25.722,
+      "end": 26.184,
+      "viseme": "wide",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "through",
+      "start": 26.247,
+      "end": 26.708,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "visual",
+      "start": 26.771,
+      "end": 27.233,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "storytelling.",
+      "start": 27.296,
+      "end": 27.757,
+      "viseme": "round",
+      "segmentId": "intro-03"
+    },
+    {
+      "word": "Take",
+      "start": 28.25,
+      "end": 28.609,
+      "viseme": "open",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "a",
+      "start": 28.657,
+      "end": 29.016,
+      "viseme": "open",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "look",
+      "start": 29.065,
+      "end": 29.424,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "around",
+      "start": 29.472,
+      "end": 29.831,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "my",
+      "start": 29.88,
+      "end": 30.239,
+      "viseme": "wide",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "studio",
+      "start": 30.287,
+      "end": 30.646,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "and",
+      "start": 30.695,
+      "end": 31.054,
+      "viseme": "open",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "explore",
+      "start": 31.102,
+      "end": 31.461,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "some",
+      "start": 31.51,
+      "end": 31.869,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "of",
+      "start": 31.917,
+      "end": 32.276,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "my",
+      "start": 32.325,
+      "end": 32.684,
+      "viseme": "wide",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "work.",
+      "start": 32.732,
+      "end": 33.091,
+      "viseme": "round",
+      "segmentId": "intro-04"
+    },
+    {
+      "word": "And",
+      "start": 33.57,
+      "end": 34.011,
+      "viseme": "open",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "when",
+      "start": 34.072,
+      "end": 34.513,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "you",
+      "start": 34.573,
+      "end": 35.014,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "find",
+      "start": 35.075,
+      "end": 35.516,
+      "viseme": "wide",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "something",
+      "start": 35.576,
+      "end": 36.017,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "you",
+      "start": 36.078,
+      "end": 36.519,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "like,",
+      "start": 36.579,
+      "end": 37.02,
+      "viseme": "wide",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "let's",
+      "start": 37.081,
+      "end": 37.522,
+      "viseme": "wide",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "create",
+      "start": 37.582,
+      "end": 38.023,
+      "viseme": "open",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "something",
+      "start": 38.084,
+      "end": 38.525,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "extraordinary",
+      "start": 38.585,
+      "end": 39.026,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    },
+    {
+      "word": "together.",
+      "start": 39.087,
+      "end": 39.528,
+      "viseme": "round",
+      "segmentId": "intro-05"
+    }
+  ]
+}

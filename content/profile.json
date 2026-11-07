@@ -1,0 +1,170 @@
+{
+  "name": "Dev Kumawat",
+  "studioName": "DEV STUDIO",
+  "headline": "Turning Ideas Into Powerful Visual Experiences",
+  "roles": [
+    "Video Editor",
+    "Graphic Designer",
+    "Photographer",
+    "Videographer",
+    "AI Generalist",
+    "Social Media Manager",
+    "Prompt Engineer",
+    "Motion Graphics Creator"
+  ],
+  "primaryRoleTitle": "Creative Director, Video Editor, Graphic Designer & AI Creative Specialist",
+  "location": {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "country": "India",
+    "display": "Jaipur, Rajasthan, India",
+    "availability": "Available Worldwide",
+    "timezone": "Asia/Kolkata"
+  },
+  "contact": {
+    "email": "kumawatrishi096@gmail.com",
+    "phone": "+91 9309425465",
+    "whatsappNumber": "919309425465",
+    "whatsappPreFilledMessage": "Hi Dev! I just explored your 3D Creative Studio portfolio and would love to discuss a project with you."
+  },
+  "introScript": {
+    "fullText": "Hi, I'm Dev. I'm a video editor, graphic designer, AI generalist, social media manager and prompt engineer. I love transforming ideas into powerful visual experiences. From cinematic video editing and motion graphics to creative branding, photography and AI-powered content, I bring ideas to life through visual storytelling. Take a look around my studio and explore some of my work. And when you find something you like, let's create something extraordinary together.",
+    "segments": [
+      {
+        "id": "intro-01",
+        "file": "/audio/intro-01.mp3",
+        "text": "Hi, I'm Dev. I'm a video editor, graphic designer, AI generalist, social media manager and prompt engineer."
+      },
+      {
+        "id": "intro-02",
+        "file": "/audio/intro-02.mp3",
+        "text": "I love transforming ideas into powerful visual experiences."
+      },
+      {
+        "id": "intro-03",
+        "file": "/audio/intro-03.mp3",
+        "text": "From cinematic video editing and motion graphics to creative branding, photography and AI-powered content, I bring ideas to life through visual storytelling."
+      },
+      {
+        "id": "intro-04",
+        "file": "/audio/intro-04.mp3",
+        "text": "Take a look around my studio and explore some of my work."
+      },
+      {
+        "id": "intro-05",
+        "file": "/audio/intro-05.mp3",
+        "text": "And when you find something you like, let's create something extraordinary together."
+      }
+    ]
+  },
+  "bio": {
+    "lead": "Eight years of crafting visual stories that elevate brands, public figures, and agencies through precision editing, motion design, photography, and AI-powered creative production.",
+    "paragraphs": [
+      "Based in Jaipur, Rajasthan and collaborating worldwide, I direct productions across the complete creative lifecycle — from concept, lighting, and camera direction on set to editorial pacing, colour grading, sound design, and After Effects motion compositing in the suite.",
+      "Across 500+ delivered projects and 100+ client shoots, my work spans commercial brand films, high-retention social reels, broadcast interviews and podcasts at Mahanagar Times News Agency, public-figure campaign storytelling including Civil Lines MLA Dr. Gopal Sharma, and next-generation AI visual narratives built through deliberate prompt engineering.",
+      "Every frame, graphic composition, and motion cue is built around a single standard: clarity of story and measurable audience engagement."
+    ]
+  },
+  "stats": [
+    { "value": "8+", "label": "Years Experience" },
+    { "value": "500+", "label": "Projects Delivered" },
+    { "value": "100+", "label": "Client Shoots" },
+    { "value": "21+", "label": "Brand & Institutional Collaborations" }
+  ],
+  "highlights": [
+    {
+      "number": "01",
+      "category": "NEWS & PODCASTS",
+      "title": "Mahanagar Times News Agency",
+      "subtitle": "2 Years Experience",
+      "detail": "Handled creative studio shoots, multi-cam podcast production, broadcast interview coverage, and complete post-production workflows."
+    },
+    {
+      "number": "02",
+      "category": "PUBLIC FIGURES & INFLUENCERS",
+      "title": "Civil Lines MLA Dr. Gopal Sharma & Creators",
+      "subtitle": "Documentary & Campaign Content",
+      "detail": "Directed documentary-style campaign edits, 3D motion-tracked civic stories, and high-retention creator reels."
+    },
+    {
+      "number": "03",
+      "category": "BRAND CAMPAIGNS & AI",
+      "title": "Commercial Ads, Design & AI Production",
+      "subtitle": "18+ Brand Collaborations",
+      "detail": "Delivered commercial shoots, Meta ad reels, product visuals, brand identity graphics, and AI-generated commercial films."
+    }
+  ],
+  "education": {
+    "degree": "Bachelor's in Science",
+    "institution": "Rajasthan University",
+    "period": "2017 – 2021",
+    "notes": "Completed multiple internships in photography and videography during graduation, applying visual theory to real-world shoots, lighting, editing, and production workflows."
+  },
+  "experience": [
+    {
+      "role": "Creative Director, Video Editor & Photographer",
+      "organization": "Independent Creative Studio / Freelance",
+      "duration": "8+ Years Experience",
+      "points": [
+        "Directed cinematic shoots and commercial productions from initial concept to final master delivery.",
+        "Edited high-impact brand commercials, reels, documentaries, and event films in Adobe Premiere Pro and After Effects.",
+        "Engineered AI-powered commercial visuals, motion graphics, and comprehensive social media visual systems.",
+        "Collaborated with public figures including MLA Dr. Gopal Sharma and commercial brands across hospitality, FMCG, education, and infrastructure."
+      ]
+    },
+    {
+      "role": "Creative Producer, Videographer & Post-Production Editor",
+      "organization": "Mahanagar Times News Agency",
+      "duration": "2 Years Experience",
+      "points": [
+        "Managed creative shoots, studio lighting, podcast production, and broadcast interview coverage.",
+        "Executed end-to-end post-production workflows including multi-cam cutting, audio cleanup, colour grading, and broadcast graphics."
+      ]
+    }
+  ],
+  "software": [
+    "Adobe Premiere Pro",
+    "Adobe After Effects",
+    "Adobe Photoshop",
+    "Adobe Lightroom",
+    "CapCut",
+    "Generative AI Video & Image Pipelines"
+  ],
+  "disciplines": [
+    "Video Editing & Colour Grading",
+    "Motion Graphics & 3D Camera Tracking",
+    "Graphic Design & Brand Visuals",
+    "Commercial Photography & Videography",
+    "AI Video Creation & Prompt Engineering",
+    "Social Media Creative Management"
+  ],
+  "languages": [
+    { "language": "English", "proficiency": "Fluent" },
+    { "language": "Hindi", "proficiency": "Native" }
+  ],
+  "collaboratedBrands": [
+    "Chaayos",
+    "Mahanagar Times",
+    "Civil Lines MLA Dr. Gopal Sharma",
+    "JP Vijayaa Foods",
+    "Livanto",
+    "Sign O",
+    "JDH Immigration Consultancy",
+    "Taash Indian Restaurant & Bar",
+    "Malingo",
+    "Ratnaya Organics",
+    "Amity University",
+    "Pure+",
+    "Assist MyDay",
+    "Sufwood",
+    "Krishaz",
+    "Savji Pro",
+    "Unova Socks"
+  ],
+  "resume": {
+    "primaryPdfUrl": "/assets/Dev-Kumawat-Resume.pdf",
+    "portfolioOverviewPdfUrl": "/assets/Dev-Kumawat-Portfolio-Overview.pdf",
+    "downloadFileName": "Dev-Kumawat-Resume.pdf"
+  },
+  "portraitUrl": "/assets/dev-studio-portrait.jpg"
+}

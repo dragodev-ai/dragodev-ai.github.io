@@ -1,0 +1,61 @@
+{
+  "siteName": "DEV STUDIO — Dev Kumawat",
+  "siteTitle": "Dev Kumawat | Immersive 3D Creative Studio — Video Editor, Motion & AI Director",
+  "siteDescription": "Enter Dev Kumawat's interactive 3D editing studio. Explore 230+ real commercial edits, motion graphics, brand designs, photography, and AI films from Jaipur, India.",
+  "keywords": [
+    "Dev Kumawat",
+    "Video Editor Jaipur",
+    "Creative Director India",
+    "Motion Graphics Creator",
+    "Graphic Designer",
+    "AI Video Creator",
+    "Prompt Engineer",
+    "Commercial Videographer",
+    "Social Media Manager"
+  ],
+  "locale": "en_IN",
+  "timezone": "Asia/Kolkata",
+  "navigation": {
+    "left": [{ "label": "ABOUT", "href": "/#about", "sectionId": "about" }],
+    "center": [
+      { "label": "SERVICES", "href": "/#services", "sectionId": "services" },
+      { "label": "PRICE", "href": "/#pricing", "sectionId": "pricing" },
+      { "label": "PROJECTS", "href": "/#projects", "sectionId": "projects" },
+      { "label": "WORK ARCHIVE", "href": "/work", "sectionId": "work" }
+    ],
+    "right": [{ "label": "CONTACT", "href": "/#contact", "sectionId": "contact" }]
+  },
+  "studio": {
+    "characterModelPath": "/models/dev-character.glb",
+    "pointerLerpFactor": 0.12,
+    "maxHeadYawRad": 0.36,
+    "maxHeadPitchRad": 0.22,
+    "defaultVolume": 0.8,
+    "ambienceVolume": 0.22,
+    "musicVolumeDuringSpeech": 0.1,
+    "musicVolumeIdle": 0.24
+  },
+  "booking": {
+    "timezone": "Asia/Kolkata",
+    "timezoneLabel": "IST (Asia/Kolkata, UTC+05:30)",
+    "calendlyUrl": "",
+    "externalBookingUrl": "",
+    "modeNote": "Request your preferred date and time in IST (Asia/Kolkata) — Dev personally confirms every call by email or WhatsApp."
+  },
+  "enquiryServiceOptions": [
+    "Video Editing & Post-Production",
+    "Graphic Design & Branding",
+    "Motion Graphics & VFX",
+    "AI-Powered Creative Production",
+    "Monthly Social Media Package",
+    "Photography & On-Location Shoot",
+    "Individual Project Quote",
+    "Custom Production Package"
+  ],
+  "budgetRanges": [
+    "Custom Quote — Need Guidance",
+    "Single Deliverable / Short Sprint",
+    "Monthly Retainer Partnership",
+    "Full Campaign / Multi-Deliverable Production"
+  ]
+}

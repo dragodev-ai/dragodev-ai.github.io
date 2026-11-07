@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jack — 3D Creator & Visual Designer Portfolio</title>
+  
+  <!-- Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          colors: {
+            dark: '#080808',
+            darker: '#040404',
+            accent: '#a855f7',
+            accentGlow: 'rgba(168, 85, 247, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#070707] text-white font-body selection:bg-purple-600 selection:text-white overflow-x-hidden">
+
+  <!-- Custom Cursor Elements -->
+  <div id="custom-cursor" class="pointer-events-none fixed top-0 left-0 z-[9999] -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out">
+    <svg class="cursor-svg w-8 h-8 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]" viewBox="0 0 24 24" fill="none">
+      <path d="M4 3L11 20L14 13L21 10L4 3Z" fill="#ffffff" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+    <div class="cursor-glow hidden w-12 h-12 rounded-full bg-purple-500/30 blur-md -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2"></div>
+  </div>
+
+  <!-- FIXED NAVBAR -->
+  <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 md:px-16 py-6 backdrop-blur-md bg-black/20 border-b border-white/5">
+    <div class="flex-1 flex justify-start">
+      <a href="#about" class="nav-link font-display text-sm tracking-[0.2em] uppercase font-bold text-zinc-300 hover:text-white transition-colors duration-200">ABOUT</a>
+    </div>
+    <div class="flex-1 flex justify-center space-x-12">
+      <a href="#services" class="nav-link font-display text-sm tracking-[0.2em] uppercase font-bold text-zinc-300 hover:text-white transition-colors duration-200">PRICE</a>
+      <a href="#projects" class="nav-link font-display text-sm tracking-[0.2em] uppercase font-bold text-zinc-300 hover:text-white transition-colors duration-200">PROJECTS</a>
+    </div>
+    <div class="flex-1 flex justify-end">
+      <a href="#contact" class="nav-link font-display text-sm tracking-[0.2em] uppercase font-bold text-zinc-300 hover:text-white transition-colors duration-200">CONTACT</a>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="relative w-full">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative w-full min-h-screen flex flex-col justify-between items-center px-6 md:px-14 pt-24 pb-12 overflow-hidden">
+      
+      <!-- Giant Background Metallic Typography -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+        <h1 class="hero-bg-title font-display text-[15vw] md:text-[18vw] leading-none font-black tracking-tighter text-center uppercase whitespace-nowrap">
+          HI, I'M JACK
+        </h1>
+      </div>
+
+      <!-- 3D Interactive Centerpiece Container -->
+      <div class="relative z-10 flex-1 flex items-center justify-center w-full max-w-4xl py-6" id="hero-3d-stage">
+        <!-- Floating wireframe cone (top-left) -->
+        <div class="absolute top-12 left-10 md:left-24 w-16 h-16 opacity-70 animate-float pointer-events-none">
+          <svg viewBox="0 0 100 100" class="w-full h-full stroke-zinc-400 fill-none" stroke-width="1.5">
+            <polygon points="50,15 15,80 85,80" />
+            <line x1="50" y1="15" x2="50" y2="80" />
+            <line x1="15" y1="80" x2="50" y2="60" />
+            <line x1="85" y1="80" x2="50" y2="60" />
+            <line x1="50" y1="15" x2="50" y2="60" />
+          </svg>
+        </div>
+
+        <!-- 3D Character Canvas / Interactive Avatar -->
+        <div id="character-wrapper" class="relative w-[340px] md:w-[500px] h-[360px] md:h-[520px] flex items-center justify-center cursor-grab active:cursor-grabbing transition-transform duration-300 ease-out">
+          <img id="character-head" src="assets/jack_head.png" alt="3D Jack Head" class="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] select-none pointer-events-none">
+          
+          <!-- Interactive Pupils Layer (Track Cursor) -->
+          <div id="eye-left-tracker" class="eye-tracker absolute" style="top: 55%; left: 42%;"></div>
+          <div id="eye-right-tracker" class="eye-tracker absolute" style="top: 55%; left: 56%;"></div>
+        </div>
+      </div>
+
+      <!-- Hero Bottom Controls & Punchline -->
+      <div class="relative z-20 w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pt-4">
+        <!-- Punchline text (bottom-left) -->
+        <div class="max-w-xs text-left">
+          <p class="font-body text-xs md:text-sm font-bold tracking-[0.16em] uppercase text-zinc-400 leading-relaxed">
+            A 3D creator driven by<br>
+            crafting striking and<br>
+            unforgettable projects
+          </p>
+        </div>
+
+        <!-- Glowing CTA Pill (bottom-right) -->
+        <div class="flex items-center">
+          <a href="#contact" class="cta-pill group relative inline-flex items-center justify-center px-8 py-3.5 rounded-full overflow-hidden text-xs md:text-sm font-bold tracking-[0.18em] uppercase transition-all duration-300">
+            <span class="relative z-10 text-white group-hover:scale-105 transition-transform duration-200">CONTACT ME</span>
+            <div class="cta-pill-bg absolute inset-0 rounded-full"></div>
+            <div class="cta-pill-glow absolute inset-0 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE MARQUEE WALL (2 Staggered Infinite Rows) -->
+    <section class="relative w-full py-16 overflow-hidden bg-gradient-to-b from-transparent via-zinc-950/60 to-transparent">
+      <!-- Row 1: Left to Right -->
+      <div class="marquee-track flex gap-6 mb-6">
+        <div class="marquee-content flex gap-6 shrink-0">
+          <div class="marquee-card"><img src="assets/card1.png" alt="Showcase 1" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card2.png" alt="Showcase 2" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card3.png" alt="Showcase 3" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card4.png" alt="Showcase 4" class="card-img"></div>
+        </div>
+        <div class="marquee-content flex gap-6 shrink-0" aria-hidden="true">
+          <div class="marquee-card"><img src="assets/card1.png" alt="Showcase 1" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card2.png" alt="Showcase 2" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card3.png" alt="Showcase 3" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card4.png" alt="Showcase 4" class="card-img"></div>
+        </div>
+      </div>
+
+      <!-- Row 2: Right to Left -->
+      <div class="marquee-track flex gap-6">
+        <div class="marquee-content-reverse flex gap-6 shrink-0">
+          <div class="marquee-card"><img src="assets/card5.png" alt="Showcase 5" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card6.png" alt="Showcase 6" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card2.png" alt="Showcase 2" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card1.png" alt="Showcase 1" class="card-img"></div>
+        </div>
+        <div class="marquee-content-reverse flex gap-6 shrink-0" aria-hidden="true">
+          <div class="marquee-card"><img src="assets/card5.png" alt="Showcase 5" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card6.png" alt="Showcase 6" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card2.png" alt="Showcase 2" class="card-img"></div>
+          <div class="marquee-card"><img src="assets/card1.png" alt="Showcase 1" class="card-img"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION (With Floating 3D Artifacts) -->
+    <section id="about" class="relative w-full min-h-screen flex flex-col items-center justify-center px-6 md:px-16 py-28 overflow-hidden">
+      
+      <!-- Floating 3D Element: Iridescent Moon (Left) -->
+      <div class="floating-item absolute top-20 left-8 md:left-24 w-28 md:w-36 pointer-events-none" data-speed="1.2">
+        <img src="assets/moon.png" alt="3D Glass Moon" class="w-full filter drop-shadow-[0_15px_30px_rgba(59,130,246,0.4)]">
+      </div>
+
+      <!-- Floating 3D Element: Purple Glass Lego (Right) -->
+      <div class="floating-item absolute top-20 right-8 md:right-24 w-28 md:w-36 pointer-events-none" data-speed="-1.0">
+        <img src="assets/lego.png" alt="3D Purple Lego" class="w-full filter drop-shadow-[0_15px_30px_rgba(168,85,247,0.4)]">
+      </div>
+
+      <!-- Main Center Content -->
+      <div class="relative z-10 max-w-3xl text-center flex flex-col items-center">
+        <!-- Metallic Title -->
+        <h2 class="font-display text-5xl md:text-8xl font-black uppercase tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-500">
+          ABOUT ME
+        </h2>
+
+        <!-- Bio Paragraph -->
+        <p class="font-body text-base md:text-xl font-medium text-zinc-400 leading-relaxed max-w-2xl mb-12">
+          With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!
+        </p>
+
+        <!-- Floating 3D Element: Smiley Medallion (Bottom Left) -->
+        <div class="floating-item absolute -bottom-10 left-4 md:left-12 w-24 md:w-32 pointer-events-none" data-speed="0.8">
+          <img src="assets/smiley.png" alt="3D Smiley Ring" class="w-full filter drop-shadow-[0_10px_25px_rgba(217,70,239,0.3)]">
+        </div>
+
+        <!-- Center CTA Button -->
+        <div class="relative z-20 my-4">
+          <a href="#contact" class="cta-pill group relative inline-flex items-center justify-center px-10 py-4 rounded-full overflow-hidden text-xs md:text-sm font-bold tracking-[0.18em] uppercase transition-all duration-300">
+            <span class="relative z-10 text-white">CONTACT ME</span>
+            <div class="cta-pill-bg absolute inset-0 rounded-full"></div>
+            <div class="cta-pill-glow absolute inset-0 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        </div>
+
+        <!-- Floating 3D Element: Glossy 3D Arrow (Bottom Right) -->
+        <div class="floating-item absolute -bottom-10 right-4 md:right-12 w-24 md:w-32 pointer-events-none" data-speed="-1.3">
+          <img src="assets/arrow3d.png" alt="3D Glossy Cursor" class="w-full filter drop-shadow-[0_10px_25px_rgba(139,92,246,0.4)]">
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION (High Contrast White Slide-Up Sheet) -->
+    <section id="services" class="relative w-full bg-white text-black rounded-t-[40px] md:rounded-t-[60px] px-8 md:px-24 py-24 z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.6)]">
+      
+      <!-- Section Title -->
+      <div class="mb-20 text-center md:text-left">
+        <h2 class="font-display text-6xl md:text-9xl font-black uppercase tracking-tighter text-black">
+          SERVICES
+        </h2>
+      </div>
+
+      <!-- Services List (Numbered 01 to 04) -->
+      <div class="divide-y divide-zinc-200 border-t border-b border-zinc-200">
+        
+        <!-- Service 01 -->
+        <div class="service-row group py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all duration-300 hover:bg-zinc-50 px-4 md:px-8 rounded-2xl">
+          <div class="flex items-start md:items-center gap-8 md:gap-16">
+            <span class="font-display text-5xl md:text-7xl font-black text-black tracking-tight shrink-0">01</span>
+            <div>
+              <h3 class="font-display text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-black mb-2">3D MODELING</h3>
+              <p class="font-body text-zinc-600 text-sm md:text-base max-w-xl leading-relaxed">
+                Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="w-12 h-12 rounded-full border border-black flex items-center justify-center font-display text-lg font-bold">→</span>
+          </div>
+        </div>
+
+        <!-- Service 02 -->
+        <div class="service-row group py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all duration-300 hover:bg-zinc-50 px-4 md:px-8 rounded-2xl">
+          <div class="flex items-start md:items-center gap-8 md:gap-16">
+            <span class="font-display text-5xl md:text-7xl font-black text-black tracking-tight shrink-0">02</span>
+            <div>
+              <h3 class="font-display text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-black mb-2">RENDERING</h3>
+              <p class="font-body text-zinc-600 text-sm md:text-base max-w-xl leading-relaxed">
+                High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="w-12 h-12 rounded-full border border-black flex items-center justify-center font-display text-lg font-bold">→</span>
+          </div>
+        </div>
+
+        <!-- Service 03 -->
+        <div class="service-row group py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all duration-300 hover:bg-zinc-50 px-4 md:px-8 rounded-2xl">
+          <div class="flex items-start md:items-center gap-8 md:gap-16">
+            <span class="font-display text-5xl md:text-7xl font-black text-black tracking-tight shrink-0">03</span>
+            <div>
+              <h3 class="font-display text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-black mb-2">MOTION DESIGN</h3>
+              <p class="font-body text-zinc-600 text-sm md:text-base max-w-xl leading-relaxed">
+                Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="w-12 h-12 rounded-full border border-black flex items-center justify-center font-display text-lg font-bold">→</span>
+          </div>
+        </div>
+
+        <!-- Service 04 -->
+        <div class="service-row group py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-all duration-300 hover:bg-zinc-50 px-4 md:px-8 rounded-2xl">
+          <div class="flex items-start md:items-center gap-8 md:gap-16">
+            <span class="font-display text-5xl md:text-7xl font-black text-black tracking-tight shrink-0">04</span>
+            <div>
+              <h3 class="font-display text-2xl md:text-3xl font-extrabold uppercase tracking-wide text-black mb-2">BRANDING</h3>
+              <p class="font-body text-zinc-600 text-sm md:text-base max-w-xl leading-relaxed">
+                Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence.
+              </p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="w-12 h-12 rounded-full border border-black flex items-center justify-center font-display text-lg font-bold">→</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (Sticky Stacked Cards) -->
+    <section id="projects" class="relative w-full bg-[#080808] px-4 md:px-16 py-28">
+      
+      <!-- Section Title -->
+      <div class="mb-16 text-center">
+        <h2 class="font-display text-5xl md:text-8xl font-black uppercase tracking-tight text-white">
+          PROJECTS
+        </h2>
+      </div>
+
+      <!-- Sticky Cards Container -->
+      <div class="cards-stack-container relative w-full max-w-6xl mx-auto space-y-12">
+        
+        <!-- CARD 01: Nextlevel Studio -->
+        <div class="stack-card sticky top-24 w-full bg-[#0d0d0d] border border-white/10 rounded-[32px] md:rounded-[40px] p-6 md:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-300">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-6">
+              <span class="font-display text-4xl md:text-6xl font-black text-white">01</span>
+              <div>
+                <span class="block text-xs font-bold tracking-[0.2em] text-zinc-400 uppercase">CLIENT</span>
+                <h3 class="font-display text-lg md:text-xl font-bold text-white">Nextlevel Studio</h3>
+              </div>
+            </div>
+            <div>
+              <a href="#" class="px-6 py-2.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white hover:bg-white hover:text-black transition-all duration-200">LIVE PROJECT</a>
+            </div>
+          </div>
+          <!-- Visual Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            <div class="md:col-span-4 flex flex-col gap-6">
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/proj1_1.png" alt="Nextlevel detail 1" class="w-full h-full object-cover">
+              </div>
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/proj1_2.png" alt="Nextlevel detail 2" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <div class="md:col-span-8 rounded-2xl overflow-hidden min-h-[300px] md:h-auto bg-zinc-900 border border-white/5">
+              <img src="assets/proj1_main.png" alt="Nextlevel main" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 02: Aura Brand Identity -->
+        <div class="stack-card sticky top-28 w-full bg-[#0d0d0d] border border-white/10 rounded-[32px] md:rounded-[40px] p-6 md:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-300">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-6">
+              <span class="font-display text-4xl md:text-6xl font-black text-white">02</span>
+              <div>
+                <span class="block text-xs font-bold tracking-[0.2em] text-zinc-400 uppercase">PERSONAL</span>
+                <h3 class="font-display text-lg md:text-xl font-bold text-white">Aura Brand Identity</h3>
+              </div>
+            </div>
+            <div>
+              <a href="#" class="px-6 py-2.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white hover:bg-white hover:text-black transition-all duration-200">LIVE PROJECT</a>
+            </div>
+          </div>
+          <!-- Visual Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            <div class="md:col-span-4 flex flex-col gap-6">
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/card3.png" alt="Aura detail 1" class="w-full h-full object-cover">
+              </div>
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/card1.png" alt="Aura detail 2" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <div class="md:col-span-8 rounded-2xl overflow-hidden min-h-[300px] md:h-auto bg-zinc-900 border border-white/5">
+              <img src="assets/card2.png" alt="Aura main" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 03: Solaris Digital -->
+        <div class="stack-card sticky top-32 w-full bg-[#0d0d0d] border border-white/10 rounded-[32px] md:rounded-[40px] p-6 md:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-300">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-6">
+              <span class="font-display text-4xl md:text-6xl font-black text-white">03</span>
+              <div>
+                <span class="block text-xs font-bold tracking-[0.2em] text-zinc-400 uppercase">CLIENT</span>
+                <h3 class="font-display text-lg md:text-xl font-bold text-white">Solaris Digital</h3>
+              </div>
+            </div>
+            <div>
+              <a href="#" class="px-6 py-2.5 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-white hover:bg-white hover:text-black transition-all duration-200">LIVE PROJECT</a>
+            </div>
+          </div>
+          <!-- Visual Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            <div class="md:col-span-4 flex flex-col gap-6">
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/proj3_thumb.png" alt="Solaris thumb 1" class="w-full h-full object-cover">
+              </div>
+              <div class="rounded-2xl overflow-hidden h-44 bg-zinc-900 border border-white/5">
+                <img src="assets/card5.png" alt="Solaris thumb 2" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <div class="md:col-span-8 rounded-2xl overflow-hidden min-h-[300px] md:h-auto bg-zinc-900 border border-white/5">
+              <img src="assets/proj3_main.png" alt="Solaris main" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id="contact" class="relative w-full bg-[#050505] border-t border-white/10 px-8 md:px-16 py-20 flex flex-col items-center justify-center text-center">
+      <h2 class="font-display text-4xl md:text-7xl font-black uppercase tracking-tight text-white mb-6">
+        LET'S CREATE TOGETHER
+      </h2>
+      <p class="font-body text-zinc-400 text-sm md:text-base max-w-md mb-8">
+        Have a project in mind or want to talk 3D & design? Drop a message and let's craft something striking.
+      </p>
+      <a href="mailto:contact@jack3d.design" class="cta-pill group relative inline-flex items-center justify-center px-10 py-4 rounded-full overflow-hidden text-sm font-bold tracking-[0.18em] uppercase transition-all duration-300">
+        <span class="relative z-10 text-white">GET IN TOUCH</span>
+        <div class="cta-pill-bg absolute inset-0 rounded-full"></div>
+        <div class="cta-pill-glow absolute inset-0 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </a>
+      <div class="mt-16 text-zinc-600 text-xs uppercase tracking-widest">
+        © 2026 Jack. All rights reserved.
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
+

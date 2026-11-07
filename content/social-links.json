@@ -1,0 +1,32 @@
+{
+  "email": "kumawatrishi096@gmail.com",
+  "mailtoUrl": "mailto:kumawatrishi096@gmail.com",
+  "phoneDisplay": "+91 9309425465",
+  "telUrl": "tel:+919309425465",
+  "whatsapp": {
+    "numberWithCountryCode": "919309425465",
+    "display": "+91 9309425465",
+    "url": "https://wa.me/919309425465",
+    "defaultMessage": "Hi Dev! I visited your 3D Creative Studio portfolio and would like to discuss a creative project."
+  },
+  "socials": [
+    {
+      "id": "instagram-main",
+      "platform": "Instagram",
+      "handle": "@lenswithdragodev",
+      "url": "https://www.instagram.com/lenswithdragodev"
+    },
+    {
+      "id": "instagram-secondary",
+      "platform": "Instagram (Creator)",
+      "handle": "@dragodev",
+      "url": "https://www.instagram.com/dragodev"
+    },
+    {
+      "id": "google-drive-portfolio",
+      "platform": "Google Drive Archive",
+      "handle": "Full Portfolio Folder",
+      "url": "https://drive.google.com/drive/folders/1fIRbUsJen8EHxLfdU5LXlmXJzk_FsztC?usp=sharing"
+    }
+  ]
+}

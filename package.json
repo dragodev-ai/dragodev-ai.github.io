@@ -1,0 +1,48 @@
+{
+  "name": "dev-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DEV STUDIO — Immersive 3D Creative Studio & Portfolio for Dev Kumawat",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "sync:drive": "tsx scripts/sync-drive.ts",
+    "validate:assets": "tsx scripts/validate-assets.ts"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.7",
+    "lucide-react": "^0.475.0",
+    "next": "15.5.29",
+    "nodemailer": "^6.10.0",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "tailwind-merge": "^3.0.2",
+    "three": "^0.175.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.5",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/three": "^0.175.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "15.5.29",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7"
+  }
+}

@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build outputs
+.next/
+out/
+build/
+dist/
+
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+service-account*.json
+
+# Testing & Coverage
+coverage/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# OS & TypeScript caches
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+next-env.d.ts
+
+# Oversized local raw source PDF (clean 115KB & 816KB versions live in public/assets/)
+Dev Kumawat CV Portfolio.pdf
