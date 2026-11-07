@@ -62,7 +62,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
               </span>
               <h2
                 id="services-heading"
-                className="font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-[#0A0A0C] sm:text-7xl"
+                className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-tight text-[#0A0A0C] sm:text-7xl"
               >
                 {servicesContent.headline}
               </h2>
@@ -98,7 +98,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                         {group.number}
                       </span>
                       <div>
-                        <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl">
+                        <h3 className="break-words font-display text-xl font-extrabold uppercase tracking-tight text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl">
                           {group.title}
                         </h3>
                         <p className="mt-1 text-xs font-medium text-zinc-600 sm:text-sm">

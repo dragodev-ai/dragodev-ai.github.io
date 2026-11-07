@@ -160,7 +160,7 @@ export function DevCharacterModel({
       bs.isBlinking = true;
       bs.blinkProgress = 0;
     }
-    let lidAngle = 0.08; // Relaxed upper lid rest angle
+    let lidAngle = -0.56; // Alert, expressive open upper lid rest angle revealing iris & catchlight
     if (bs.isBlinking) {
       bs.blinkProgress += delta * 7.8;
       if (bs.blinkProgress >= Math.PI) {
@@ -168,7 +168,7 @@ export function DevCharacterModel({
         // Occasional natural double-blink (18% probability)
         bs.nextBlinkAt = t + (Math.random() < 0.18 ? 0.22 : 2.6 + Math.random() * 2.8);
       } else {
-        lidAngle = 0.08 + Math.sin(bs.blinkProgress) * 1.28;
+        lidAngle = -0.56 + Math.sin(bs.blinkProgress) * 0.78;
       }
     }
     if (rig.eyelidL) rig.eyelidL.rotation.x = lidAngle;

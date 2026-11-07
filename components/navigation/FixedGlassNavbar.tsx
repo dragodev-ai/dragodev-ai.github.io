@@ -77,8 +77,8 @@ export function FixedGlassNavbar() {
         aria-label="Primary Studio Navigation"
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:grid sm:grid-cols-3 sm:px-7 ${
           scrolled
-            ? 'border-white/15 bg-[#070709]/82 shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-xl'
-            : 'border-white/10 bg-[#070709]/62 backdrop-blur-md'
+            ? 'border-white/15 bg-[#070709]/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-xl'
+            : 'border-white/15 bg-[#070709]/90 backdrop-blur-xl'
         }`}
       >
         {/* LEFT COLUMN: ABOUT (with subtle Studio Home dot) */}

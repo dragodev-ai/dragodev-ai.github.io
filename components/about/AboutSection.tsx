@@ -29,7 +29,7 @@ export function AboutSection() {
             </span>
             <h2
               id="about-heading"
-              className="font-display text-5xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
             >
               ABOUT ME
             </h2>

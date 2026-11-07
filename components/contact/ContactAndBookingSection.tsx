@@ -210,7 +210,7 @@ export function ContactAndBookingSection() {
             </span>
             <h2
               id="contact-heading"
-              className="font-display text-5xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
             >
               LET&apos;S CREATE
             </h2>

@@ -495,19 +495,22 @@ def build_torso_and_outfit():
     ]
     blazer_body = make_lofted_tube(blazer_rings, seg_u=36)
 
-    # Notched Blazer Lapels (#2B2B2B suit detail) on front of chest
+    # Smooth continuous tailored satin notched Blazer Lapels (#222228) on front of chest
     lapel_parts = []
     for side in (-1.0, 1.0):
-        for s in range(8):
-            t = s / 7.0
-            lx = side * (0.016 + (1.0 - t) * 0.056)
-            ly = 0.02 + (1.0 - t) * 0.30
-            lz = 0.102 + 0.008 * math.sin(t * math.pi)
-            lapel_parts.append(make_rounded_box(0.020, 0.026, 0.008, lx, ly, lz, seg=6))
-    # Two front blazer buttons + breast pocket welt
-    for by in (-0.01, -0.07):
-        lapel_parts.append(make_uv_sphere(0.007, 0.007, 0.005, 0.0, by, 0.104, seg_u=12, seg_v=8))
-    lapel_parts.append(make_rounded_box(0.028, 0.005, 0.005, -0.082, 0.19, 0.108, seg=4))
+        lapel_rings = []
+        for s in range(12):
+            t = s / 11.0  # t=0 bottom button stance -> t=1 shoulder collar notch
+            lx = side * (0.014 + t * 0.058)
+            ly = 0.00 + t * 0.325
+            lz = 0.101 + 0.009 * math.sin(t * math.pi * 0.85)
+            width = 0.011 + 0.012 * math.sin(t * math.pi * 0.78)
+            lapel_rings.append((lx, ly, lz, width, 0.0055))
+        lapel_parts.append(make_lofted_tube(lapel_rings, seg_u=16))
+    # Two front blazer buttons + subtle breast pocket welt
+    for by in (-0.015, -0.075):
+        lapel_parts.append(make_uv_sphere(0.0065, 0.0065, 0.0045, 0.0, by, 0.104, seg_u=12, seg_v=8))
+    lapel_parts.append(make_rounded_box(0.026, 0.004, 0.004, -0.082, 0.19, 0.108, seg=4))
     lapels_mesh = merge_parts(lapel_parts)
 
     # Black Cotton Shirt V-insert + Pointed Shirt Collar (#1A1A1A)
@@ -820,6 +823,16 @@ class GLBBuilder:
             f.write(self.bin_data)
 
 
+def srgb_hex_to_linear_rgba(hex_str: str, alpha: float = 1.0):
+    h = hex_str.lstrip("#")
+    vals = [int(h[i : i + 2], 16) / 255.0 for i in (0, 2, 4)]
+    lin = [
+        round(((c + 0.055) / 1.055) ** 2.4 if c > 0.04045 else c / 12.92, 5)
+        for c in vals
+    ]
+    return (lin[0], lin[1], lin[2], alpha)
+
+
 def build_character_glb():
     b = GLBBuilder()
 
@@ -828,21 +841,21 @@ def build_character_glb():
     eye_tex = b.add_png_texture("DevEyeIrisTexture", make_eye_texture())
     wool_tex = b.add_png_texture("DevBlazerWoolTexture", make_wool_fabric_texture())
 
-    # Exact Palette Materials from Character Sheet
-    mat_skin = b.add_material("Skin_D7966B", (1.0, 1.0, 1.0, 1.0), metallic=0.02, roughness=0.62, tex_idx=skin_tex)
-    mat_skin_plain = b.add_material("SkinHands_D7966B", (0.843, 0.588, 0.420, 1.0), metallic=0.02, roughness=0.64)
-    mat_eyelid = b.add_material("Eyelid_C6835A", (0.776, 0.514, 0.353, 1.0), metallic=0.02, roughness=0.58)
-    mat_hair = b.add_material("Hair_1A0F0B", (0.102, 0.059, 0.043, 1.0), metallic=0.04, roughness=0.56)
-    mat_eye = b.add_material("Eye_4B2A10", (1.0, 1.0, 1.0, 1.0), metallic=0.0, roughness=0.10, tex_idx=eye_tex)
-    mat_lips = b.add_material("Lips_BF785E", (0.749, 0.471, 0.369, 1.0), metallic=0.02, roughness=0.50)
-    mat_mouth_in = b.add_material("MouthCavity", (0.16, 0.05, 0.05, 1.0), metallic=0.0, roughness=0.90)
+    # Exact Palette Materials from Character Sheet (converted from sRGB hex -> glTF 2.0 linear PBR)
+    mat_skin = b.add_material("Skin_D7966B", (1.0, 1.0, 1.0, 1.0), metallic=0.01, roughness=0.62, tex_idx=skin_tex)
+    mat_skin_plain = b.add_material("SkinHands_D7966B", srgb_hex_to_linear_rgba("#D7966B"), metallic=0.01, roughness=0.64)
+    mat_eyelid = b.add_material("Eyelid_C6835A", srgb_hex_to_linear_rgba("#C6835A"), metallic=0.01, roughness=0.58)
+    mat_hair = b.add_material("Hair_1A0F0B", srgb_hex_to_linear_rgba("#1A0F0B"), metallic=0.03, roughness=0.52)
+    mat_eye = b.add_material("Eye_4B2A10", (1.0, 1.0, 1.0, 1.0), metallic=0.0, roughness=0.08, tex_idx=eye_tex)
+    mat_lips = b.add_material("Lips_BF785E", srgb_hex_to_linear_rgba("#BF785E"), metallic=0.02, roughness=0.48)
+    mat_mouth_in = b.add_material("MouthCavity", srgb_hex_to_linear_rgba("#2A0D0D"), metallic=0.0, roughness=0.90)
     mat_suit = b.add_material("Blazer_111111", (1.0, 1.0, 1.0, 1.0), metallic=0.04, roughness=0.80, tex_idx=wool_tex)
-    mat_lapel = b.add_material("SuitDetail_2B2B2B", (0.169, 0.169, 0.169, 1.0), metallic=0.06, roughness=0.72)
-    mat_shirt = b.add_material("Shirt_1A1A1A", (0.102, 0.102, 0.108, 1.0), metallic=0.03, roughness=0.68)
-    mat_trouser = b.add_material("Trousers_131316", (0.075, 0.075, 0.086, 1.0), metallic=0.03, roughness=0.78)
-    mat_belt = b.add_material("BeltLeather", (0.078, 0.078, 0.082, 1.0), metallic=0.08, roughness=0.38)
-    mat_buckle = b.add_material("BeltBuckleSilver", (0.72, 0.74, 0.78, 1.0), metallic=0.88, roughness=0.24)
-    mat_shoe = b.add_material("ShoeFormalLeather", (0.055, 0.055, 0.062, 1.0), metallic=0.10, roughness=0.25)
+    mat_lapel = b.add_material("SuitDetail_2B2B2B", srgb_hex_to_linear_rgba("#24242A"), metallic=0.08, roughness=0.52)
+    mat_shirt = b.add_material("Shirt_1A1A1A", srgb_hex_to_linear_rgba("#16161B"), metallic=0.02, roughness=0.74)
+    mat_trouser = b.add_material("Trousers_131316", srgb_hex_to_linear_rgba("#131317"), metallic=0.03, roughness=0.78)
+    mat_belt = b.add_material("BeltLeather", srgb_hex_to_linear_rgba("#141418"), metallic=0.08, roughness=0.36)
+    mat_buckle = b.add_material("BeltBuckleSilver", srgb_hex_to_linear_rgba("#B8BDC7"), metallic=0.88, roughness=0.24)
+    mat_shoe = b.add_material("ShoeFormalLeather", srgb_hex_to_linear_rgba("#0F0F13"), metallic=0.10, roughness=0.25)
 
     # Meshes
     head_mesh = b.add_mesh("HeadCraniumMesh", build_head_skin_mesh(), mat_skin)

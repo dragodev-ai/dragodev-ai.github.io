@@ -78,7 +78,7 @@ export function StudioAudioGateAndControls() {
           aria-live="polite"
           className="pointer-events-none fixed inset-x-0 bottom-20 z-40 mx-auto max-w-2xl px-4 sm:bottom-8"
         >
-          <div className="rounded-2xl border border-purple-400/25 bg-[#070709]/88 px-5 py-3 text-center shadow-2xl backdrop-blur-xl">
+          <div className="rounded-2xl border border-purple-400/35 bg-[#070709]/95 px-5 py-3 text-center shadow-[0_20px_50px_rgba(0,0,0,0.75)] backdrop-blur-xl">
             <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.24em] text-purple-300">
               DEV KUMAWAT · STUDIO VOICEOVER
             </span>
@@ -93,7 +93,7 @@ export function StudioAudioGateAndControls() {
       {hasEnteredStudio && (
         <div
           data-testid="studio-audio-controls"
-          className="fixed bottom-4 left-4 z-40 flex items-center gap-2 rounded-2xl border border-white/12 bg-[#0b0b12]/88 px-3 py-2 shadow-2xl backdrop-blur-xl"
+          className="fixed bottom-4 left-4 z-40 flex items-center gap-2 rounded-2xl border border-white/15 bg-[#09090f]/95 px-3 py-2 shadow-[0_16px_44px_rgba(0,0,0,0.75)] backdrop-blur-xl"
         >
           <button
             type="button"

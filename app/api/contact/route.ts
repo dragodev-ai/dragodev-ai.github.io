@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
           code: outcome.provider === 'unconfigured' ? 'EMAIL_PROVIDER_NOT_CONFIGURED' : 'EMAIL_DELIVERY_FAILED',
           message:
             outcome.provider === 'unconfigured'
-              ? 'Server email transport (RESEND_API_KEY or SMTP_HOST) is not configured in this environment yet. Use the instant direct email or WhatsApp button below to reach Dev immediately.'
+              ? `Server email transport (RESEND_API_KEY or SMTP_HOST) is not configured in this environment yet. Use the pre-filled email (${recipient}) or WhatsApp button below to reach Dev immediately.`
               : outcome.error || 'Email transport encountered an error.',
           missingEnv: outcome.missingEnv,
           mailtoFallbackUrl: `mailto:${recipient}?subject=${mailtoSubject}&body=${mailtoBody}`,

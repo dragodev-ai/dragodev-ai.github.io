@@ -62,7 +62,7 @@ export function StackedProjectsSection({
             </span>
             <h2
               id="projects-heading"
-              className="font-display text-5xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
             >
               PROJECTS
             </h2>
@@ -113,7 +113,7 @@ export function StackedProjectsSection({
                         )}
                       </div>
 
-                      <h3 className="font-display text-2xl font-extrabold uppercase leading-tight text-white sm:text-3xl">
+                      <h3 className="break-words font-display text-xl font-extrabold uppercase leading-tight text-white sm:text-3xl">
                         {project.title}
                       </h3>
 

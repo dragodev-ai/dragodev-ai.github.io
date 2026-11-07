@@ -98,11 +98,11 @@ export function PortfolioExplorer({
               GOOGLE DRIVE SYNCED ARCHIVE · {projects.length} VERIFIED WORKS
             </span>
             {isStandalonePage ? (
-              <h1 className="font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
+              <h1 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
                 {heading}
               </h1>
             ) : (
-              <h2 className="font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
+              <h2 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
                 {heading}
               </h2>
             )}

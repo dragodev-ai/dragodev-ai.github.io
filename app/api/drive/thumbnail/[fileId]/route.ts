@@ -42,7 +42,7 @@ export async function GET(
     const res = await fetch(thumbUrl, {
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; DevStudioThumbProxy/1.0)' },
       redirect: 'follow',
-      next: { revalidate: 86400 },
+      cache: 'no-store',
     });
 
     const contentType = res.headers.get('content-type') || '';

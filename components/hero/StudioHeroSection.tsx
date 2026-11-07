@@ -62,12 +62,38 @@ export function StudioHeroSection({
               </span>
             </div>
 
-            <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.94] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="font-display text-[1.9rem] font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl">
               DEV KUMAWAT
-              <span className="mt-1.5 block font-condensed text-lg font-semibold tracking-[0.26em] text-purple-300 sm:text-xl">
+              <span className="mt-1.5 block font-condensed text-base font-semibold tracking-[0.22em] text-purple-300 sm:text-xl sm:tracking-[0.26em]">
                 IMMERSIVE CREATIVE &amp; POST-PRODUCTION STUDIO
               </span>
             </h1>
+
+            {hasEnteredStudio && (
+              <div className="pointer-events-auto mt-5 flex flex-wrap items-center gap-2.5">
+                {showreelProject && (
+                  <button
+                    type="button"
+                    onClick={() => openProject(showreelProject)}
+                    className="inline-flex items-center gap-2 rounded-full border border-purple-400/50 bg-[#0b0b12]/85 px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md transition hover:bg-purple-600"
+                  >
+                    <Play className="h-3.5 w-3.5 fill-current" />
+                    PLAY SHOWREEL
+                  </button>
+                )}
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-950 shadow-lg transition hover:bg-zinc-200"
+                >
+                  START A PROJECT
+                  <ArrowDownRight className="h-4 w-4" />
+                </a>
+                <span className="hidden items-center gap-1.5 rounded-full border border-white/10 bg-[#0b0b12]/80 px-3.5 py-2 font-mono text-[10px] text-zinc-300 backdrop-blur-md xl:inline-flex">
+                  <Sparkles className="h-3 w-3 text-amber-400" />
+                  MOVE CURSOR TO INTERACT · CLICK MONITORS TO PLAY
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Right Studio Role Spec Card (Desktop / Tablet) */}
@@ -100,35 +126,8 @@ export function StudioHeroSection({
           </div>
         </div>
 
-        {/* Bottom Left/Right Quick Conversion Bar (visible once visitor enters studio) */}
-        {hasEnteredStudio && (
-          <div className="pointer-events-auto mt-auto flex flex-wrap items-end justify-between gap-4 pt-12">
-            <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-[#0b0b12]/75 px-4 py-2 font-mono text-[11px] text-zinc-300 backdrop-blur-md md:inline-flex">
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              MOVE CURSOR TO INTERACT WITH DEV &amp; CLICK STUDIO MONITORS TO PLAY REELS
-            </div>
-
-            <div className="ml-auto flex flex-wrap items-center gap-3">
-              {showreelProject && (
-                <button
-                  type="button"
-                  onClick={() => openProject(showreelProject)}
-                  className="inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-600/25 px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md transition hover:bg-purple-600/45"
-                >
-                  <Play className="h-3.5 w-3.5 fill-current" />
-                  PLAY SHOWREEL
-                </button>
-              )}
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-zinc-200"
-              >
-                START A PROJECT
-                <ArrowDownRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        )}
+        {/* Bottom spacer keeps viewport airy above fixed Audio Dock, Captions & WhatsApp CTA */}
+        <div aria-hidden="true" className="h-16" />
       </div>
 
       {/* Audio Gate + Persistent Mute / Volume / Captions / Transcript Dock */}

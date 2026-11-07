@@ -22,7 +22,7 @@ export function PricingSection() {
             </span>
             <h2
               id="pricing-heading"
-              className="font-display text-5xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
             >
               {pricingContent.headline}
             </h2>

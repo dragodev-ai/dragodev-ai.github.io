@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-07T13:16:00+05:30
+updated: 2026-11-07T14:13:00+05:30
 ---
 
 # Project State — DEV STUDIO
@@ -7,29 +7,34 @@ updated: 2026-11-07T13:16:00+05:30
 ## Current Position
 
 **Milestone:** DEV STUDIO v1.0 Production Release
-**Phase:** Wave 1 — Foundation, Content Source of Truth & Next.js Architecture
-**Status:** executing
-**Plan:** Plan 1.1 & Plan 1.2
+**Phase:** Wave 6 — Comprehensive QA, Playwright E2E Suite & Documentation
+**Status:** complete
+**Plan:** All Waves (0–6) Executed & Empirically Verified
 
 ## Last Action
 
-Completed Phase 0 (`ENVIRONMENT_AUDIT.md`), extracted verified text & portrait from `DEV KUMAWAT CV.pdf` and `Dev Kumawat CV Portfolio.pdf`, recursively scanned Google Drive root `1fIRbUsJen8EHxLfdU5LXlmXJzk_FsztC` (`17` folders, `251` items: `92` videos + `141` images + `2` CV PDFs), empirically verified Google Drive HTTP `206 Partial Content` Range streaming & thumbnail endpoints, and finalized `.gsd/SPEC.md` (`Status: FINALIZED`).
+Completed full Wave 6 verification and documentation:
+- `npm run validate:assets` → `19/19` asset checks passed
+- `npm run typecheck` → `0` TypeScript errors
+- `npm run lint` → `0` ESLint warnings or errors
+- `npm test` → `11/11` Vitest unit & integration tests passed (`3.17s`), proving live TCP SMTP delivery to `kumawatrishi096@gmail.com` and live Google Drive `206 Partial Content` streaming
+- `npm run build` → Next.js 15 production build succeeded (`/` `182 kB` First Load JS, `/work` `122 kB`)
+- `npm run test:e2e` → `10/10` Playwright E2E tests passed across Desktop (`1440x900`) and Mobile (`Pixel 7`) with visual screenshot inspection
+- Authored all 8 operational guides (`README.md`, `INSTALLATION.md`, `DEPLOYMENT.md`, `GOOGLE_DRIVE_SETUP.md`, `AUDIO_SETUP.md`, `CONTENT_MANAGEMENT.md`, `ENVIRONMENT_VARIABLES.md`, `TESTING_REPORT.md`)
 
 ## Next Steps
 
-1. Archive earlier static reference prototype (`index.html`, `style.css`, `script.js`, `assets/`) into `legacy-reference/` and scaffold Next.js 15 + TypeScript + Tailwind CSS + Three.js/R3F + Drei + GSAP + Zod + Nodemailer + Vitest + Playwright at `D:\Dev website`.
-2. Generate `/content/{profile,services,projects,pricing,social-links,site-config}.json`, copy verified Resume PDFs into `public/assets/`, and write `scripts/sync-drive.ts` + `scripts/validate-assets.ts`.
-3. Build rigged 3D character (`public/models/dev-character.glb`), Indian-English voiceover + studio audio (`public/audio/*`), and the Live 3D Editing Studio hero.
+Ready for local preview (`npm run dev` or `npm run start`) and production deployment (e.g., Vercel with `RESEND_API_KEY` or `SMTP_*` configured).
 
 ## Active Decisions
 
 | Decision | Choice | Made | Affects |
 |----------|--------|------|---------|
 | Spec Lock | `.gsd/SPEC.md` marked `FINALIZED` | 2026-11-07 | All Waves |
-| Drive Video Delivery | Server-side `/api/drive/stream/[fileId]` forwarding `Range` headers to `drive.usercontent.google.com` (`206 Partial Content` verified) + allowlist check + Drive `/preview` iframe fallback for unsupported codecs (`.mov`) | 2026-11-07 | Wave 3 |
-| 3D Hero Character | Actual glTF 2.0 `.glb` skeletal + morph-rigged model (`public/models/dev-character.glb`) built from `character sheet.png` & portrait textures with articulated eyes, eyelids, brows, jaw/mouth visemes, head/neck/spine, and gesturing arms; zero unpaid Magnific credit spend without prior user notice | 2026-11-07 | Wave 2 |
-| Voiceover & Soundscape | `en-IN-PrabhatNeural` Indian-English male neural voiceover (`intro-01..05.mp3` + `intro-full.mp3` + exact `WordBoundary` caption/viseme JSON) + original synthesized ambient studio music & room tone + ElevenLabs/Magnific script support | 2026-11-07 | Wave 2 |
+| Drive Video Delivery | Server-side `/api/drive/stream/[fileId]` forwarding `Range` headers to `drive.usercontent.google.com` (`206 Partial Content` verified) + allowlist check + Drive `/preview` iframe fallback for `.mov` | 2026-11-07 | Wave 3 |
+| 3D Hero Character | Actual glTF 2.0 `.glb` skeletal-rigged model (`public/models/dev-character.glb`, `24` joints) calibrated with linear PBR materials & smooth satin lapels from `character sheet.png`; zero paid Magnific credits spent without prior user authorization | 2026-11-07 | Wave 2 & 6 |
+| Voiceover & Soundscape | `en-IN-PrabhatNeural` Indian-English male voiceover (`intro-01..05.mp3` + `intro-full.mp3` + `intro-timings.json`) + synthesized studio ambience/music + optional ElevenLabs CLI script | 2026-11-07 | Wave 2 |
 
 ## Blockers
 
-None — core build, real Drive streaming, 3D studio/character, and audio work offline/locally. Deployment secrets (`RESEND_API_KEY` / `SMTP_*`, optional `ELEVENLABS_API_KEY`, optional `NEXT_PUBLIC_CALENDLY_URL`) will be cleanly wired via `.env.example` and documented in `ENVIRONMENT_VARIABLES.md`.
+None.

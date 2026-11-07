@@ -104,6 +104,9 @@ export function PortfolioMarquee({
         data-testid="marquee-row-ltr"
         onMouseEnter={() => setPausedRow1(true)}
         onMouseLeave={() => setPausedRow1(false)}
+        onPointerDown={() => setPausedRow1(true)}
+        onFocusCapture={() => setPausedRow1(true)}
+        onBlurCapture={() => setPausedRow1(false)}
         className="mb-5 flex overflow-hidden"
       >
         <div
