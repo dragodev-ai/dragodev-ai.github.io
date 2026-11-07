@@ -31,5 +31,7 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 
-# Oversized local raw source PDF (clean 115KB & 816KB versions live in public/assets/)
+# Oversized local raw source files (optimized web versions live in public/assets/ and public/videos/)
 Dev Kumawat CV Portfolio.pdf
+/DEV_KUMAWAT_SAAS_WEB.mp4
+

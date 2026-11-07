@@ -201,7 +201,7 @@ export function ContactAndBookingSection() {
       aria-labelledby="contact-heading"
       className="relative border-t border-white/10 bg-[#070709] py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
           <div>
@@ -210,7 +210,7 @@ export function ContactAndBookingSection() {
             </span>
             <h2
               id="contact-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
             >
               LET&apos;S CREATE
             </h2>
@@ -258,6 +258,7 @@ export function ContactAndBookingSection() {
                 <label htmlFor="contact-website-hp">Website</label>
                 <input
                   id="contact-website-hp"
+                  suppressHydrationWarning
                   type="text"
                   tabIndex={-1}
                   autoComplete="off"
@@ -277,6 +278,7 @@ export function ContactAndBookingSection() {
                   <input
                     id="contact-fullname"
                     name="fullName"
+                    suppressHydrationWarning
                     type="text"
                     required
                     value={fullName}
@@ -296,6 +298,7 @@ export function ContactAndBookingSection() {
                   <input
                     id="contact-email"
                     name="email"
+                    suppressHydrationWarning
                     type="email"
                     required
                     value={email}
@@ -317,6 +320,7 @@ export function ContactAndBookingSection() {
                   <input
                     id="contact-phone"
                     name="phoneWhatsapp"
+                    suppressHydrationWarning
                     type="tel"
                     required
                     value={phoneWhatsapp}
@@ -336,6 +340,7 @@ export function ContactAndBookingSection() {
                   <select
                     id="contact-service"
                     name="interestedService"
+                    suppressHydrationWarning
                     data-testid="contact-service-select"
                     value={interestedService}
                     onChange={(e) => setInterestedService(e.target.value)}
@@ -350,8 +355,8 @@ export function ContactAndBookingSection() {
                 </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="sm:col-span-2 xl:col-span-1">
                   <label
                     htmlFor="contact-budget"
                     className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
@@ -361,6 +366,7 @@ export function ContactAndBookingSection() {
                   <select
                     id="contact-budget"
                     name="projectBudget"
+                    suppressHydrationWarning
                     value={projectBudget}
                     onChange={(e) => setProjectBudget(e.target.value)}
                     className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-purple-500 focus:outline-none"
@@ -383,6 +389,7 @@ export function ContactAndBookingSection() {
                   <input
                     id="contact-date"
                     name="preferredMeetingDate"
+                    suppressHydrationWarning
                     type="date"
                     value={preferredMeetingDate}
                     onChange={(e) => setPreferredMeetingDate(e.target.value)}
@@ -400,6 +407,7 @@ export function ContactAndBookingSection() {
                   <input
                     id="contact-time"
                     name="preferredMeetingTime"
+                    suppressHydrationWarning
                     type="text"
                     value={preferredMeetingTime}
                     onChange={(e) => setPreferredMeetingTime(e.target.value)}
@@ -419,6 +427,7 @@ export function ContactAndBookingSection() {
                 <input
                   id="contact-ref"
                   name="referenceLink"
+                  suppressHydrationWarning
                   type="url"
                   value={referenceLink}
                   onChange={(e) => setReferenceLink(e.target.value)}
@@ -437,6 +446,7 @@ export function ContactAndBookingSection() {
                 <textarea
                   id="contact-desc"
                   name="projectDescription"
+                  suppressHydrationWarning
                   rows={4}
                   required
                   value={projectDescription}
@@ -450,6 +460,7 @@ export function ContactAndBookingSection() {
                 <input
                   type="checkbox"
                   name="consent"
+                  suppressHydrationWarning
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   data-testid="contact-consent-checkbox"
@@ -572,6 +583,7 @@ export function ContactAndBookingSection() {
                   <div className="hidden" aria-hidden="true">
                     <input
                       type="text"
+                      suppressHydrationWarning
                       tabIndex={-1}
                       autoComplete="off"
                       value={bookWebsite}
@@ -588,6 +600,7 @@ export function ContactAndBookingSection() {
                     </label>
                     <input
                       id="book-name"
+                      suppressHydrationWarning
                       type="text"
                       required
                       value={bookName}
@@ -607,6 +620,7 @@ export function ContactAndBookingSection() {
                       </label>
                       <input
                         id="book-email"
+                        suppressHydrationWarning
                         type="email"
                         required
                         value={bookEmail}
@@ -624,6 +638,7 @@ export function ContactAndBookingSection() {
                       </label>
                       <input
                         id="book-phone"
+                        suppressHydrationWarning
                         type="tel"
                         required
                         value={bookPhone}
@@ -644,6 +659,7 @@ export function ContactAndBookingSection() {
                       </label>
                       <input
                         id="book-date"
+                        suppressHydrationWarning
                         type="date"
                         required
                         value={bookDate}
@@ -661,6 +677,7 @@ export function ContactAndBookingSection() {
                       </label>
                       <select
                         id="book-time"
+                        suppressHydrationWarning
                         value={bookTime}
                         onChange={(e) => setBookTime(e.target.value)}
                         className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
@@ -684,6 +701,7 @@ export function ContactAndBookingSection() {
                     </label>
                     <input
                       id="book-topic"
+                      suppressHydrationWarning
                       type="text"
                       required
                       value={bookTopic}
@@ -701,6 +719,7 @@ export function ContactAndBookingSection() {
                     </label>
                     <textarea
                       id="book-notes"
+                      suppressHydrationWarning
                       rows={2}
                       value={bookNotes}
                       onChange={(e) => setBookNotes(e.target.value)}
@@ -712,6 +731,7 @@ export function ContactAndBookingSection() {
                   <label className="flex cursor-pointer items-start gap-2.5 text-xs text-zinc-400">
                     <input
                       type="checkbox"
+                      suppressHydrationWarning
                       checked={bookConsent}
                       onChange={(e) => setBookConsent(e.target.checked)}
                       data-testid="booking-consent-checkbox"

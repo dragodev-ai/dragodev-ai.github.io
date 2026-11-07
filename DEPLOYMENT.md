@@ -65,3 +65,4 @@ PORT=3000 NODE_ENV=production npm run start
 1. Point your apex domain (`@`) and `www` to Vercel (or your reverse proxy IP).
 2. Update `NEXT_PUBLIC_SITE_URL` to match the final `https://` domain and trigger a redeploy so JSON-LD `Person` schema, Open Graph tags, and `sitemap.xml` use the exact production URL.
 3. If using **Resend** or **SMTP**, verify your domain's `SPF` and `DKIM` DNS records so studio enquiries land in the primary inbox of `kumawatrishi096@gmail.com`.
+

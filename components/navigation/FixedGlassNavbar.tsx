@@ -66,16 +66,16 @@ export function FixedGlassNavbar() {
 
   const navLinkClass = (sectionId: string) => {
     const active = activeSection === sectionId;
-    return `relative inline-flex items-center px-2.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.24em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md ${
+    return `relative inline-flex items-center whitespace-nowrap px-2.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md ${
       active ? 'text-white' : 'text-zinc-300/85 hover:text-white'
     }`;
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8">
       <nav
         aria-label="Primary Studio Navigation"
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:grid sm:grid-cols-3 sm:px-7 ${
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-7 ${
           scrolled
             ? 'border-white/15 bg-[#070709]/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-xl'
             : 'border-white/15 bg-[#070709]/90 backdrop-blur-xl'
@@ -90,17 +90,17 @@ export function FixedGlassNavbar() {
             className="group inline-flex items-center gap-2 rounded-md px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
           >
             <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_10px_#f59e0b] transition-transform group-hover:scale-125" />
-            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400 group-hover:text-white">
-              DEV
+            <span className="whitespace-nowrap font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300 group-hover:text-white">
+              DEV STUDIO
             </span>
           </Link>
-          <span className="hidden h-3.5 w-px bg-white/15 sm:inline-block" aria-hidden="true" />
+          <span className="hidden h-3.5 w-px bg-white/15 lg:inline-block" aria-hidden="true" />
           {siteConfigContent.navigation.left.map((item) => (
             <Link
               key={item.sectionId}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-              className={`hidden sm:inline-flex ${navLinkClass(item.sectionId)}`}
+              className={`hidden lg:inline-flex ${navLinkClass(item.sectionId)}`}
             >
               {item.label}
               {activeSection === item.sectionId && (
@@ -110,8 +110,8 @@ export function FixedGlassNavbar() {
           ))}
         </div>
 
-        {/* CENTER COLUMN: SERVICES | PRICE | PROJECTS | WORK */}
-        <div className="hidden items-center justify-center gap-1 sm:flex md:gap-2">
+        {/* CENTER COLUMN: SERVICES | PRICE | PROJECTS | WORK ARCHIVE */}
+        <div className="hidden items-center justify-center gap-1.5 lg:flex xl:gap-2.5">
           {siteConfigContent.navigation.center.map((item, idx) => (
             <React.Fragment key={item.sectionId}>
               {idx > 0 && (
@@ -133,14 +133,14 @@ export function FixedGlassNavbar() {
           ))}
         </div>
 
-        {/* RIGHT COLUMN: CONTACT + Mobile Menu Trigger */}
-        <div className="flex items-center justify-end gap-2">
+        {/* RIGHT COLUMN: CONTACT + Mobile/Tablet Menu Trigger */}
+        <div className="flex items-center justify-end gap-2.5">
           {siteConfigContent.navigation.right.map((item) => (
             <Link
               key={item.sectionId}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-              className={`hidden sm:inline-flex items-center rounded-full border px-4 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.24em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 ${
+              className={`hidden whitespace-nowrap sm:inline-flex items-center rounded-full border px-4 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 ${
                 activeSection === item.sectionId
                   ? 'border-purple-400/70 bg-purple-600/25 text-white'
                   : 'border-white/15 bg-white/[0.04] text-zinc-200 hover:border-purple-400/50 hover:bg-purple-500/15 hover:text-white'
@@ -159,20 +159,20 @@ export function FixedGlassNavbar() {
               playUiTick();
               setMobileOpen((prev) => !prev);
             }}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 sm:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Touch Drawer */}
+      {/* Mobile & Tablet Touch Drawer */}
       {mobileOpen && (
         <div
           id="mobile-studio-nav"
-          className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0a0f]/95 p-4 shadow-2xl backdrop-blur-2xl sm:hidden"
+          className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0a0f]/95 p-4 shadow-2xl backdrop-blur-2xl sm:p-6 lg:hidden"
         >
-          <div className="flex flex-col divide-y divide-white/10">
+          <div className="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-2 sm:gap-x-8 sm:divide-y-0">
             {[
               ...siteConfigContent.navigation.left,
               ...siteConfigContent.navigation.center,
@@ -182,7 +182,7 @@ export function FixedGlassNavbar() {
                 key={item.sectionId}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                className={`flex items-center justify-between py-3.5 font-condensed text-base font-semibold uppercase tracking-[0.22em] ${
+                className={`flex items-center justify-between border-white/10 py-3.5 font-condensed text-base font-semibold uppercase tracking-[0.22em] sm:border-b ${
                   activeSection === item.sectionId ? 'text-purple-400' : 'text-zinc-100'
                 }`}
               >

@@ -20,7 +20,7 @@ export function AboutSection() {
       {/* Floating Reactive 3D Studio Objects (Crescent Moon, 3D Smiley, Arrow, Creative Brick, Metallic Form) */}
       <AboutArtifactsScene />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Eyebrow & Massive Editorial Headline */}
         <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
           <div>
@@ -29,7 +29,7 @@ export function AboutSection() {
             </span>
             <h2
               id="about-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
             >
               ABOUT ME
             </h2>

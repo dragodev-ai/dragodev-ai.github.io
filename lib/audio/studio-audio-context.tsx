@@ -103,23 +103,6 @@ export function StudioExperienceProvider({ children }: { children: React.ReactNo
     progress: 0,
   });
 
-  // Load frame-accurate timings JSON once on mount
-  useEffect(() => {
-    let mounted = true;
-    fetch('/audio/intro-timings.json')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data: IntroTimingsManifest | null) => {
-        if (mounted && data) {
-          timingsRef.current = data;
-        }
-      })
-      .catch(() => undefined);
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
   const syncGainLevels = useCallback(
     (vol: number, muted: boolean, speakingNow: boolean) => {
       const effective = muted ? 0 : Math.max(0, Math.min(1, vol));
@@ -529,3 +512,4 @@ export function useStudioExperience(): StudioExperienceContextValue {
   }
   return ctx;
 }
+

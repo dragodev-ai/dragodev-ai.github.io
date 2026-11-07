@@ -53,7 +53,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
         data-testid="services-editorial-sheet"
         className="rounded-t-[40px] bg-[#F7F6F2] px-4 py-20 text-[#0A0A0C] shadow-[0_-28px_80px_rgba(0,0,0,0.75)] sm:rounded-t-[56px] sm:px-8 sm:py-28"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl px-0 sm:px-2 lg:px-4">
           {/* Editorial Header */}
           <div className="mb-14 flex flex-col justify-between gap-6 border-b border-black/15 pb-10 lg:flex-row lg:items-end">
             <div>
@@ -62,7 +62,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
               </span>
               <h2
                 id="services-heading"
-                className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-tight text-[#0A0A0C] sm:text-7xl"
+                className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-tight text-[#0A0A0C] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
               >
                 {servicesContent.headline}
               </h2>
@@ -93,12 +93,12 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                     }}
                     className="group flex w-full items-center justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded-xl"
                   >
-                    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8">
+                    <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6 lg:gap-8">
                       <span className="font-mono text-sm font-bold text-purple-700 sm:text-base">
                         {group.number}
                       </span>
-                      <div>
-                        <h3 className="break-words font-display text-xl font-extrabold uppercase tracking-tight text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl">
+                      <div className="min-w-0">
+                        <h3 className="break-words font-display text-lg font-extrabold uppercase tracking-tight text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1 sm:text-2xl md:text-3xl lg:text-[2.1rem] xl:text-4xl">
                           {group.title}
                         </h3>
                         <p className="mt-1 text-xs font-medium text-zinc-600 sm:text-sm">

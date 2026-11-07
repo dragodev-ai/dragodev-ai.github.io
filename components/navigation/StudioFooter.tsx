@@ -5,7 +5,7 @@ import { profileContent, socialLinksContent } from '@/lib/content';
 export function StudioFooter() {
   return (
     <footer className="border-t border-white/10 bg-[#050507] pb-24 pt-14 text-zinc-400 sm:pb-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">
             <p className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
@@ -78,10 +78,13 @@ export function StudioFooter() {
         </div>
 
         <div className="mt-12 flex flex-col justify-between gap-3 border-t border-white/[0.07] pt-6 font-mono text-xs text-zinc-500 sm:flex-row">
-          <span>© {new Date().getFullYear()} Dev Kumawat · DEV STUDIO. All rights reserved.</span>
+          <span suppressHydrationWarning>
+            © {new Date().getFullYear()} Dev Kumawat · DEV STUDIO. All rights reserved.
+          </span>
           <span>JAIPUR, RAJASTHAN, INDIA · IST (UTC+05:30)</span>
         </div>
       </div>
     </footer>
   );
 }
+

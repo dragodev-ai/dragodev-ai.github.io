@@ -70,42 +70,21 @@ describe('Content Source of Truth & Brand Integrity', () => {
     expect(servicesContent.primaryGroups.map((g) => g.number)).toEqual(['01', '02', '03', '04']);
   });
 
-  it('verifies binary rigged 3D character GLB contains full facial and body joint hierarchy', () => {
-    const glbPath = path.resolve(process.cwd(), 'public/models/dev-character.glb');
-    expect(fs.existsSync(glbPath)).toBe(true);
+  it('verifies showcase hero video DEV_KUMAWAT_SAAS_WEB.mp4 and poster frame exist with faststart MP4 header', () => {
+    const videoPath = path.resolve(process.cwd(), 'public/videos/DEV_KUMAWAT_SAAS_WEB.mp4');
+    const posterPath = path.resolve(process.cwd(), 'public/videos/dev-kumawat-hero-poster.jpg');
+    expect(fs.existsSync(videoPath)).toBe(true);
+    expect(fs.existsSync(posterPath)).toBe(true);
 
-    const buf = fs.readFileSync(glbPath);
-    expect(buf.subarray(0, 4).toString('ascii')).toBe('glTF');
-    expect(buf.readUInt32LE(4)).toBe(2);
+    const stat = fs.statSync(videoPath);
+    expect(stat.size).toBeGreaterThan(10_000_000);
 
-    const jsonByteLen = buf.readUInt32LE(12);
-    const gltfJson = JSON.parse(buf.subarray(20, 20 + jsonByteLen).toString('utf-8'));
-
-    const nodeNames = gltfJson.nodes.map((n: { name: string }) => n.name);
-    expect(nodeNames).toEqual(
-      expect.arrayContaining([
-        'CharacterRoot',
-        'Hips',
-        'Chest',
-        'Neck',
-        'Head',
-        'Jaw',
-        'Eye_L',
-        'Eye_R',
-        'Eyelid_L',
-        'Eyelid_R',
-        'Brow_L',
-        'Brow_R',
-        'UpperArm_L',
-        'ForeArm_L',
-        'Hand_L',
-        'UpperArm_R',
-        'ForeArm_R',
-        'Hand_R',
-      ])
-    );
-    expect(gltfJson.skins[0].name).toBe('DevCharacterRig');
-    expect(gltfJson.skins[0].joints.length).toBeGreaterThanOrEqual(20);
+    const fd = fs.openSync(videoPath, 'r');
+    const header = Buffer.alloc(64);
+    fs.readSync(fd, header, 0, 64, 0);
+    fs.closeSync(fd);
+    expect(header.subarray(4, 8).toString('ascii')).toBe('ftyp');
+    expect(header.toString('ascii')).toContain('moov');
   });
 });
 
@@ -165,3 +144,4 @@ describe('Form Validation & Rate Limiter', () => {
     expect(blocked.retryAfterSeconds).toBeGreaterThan(50);
   });
 });
+

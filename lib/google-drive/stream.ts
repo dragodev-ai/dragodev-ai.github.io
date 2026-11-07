@@ -102,3 +102,4 @@ export function resolveVideoMimeType(fileId: string, upstreamContentType: string
   }
   return 'video/mp4';
 }
+

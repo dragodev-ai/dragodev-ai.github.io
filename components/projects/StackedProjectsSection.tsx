@@ -24,7 +24,9 @@ export function StackedProjectsSection({
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px)', () => {
       const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
       cards.forEach((card, index) => {
         if (index === cards.length - 1) return;
@@ -41,9 +43,9 @@ export function StackedProjectsSection({
           },
         });
       });
-    }, containerRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, [featuredProjects.length]);
 
   return (
@@ -53,7 +55,7 @@ export function StackedProjectsSection({
       ref={containerRef}
       className="relative bg-[#070709] py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-16 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
           <div>
@@ -62,7 +64,7 @@ export function StackedProjectsSection({
             </span>
             <h2
               id="projects-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
             >
               PROJECTS
             </h2>
@@ -78,8 +80,8 @@ export function StackedProjectsSection({
           </Link>
         </div>
 
-        {/* Sticky Stacked Cards */}
-        <div className="space-y-10 pb-8">
+        {/* Sticky Stacked Cards on Desktop (lg+), Natural Flowing Cards on Mobile/Tablet */}
+        <div className="space-y-8 pb-8 lg:space-y-10">
           {featuredProjects.map((project, idx) => {
             const detailThumbs = allProjects
               .filter((p) => p.id !== project.id && p.category === project.category)
@@ -93,7 +95,7 @@ export function StackedProjectsSection({
                 }}
                 style={{ top: `${88 + idx * 18}px` }}
                 data-testid={`stacked-project-card-${idx}`}
-                className="sticky overflow-hidden rounded-[32px] border border-white/15 bg-[#111118] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.85)] will-change-transform sm:p-8"
+                className="relative overflow-hidden rounded-[28px] border border-white/15 bg-[#111118] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.85)] will-change-transform sm:rounded-[32px] sm:p-8 lg:sticky"
               >
                 <div className="grid gap-7 lg:grid-cols-12 lg:items-center">
                   {/* Left: Project Metadata & Actions */}

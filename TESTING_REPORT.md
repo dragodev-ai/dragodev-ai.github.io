@@ -82,3 +82,4 @@ No code defects remain. When deploying to production (e.g., Vercel), configure:
 2. `RESEND_API_KEY` (or `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`) + `EMAIL_FROM` → Enables live automated email dispatch to `kumawatrishi096@gmail.com` (until set, the UI transparently provides one-click pre-filled `mailto:` and WhatsApp fallback buttons).
 3. *(Optional)* `GOOGLE_DRIVE_API_KEY` → Increases upstream Google Drive streaming quota for high-traffic launches.
 4. *(Optional)* `NEXT_PUBLIC_CALENDLY_URL` → Switches Book-a-Call from the built-in `Asia/Kolkata` request form to an external live calendar embed if desired later.
+

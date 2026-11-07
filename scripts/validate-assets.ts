@@ -92,7 +92,8 @@ checkJson('content/site-config.json');
 checkBinaryFile('public/assets/Dev-Kumawat-Resume.pdf', 10_000, '%PDF');
 checkBinaryFile('public/assets/Dev-Kumawat-Portfolio-Overview.pdf', 50_000, '%PDF');
 checkBinaryFile('public/assets/dev-studio-portrait.jpg', 5_000);
-checkBinaryFile('public/models/dev-character.glb', 20_000, 'glTF');
+checkBinaryFile('public/videos/DEV_KUMAWAT_SAAS_WEB.mp4', 5_000_000);
+checkBinaryFile('public/videos/dev-kumawat-hero-poster.jpg', 10_000);
 checkBinaryFile('public/audio/intro-full.mp3', 10_000);
 checkBinaryFile('public/audio/intro-01.mp3', 2_000);
 checkBinaryFile('public/audio/intro-02.mp3', 2_000);
@@ -114,3 +115,4 @@ if (failed.length > 0) {
   process.exit(1);
 }
 console.log(`\nAll ${results.length} asset checks passed!`);
+

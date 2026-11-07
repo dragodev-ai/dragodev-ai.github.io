@@ -69,3 +69,4 @@ While public shared files stream without credentials, high-traffic production de
 3. Restrict the API key to **Google Drive API** (server-side usage only — never prefix with `NEXT_PUBLIC_`).
 4. Add `GOOGLE_DRIVE_API_KEY=your_key_here` to `.env.local` and Vercel Environment Variables.
    - Both `npm run sync:drive` and `/api/drive/stream/[fileId]` automatically detect `GOOGLE_DRIVE_API_KEY` and use Drive API v3!
+

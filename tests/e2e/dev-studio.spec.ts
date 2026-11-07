@@ -10,7 +10,7 @@ test.beforeAll(() => {
 });
 
 test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () => {
-  test('1. Hero 3D Studio, Entry Audio Gate, Live Captions, Controls & Navigation', async ({
+  test('1. Showcase Video Hero (DEV_KUMAWAT_SAAS_WEB), Sound/Transport Controls & Navigation', async ({
     page,
   }, testInfo) => {
     const pageErrors: string[] = [];
@@ -18,68 +18,42 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
 
     await page.goto('/');
     await expect(page).toHaveTitle(/Dev Kumawat/i);
-    await expect(page.getByRole('heading', { level: 1, name: /DEV KUMAWAT/i })).toBeVisible();
 
-    // Verify 3D studio container mounted cleanly (allow cold chunk load headroom)
-    const studioContainer = page.getByTestId('studio-3d-canvas-container');
-    await expect(studioContainer).toBeVisible({ timeout: 15_000 });
+    // Verify Showcase Video Hero stage & DEV_KUMAWAT_SAAS_WEB.mp4 element
+    const heroStage = page.getByTestId('hero-video-stage');
+    await expect(heroStage).toBeVisible({ timeout: 15_000 });
 
-    // Verify browser-safe audio gate is shown prior to interaction (never autoplaying sound)
-    const entryGate = page.getByTestId('studio-entry-gate');
-    await expect(entryGate).toBeVisible();
-    const enableSoundBtn = page.getByTestId('enter-studio-sound-btn');
-    await expect(enableSoundBtn).toContainText(/ENTER STUDIO \/ ENABLE SOUND/i);
+    const heroVideo = page.getByTestId('hero-showcase-video');
+    await expect(heroVideo).toBeVisible();
+    await expect(heroVideo).toHaveAttribute('src', '/videos/DEV_KUMAWAT_SAAS_WEB.mp4');
 
-    // Wait briefly for 3D GLB character & studio props to settle before capturing screenshot
-    await page.waitForTimeout(1800);
+    // Verify sound toggle starts muted ("Enable Sound") and toggles cleanly
+    const soundToggle = page.getByTestId('hero-sound-toggle');
+    await expect(soundToggle).toBeVisible();
+    await expect(soundToggle).toContainText(/Enable Sound/i);
+
+    await page.waitForTimeout(1200);
 
     const isMobile = testInfo.project.name.includes('mobile');
     if (!isMobile) {
       await page.screenshot({
-        path: path.join(QA_SCREENSHOT_DIR, '01-hero-gate.png'),
+        path: path.join(QA_SCREENSHOT_DIR, '01-hero-video-showcase.png'),
       });
     } else {
       await page.screenshot({
-        path: path.join(QA_SCREENSHOT_DIR, '09-mobile-hero-studio.png'),
+        path: path.join(QA_SCREENSHOT_DIR, '09-mobile-hero-video.png'),
       });
     }
 
-    // Move pointer across studio hero on desktop to exercise smooth head/eye tracking
-    if (!isMobile) {
-      await page.mouse.move(320, 280);
-      await page.waitForTimeout(150);
-      await page.mouse.move(1080, 340);
-      await page.waitForTimeout(150);
-    }
+    await soundToggle.click();
+    await expect(soundToggle).toContainText(/Sound On/i);
+    await soundToggle.click();
+    await expect(soundToggle).toContainText(/Enable Sound/i);
 
-    // Click "ENTER STUDIO / ENABLE SOUND"
-    await enableSoundBtn.click();
-    await expect(entryGate).toBeHidden();
-
-    // Persistent audio controls dock must appear
-    const audioControls = page.getByTestId('studio-audio-controls');
-    await expect(audioControls).toBeVisible();
-
-    // Verify mute/unmute toggle works cleanly
-    const muteToggle = page.getByTestId('audio-mute-toggle');
-    await expect(muteToggle).toBeVisible();
-    await muteToggle.click();
-    await expect(muteToggle).toHaveAttribute('aria-label', /Unmute studio audio/i);
-    await muteToggle.click();
-    await expect(muteToggle).toHaveAttribute('aria-label', /Mute studio audio/i);
-
-    // Verify transcript popover opens and displays verified introduction text
-    await page.getByRole('button', { name: /Read full introduction transcript/i }).click();
-    await expect(page.getByText(/INTRODUCTION TRANSCRIPT/i)).toBeVisible();
-    await page.getByRole('button', { name: 'Close', exact: true }).click();
-
-    if (!isMobile) {
-      await expect(page.getByTestId('audio-volume-slider')).toBeVisible();
-      await page.waitForTimeout(900);
-      await page.screenshot({
-        path: path.join(QA_SCREENSHOT_DIR, '02-hero-entered-studio.png'),
-      });
-    }
+    // Verify play/pause & replay controls exist and operate cleanly
+    const playToggle = page.getByTestId('hero-play-toggle');
+    await expect(playToggle).toBeVisible();
+    await expect(page.getByTestId('hero-restart-button')).toBeVisible();
 
     // Navigation verification (Desktop 3-column glass bar vs Mobile touch drawer)
     if (!isMobile) {
@@ -119,7 +93,7 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     request,
   }, testInfo) => {
     await page.goto('/');
-    await page.getByTestId('enter-studio-muted-btn').click();
+    await expect(page.getByTestId('hero-video-stage')).toBeVisible();
 
     // Dual-row opposite-direction marquee
     const rowLtr = page.getByTestId('marquee-row-ltr');
@@ -185,7 +159,7 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     page,
   }, testInfo) => {
     await page.goto('/');
-    await page.getByTestId('enter-studio-muted-btn').click();
+    await expect(page.getByTestId('hero-video-stage')).toBeVisible();
 
     // White Services Sheet (01 - 04)
     const servicesSheet = page.getByTestId('services-editorial-sheet');

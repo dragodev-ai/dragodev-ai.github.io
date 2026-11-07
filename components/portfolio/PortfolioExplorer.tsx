@@ -90,7 +90,7 @@ export function PortfolioExplorer({
       data-testid="portfolio-explorer"
       className="relative bg-[#09090e] py-24"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-8 lg:flex-row lg:items-end">
           <div>
@@ -98,22 +98,23 @@ export function PortfolioExplorer({
               GOOGLE DRIVE SYNCED ARCHIVE · {projects.length} VERIFIED WORKS
             </span>
             {isStandalonePage ? (
-              <h1 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
+              <h1 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {heading}
               </h1>
             ) : (
-              <h2 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-6xl">
+              <h2 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {heading}
               </h2>
             )}
           </div>
 
           {/* Search Input + Grid/List + Sort Controls */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="relative min-w-[240px] flex-1 sm:w-72">
+          <div className="flex w-full flex-wrap items-center gap-3 lg:w-auto">
+            <div className="relative min-w-0 flex-1 sm:min-w-[240px] sm:w-72">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
               <input
                 type="search"
+                suppressHydrationWarning
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -139,6 +140,7 @@ export function PortfolioExplorer({
             <div className="inline-flex items-center gap-1.5 rounded-xl border border-white/12 bg-[#12121a] px-2.5 py-2">
               <SlidersHorizontal className="h-3.5 w-3.5 text-zinc-400" />
               <select
+                suppressHydrationWarning
                 aria-label="Sort portfolio projects"
                 data-testid="portfolio-sort-select"
                 value={sortMode}

@@ -74,3 +74,4 @@ npm run typecheck
 npm test
 ```
 This catches JSON syntax typos or broken asset paths before deployment.
+

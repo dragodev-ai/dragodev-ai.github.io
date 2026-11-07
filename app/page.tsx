@@ -3,10 +3,9 @@ import {
   getFeaturedProjects,
   getMarqueeProjects,
   getPublicProjects,
-  getStudioMonitorProjects,
   projectsManifest,
 } from '@/lib/content';
-import { StudioHeroSection } from '@/components/hero/StudioHeroSection';
+import { VideoHeroSection } from '@/components/hero/VideoHeroSection';
 import { PortfolioMarquee } from '@/components/marquee/PortfolioMarquee';
 import { AboutSection } from '@/components/about/AboutSection';
 import { ServicesSection } from '@/components/services/ServicesSection';
@@ -21,16 +20,11 @@ export default function HomePage() {
   const allProjects = getPublicProjects();
   const featuredProjects = getFeaturedProjects();
   const { row1, row2 } = getMarqueeProjects();
-  const monitorProjects = getStudioMonitorProjects();
-  const showreelProject = featuredProjects[0] || allProjects[0];
 
   return (
     <main className="relative min-h-screen bg-[#070709]">
-      {/* Phase 3: Live 3D Editing Studio & Rigged Character Hero */}
-      <StudioHeroSection
-        monitorProjects={monitorProjects}
-        showreelProject={showreelProject}
-      />
+      {/* Showcase Video Hero (DEV_KUMAWAT_SAAS_WEB.mp4) */}
+      <VideoHeroSection />
 
       {/* Phase 5: Dual-Row Opposite-Direction Infinite Portfolio Marquee */}
       <PortfolioMarquee row1={row1} row2={row2} />
@@ -68,3 +62,4 @@ export default function HomePage() {
     </main>
   );
 }
+

@@ -69,3 +69,4 @@ export function getWhatsappDeepLink(customMessage?: string): string {
   const msg = customMessage || socialLinksContent.whatsapp.defaultMessage;
   return `https://wa.me/${number.replace(/\D/g, '')}?text=${encodeURIComponent(msg)}`;
 }
+

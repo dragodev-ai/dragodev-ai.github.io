@@ -12,9 +12,6 @@ export default defineConfig({
     baseURL: 'http://localhost:3100',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    launchOptions: {
-      args: ['--enable-webgl', '--use-angle=swiftshader', '--ignore-gpu-blocklist'],
-    },
   },
   projects: [
     {

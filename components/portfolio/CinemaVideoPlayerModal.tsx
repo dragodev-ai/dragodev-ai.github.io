@@ -419,3 +419,4 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
     </div>
   );
 }
+

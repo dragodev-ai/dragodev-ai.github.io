@@ -213,3 +213,4 @@ describe('API Routes Integration Suite', () => {
     expect(thumbRes.headers.get('content-type')).toMatch(/^image\//);
   }, 25_000);
 });
+

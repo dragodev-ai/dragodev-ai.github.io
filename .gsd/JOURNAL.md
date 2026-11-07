@@ -26,3 +26,4 @@
   - Hardened `FixedGlassNavbar` (`bg-[#070709]/95`), `StudioAudioControls` (`bg-[#09090f]/95`), and `overflow-x: clip` mobile viewport containment.
   - Set `cache: 'no-store'` on upstream fetch in `/api/drive/thumbnail/[fileId]` (retaining response `Cache-Control: public, max-age=86400`) to eliminate Next.js `>2MB` data-cache warnings.
 - Authored operational documentation suite: `README.md`, `INSTALLATION.md`, `DEPLOYMENT.md`, `GOOGLE_DRIVE_SETUP.md`, `AUDIO_SETUP.md`, `CONTENT_MANAGEMENT.md`, `ENVIRONMENT_VARIABLES.md`.
+

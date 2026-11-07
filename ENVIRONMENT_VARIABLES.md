@@ -65,3 +65,4 @@ Used **only** when running `node scripts/generate-elevenlabs-audio.mjs` locally 
 | :--- | :--- | :--- | :--- |
 | `ELEVENLABS_API_KEY` | *(empty)* | **Secret (Local CLI)** | ElevenLabs API key for regenerating studio voiceover MP3s. |
 | `ELEVENLABS_VOICE_ID` | `pNInz6obpgDQGcFmaJgB` | Local CLI | Target ElevenLabs Voice ID. |
+

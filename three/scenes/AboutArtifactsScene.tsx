@@ -226,10 +226,10 @@ export function AboutArtifactsScene() {
       className="pointer-events-none absolute inset-0 hidden opacity-90 lg:block"
     >
       <Canvas
-        dpr={[1, 1.4]}
+        dpr={1}
         frameloop={visible ? 'always' : 'never'}
         camera={{ position: [0, 0, 4.4], fov: 40 }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: false, powerPreference: 'low-power' }}
       >
         <ambientLight intensity={0.65} />
         <directionalLight position={[3, 4, 5]} intensity={2.2} color="#fff7ed" />
@@ -243,3 +243,4 @@ export function AboutArtifactsScene() {
     </div>
   );
 }
+

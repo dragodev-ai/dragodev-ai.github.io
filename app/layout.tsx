@@ -107,9 +107,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fontDisplay.variable} ${fontCondensed.variable} ${fontSans.variable} ${fontMono.variable}`}
     >
-      <body className="min-h-screen bg-[#070709] font-sans text-zinc-100 antialiased">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-[#070709] font-sans text-zinc-100 antialiased"
+      >
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-purple-600 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
@@ -131,3 +135,4 @@ export default function RootLayout({
     </html>
   );
 }
+

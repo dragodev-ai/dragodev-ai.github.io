@@ -34,6 +34,22 @@ body {
   max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent iOS Safari auto-zoom when tapping form controls on mobile */
+@media (max-width: 639px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Ensure Next.js floating dev indicator badge never renders in bottom-left corner */
+nextjs-portal [data-nextjs-dev-tools-button],
+nextjs-portal [data-nextjs-toast] {
+  display: none !important;
 }
 
 /* Accessible Focus Ring Standard */

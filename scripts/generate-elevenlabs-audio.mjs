@@ -56,3 +56,4 @@ for (const seg of profile.introScript.segments) {
 }
 
 console.log('Done! Re-concatenate intro-full.mp3 with ffmpeg if desired (see AUDIO_SETUP.md).');
+

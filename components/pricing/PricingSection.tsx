@@ -14,7 +14,7 @@ export function PricingSection() {
       aria-labelledby="pricing-heading"
       className="relative bg-[#070709] py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
           <div>
             <span className="mb-3 block font-mono text-xs uppercase tracking-[0.28em] text-amber-400">
@@ -22,7 +22,7 @@ export function PricingSection() {
             </span>
             <h2
               id="pricing-heading"
-              className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-7xl"
+              className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
             >
               {pricingContent.headline}
             </h2>

@@ -1,21 +1,15 @@
-# DEV STUDIO — Immersive 3D Creative Portfolio
+# DEV STUDIO — Creative Portfolio
 
-**DEV STUDIO** is the interactive 3D creative studio and portfolio web application for **Dev Kumawat** — Creative Director, Video Editor, Motion Graphics Creator, Graphic Designer, Commercial Photographer/Videographer, AI Generalist, and Prompt Engineer based in **Jaipur, Rajasthan, India**.
+**DEV STUDIO** is the interactive creative portfolio web application for **Dev Kumawat** — Creative Director, Video Editor, Motion Graphics Creator, Graphic Designer, Commercial Photographer/Videographer, AI Generalist, and Prompt Engineer based in **Jaipur, Rajasthan, India**.
 
-Instead of a static template grid, visitors step inside an interactive **Three.js / React Three Fiber 3D editing suite**, meet Dev's articulated 3D character (`DevCharacterRig` `.glb` with pointer-tracked gaze, blinking, breathing, and FFT + word-timed jaw lip-sync), unlock his spoken studio introduction and ambient soundscape through a browser-safe audio gate, stream **230+ verified portfolio works** directly from his Google Drive archive via an HTTP `Range` (`206 Partial Content`) proxy, and convert via a server-side Contact backend, WhatsApp deep link (`+91 9309425465`), or `Asia/Kolkata` Discovery Call workflow.
+Visitors experience Dev's **52-second Full-HD Showcase Hero Film (`DEV_KUMAWAT_SAAS_WEB.mp4`)** with one-click voiceover sound, timeline scrubbing, and replay controls, stream **230+ verified portfolio works** directly from his Google Drive archive via an HTTP `Range` (`206 Partial Content`) proxy, and convert via a server-side Contact backend, WhatsApp deep link (`+91 9309425465`), or `Asia/Kolkata` Discovery Call workflow.
 
 ---
 
 ## Live Architecture & Capabilities
 
-- **Interactive 3D Editing Suite (`three/`)**:
-  - Articulated glTF 2.0 character (`public/models/dev-character.glb`, 24-joint rig) modeled from Dev's supplied character sheet and studio portrait (`#111111` matte wool blazer, `#1A1A1A` black shirt, `#D7966B` warm medium-brown skin with subtle stubble, voluminous dark wavy hair, and moustache).
-  - Smooth cursor-reactive head & eye tracking (`lerp = 0.12` with anatomical yaw/pitch clamps), stochastic natural blinking, idle chest breathing, segment gestures, and real-time jaw viseme lip-sync.
-  - Full virtual production room: editing desk, dual studio monitors streaming real portfolio previews & animated NLE timeline bars, acoustic walnut slat wall, cinema camera on tripod, softbox key light, nearfield monitors, color-grading control surface, lens shelves, and ergonomic studio chair.
-  - Adaptive DPR (`[1, 1.5]` desktop, `[1, 1.15]` mobile), `IntersectionObserver` + `visibilitychange` render-loop pause when offscreen, `prefers-reduced-motion` support, and graceful WebGL fallback.
-- **Browser-Safe Studio Audio & Captions (`lib/audio/`, `components/audio/`)**:
-  - Explicit `"ENTER STUDIO / ENABLE SOUND"` and `"ENTER MUTED"` gate (never autoplays sound without user interaction).
-  - Synchronized spoken introduction (`public/audio/intro-full.mp3` + `intro-timings.json`), ambient studio room tone, low-key background music with automatic speech ducking, live captions, full text transcript popover, mute toggle, and volume slider.
+- **Full-HD Showcase Video Hero (`components/hero/VideoHeroSection.tsx`, `public/videos/DEV_KUMAWAT_SAAS_WEB.mp4`)**:
+  - Web-optimized `-movflags +faststart` `1920×1080` showcase hero film with instant muted autoplay, one-click **Enable Sound / Sound On** voiceover toggle, Play/Pause, `Replay 0:00`, interactive timeline scrubber, Fullscreen support, and automatic pause coordination whenever a portfolio video modal opens.
 - **Google Drive Portfolio Sync & HTTP Range Streaming (`scripts/sync-drive.ts`, `app/api/drive/`)**:
   - Synced against Dev's working Google Drive root folder (`1fIRbUsJen8EHxLfdU5LXlmXJzk_FsztC`) across all **10 real categories** (`AD - Shoot`, `Advance Motion Graphics`, `AI- Artificial Intelligence`, `BRANDS`, `Govt. Projects`, `Graphics` + 5 subfolders, `INFLUENCERS`, `pictures`, `Pre Wed`, `TELEVISION BYTE`, plus `Studio Showcase`).
   - `/api/drive/stream/[fileId]` validates against the approved portfolio allowlist and forwards HTTP `Range` headers for instant `206 Partial Content` MP4 seeking, with automatic Google Drive `/preview` embed fallback for `.mov` (`video/quicktime`) assets.
@@ -137,3 +131,4 @@ npm run dev
 - [ENVIRONMENT_VARIABLES.md](./ENVIRONMENT_VARIABLES.md) — Complete reference for `.env.local` / production secrets
 - [TESTING_REPORT.md](./TESTING_REPORT.md) — Empirical verification results across compiler, unit, integration, and E2E suites
 - [ENVIRONMENT_AUDIT.md](./ENVIRONMENT_AUDIT.md) — Phase 0 toolchain, skill, and MCP audit
+

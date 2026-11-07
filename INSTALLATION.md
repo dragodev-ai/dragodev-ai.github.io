@@ -92,3 +92,4 @@ Ensure a fresh production build exists, then run E2E tests across Desktop (`1440
 npm run build
 npm run test:e2e
 ```
+

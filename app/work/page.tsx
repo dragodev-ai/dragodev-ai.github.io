@@ -27,7 +27,7 @@ export default function WorkPortfolioPage() {
           className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-200 transition hover:border-purple-400 hover:text-white"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
-          RETURN TO 3D STUDIO
+          BACK TO STUDIO HOME
         </Link>
       </div>
 
@@ -44,3 +44,4 @@ export default function WorkPortfolioPage() {
     </main>
   );
 }
+
