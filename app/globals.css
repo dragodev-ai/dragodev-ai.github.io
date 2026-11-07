@@ -4,6 +4,10 @@
 
 :root {
   color-scheme: dark;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-condensed: 'Oswald', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 html {

@@ -12,6 +12,7 @@ import {
   X,
 } from 'lucide-react';
 import type { DriveCategoryNode, PortfolioProject } from '@/lib/content/types';
+import { getFallbackPosterDataUri, getProjectThumbnailUrl } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
@@ -336,10 +337,18 @@ export function PortfolioExplorer({
               >
                 <div className="relative aspect-video w-full overflow-hidden bg-black">
                   <img
-                    src={`${project.thumbnail}?sz=w640`}
+                    src={getProjectThumbnailUrl(project, 'w640')}
                     alt={`${project.title} — ${project.category}`}
                     loading="lazy"
                     decoding="async"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = getFallbackPosterDataUri(
+                        project.title,
+                        project.category
+                      );
+                    }}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent opacity-80" />
@@ -387,9 +396,17 @@ export function PortfolioExplorer({
                 <div className="flex min-w-0 items-center gap-4">
                   <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-xl bg-black">
                     <img
-                      src={`${project.thumbnail}?sz=w320`}
+                      src={getProjectThumbnailUrl(project, 'w320')}
                       alt={project.title}
                       loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = getFallbackPosterDataUri(
+                          project.title,
+                          project.category
+                        );
+                      }}
                       className="h-full w-full object-cover"
                     />
                   </div>

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Play, Image as ImageIcon } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
+import { getFallbackPosterDataUri, getProjectThumbnailUrl } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
@@ -25,10 +26,15 @@ function MarqueeCard({
     >
       <div className="relative aspect-video w-full overflow-hidden bg-[#0a0a0f]">
         <img
-          src={`${project.thumbnail}?sz=w640`}
+          src={getProjectThumbnailUrl(project, 'w640')}
           alt={`${project.title} — ${project.category}`}
           loading="lazy"
           decoding="async"
+          referrerPolicy="no-referrer"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = getFallbackPosterDataUri(project.title, project.category);
+          }}
           className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070709] via-[#070709]/25 to-transparent opacity-85 transition-opacity group-hover/card:opacity-95" />

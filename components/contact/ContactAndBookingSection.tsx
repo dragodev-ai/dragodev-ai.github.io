@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import {
   getWhatsappDeepLink,
+  isStaticDeployment,
   profileContent,
   siteConfigContent,
   socialLinksContent,
@@ -77,6 +78,22 @@ export function ContactAndBookingSection() {
     e.preventDefault();
     setContactStatus({ type: 'loading', message: 'Dispatching your project enquiry...' });
 
+    const staticMailto = `mailto:${profileContent.contact.email}?subject=${encodeURIComponent(
+      `[DEV STUDIO Enquiry] ${interestedService} — ${fullName}`
+    )}&body=${encodeURIComponent(
+      `Name: ${fullName}\nEmail: ${email}\nPhone/WhatsApp: ${phoneWhatsapp}\nService: ${interestedService}\nBudget: ${projectBudget}\nPreferred Date/Time: ${preferredMeetingDate} ${preferredMeetingTime}\nReference: ${referenceLink}\n\nProject Brief:\n${projectDescription}`
+    )}`;
+
+    if (isStaticDeployment()) {
+      setContactStatus({
+        type: 'unconfigured',
+        message:
+          'Ready to send directly! Click below to dispatch your pre-filled brief via Email or WhatsApp to Dev Kumawat.',
+        mailtoFallbackUrl: staticMailto,
+      });
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -139,6 +156,22 @@ export function ContactAndBookingSection() {
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBookingStatus({ type: 'loading', message: 'Sending your IST call request...' });
+
+    const staticBookMailto = `mailto:${profileContent.contact.email}?subject=${encodeURIComponent(
+      `[DEV STUDIO Call Request] ${bookTopic} — ${bookName}`
+    )}&body=${encodeURIComponent(
+      `Name: ${bookName}\nEmail: ${bookEmail}\nPhone/WhatsApp: ${bookPhone}\nTopic: ${bookTopic}\nPreferred IST Date/Time: ${bookDate} at ${bookTime} (Asia/Kolkata)\n\nNotes:\n${bookNotes}`
+    )}`;
+
+    if (isStaticDeployment()) {
+      setBookingStatus({
+        type: 'unconfigured',
+        message:
+          'Ready to schedule! Click below to send your IST call request directly via Email or WhatsApp.',
+        mailtoFallbackUrl: staticBookMailto,
+      });
+      return;
+    }
 
     try {
       const res = await fetch('/api/booking', {

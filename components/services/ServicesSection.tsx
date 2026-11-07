@@ -5,7 +5,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ChevronDown, Play } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
-import { servicesContent } from '@/lib/content';
+import {
+  getFallbackPosterDataUri,
+  getProjectThumbnailUrl,
+  servicesContent,
+} from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
@@ -173,9 +177,17 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                             >
                               <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
                                 <img
-                                  src={`${proj.thumbnail}?sz=w480`}
+                                  src={getProjectThumbnailUrl(proj, 'w480')}
                                   alt={proj.title}
                                   loading="lazy"
+                                  referrerPolicy="no-referrer"
+                                  onError={(e) => {
+                                    e.currentTarget.onerror = null;
+                                    e.currentTarget.src = getFallbackPosterDataUri(
+                                      proj.title,
+                                      proj.category
+                                    );
+                                  }}
                                   className="h-full w-full object-cover transition-transform duration-300 group-hover/item:scale-105"
                                 />
                                 {proj.mediaType === 'video' && (

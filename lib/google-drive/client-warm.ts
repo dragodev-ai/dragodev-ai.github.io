@@ -1,6 +1,7 @@
 'use client';
 
 import type { PortfolioProject } from '@/lib/content/types';
+import { getProjectThumbnailUrl, isStaticDeployment } from '@/lib/content';
 
 const warmedIds = new Set<string>();
 const faststartStatusMap = new Map<string, boolean>();
@@ -18,10 +19,11 @@ export function warmProjectMedia(project: PortfolioProject | null | undefined): 
     warmedIds.add(`thumb_${project.id}`);
     const img = new window.Image();
     img.decoding = 'async';
-    img.src = `${project.thumbnail}?sz=w800`;
+    img.referrerPolicy = 'no-referrer';
+    img.src = getProjectThumbnailUrl(project, 'w800');
   }
 
-  if (project.mediaType !== 'video') {
+  if (project.mediaType !== 'video' || isStaticDeployment()) {
     return Promise.resolve(false);
   }
 

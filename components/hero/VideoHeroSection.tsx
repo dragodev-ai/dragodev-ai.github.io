@@ -12,6 +12,7 @@ import {
   VolumeX,
 } from 'lucide-react';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { withBasePath } from '@/lib/content';
 
 function formatTimecode(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
@@ -257,8 +258,8 @@ export function VideoHeroSection() {
           <video
             ref={videoRef}
             data-testid="hero-showcase-video"
-            src="/videos/DEV_KUMAWAT_SAAS_WEB.mp4"
-            poster="/videos/dev-kumawat-hero-poster.jpg"
+            src={withBasePath('/videos/DEV_KUMAWAT_SAAS_WEB.mp4')}
+            poster={withBasePath('/videos/dev-kumawat-hero-poster.jpg')}
             autoPlay
             loop
             playsInline

@@ -14,6 +14,12 @@ import {
   X,
 } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
+import {
+  getFallbackPosterDataUri,
+  getProjectThumbnailUrl,
+  isStaticDeployment,
+  withBasePath,
+} from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { getKnownFaststartStatus, warmProjectMedia } from '@/lib/google-drive/client-warm';
 
@@ -66,7 +72,7 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
     const isHeavy4KMaster = (activeProject.sizeBytes || 0) > 85 * 1024 * 1024;
     const knownFast = getKnownFaststartStatus(activeProject.id);
 
-    if (isQuicktime || (isHeavy4KMaster && knownFast === false)) {
+    if (isStaticDeployment() || isQuicktime || (isHeavy4KMaster && knownFast === false)) {
       setUseDrivePreviewFallback(true);
     } else {
       setUseDrivePreviewFallback(false);
@@ -244,8 +250,16 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
         >
           {activeProject.mediaType === 'image' ? (
             <img
-              src={`${activeProject.thumbnail}?sz=w1200`}
+              src={getProjectThumbnailUrl(activeProject, 'w1200')}
               alt={activeProject.title}
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = getFallbackPosterDataUri(
+                  activeProject.title,
+                  activeProject.category
+                );
+              }}
               className="h-full w-full object-contain"
             />
           ) : useDrivePreviewFallback ? (
@@ -263,8 +277,8 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                 key={`video-${activeProject.id}-${retryKey}`}
                 ref={videoRef}
                 data-testid="cinema-html5-video"
-                src={activeProject.streamUrl || undefined}
-                poster={`${activeProject.thumbnail}?sz=w800`}
+                src={activeProject.streamUrl ? withBasePath(activeProject.streamUrl) : undefined}
+                poster={getProjectThumbnailUrl(activeProject, 'w800')}
                 playsInline
                 autoPlay
                 preload="auto"
@@ -462,9 +476,14 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                   >
                     <div className="aspect-video w-full overflow-hidden bg-black">
                       <img
-                        src={`${rel.thumbnail}?sz=w480`}
+                        src={getProjectThumbnailUrl(rel, 'w480')}
                         alt={rel.title}
                         loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = getFallbackPosterDataUri(rel.title, rel.category);
+                        }}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>

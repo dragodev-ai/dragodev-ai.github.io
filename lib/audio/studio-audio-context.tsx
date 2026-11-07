@@ -10,7 +10,7 @@ import React, {
   useState,
 } from 'react';
 import type { PortfolioProject } from '@/lib/content/types';
-import { siteConfigContent } from '@/lib/content';
+import { siteConfigContent, withBasePath } from '@/lib/content';
 
 export interface IntroWordTiming {
   word: string;
@@ -208,7 +208,7 @@ export function StudioExperienceProvider({ children }: { children: React.ReactNo
     if (typeof window === 'undefined') return;
 
     if (!voiceAudioRef.current) {
-      const v = new Audio('/audio/intro-full.mp3');
+      const v = new Audio(withBasePath('/audio/intro-full.mp3'));
       v.preload = 'auto';
       v.crossOrigin = 'anonymous';
       v.addEventListener('play', () => {
@@ -237,14 +237,14 @@ export function StudioExperienceProvider({ children }: { children: React.ReactNo
     }
 
     if (!ambienceAudioRef.current) {
-      const amb = new Audio('/audio/studio-ambience.mp3');
+      const amb = new Audio(withBasePath('/audio/studio-ambience.mp3'));
       amb.loop = true;
       amb.preload = 'auto';
       ambienceAudioRef.current = amb;
     }
 
     if (!musicAudioRef.current) {
-      const mus = new Audio('/audio/studio-music.mp3');
+      const mus = new Audio(withBasePath('/audio/studio-music.mp3'));
       mus.loop = true;
       mus.preload = 'auto';
       musicAudioRef.current = mus;

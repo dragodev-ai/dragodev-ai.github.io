@@ -1,38 +1,14 @@
 import type { Metadata } from 'next';
-import { Syne, Oswald, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { profileContent, siteConfigContent, socialLinksContent } from '@/lib/content';
+import {
+  profileContent,
+  siteConfigContent,
+  socialLinksContent,
+  withBasePath,
+} from '@/lib/content';
 import { StudioExperienceProvider } from '@/lib/audio/studio-audio-context';
 import { FixedGlassNavbar } from '@/components/navigation/FixedGlassNavbar';
 import { FloatingWhatsAppButton } from '@/components/contact/FloatingWhatsAppButton';
-
-const fontDisplay = Syne({
-  subsets: ['latin'],
-  weight: ['700', '800'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const fontCondensed = Oswald({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-condensed',
-  display: 'swap',
-});
-
-const fontSans = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const fontMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-mono',
-  display: 'swap',
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -105,19 +81,27 @@ export default function RootLayout({
   };
 
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${fontDisplay.variable} ${fontCondensed.variable} ${fontSans.variable} ${fontMono.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+        />
         <link rel="preconnect" href="https://drive.google.com" crossOrigin="anonymous" />
         <link
           rel="preconnect"
           href="https://drive.usercontent.google.com"
           crossOrigin="anonymous"
         />
-        <link rel="preload" as="image" href="/videos/dev-kumawat-hero-poster.jpg" />
+        <link
+          rel="preconnect"
+          href="https://lh3.googleusercontent.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="preload" as="image" href={withBasePath('/videos/dev-kumawat-hero-poster.jpg')} />
       </head>
       <body
         suppressHydrationWarning

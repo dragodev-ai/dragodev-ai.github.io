@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ExternalLink, Play } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
+import { getFallbackPosterDataUri, getProjectThumbnailUrl } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
@@ -143,9 +144,17 @@ export function StackedProjectsSection({
                               className="group overflow-hidden rounded-xl border border-white/10 bg-black"
                             >
                               <img
-                                src={`${dt.thumbnail}?sz=w480`}
+                                src={getProjectThumbnailUrl(dt, 'w480')}
                                 alt={dt.title}
                                 loading="lazy"
+                                referrerPolicy="no-referrer"
+                                onError={(e) => {
+                                  e.currentTarget.onerror = null;
+                                  e.currentTarget.src = getFallbackPosterDataUri(
+                                    dt.title,
+                                    dt.category
+                                  );
+                                }}
                                 className="aspect-video w-full object-cover opacity-85 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                               />
                             </button>
@@ -188,9 +197,17 @@ export function StackedProjectsSection({
                       className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/12 bg-black text-left"
                     >
                       <img
-                        src={`${project.thumbnail}?sz=w800`}
+                        src={getProjectThumbnailUrl(project, 'w800')}
                         alt={project.title}
                         loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = getFallbackPosterDataUri(
+                            project.title,
+                            project.category
+                          );
+                        }}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
