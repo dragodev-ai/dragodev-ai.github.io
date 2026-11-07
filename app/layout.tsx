@@ -110,6 +110,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fontDisplay.variable} ${fontCondensed.variable} ${fontSans.variable} ${fontMono.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://drive.google.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://drive.usercontent.google.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="preload" as="image" href="/videos/dev-kumawat-hero-poster.jpg" />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen bg-[#070709] font-sans text-zinc-100 antialiased"

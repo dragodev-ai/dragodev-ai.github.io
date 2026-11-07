@@ -3,8 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
-# Next.js build outputs
+# Next.js & local media acceleration caches
 .next/
+.cache/
 out/
 build/
 dist/

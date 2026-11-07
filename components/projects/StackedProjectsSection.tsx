@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, ExternalLink, Play } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
 export function StackedProjectsSection({
   featuredProjects,
@@ -93,6 +94,8 @@ export function StackedProjectsSection({
                 ref={(el) => {
                   cardsRef.current[idx] = el;
                 }}
+                onMouseEnter={() => void warmProjectMedia(project)}
+                onTouchStart={() => void warmProjectMedia(project)}
                 style={{ top: `${88 + idx * 18}px` }}
                 data-testid={`stacked-project-card-${idx}`}
                 className="relative overflow-hidden rounded-[28px] border border-white/15 bg-[#111118] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.85)] will-change-transform sm:rounded-[32px] sm:p-8 lg:sticky"

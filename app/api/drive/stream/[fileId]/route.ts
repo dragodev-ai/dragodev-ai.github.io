@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAllowedDriveFileId } from '@/lib/content';
-import { fetchDriveMediaUpstream, resolveVideoMimeType } from '@/lib/google-drive/stream';
+import {
+  fetchDriveMediaUpstream,
+  getLocalFaststartPath,
+  resolveVideoMimeType,
+  serveAcceleratedDriveRange,
+  serveLocalFaststartStream,
+} from '@/lib/google-drive/stream';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -21,6 +27,19 @@ export async function GET(
   const rangeHeader = request.headers.get('range');
 
   try {
+    // 1. Instant <1ms local web-optimized faststart MP4 stream when cached
+    const localFastPath = getLocalFaststartPath(fileId);
+    if (localFastPath) {
+      return serveLocalFaststartStream(localFastPath, rangeHeader);
+    }
+
+    // 2. Accelerated 2MB block cache + parallel EOF moov prefetch + sliding read-ahead
+    const accelerated = await serveAcceleratedDriveRange(fileId, rangeHeader || 'bytes=0-');
+    if (accelerated) {
+      return accelerated;
+    }
+
+    // 3. Direct upstream Google Drive byte-range pass-through fallback
     const upstream = await fetchDriveMediaUpstream(fileId, rangeHeader);
     if (!upstream || (!upstream.ok && upstream.status !== 206)) {
       return NextResponse.json(
@@ -34,7 +53,6 @@ export async function GET(
     }
 
     const upstreamType = upstream.headers.get('content-type') || '';
-    // Guard against unexpected HTML interstitial pages from Google Drive
     if (upstreamType.includes('text/html')) {
       return NextResponse.json(
         {
@@ -73,4 +91,3 @@ export async function GET(
     );
   }
 }
-

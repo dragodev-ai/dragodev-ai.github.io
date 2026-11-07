@@ -27,11 +27,12 @@ export function VideoHeroSection() {
   const stageRef = useRef<HTMLDivElement | null>(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(52);
   const wasPlayingBeforeModalRef = useRef(false);
   const userPausedRef = useRef(false);
+  const userMutedRef = useRef(false);
   const activeProjectRef = useRef(activeProject);
   activeProjectRef.current = activeProject;
 
@@ -51,19 +52,77 @@ export function VideoHeroSection() {
     }
   }, [activeProject]);
 
-  // Ensure smooth autoplay on mount & pause off-screen decoding for butter-smooth mobile/desktop scrolling
+  // Default Audio + Video Autoplay ON, with automatic first-interaction audio unlock if browser policy defers sound,
+  // plus off-screen IntersectionObserver auto-pause for smooth scrolling.
   useEffect(() => {
     const vid = videoRef.current;
     const stage = stageRef.current;
     if (!vid) return;
 
-    vid.muted = true;
-    vid
-      .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
+    let cleanupUnlock: (() => void) | null = null;
+    const events = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'] as const;
 
-    if (!stage || typeof IntersectionObserver === 'undefined') return;
+    const attachInstantAudioUnlock = () => {
+      if (cleanupUnlock) return;
+
+      const unlockAudio = (e: Event) => {
+        const target = e.target as Element | null;
+        if (target?.closest?.('[data-testid="hero-sound-toggle"]')) {
+          cleanupUnlock?.();
+          return;
+        }
+        const v = videoRef.current;
+        if (!v || userMutedRef.current) {
+          cleanupUnlock?.();
+          return;
+        }
+        v.muted = false;
+        v.volume = 0.92;
+        setIsMuted(false);
+        if (v.paused && !userPausedRef.current && !activeProjectRef.current) {
+          v.play().catch(() => undefined);
+        }
+        cleanupUnlock?.();
+      };
+
+      events.forEach((evt) =>
+        window.addEventListener(evt, unlockAudio, { capture: true, passive: true })
+      );
+      cleanupUnlock = () => {
+        events.forEach((evt) => window.removeEventListener(evt, unlockAudio, { capture: true }));
+        cleanupUnlock = null;
+      };
+    };
+
+    const startWithSoundByDefault = async () => {
+      vid.volume = 0.92;
+      vid.muted = false;
+      try {
+        await vid.play();
+        setIsPlaying(true);
+        setIsMuted(false);
+      } catch {
+        // Fallback when strict browser policy temporarily blocks unmuted autoplay before sticky activation:
+        // keep video playing immediately and auto-enable audio on any touch/click/keypress anywhere on the page.
+        vid.muted = true;
+        setIsMuted(true);
+        attachInstantAudioUnlock();
+        try {
+          await vid.play();
+          setIsPlaying(true);
+        } catch {
+          setIsPlaying(false);
+        }
+      }
+    };
+
+    void startWithSoundByDefault();
+
+    if (!stage || typeof IntersectionObserver === 'undefined') {
+      return () => {
+        cleanupUnlock?.();
+      };
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -80,13 +139,17 @@ export function VideoHeroSection() {
     );
 
     observer.observe(stage);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      cleanupUnlock?.();
+    };
   }, []);
 
   const toggleSound = useCallback(() => {
     const vid = videoRef.current;
     if (!vid) return;
     const nextMuted = !vid.muted;
+    userMutedRef.current = nextMuted;
     vid.muted = nextMuted;
     if (!nextMuted) {
       vid.volume = 0.92;
@@ -114,6 +177,7 @@ export function VideoHeroSection() {
     const vid = videoRef.current;
     if (!vid) return;
     userPausedRef.current = false;
+    userMutedRef.current = false;
     vid.currentTime = 0;
     vid.muted = false;
     vid.volume = 0.92;
@@ -126,6 +190,7 @@ export function VideoHeroSection() {
     if (!vid) return;
     if (vid.muted) {
       userPausedRef.current = false;
+      userMutedRef.current = false;
       vid.muted = false;
       vid.volume = 0.92;
       setIsMuted(false);
@@ -195,10 +260,9 @@ export function VideoHeroSection() {
             src="/videos/DEV_KUMAWAT_SAAS_WEB.mp4"
             poster="/videos/dev-kumawat-hero-poster.jpg"
             autoPlay
-            muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             onClick={handleVideoSurfaceClick}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}

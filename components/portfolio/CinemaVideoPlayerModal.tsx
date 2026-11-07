@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { getKnownFaststartStatus, warmProjectMedia } from '@/lib/google-drive/client-warm';
 
 function formatTime(sec: number): string {
   if (!Number.isFinite(sec) || sec < 0) return '0:00';
@@ -41,19 +42,49 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [useDrivePreviewFallback, setUseDrivePreviewFallback] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
+  const stallTimerRef = useRef<number | null>(null);
 
-  // Reset player state whenever active project changes
+  const clearStallTimer = useCallback(() => {
+    if (stallTimerRef.current !== null) {
+      window.clearTimeout(stallTimerRef.current);
+      stallTimerRef.current = null;
+    }
+  }, []);
+
+  // Reset player state whenever active project changes + smart adaptive routing for massive uncached 4K masters
   useEffect(() => {
+    clearStallTimer();
     if (!activeProject) return;
+
+    let cancelled = false;
     setIsPlaying(false);
     setIsBuffering(true);
     setCurrentTime(0);
     setDuration(0);
-    // QuickTime .mov files often require Google Drive's transcoded embed player on Chromium/Windows
+
     const isQuicktime = activeProject.mimeType === 'video/quicktime';
-    setUseDrivePreviewFallback(isQuicktime);
+    const isHeavy4KMaster = (activeProject.sizeBytes || 0) > 85 * 1024 * 1024;
+    const knownFast = getKnownFaststartStatus(activeProject.id);
+
+    if (isQuicktime || (isHeavy4KMaster && knownFast === false)) {
+      setUseDrivePreviewFallback(true);
+    } else {
+      setUseDrivePreviewFallback(false);
+      if (isHeavy4KMaster && knownFast === undefined) {
+        void warmProjectMedia(activeProject).then((fastReady) => {
+          if (!cancelled && !fastReady) {
+            setUseDrivePreviewFallback(true);
+          }
+        });
+      }
+    }
+
     setRetryKey((k) => k + 1);
-  }, [activeProject]);
+    return () => {
+      cancelled = true;
+      clearStallTimer();
+    };
+  }, [activeProject, clearStallTimer]);
 
   // Escape key + body scroll lock
   useEffect(() => {
@@ -142,6 +173,14 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
       .slice(0, 4);
   }, [activeProject, allProjects]);
 
+  // Pre-warm related videos while modal is open so next click plays in 0ms
+  useEffect(() => {
+    if (!activeProject) return;
+    relatedProjects.forEach((rel) => {
+      void warmProjectMedia(rel);
+    });
+  }, [activeProject, relatedProjects]);
+
   if (!activeProject) return null;
 
   return (
@@ -228,21 +267,44 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                 poster={`${activeProject.thumbnail}?sz=w800`}
                 playsInline
                 autoPlay
-                preload="metadata"
+                preload="auto"
                 onClick={togglePlay}
                 onPlay={() => {
+                  clearStallTimer();
                   setIsPlaying(true);
                   setIsBuffering(false);
                 }}
-                onPause={() => setIsPlaying(false)}
-                onWaiting={() => setIsBuffering(true)}
-                onCanPlay={() => setIsBuffering(false)}
+                onPlaying={() => {
+                  clearStallTimer();
+                  setIsBuffering(false);
+                }}
+                onPause={() => {
+                  clearStallTimer();
+                  setIsPlaying(false);
+                }}
+                onWaiting={() => {
+                  setIsBuffering(true);
+                  clearStallTimer();
+                  stallTimerRef.current = window.setTimeout(() => {
+                    setIsBuffering(false);
+                    setUseDrivePreviewFallback(true);
+                  }, 4500);
+                }}
+                onCanPlay={() => {
+                  clearStallTimer();
+                  setIsBuffering(false);
+                }}
                 onLoadedMetadata={(e) => {
+                  clearStallTimer();
                   setDuration(e.currentTarget.duration || 0);
                   setIsBuffering(false);
                 }}
-                onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
+                onTimeUpdate={(e) => {
+                  clearStallTimer();
+                  setCurrentTime(e.currentTarget.currentTime);
+                }}
                 onError={() => {
+                  clearStallTimer();
                   setIsBuffering(false);
                   setUseDrivePreviewFallback(true);
                 }}

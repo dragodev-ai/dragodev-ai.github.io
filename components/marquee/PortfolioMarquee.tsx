@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Play, Image as ImageIcon } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
 function MarqueeCard({
   project,
@@ -16,6 +17,9 @@ function MarqueeCard({
     <button
       type="button"
       onClick={() => onSelect(project)}
+      onMouseEnter={() => void warmProjectMedia(project)}
+      onFocus={() => void warmProjectMedia(project)}
+      onTouchStart={() => void warmProjectMedia(project)}
       aria-label={`Open ${project.title} (${project.category})`}
       className="group/card relative w-[275px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#111116] text-left transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-purple-500/70 hover:shadow-[0_18px_44px_rgba(124,58,237,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 sm:w-[330px]"
     >
@@ -71,6 +75,16 @@ export function PortfolioMarquee({
   const { openProject, playUiTick } = useStudioExperience();
   const [pausedRow1, setPausedRow1] = useState(false);
   const [pausedRow2, setPausedRow2] = useState(false);
+
+  // Idle pre-warm top featured marquee videos after initial paint so first click/tap plays instantly
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      row1.slice(0, 5).forEach((proj) => {
+        void warmProjectMedia(proj);
+      });
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [row1]);
 
   const handleSelect = (p: PortfolioProject) => {
     playUiTick();

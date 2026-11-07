@@ -102,10 +102,9 @@
           src="./public/videos/DEV_KUMAWAT_SAAS_WEB.mp4"
           poster="./public/videos/dev-kumawat-hero-poster.jpg"
           autoplay
-          muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
           class="h-full w-full cursor-pointer bg-[#04071A] object-contain"
         ></video>
       </div>
@@ -120,8 +119,8 @@
 
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap items-center gap-2">
-            <button id="btn-hero-sound" type="button" class="rounded-full bg-[#3B63FF] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-white shadow-[0_0_24px_rgba(59,99,255,0.5)] transition hover:bg-[#5277FF]">
-              ENABLE SOUND
+            <button id="btn-hero-sound" type="button" class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-emerald-200 transition hover:bg-emerald-500/25">
+              SOUND ON
             </button>
             <button id="btn-hero-play" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
               PAUSE
@@ -518,8 +517,38 @@
       }
     }
 
+    let userMutedHero = false;
+    function startHeroWithSoundDefault() {
+      heroVid.volume = 0.92;
+      heroVid.muted = false;
+      heroVid.play().then(() => {
+        updateSoundUi();
+      }).catch(() => {
+        heroVid.muted = true;
+        updateSoundUi();
+        heroVid.play().catch(() => {});
+        const evts = ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'click'];
+        const unlock = (e) => {
+          if (e.target && e.target.closest && e.target.closest('#btn-hero-sound')) {
+            evts.forEach((ev) => window.removeEventListener(ev, unlock, true));
+            return;
+          }
+          if (!userMutedHero) {
+            heroVid.muted = false;
+            heroVid.volume = 0.92;
+            updateSoundUi();
+            if (heroVid.paused) heroVid.play().catch(() => {});
+          }
+          evts.forEach((ev) => window.removeEventListener(ev, unlock, true));
+        };
+        evts.forEach((ev) => window.addEventListener(ev, unlock, { capture: true, passive: true }));
+      });
+    }
+    startHeroWithSoundDefault();
+
     btnSound.addEventListener('click', () => {
       heroVid.muted = !heroVid.muted;
+      userMutedHero = heroVid.muted;
       if (!heroVid.muted) {
         heroVid.volume = 0.92;
         if (heroVid.paused) heroVid.play().catch(() => {});

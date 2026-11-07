@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "sync:drive": "tsx scripts/sync-drive.ts",
     "validate:assets": "tsx scripts/validate-assets.ts",
-    "build:html": "node scripts/build-standalone-html.mjs"
+    "build:html": "node scripts/build-standalone-html.mjs",
+    "optimize:media": "node scripts/prewarm-portfolio-cache.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.9",

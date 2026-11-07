@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { DriveCategoryNode, PortfolioProject } from '@/lib/content/types';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
 interface PortfolioExplorerProps {
   projects: PortfolioProject[];
@@ -327,6 +328,9 @@ export function PortfolioExplorer({
                 key={project.id}
                 type="button"
                 onClick={() => openProject(project)}
+                onMouseEnter={() => void warmProjectMedia(project)}
+                onFocus={() => void warmProjectMedia(project)}
+                onTouchStart={() => void warmProjectMedia(project)}
                 data-testid={`explorer-card-${project.id}`}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#12121a] text-left transition duration-300 hover:-translate-y-1 hover:border-purple-500/60 hover:shadow-[0_18px_40px_rgba(0,0,0,0.6)]"
               >
@@ -375,6 +379,9 @@ export function PortfolioExplorer({
                 key={project.id}
                 type="button"
                 onClick={() => openProject(project)}
+                onMouseEnter={() => void warmProjectMedia(project)}
+                onFocus={() => void warmProjectMedia(project)}
+                onTouchStart={() => void warmProjectMedia(project)}
                 className="group flex w-full items-center justify-between gap-4 p-4 text-left transition hover:bg-white/[0.03]"
               >
                 <div className="flex min-w-0 items-center gap-4">

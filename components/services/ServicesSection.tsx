@@ -7,6 +7,7 @@ import { ArrowUpRight, ChevronDown, Play } from 'lucide-react';
 import type { PortfolioProject } from '@/lib/content/types';
 import { servicesContent } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { warmProjectMedia } from '@/lib/google-drive/client-warm';
 
 export function ServicesSection({ allProjects }: { allProjects: PortfolioProject[] }) {
   const sheetRef = useRef<HTMLDivElement>(null);
@@ -166,6 +167,8 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                               key={proj.id}
                               type="button"
                               onClick={() => openProject(proj)}
+                              onMouseEnter={() => void warmProjectMedia(proj)}
+                              onTouchStart={() => void warmProjectMedia(proj)}
                               className="group/item overflow-hidden rounded-2xl border border-black/12 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-purple-700 hover:shadow-md"
                             >
                               <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">

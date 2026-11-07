@@ -27,12 +27,19 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     await expect(heroVideo).toBeVisible();
     await expect(heroVideo).toHaveAttribute('src', '/videos/DEV_KUMAWAT_SAAS_WEB.mp4');
 
-    // Verify sound toggle starts muted ("Enable Sound") and toggles cleanly
+    // Verify default Audio + Video autoplay ON (and automatic first-interaction audio unlock if headless policy deferred audio)
     const soundToggle = page.getByTestId('hero-sound-toggle');
     await expect(soundToggle).toBeVisible();
-    await expect(soundToggle).toContainText(/Enable Sound/i);
 
-    await page.waitForTimeout(1200);
+    await page.waitForTimeout(800);
+
+    // If strict fresh headless browser deferred audio until sticky user activation,
+    // verify clicking anywhere on the page (without touching the sound button!) unlocks Sound On automatically
+    const initialLabel = (await soundToggle.textContent()) || '';
+    if (/Enable Sound/i.test(initialLabel)) {
+      await page.locator('#hero').click({ position: { x: 8, y: 8 } });
+    }
+    await expect(soundToggle).toContainText(/Sound On/i);
 
     const isMobile = testInfo.project.name.includes('mobile');
     if (!isMobile) {
@@ -45,10 +52,11 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
       });
     }
 
-    await soundToggle.click();
-    await expect(soundToggle).toContainText(/Sound On/i);
+    // Verify manual mute/unmute toggle works cleanly
     await soundToggle.click();
     await expect(soundToggle).toContainText(/Enable Sound/i);
+    await soundToggle.click();
+    await expect(soundToggle).toContainText(/Sound On/i);
 
     // Verify play/pause & replay controls exist and operate cleanly
     const playToggle = page.getByTestId('hero-play-toggle');

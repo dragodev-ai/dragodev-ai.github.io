@@ -1,7 +1,67 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { NextRequest, NextResponse } from 'next/server';
 import { getProjectById, isAllowedDriveFileId } from '@/lib/content';
+import { THUMB_CACHE_DIR } from '@/lib/google-drive/stream';
 
 export const runtime = 'nodejs';
+
+interface CachedThumb {
+  buf: Buffer;
+  contentType: string;
+}
+
+const MAX_MEM_THUMBS = 260;
+const memoryThumbCache = new Map<string, CachedThumb>();
+const inflightThumbs = new Map<string, Promise<CachedThumb | null>>();
+
+function setMemThumb(key: string, val: CachedThumb) {
+  if (memoryThumbCache.has(key)) memoryThumbCache.delete(key);
+  memoryThumbCache.set(key, val);
+  while (memoryThumbCache.size > MAX_MEM_THUMBS) {
+    const first = memoryThumbCache.keys().next().value;
+    if (!first) break;
+    memoryThumbCache.delete(first);
+  }
+}
+
+function readCachedThumb(key: string): CachedThumb | null {
+  const mem = memoryThumbCache.get(key);
+  if (mem) {
+    memoryThumbCache.delete(key);
+    memoryThumbCache.set(key, mem);
+    return mem;
+  }
+  try {
+    const binPath = path.join(THUMB_CACHE_DIR, `${key}.bin`);
+    const typePath = path.join(THUMB_CACHE_DIR, `${key}.type`);
+    if (fs.existsSync(binPath)) {
+      const buf = fs.readFileSync(binPath);
+      const contentType = fs.existsSync(typePath)
+        ? fs.readFileSync(typePath, 'utf8').trim() || 'image/jpeg'
+        : 'image/jpeg';
+      if (buf.length > 0) {
+        const entry = { buf, contentType };
+        setMemThumb(key, entry);
+        return entry;
+      }
+    }
+  } catch {
+    // Ignore read-only disk environments
+  }
+  return null;
+}
+
+function writeCachedThumb(key: string, entry: CachedThumb) {
+  setMemThumb(key, entry);
+  try {
+    fs.mkdirSync(THUMB_CACHE_DIR, { recursive: true });
+    fs.writeFileSync(path.join(THUMB_CACHE_DIR, `${key}.bin`), entry.buf);
+    fs.writeFileSync(path.join(THUMB_CACHE_DIR, `${key}.type`), entry.contentType);
+  } catch {
+    // Ignore read-only disk environments
+  }
+}
 
 function buildPosterFallbackSvg(title: string, category: string): string {
   const safeTitle = title.replace(/[<>&"]/g, '').slice(0, 44);
@@ -35,30 +95,62 @@ export async function GET(
 
   const szParam = request.nextUrl.searchParams.get('sz') || 'w800';
   const sz = /^w(320|480|640|800|1200)$/.test(szParam) ? szParam : 'w800';
-  const project = getProjectById(fileId);
+  const cacheKey = `${fileId}_${sz}`;
 
-  try {
-    const thumbUrl = `https://drive.google.com/thumbnail?id=${encodeURIComponent(fileId)}&sz=${sz}`;
-    const res = await fetch(thumbUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; DevStudioThumbProxy/1.0)' },
-      redirect: 'follow',
-      cache: 'no-store',
+  const hit = readCachedThumb(cacheKey);
+  if (hit) {
+    return new NextResponse(new Uint8Array(hit.buf), {
+      status: 200,
+      headers: {
+        'Content-Type': hit.contentType,
+        'Cache-Control': 'public, max-age=604800, s-maxage=2592000, stale-while-revalidate=2592000, immutable',
+        'X-Thumb-Cache': 'HIT',
+      },
     });
-
-    const contentType = res.headers.get('content-type') || '';
-    if (res.ok && contentType.startsWith('image/')) {
-      return new NextResponse(res.body, {
-        status: 200,
-        headers: {
-          'Content-Type': contentType,
-          'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800',
-        },
-      });
-    }
-  } catch {
-    // Fall through to studio SVG poster
   }
 
+  let fetchPromise = inflightThumbs.get(cacheKey);
+  if (!fetchPromise) {
+    fetchPromise = (async (): Promise<CachedThumb | null> => {
+      try {
+        const thumbUrl = `https://drive.google.com/thumbnail?id=${encodeURIComponent(fileId)}&sz=${sz}`;
+        const res = await fetch(thumbUrl, {
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; DevStudioThumbProxy/2.0)' },
+          redirect: 'follow',
+          next: { revalidate: 604800 },
+        });
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && contentType.startsWith('image/')) {
+          const buf = Buffer.from(await res.arrayBuffer());
+          if (buf.length > 0) {
+            const entry = { buf, contentType };
+            writeCachedThumb(cacheKey, entry);
+            return entry;
+          }
+        }
+      } catch {
+        // Fall through to SVG poster
+      } finally {
+        inflightThumbs.delete(cacheKey);
+      }
+      return null;
+    })();
+    inflightThumbs.set(cacheKey, fetchPromise);
+  }
+
+  const resolved = await fetchPromise;
+  if (resolved) {
+    return new NextResponse(new Uint8Array(resolved.buf), {
+      status: 200,
+      headers: {
+        'Content-Type': resolved.contentType,
+        'Cache-Control': 'public, max-age=604800, s-maxage=2592000, stale-while-revalidate=2592000, immutable',
+        'X-Thumb-Cache': 'MISS',
+      },
+    });
+  }
+
+  const project = getProjectById(fileId);
   const svg = buildPosterFallbackSvg(
     project?.title || 'Portfolio Project',
     project?.category || 'DEV STUDIO'
