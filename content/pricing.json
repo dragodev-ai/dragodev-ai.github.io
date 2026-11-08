@@ -1,71 +1,69 @@
 {
-  "headline": "PRICING & ENGAGEMENT",
-  "subheadline": "Every production has its own scope, shoot requirements, and turnaround rhythm. Select an engagement model below to request a tailored studio quote.",
+  "headline": "BUILT FOR ROI",
+  "subheadline": "Skip bloated agency retainers. Pick your growth engine and ship studio-grade work on deadline.",
   "defaultPriceNote": "Custom Quote — Let's Discuss Your Project.",
   "packages": [
     {
       "id": "video-editing-pack",
-      "badge": "POST-PRODUCTION",
-      "title": "Video Editing & Motion Package",
-      "shortDescription": "For brands, creators, and agencies needing polished commercial edits, podcasts, documentaries, or high-retention reels.",
+      "badge": "HIGH-RETENTION CUTS",
+      "title": "Video & Motion Sprint",
+      "shortDescription": "Scroll-stopping commercial ads, podcasts, and reels cut to hold viewers till the final second.",
       "price": "Custom Quote — Let's Discuss Your Project.",
       "deliverables": [
-        "Editorial story assembly & pacing in Premiere Pro",
-        "Custom After Effects motion callouts & kinetic typography",
-        "Cinematic colour grading & sound design",
-        "Platform-ready masters (16:9, 9:16, or 1:1)",
-        "Structured revision rounds aligned to brief"
+        "Retention-paced Premiere Pro story cut",
+        "After Effects motion hooks & kinetic captions",
+        "Cinema colour grade & punchy sound master",
+        "Ready-to-post 16:9 & 9:16 exports"
       ],
       "serviceSelection": "Video Editing & Post-Production",
       "featured": false
     },
     {
       "id": "monthly-social-retainer",
-      "badge": "MOST REQUESTED",
-      "title": "Monthly Social Media & Content Retainer",
-      "shortDescription": "Ongoing creative partnership combining short-form video editing, graphic design posts, thumbnails, and content direction.",
+      "badge": "MOST CLIENTS PICK THIS",
+      "title": "Monthly Growth Content Engine",
+      "shortDescription": "Your unfair monthly advantage — non-stop reels, ad creatives, and thumbnails without hiring a team.",
       "price": "Custom Quote — Let's Discuss Your Project.",
       "deliverables": [
-        "Recurring calendar of edited reels & video spots",
-        "Branded Instagram posts, carousels & ad creatives",
-        "High-CTR video thumbnails & campaign banners",
-        "Social media visual consistency & creative management",
-        "Priority studio turnaround & direct WhatsApp coordination"
+        "Consistent calendar of high-retention reels & ads",
+        "High-CTR thumbnails, carousels & campaign posts",
+        "Unified brand look that dominates your niche",
+        "Priority turnaround & direct WhatsApp access"
       ],
       "serviceSelection": "Monthly Social Media Package",
       "featured": true
     },
     {
       "id": "graphic-branding-pack",
-      "badge": "VISUAL DESIGN",
-      "title": "Graphic Design & Brand Visuals",
-      "shortDescription": "Focused design sprints for product launches, hospitality & food campaigns, corporate banners, and print/digital collateral.",
+      "badge": "CLICK-MAGNET DESIGN",
+      "title": "Brand Visuals & Ad Creatives",
+      "shortDescription": "Sharp posters, banners, and product visuals designed to win clicks at first glance.",
       "price": "Custom Quote — Let's Discuss Your Project.",
       "deliverables": [
-        "Campaign posters, company banners & Meta ad statics",
-        "Product, food & lifestyle retouching in Photoshop",
-        "Brochure & presentation layout design",
-        "Source-verified high-resolution web & print exports"
+        "High-converting Meta ads & campaign banners",
+        "Pro product, food & portrait retouching",
+        "Clean brochures & pitch deck visuals",
+        "Print & web-ready master files"
       ],
       "serviceSelection": "Graphic Design & Branding",
       "featured": false
     },
     {
       "id": "ai-custom-production",
-      "badge": "FULL STUDIO / AI",
-      "title": "AI Commercials & Custom Shoot Production",
-      "shortDescription": "Bespoke AI-generated brand films, prompt-engineered visual campaigns, or full on-location photography & videography shoots.",
+      "badge": "FLAGSHIP PRODUCTION",
+      "title": "AI Commercials & Full Shoots",
+      "shortDescription": "Big-budget commercial impact through AI film pipelines or directed on-location camera shoots.",
       "price": "Custom Quote — Let's Discuss Your Project.",
       "deliverables": [
-        "Creative direction, concept scripting & shot planning",
-        "AI commercial generation or live cinema camera shoot",
-        "Motion tracking, VFX compositing & voice/audio sync",
-        "Dedicated delivery timeline tailored to campaign launch"
+        "Hook-first script, concept & shot direction",
+        "AI commercial film or live cinema shoot",
+        "3D tracking, VFX & custom sound design",
+        "Fast, launch-locked delivery guarantee"
       ],
       "serviceSelection": "AI-Powered Creative Production",
       "featured": false
     }
   ],
-  "individualProjectNote": "Need a single video edit, one-off campaign shoot, or standalone design asset? Individual project quotes are available — choose 'Individual Project Quote' in the enquiry form."
+  "individualProjectNote": "Need just one killer edit, shoot, or thumbnail? Grab a fast single-project quote."
 }
 

@@ -137,7 +137,11 @@ const html = `<!DOCTYPE html>
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(59,99,255,0.20),transparent_70%)]"></div>
 
     <div class="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center px-3 sm:px-6">
-      <div id="hero-stage" class="relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-12.5rem)] lg:w-auto">
+      <div class="mb-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+        <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">8+ YEARS · 500+ SHIPPED CUTS</span>
+        <p class="text-xs font-medium text-zinc-200 sm:text-sm">Stop losing viewers in 3 seconds — <strong class="text-white">visuals engineered to hold attention &amp; win clients.</strong></p>
+      </div>
+      <div id="hero-stage" class="relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto">
         <video
           id="hero-video"
           src="./public/videos/DEV_KUMAWAT_SAAS_WEB.mp4"
@@ -176,10 +180,10 @@ const html = `<!DOCTYPE html>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <a href="#archive" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-wider text-zinc-100 transition hover:border-[#3B63FF]">
-              Explore Work ↓
+              232+ Proofs ↓
             </a>
             <a href="#contact" class="rounded-full bg-white px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#09090B] transition hover:bg-zinc-200">
-              Get In Touch
+              Hire Dev
             </a>
           </div>
         </div>
@@ -188,10 +192,10 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- DUAL-ROW PORTFOLIO MARQUEE -->
-  <section class="border-y border-white/10 bg-[#0D0D12] py-10 overflow-hidden">
+  <section class="border-y border-white/10 bg-[#0D0D12] py-12 overflow-hidden">
     <div class="mx-auto mb-5 flex max-w-7xl items-center justify-between px-5">
-      <span class="font-mono text-xs uppercase tracking-[0.22em] text-[#C8A464]">SELECTED STUDIO REEL &amp; VISUAL ARCHIVE</span>
-      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-[#C8A464]">BROWSE ALL CATEGORIES →</a>
+      <span class="font-mono text-xs uppercase tracking-[0.22em] text-[#C8A464]">232+ PROVEN CLIENT DELIVERIES · TAP ANY CUT TO WATCH</span>
+      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-[#C8A464]">ZERO TEMPLATES · 100% REAL RESULTS →</a>
     </div>
     <div class="marquee-track space-y-4">
       <div id="marquee-row-1" class="flex w-max gap-4 animate-marquee-rtl"></div>
@@ -199,67 +203,64 @@ const html = `<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- EDITORIAL ABOUT ME SECTION -->
+  <!-- EDITORIAL ABOUT ME SECTION (GOLDEN RATIO 1.618fr : 1fr) -->
   <section id="about" class="mx-auto max-w-7xl px-5 py-24 md:px-8">
-    <div class="grid gap-12 lg:grid-cols-12 lg:items-start">
-      <div class="lg:col-span-5">
-        <div class="overflow-hidden rounded-3xl border border-white/15 bg-[#121216] shadow-2xl">
-          <img id="about-portrait" alt="Dev Kumawat Studio Portrait" class="h-[440px] w-full object-cover object-top" />
-          <div class="border-t border-white/10 p-5">
-            <p class="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A464]">JAIPUR, RAJASTHAN · INDIA</p>
-            <p class="mt-1 font-display text-xl font-bold text-white">${profile.name}</p>
-            <p class="mt-1 text-xs text-zinc-400">${profile.primaryRoleTitle}</p>
-            <div class="mt-4 flex flex-wrap gap-2.5">
-              <a href="./public/assets/Dev-Kumawat-Resume.pdf" target="_blank" rel="noopener" class="rounded-full bg-[#C8A464] px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-[#09090B] transition hover:bg-[#e0bf7d]">
-                Download Resume PDF
-              </a>
-              <a href="${projectsManifest.rootFolderUrl}" target="_blank" rel="noopener" class="rounded-full border border-white/20 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-zinc-200 transition hover:border-white/40">
-                Google Drive Folder ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lg:col-span-7">
-        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">ABOUT ME</span>
-        <h2 class="mt-3 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
-          Crafting visual stories with <span class="font-serif italic font-normal text-[#C8A464]">editorial precision</span> &amp; next-gen AI craft.
+    <div class="grid gap-10 lg:grid-cols-[1.618fr_1fr] lg:items-start">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">01 · WHY BRANDS &amp; LEADERS HIRE DEV</span>
+        <h2 class="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+          Viewers decide in 1.7 seconds. <span class="font-serif italic font-normal text-[#C8A464]">I make sure they stay &amp; buy.</span>
         </h2>
-        <p class="mt-5 text-base font-medium leading-relaxed text-zinc-200">${profile.bio.lead}</p>
-        <div class="mt-4 space-y-3 text-sm leading-relaxed text-zinc-400">
-          ${profile.bio.paragraphs.map((p) => `<p>${p}</p>`).join('')}
-        </div>
+        <p class="mt-4 max-w-[50ch] text-base leading-[1.618] text-zinc-300">${profile.bio.paragraphs[0]}</p>
 
-        <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-4">
           ${profile.stats
             .map(
               (s) => `
             <div class="rounded-2xl border border-white/10 bg-[#121216] p-4">
               <div class="font-display text-2xl font-extrabold text-[#C8A464] sm:text-3xl">${s.value}</div>
-              <div class="mt-1 font-mono text-[11px] uppercase tracking-wider text-zinc-400">${s.label}</div>
+              <div class="mt-1 font-mono text-[10px] uppercase tracking-wider text-zinc-400">${s.label}</div>
             </div>`
             )
             .join('')}
         </div>
 
-        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        <div class="mt-7 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#121216]/85 px-5 py-2">
           ${profile.highlights
             .map(
               (h) => `
-            <div class="rounded-2xl border border-white/10 bg-[#121216]/80 p-4">
-              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C8A464]">${h.number} · ${h.category}</span>
-              <h3 class="mt-1.5 font-display text-sm font-bold text-white">${h.title}</h3>
-              <p class="mt-0.5 font-mono text-[11px] text-zinc-400">${h.subtitle}</p>
-              <p class="mt-2 text-xs leading-relaxed text-zinc-400">${h.detail}</p>
+            <div class="flex flex-col gap-1 py-3.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C8A464]">${h.number} · ${h.subtitle}</span>
+                <h3 class="mt-0.5 font-display text-sm font-bold text-white">${h.title}</h3>
+              </div>
+              <p class="max-w-[34ch] text-xs leading-[1.618] text-zinc-400 sm:text-right">${h.detail}</p>
             </div>`
             )
             .join('')}
         </div>
+      </div>
 
-        <div class="mt-6 rounded-2xl border border-white/10 bg-[#121216]/60 p-4 text-xs text-zinc-300">
-          <span class="font-mono uppercase tracking-wider text-[#C8A464]">Education:</span>
-          <strong class="ml-1 text-white">${profile.education.degree}</strong> — ${profile.education.institution} (${profile.education.period}). ${profile.education.notes}
+      <div class="space-y-4">
+        <div class="overflow-hidden rounded-3xl border border-white/15 bg-[#121216] shadow-2xl">
+          <img id="about-portrait" alt="Dev Kumawat Studio Portrait" class="h-[410px] w-full object-cover object-top" />
+          <div class="border-t border-white/10 p-5">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A464]">JAIPUR, RAJASTHAN · WORLDWIDE</p>
+            <p class="mt-1 font-display text-xl font-bold text-white">${profile.name}</p>
+            <div class="mt-4 flex flex-wrap gap-2.5">
+              <a href="./public/assets/Dev-Kumawat-Resume.pdf" target="_blank" rel="noopener" class="rounded-full bg-[#C8A464] px-4 py-2 font-mono text-[11px] font-semibold uppercase tracking-wider text-[#09090B] transition hover:bg-[#e0bf7d]">
+                Resume PDF
+              </a>
+              <a href="${projectsManifest.rootFolderUrl}" target="_blank" rel="noopener" class="rounded-full border border-white/20 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-zinc-200 transition hover:border-white/40">
+                232+ Drive Proofs ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-[#121216]/75 p-4 text-xs text-zinc-300">
+          <span class="font-mono uppercase tracking-wider text-[#C8A464]">Credential:</span>
+          <strong class="ml-1 text-white">${profile.education.degree}</strong> — ${profile.education.institution} (${profile.education.period})
         </div>
       </div>
     </div>
@@ -324,10 +325,10 @@ const html = `<!DOCTYPE html>
   <section id="projects" class="mx-auto max-w-7xl px-5 py-16 md:px-8">
     <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
       <div>
-        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">CURATED SHOWCASE</span>
-        <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">FEATURED PROJECTS</h2>
+        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">04 · DON'T TAKE MY WORD FOR IT — WATCH WHAT SHIPPED</span>
+        <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">PROVEN PROJECTS</h2>
       </div>
-      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-[#C8A464] hover:underline">JUMP TO FULL 231-ITEM ARCHIVE ↓</a>
+      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-[#C8A464] hover:underline">WATCH ALL 232 PROOFS ↓</a>
     </div>
     <div id="featured-stack" class="space-y-6"></div>
   </section>
@@ -337,9 +338,8 @@ const html = `<!DOCTYPE html>
     <div class="rounded-3xl border border-white/10 bg-[#101015] p-6 sm:p-10">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">LIVE GOOGLE DRIVE PORTFOLIO</span>
-          <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">COMPLETE STUDIO ARCHIVE</h2>
-          <p class="mt-1 text-xs text-zinc-400">Click any video reel or design work to watch inside the Cinema Modal.</p>
+          <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">VERIFIED CLIENT VAULT</span>
+          <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">232+ CLIENT PROOFS</h2>
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <input id="archive-search" type="search" placeholder="Search brand, shoot, motion, AI..." class="rounded-full border border-white/15 bg-[#09090B] px-4 py-2 text-xs text-white placeholder-zinc-500 focus:border-[#C8A464] focus:outline-none" />
@@ -363,12 +363,12 @@ const html = `<!DOCTYPE html>
 
   <!-- CONTACT, DISCOVERY CALL & WHATSAPP -->
   <section id="contact" class="mx-auto max-w-7xl px-5 py-24 md:px-8">
-    <div class="grid gap-10 lg:grid-cols-12">
-      <div class="lg:col-span-5">
-        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">START A COLLABORATION</span>
-        <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">LET'S CREATE SOMETHING EXTRAORDINARY.</h2>
-        <p class="mt-4 text-sm leading-relaxed text-zinc-400">
-          Send a project brief or book a discovery call (Asia/Kolkata IST). Enquiries route to <strong class="text-white">${profile.contact.email}</strong>.
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.618fr]">
+      <div>
+        <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">05 · STOP GAMBLING ON SLOW FREELANCERS</span>
+        <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">HIRE DEV NOW.</h2>
+        <p class="mt-4 text-sm leading-[1.618] text-zinc-400">
+          Send your brief or book a 15-minute IST strategy call. Direct reply from <strong class="text-white">${profile.contact.email}</strong> within hours.
         </p>
 
         <div class="mt-6 space-y-3 text-sm">
@@ -387,9 +387,9 @@ const html = `<!DOCTYPE html>
         </div>
       </div>
 
-      <div class="lg:col-span-7">
+      <div>
         <form id="contact-form" class="rounded-3xl border border-white/15 bg-[#121216] p-6 shadow-2xl sm:p-8">
-          <h3 class="font-display text-xl font-bold text-white">Project Enquiry &amp; Discovery Call Request</h3>
+          <h3 class="font-display text-xl font-bold uppercase text-white">Send Your Brief — Claim Your Slot</h3>
           <div class="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
               <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Your Name *</label>

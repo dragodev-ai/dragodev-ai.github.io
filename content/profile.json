@@ -1,7 +1,7 @@
 {
   "name": "Dev Kumawat",
   "studioName": "DEV STUDIO",
-  "headline": "Turning Ideas Into Powerful Visual Experiences",
+  "headline": "Stop Losing Viewers in 3 Seconds. Visuals Built to Hold Attention & Win Clients.",
   "roles": [
     "Video Editor",
     "Graphic Designer",
@@ -12,7 +12,7 @@
     "Prompt Engineer",
     "Motion Graphics Creator"
   ],
-  "primaryRoleTitle": "Creative Director, Video Editor, Graphic Designer & AI Creative Specialist",
+  "primaryRoleTitle": "Video Editor, Motion Director & AI Creative Specialist",
   "location": {
     "city": "Jaipur",
     "state": "Rajasthan",
@@ -58,47 +58,45 @@
     ]
   },
   "bio": {
-    "lead": "Eight years of crafting visual stories that elevate brands, public figures, and agencies through precision editing, motion design, photography, and AI-powered creative production.",
+    "lead": "Your audience decides in 1.7 seconds. I engineer every frame so they stay, trust your brand, and act.",
     "paragraphs": [
-      "Based in Jaipur, Rajasthan and collaborating worldwide, I direct productions across the complete creative lifecycle — from concept, lighting, and camera direction on set to editorial pacing, colour grading, sound design, and After Effects motion compositing in the suite.",
-      "Across 500+ delivered projects and 100+ client shoots, my work spans commercial brand films, high-retention social reels, broadcast interviews and podcasts at Mahanagar Times News Agency, public-figure campaign storytelling including Civil Lines MLA Dr. Gopal Sharma, and next-generation AI visual narratives built through deliberate prompt engineering.",
-      "Every frame, graphic composition, and motion cue is built around a single standard: clarity of story and measurable audience engagement."
+      "8+ years, 500+ shipped cuts, and 100+ client shoots out of Jaipur — trusted by Chaayos, Mahanagar Times, and MLA Dr. Gopal Sharma."
     ]
   },
   "stats": [
-    { "value": "8+", "label": "Years Experience" },
-    { "value": "500+", "label": "Projects Delivered" },
+    { "value": "8+", "label": "Years Mastering Craft" },
+    { "value": "500+", "label": "Projects Shipped" },
     { "value": "100+", "label": "Client Shoots" },
-    { "value": "21+", "label": "Brand & Institutional Collaborations" }
+    { "value": "21+", "label": "Brands & Leaders" }
   ],
   "highlights": [
     {
       "number": "01",
       "category": "NEWS & PODCASTS",
       "title": "Mahanagar Times News Agency",
-      "subtitle": "2 Years Experience",
-      "detail": "Handled creative studio shoots, multi-cam podcast production, broadcast interview coverage, and complete post-production workflows."
+      "subtitle": "2 Years Broadcast Proof",
+      "detail": "Studio shoots, multi-cam podcasts, and broadcast cuts delivered on daily newsroom deadlines."
     },
     {
       "number": "02",
-      "category": "PUBLIC FIGURES & INFLUENCERS",
-      "title": "Civil Lines MLA Dr. Gopal Sharma & Creators",
-      "subtitle": "Documentary & Campaign Content",
-      "detail": "Directed documentary-style campaign edits, 3D motion-tracked civic stories, and high-retention creator reels."
+      "category": "PUBLIC LEADERS",
+      "title": "MLA Dr. Gopal Sharma & Top Creators",
+      "subtitle": "Campaign & Retention Proof",
+      "detail": "Civic documentaries, 3D-tracked stories, and high-retention creator reels that command trust."
     },
     {
       "number": "03",
-      "category": "BRAND CAMPAIGNS & AI",
-      "title": "Commercial Ads, Design & AI Production",
-      "subtitle": "18+ Brand Collaborations",
-      "detail": "Delivered commercial shoots, Meta ad reels, product visuals, brand identity graphics, and AI-generated commercial films."
+      "category": "BRANDS & AI ADS",
+      "title": "18+ Commercial Brand Campaigns",
+      "subtitle": "Conversion Creative Proof",
+      "detail": "Meta video ads, product shoots, brand visuals, and AI commercials built to stop the scroll."
     }
   ],
   "education": {
     "degree": "Bachelor's in Science",
     "institution": "Rajasthan University",
     "period": "2017 – 2021",
-    "notes": "Completed multiple internships in photography and videography during graduation, applying visual theory to real-world shoots, lighting, editing, and production workflows."
+    "notes": "Completed live photography, lighting, and post-production internships alongside graduation."
   },
   "experience": [
     {

@@ -11,10 +11,9 @@ export function StudioFooter() {
             <p className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
               {profileContent.studioName}
             </p>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-zinc-400">
-              {profileContent.primaryRoleTitle} · {profileContent.location.display}. Crafting
-              commercial video edits, motion graphics, brand visuals, photography, and AI-powered
-              productions.
+            <p className="mt-2 max-w-[38ch] text-sm leading-[1.618] text-zinc-400">
+              8+ years &amp; 500+ proven cuts from {profileContent.location.display}. Built for
+              brands, creators, and leaders who refuse to blend in.
             </p>
           </div>
 

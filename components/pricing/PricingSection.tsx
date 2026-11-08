@@ -12,41 +12,41 @@ export function PricingSection() {
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
-      className="relative bg-[#070709] py-24 sm:py-32"
+      className="relative scroll-mt-24 bg-[#070709] py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-3 block font-mono text-xs uppercase tracking-[0.28em] text-amber-400">
-              03 · CONFIGURABLE ENGAGEMENTS
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-amber-400">
+              03 · ZERO-FLUFF PARTNERSHIPS
             </span>
             <h2
               id="pricing-heading"
-              className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+              className="break-words font-display text-phi-xl font-extrabold uppercase text-white"
             >
               {pricingContent.headline}
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-zinc-400 sm:text-base">
+          <p className="max-w-[34ch] font-serif text-xl italic leading-[1.35] text-zinc-300 sm:text-2xl">
             {pricingContent.subheadline}
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-phi-2 md:grid-cols-2">
           {pricingContent.packages.map((pkg) => (
             <article
               key={pkg.id}
               data-testid={`pricing-card-${pkg.id}`}
-              className={`relative flex flex-col justify-between rounded-3xl border p-7 transition-all duration-300 sm:p-8 ${
+              className={`relative flex flex-col justify-between rounded-3xl border p-phi-2 transition-all duration-300 sm:p-phi-3 ${
                 pkg.featured
                   ? 'border-purple-500/60 bg-gradient-to-b from-[#171326] to-[#101017] shadow-[0_24px_60px_rgba(124,58,237,0.18)]'
                   : 'border-white/10 bg-[#111116] hover:border-white/25'
               }`}
             >
               <div>
-                <div className="mb-4 flex items-center justify-between gap-2">
+                <div className="mb-3 flex items-center justify-between gap-2">
                   <span
-                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] ${
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${
                       pkg.featured
                         ? 'bg-purple-600 text-white'
                         : 'border border-white/12 bg-white/[0.04] text-zinc-300'
@@ -57,24 +57,21 @@ export function PricingSection() {
                   </span>
                 </div>
 
-                <h3 className="font-display text-2xl font-bold uppercase text-white sm:text-3xl">
+                <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white sm:text-3xl">
                   {pkg.title}
                 </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-zinc-300">
+                <p className="mt-2 max-w-[42ch] text-phi-sm text-zinc-300">
                   {pkg.shortDescription}
                 </p>
 
                 {/* Verified Non-Fabricated Custom Quote Display */}
-                <div className="my-6 rounded-2xl border border-white/10 bg-[#09090e] px-4 py-4">
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-400">
-                    INVESTMENT
-                  </span>
-                  <p className="mt-1 font-sans text-lg font-bold text-amber-300 sm:text-xl">
+                <div className="my-5 rounded-2xl border border-white/10 bg-[#09090e] px-4 py-3.5">
+                  <p className="font-serif text-lg italic text-amber-300 sm:text-xl">
                     {pkg.price}
                   </p>
                 </div>
 
-                <ul className="space-y-2.5">
+                <ul className="space-y-2">
                   {pkg.deliverables.map((del) => (
                     <li key={del} className="flex items-start gap-2.5 text-sm text-zinc-200">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-purple-400" />
@@ -91,13 +88,13 @@ export function PricingSection() {
                   playUiTick();
                   selectServiceForEnquiry(pkg.serviceSelection);
                 }}
-                className={`mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3.5 font-condensed text-sm font-bold uppercase tracking-[0.22em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
+                className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-3.5 font-condensed text-sm font-bold uppercase tracking-[0.22em] transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
                   pkg.featured
                     ? 'bg-purple-600 text-white hover:bg-purple-500'
                     : 'bg-white text-zinc-950 hover:bg-zinc-200'
                 }`}
               >
-                REQUEST QUOTE FOR THIS PACKAGE
+                CLAIM YOUR CUSTOM QUOTE
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </article>
@@ -105,14 +102,14 @@ export function PricingSection() {
         </div>
 
         {/* Individual Project Quote Strip */}
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/10 bg-[#111116]/75 p-6 sm:flex-row sm:items-center">
-          <p className="text-sm text-zinc-300">{pricingContent.individualProjectNote}</p>
+        <div className="mt-phi-2 flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/10 bg-[#111116]/75 p-5 sm:flex-row sm:items-center sm:px-6">
+          <p className="text-sm font-medium text-zinc-200">{pricingContent.individualProjectNote}</p>
           <button
             type="button"
             onClick={() => selectServiceForEnquiry('Individual Project Quote')}
-            className="shrink-0 rounded-full border border-purple-400/50 bg-purple-600/15 px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-purple-200 transition hover:bg-purple-600 hover:text-white"
+            className="shrink-0 rounded-full border border-purple-400/50 bg-purple-600/15 px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-purple-200 transition hover:bg-purple-600 hover:text-white active:scale-[0.98]"
           >
-            SINGLE PROJECT ENQUIRY →
+            SINGLE PROJECT QUOTE →
           </button>
         </div>
       </div>

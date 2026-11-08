@@ -234,7 +234,7 @@ export function VideoHeroSection() {
     <section
       id="hero"
       aria-label="Dev Kumawat Creative Portfolio Showcase Film"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#04071A] via-[#060919] to-[#070709] pb-8 pt-[4.75rem] sm:pb-10 sm:pt-[5.25rem]"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#04071A] via-[#060919] to-[#070709] pb-8 pt-[5.6rem] sm:pb-10 sm:pt-[5.85rem]"
     >
       {/* Screen-reader & SEO primary heading without overlaying baked-in film typography */}
       <h1 className="sr-only">
@@ -249,11 +249,24 @@ export function VideoHeroSection() {
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1640px] flex-col items-center px-3 sm:px-6 lg:px-8">
+        {/* Crisp Golden-Ratio Authority Hook Strip Above Cinema Stage */}
+        <div className="mb-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center sm:mb-4">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">
+            8+ YEARS · 500+ SHIPPED CUTS
+          </span>
+          <p className="font-sans text-xs font-medium tracking-[-0.01em] text-zinc-200 sm:text-sm">
+            Stop losing viewers in 3 seconds —{' '}
+            <span className="font-semibold text-white">
+              visuals engineered to hold attention &amp; win clients.
+            </span>
+          </p>
+        </div>
+
         {/* Unobstructed 16:9 Full-HD Cinema Showcase Viewport — scales seamlessly from 320px phones to 4K monitors */}
         <div
           ref={stageRef}
           data-testid="hero-video-stage"
-          className="group relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-12rem)] lg:w-auto"
+          className="group relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto"
         >
           <video
             ref={videoRef}
@@ -376,16 +389,16 @@ export function VideoHeroSection() {
             <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
               <Link
                 href="/work"
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:border-[#3B63FF] hover:bg-[#3B63FF]/20"
+                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:border-[#3B63FF] hover:bg-[#3B63FF]/20 active:scale-[0.97]"
               >
-                <span>All Work</span>
+                <span>232+ Proofs</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </Link>
               <a
                 href="#contact"
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-zinc-200"
+                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-zinc-200 active:scale-[0.97]"
               >
-                <span>Get In Touch</span>
+                <span>Hire Dev</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </a>
             </div>

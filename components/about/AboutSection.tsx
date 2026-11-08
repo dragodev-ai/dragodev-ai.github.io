@@ -15,21 +15,21 @@ export function AboutSection() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative overflow-hidden bg-[#070709] py-24 sm:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-[#070709] py-phi-4 sm:py-phi-5"
     >
-      {/* Floating Reactive 3D Studio Objects (Crescent Moon, 3D Smiley, Arrow, Creative Brick, Metallic Form) */}
+      {/* Floating Reactive 3D Studio Objects */}
       <AboutArtifactsScene />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Eyebrow & Massive Editorial Headline */}
-        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
+        {/* Golden Ratio Section Header */}
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-3 block font-mono text-xs uppercase tracking-[0.28em] text-purple-400">
-              01 · STORY &amp; CREDENTIALS
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+              01 · WHY BRANDS &amp; LEADERS HIRE DEV
             </span>
             <h2
               id="about-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+              className="font-display text-phi-xl font-extrabold uppercase text-white"
             >
               ABOUT ME
             </h2>
@@ -41,7 +41,7 @@ export function AboutSection() {
               href={profileContent.resume.primaryPdfUrl}
               download={profileContent.resume.downloadFileName}
               data-testid="resume-download-btn"
-              className="inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-purple-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+              className="inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-purple-100 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
             >
               <Download className="h-4 w-4" />
               RESUME (PDF)
@@ -50,7 +50,7 @@ export function AboutSection() {
               href={profileContent.resume.portfolioOverviewPdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.2em] text-zinc-200 transition hover:border-purple-400 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.2em] text-zinc-200 transition hover:border-purple-400 hover:text-white active:scale-[0.98]"
             >
               PORTFOLIO SHEET
               <ExternalLink className="h-3.5 w-3.5" />
@@ -58,131 +58,121 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Main Editorial Narrative + Studio Portrait Card */}
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
-          <div className="space-y-6 lg:col-span-7">
-            <p className="font-sans text-xl font-medium leading-relaxed text-zinc-100 sm:text-2xl">
-              {profileContent.bio.lead}
+        {/* Golden Ratio Split: 1.618fr (61.8% Authority & Proof) : 1fr (38.2% Portrait & Credentials) */}
+        <div className="grid gap-phi-3 lg:grid-cols-[1.618fr_1fr] lg:items-start">
+          <div className="space-y-phi-2">
+            <p className="max-w-[24ch] font-sans text-3xl font-extrabold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.618rem]">
+              Viewers decide in 1.7 seconds.{' '}
+              <span className="font-serif text-[1.08em] italic font-normal tracking-normal text-amber-300">
+                I make sure they stay &amp; buy.
+              </span>
             </p>
 
-            {profileContent.bio.paragraphs.map((para, idx) => (
-              <p key={idx} className="text-base leading-relaxed text-zinc-300/90">
-                {para}
-              </p>
-            ))}
+            <p className="max-w-[50ch] text-phi-base text-zinc-300">
+              {profileContent.bio.paragraphs[0]}
+            </p>
 
-            {/* Verified Metrics Grid */}
-            <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
+            {/* 4 Verified Hard-Number Proof Blocks */}
+            <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
               {profileContent.stats.map((st) => (
                 <div
                   key={st.label}
                   className="rounded-2xl border border-white/10 bg-[#111116]/90 p-4 backdrop-blur-md"
                 >
-                  <span className="block font-display text-3xl font-extrabold text-white sm:text-4xl">
+                  <span className="block font-sans text-3xl font-extrabold tabular-nums tracking-[-0.03em] text-amber-300 sm:text-4xl">
                     {st.value}
                   </span>
-                  <span className="mt-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-400">
+                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
                     {st.label}
                   </span>
                 </div>
               ))}
             </div>
+
+            {/* 3 Streamlined Result-Proven Track-Record Rows */}
+            <div className="divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-[#111116]/85 px-5 py-2 sm:px-6">
+              {profileContent.highlights.map((hl) => (
+                <div
+                  key={hl.number}
+                  className="flex flex-col gap-1.5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-xs font-bold text-amber-400">{hl.number}</span>
+                    <div>
+                      <h3 className="font-sans text-sm font-bold text-white sm:text-base">
+                        {hl.title}
+                      </h3>
+                      <p className="font-mono text-[11px] text-purple-300">{hl.subtitle}</p>
+                    </div>
+                  </div>
+                  <p className="max-w-[36ch] text-xs leading-[1.618] text-zinc-400 sm:text-right">
+                    {hl.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right Column: Original Studio Portrait + Education & Software Suite */}
-          <div className="space-y-6 lg:col-span-5">
-            <div className="overflow-hidden rounded-3xl border border-white/12 bg-[#111116] p-3 shadow-2xl">
-              <div className="relative aspect-[4/4.4] overflow-hidden rounded-2xl bg-[#0a0a0f]">
+          {/* Right 38.2% Golden Column: Studio Portrait + Compact Credential & Toolkit */}
+          <div className="space-y-phi-2">
+            <div className="overflow-hidden rounded-3xl border border-white/12 bg-[#111116] p-2.5 shadow-2xl">
+              <div className="relative aspect-[1/1.18] overflow-hidden rounded-2xl bg-[#0a0a0f]">
                 <img
                   src={profileContent.portraitUrl}
                   alt="Dev Kumawat — Creative Director, Video Editor and Photographer"
                   loading="lazy"
                   className="h-full w-full object-cover object-top"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070709] via-[#070709]/60 to-transparent p-5">
-                  <p className="font-display text-xl font-bold uppercase text-white">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070709] via-[#070709]/65 to-transparent p-5">
+                  <p className="font-display text-xl font-bold uppercase tracking-tight text-white">
                     {profileContent.name}
                   </p>
                   <p className="mt-0.5 flex items-center gap-1.5 font-mono text-xs text-amber-300">
                     <MapPin className="h-3.5 w-3.5" />
-                    {profileContent.location.display}
+                    {profileContent.location.display} · Worldwide
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Verified Education Card */}
+            {/* Compact Verified Credential & Studio Arsenal Card */}
             <div className="rounded-2xl border border-white/10 bg-[#111116]/90 p-5">
-              <div className="mb-2 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-purple-400">
-                <GraduationCap className="h-4 w-4" />
-                EDUCATION
-              </div>
-              <h3 className="text-base font-bold text-white">
-                {profileContent.education.degree} — {profileContent.education.institution}
-              </h3>
-              <p className="font-mono text-xs text-zinc-400">{profileContent.education.period}</p>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-300">
-                {profileContent.education.notes}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* 3 Verified Career Pillars (Mahanagar Times, MLA Dr. Gopal Sharma, Brand Campaigns) */}
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {profileContent.highlights.map((hl) => (
-            <div
-              key={hl.number}
-              className="rounded-3xl border border-white/10 bg-[#111116]/85 p-6 transition hover:border-purple-500/40"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="font-mono text-xs font-bold text-amber-400">{hl.number}</span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400">
-                  {hl.category}
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-purple-400">
+                  <GraduationCap className="h-3.5 w-3.5" />
+                  VERIFIED CREDENTIAL
+                </span>
+                <span className="font-mono text-[11px] text-zinc-500">
+                  {profileContent.education.period}
                 </span>
               </div>
-              <h3 className="font-sans text-lg font-bold text-white">{hl.title}</h3>
-              <p className="mt-0.5 font-mono text-xs text-purple-300">{hl.subtitle}</p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-300">{hl.detail}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Verified Tools & Collaborated Brands Strip */}
-        <div className="mt-12 rounded-3xl border border-white/10 bg-[#0e0e14] p-6 sm:p-8">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div>
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-zinc-400">
-                PRODUCTION TOOLKIT &amp; DISCIPLINES
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {[...profileContent.software, ...profileContent.disciplines].map((item) => (
+              <h3 className="mt-1.5 text-sm font-bold text-white">
+                {profileContent.education.degree} — {profileContent.education.institution}
+              </h3>
+              <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.08] pt-3.5">
+                {profileContent.software.map((tool) => (
                   <span
-                    key={item}
-                    className="rounded-full border border-white/12 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-zinc-200"
+                    key={tool}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-zinc-300"
                   >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-zinc-400">
-                COLLABORATED BRANDS, AGENCIES &amp; PUBLIC FIGURES
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {profileContent.collaboratedBrands.map((brand) => (
-                  <span
-                    key={brand}
-                    className="rounded-full border border-purple-500/20 bg-purple-500/[0.07] px-3 py-1 font-mono text-[11px] text-purple-200"
-                  >
-                    {brand}
+                    {tool}
                   </span>
                 ))}
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Single Clean Trusted-By Brand Proof Strip */}
+        <div className="mt-phi-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/[0.08] pt-phi-2">
+          <span className="font-mono text-phi-xs font-semibold uppercase text-zinc-500">
+            PROVEN ACROSS 21+ BRANDS:
+          </span>
+          {profileContent.collaboratedBrands.slice(0, 10).map((brand) => (
+            <span key={brand} className="font-mono text-xs text-zinc-300">
+              {brand}
+            </span>
+          ))}
         </div>
       </div>
     </section>

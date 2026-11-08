@@ -88,7 +88,7 @@ export function ContactAndBookingSection() {
       setContactStatus({
         type: 'unconfigured',
         message:
-          'Ready to send directly! Click below to dispatch your pre-filled brief via Email or WhatsApp to Dev Kumawat.',
+          'Brief ready! Click below to send directly via Email (kumawatrishi096@gmail.com) or WhatsApp.',
         mailtoFallbackUrl: staticMailto,
       });
       return;
@@ -232,27 +232,27 @@ export function ContactAndBookingSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative border-t border-white/10 bg-[#070709] py-24 sm:py-32"
+      className="relative scroll-mt-24 border-t border-white/10 bg-[#070709] py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-end">
+        {/* Golden Ratio Section Header */}
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-3 block font-mono text-xs uppercase tracking-[0.28em] text-purple-400">
-              05 · START A PRODUCTION OR BOOK A CALL
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+              05 · STOP GAMBLING ON SLOW FREELANCERS
             </span>
             <h2
               id="contact-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+              className="font-display text-phi-xl font-extrabold uppercase text-white"
             >
-              LET&apos;S CREATE
+              HIRE DEV NOW
             </h2>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={socialLinksContent.mailtoUrl}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 font-mono text-xs text-zinc-200 transition hover:border-purple-400 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 font-mono text-xs text-zinc-200 transition hover:border-purple-400 hover:text-white active:scale-[0.98]"
             >
               <Mail className="h-3.5 w-3.5 text-purple-400" />
               {profileContent.contact.email}
@@ -261,7 +261,7 @@ export function ContactAndBookingSection() {
               href={getWhatsappDeepLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-4 py-2.5 font-mono text-xs text-emerald-300 transition hover:bg-emerald-600 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-4 py-2.5 font-mono text-xs text-emerald-300 transition hover:bg-emerald-600 hover:text-white active:scale-[0.98]"
             >
               <MessageCircle className="h-3.5 w-3.5" />
               {profileContent.contact.phone}
@@ -269,15 +269,16 @@ export function ContactAndBookingSection() {
           </div>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-12">
-          {/* LEFT 7 COLS: PROJECT ENQUIRY FORM */}
-          <div className="rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-9 lg:col-span-7">
-            <h3 className="font-display text-2xl font-bold uppercase text-white">
-              PROJECT ENQUIRY
+        {/* Golden Ratio Split: 1.618fr (61.8% Project Brief) : 1fr (38.2% IST Strategy Call) */}
+        <div className="grid gap-phi-3 lg:grid-cols-[1.618fr_1fr]">
+          {/* LEFT 61.8%: PROJECT ENQUIRY FORM */}
+          <div className="rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3">
+            <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
+              SEND YOUR BRIEF
             </h3>
-            <p className="mt-1.5 text-sm text-zinc-400">
-              All enquiries deliver directly to{' '}
-              <span className="text-zinc-200">{profileContent.contact.email}</span>.
+            <p className="mt-1 text-sm text-zinc-400">
+              Direct to <span className="text-zinc-200">{profileContent.contact.email}</span> —
+              personal reply within hours.
             </p>
 
             <form
@@ -500,8 +501,7 @@ export function ContactAndBookingSection() {
                   className="mt-0.5 h-4 w-4 rounded border-white/25 bg-[#09090e] accent-purple-600"
                 />
                 <span>
-                  I consent to DEV STUDIO storing my enquiry details solely to respond regarding my
-                  project. Your contact information is never shared or sold.
+                  Use my details solely to respond to this project brief. Never shared or sold.
                 </span>
               </label>
 
@@ -558,23 +558,23 @@ export function ContactAndBookingSection() {
                 type="submit"
                 disabled={contactStatus.type === 'loading'}
                 data-testid="contact-submit-btn"
-                className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-4 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-white shadow-lg transition hover:brightness-110 disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-4 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
               >
                 {contactStatus.type === 'loading' ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <Send className="h-4 w-4" />
                 )}
-                SEND PROJECT ENQUIRY
+                CLAIM YOUR PRODUCTION SLOT
               </button>
             </form>
           </div>
 
-          {/* RIGHT 5 COLS: BOOK A CALL SECTION (Asia/Kolkata Timezone — Never Invents Slots!) */}
+          {/* RIGHT 38.2%: BOOK A CALL SECTION (Asia/Kolkata Timezone) */}
           <div
             id="book-call"
             data-testid="book-a-call-section"
-            className="flex flex-col justify-between rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-9 lg:col-span-5"
+            className="flex flex-col justify-between rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3"
           >
             <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-300">
@@ -582,8 +582,10 @@ export function ContactAndBookingSection() {
                 {siteConfigContent.booking.timezoneLabel}
               </div>
 
-              <h3 className="font-display text-2xl font-bold uppercase text-white">BOOK A CALL</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
+                15-MIN STRATEGY CALL
+              </h3>
+              <p className="mt-2 text-sm leading-[1.618] text-zinc-400">
                 {siteConfigContent.booking.modeNote}
               </p>
 
@@ -795,17 +797,17 @@ export function ContactAndBookingSection() {
                     type="submit"
                     disabled={bookingStatus.type === 'loading'}
                     data-testid="booking-submit-btn"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-amber-300 disabled:opacity-60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-amber-300 active:scale-[0.98] disabled:opacity-60"
                   >
                     <Calendar className="h-4 w-4" />
-                    REQUEST DISCOVERY CALL (IST)
+                    LOCK IN STRATEGY CALL (IST)
                   </button>
                 </form>
               )}
             </div>
 
-            <div className="mt-6 border-t border-white/10 pt-5 text-xs text-zinc-400">
-              Prefer instant messaging? Tap{' '}
+            <div className="mt-6 border-t border-white/10 pt-4 text-xs text-zinc-400">
+              Need an answer right now? Ping{' '}
               <a
                 href={getWhatsappDeepLink()}
                 target="_blank"
@@ -813,8 +815,8 @@ export function ContactAndBookingSection() {
                 className="font-semibold text-emerald-400 underline underline-offset-4 hover:text-emerald-300"
               >
                 WhatsApp (+91 9309425465)
-              </a>{' '}
-              for direct studio turnaround availability.
+              </a>
+              .
             </div>
           </div>
         </div>

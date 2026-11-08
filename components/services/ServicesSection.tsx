@@ -50,29 +50,29 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative z-20 -mt-6 bg-[#070709] pt-6"
+      className="relative z-20 -mt-6 scroll-mt-20 bg-[#070709] pt-6"
     >
       {/* Premium White Editorial Sheet Sliding Upward Over Dark Studio */}
       <div
         ref={sheetRef}
         data-testid="services-editorial-sheet"
-        className="rounded-t-[40px] bg-[#F7F6F2] px-4 py-20 text-[#0A0A0C] shadow-[0_-28px_80px_rgba(0,0,0,0.75)] sm:rounded-t-[56px] sm:px-8 sm:py-28"
+        className="rounded-t-[40px] bg-[#F7F6F2] px-4 py-phi-4 text-[#0A0A0C] shadow-[0_-28px_80px_rgba(0,0,0,0.75)] sm:rounded-t-[56px] sm:px-8 sm:py-phi-5"
       >
         <div className="mx-auto max-w-7xl px-0 sm:px-2 lg:px-4">
-          {/* Editorial Header */}
-          <div className="mb-14 flex flex-col justify-between gap-6 border-b border-black/15 pb-10 lg:flex-row lg:items-end">
+          {/* Golden Ratio Editorial Header */}
+          <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-black/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
             <div>
-              <span className="mb-3 block font-mono text-xs font-semibold uppercase tracking-[0.28em] text-purple-700">
-                02 · CAPABILITIES &amp; CRAFT
+              <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-700">
+                02 · RESULT-PROVEN ARSENAL
               </span>
               <h2
                 id="services-heading"
-                className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-tight text-[#0A0A0C] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                className="font-display text-phi-xl font-extrabold uppercase text-[#0A0A0C]"
               >
                 {servicesContent.headline}
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-zinc-700 sm:text-base">
+            <p className="max-w-[30ch] font-serif text-xl italic leading-[1.3] text-zinc-800 sm:text-2xl">
               {servicesContent.subheadline}
             </p>
           </div>
@@ -86,7 +86,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                 .slice(0, 3);
 
               return (
-                <div key={group.id} className="py-6 sm:py-8">
+                <div key={group.id} className="py-6 sm:py-7">
                   <button
                     type="button"
                     aria-expanded={isOpen}
@@ -96,17 +96,17 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                       playUiTick();
                       setExpandedId(isOpen ? '' : group.id);
                     }}
-                    className="group flex w-full items-center justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700 rounded-xl"
+                    className="group flex w-full items-center justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
                   >
                     <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6 lg:gap-8">
                       <span className="font-mono text-sm font-bold text-purple-700 sm:text-base">
                         {group.number}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="break-words font-display text-lg font-extrabold uppercase tracking-tight text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1 sm:text-2xl md:text-3xl lg:text-[2.1rem] xl:text-4xl">
+                        <h3 className="break-words font-display text-phi-lg font-extrabold uppercase text-[#0A0A0C] transition-transform duration-200 group-hover:translate-x-1">
                           {group.title}
                         </h3>
-                        <p className="mt-1 text-xs font-medium text-zinc-600 sm:text-sm">
+                        <p className="mt-1 text-xs font-semibold text-zinc-700 sm:text-sm">
                           {group.tagline}
                         </p>
                       </div>
@@ -127,43 +127,40 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                     <div
                       id={`service-panel-${group.id}`}
                       data-testid={`service-panel-${group.id}`}
-                      className="mt-8 grid gap-8 pl-0 sm:pl-14 lg:grid-cols-12"
+                      className="mt-7 grid gap-phi-3 pl-0 sm:pl-12 lg:grid-cols-[1fr_1.618fr] lg:items-center"
                     >
-                      <div className="space-y-5 lg:col-span-6">
-                        <p className="text-base leading-relaxed text-zinc-800">
+                      <div className="space-y-4">
+                        <p className="max-w-[44ch] text-phi-sm font-medium text-zinc-800 sm:text-base">
                           {group.shortDescription}
                         </p>
-                        <div>
-                          <p className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-                            DELIVERABLES &amp; SPECIALIZATIONS
-                          </p>
-                          <ul className="grid gap-2 sm:grid-cols-2">
-                            {group.capabilities.map((cap) => (
-                              <li
-                                key={cap}
-                                className="flex items-start gap-2 text-sm font-medium text-zinc-900"
-                              >
-                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-700" />
-                                <span>{cap}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                        <ul className="grid gap-2">
+                          {group.capabilities.map((cap) => (
+                            <li
+                              key={cap}
+                              className="flex items-center gap-2.5 text-sm font-semibold text-zinc-900"
+                            >
+                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-purple-700" />
+                              <span>{cap}</span>
+                            </li>
+                          ))}
+                        </ul>
 
-                        <button
-                          type="button"
-                          onClick={() => selectServiceForEnquiry(group.enquiryServiceValue)}
-                          className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0C] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-purple-700"
-                        >
-                          ENQUIRE FOR {group.title}
-                          <ArrowUpRight className="h-4 w-4" />
-                        </button>
+                        <div className="pt-1">
+                          <button
+                            type="button"
+                            onClick={() => selectServiceForEnquiry(group.enquiryServiceValue)}
+                            className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0C] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-purple-700 active:scale-[0.98]"
+                          >
+                            HIRE DEV FOR {group.title}
+                            <ArrowUpRight className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
 
-                      {/* Relevant Real Google Drive Portfolio Samples */}
-                      <div className="lg:col-span-6">
-                        <p className="mb-3 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-                          SELECTED DRIVE WORK ({group.driveCategories.join(' · ')})
+                      {/* 61.8% Golden Column: Live Client Proof Samples */}
+                      <div>
+                        <p className="mb-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+                          WATCH LIVE PROOF — TAP ANY FRAME
                         </p>
                         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                           {matchingProjects.map((proj) => (
@@ -173,7 +170,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                               onClick={() => openProject(proj)}
                               onMouseEnter={() => void warmProjectMedia(proj)}
                               onTouchStart={() => void warmProjectMedia(proj)}
-                              className="group/item overflow-hidden rounded-2xl border border-black/12 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-purple-700 hover:shadow-md"
+                              className="group/item overflow-hidden rounded-2xl border border-black/12 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-purple-700 hover:shadow-md active:scale-[0.98]"
                             >
                               <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
                                 <img
@@ -200,9 +197,6 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                                 <p className="line-clamp-1 text-xs font-bold text-zinc-900">
                                   {proj.title}
                                 </p>
-                                <p className="font-mono text-[10px] text-zinc-500">
-                                  {proj.category}
-                                </p>
                               </div>
                             </button>
                           ))}
@@ -215,10 +209,10 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
             })}
           </div>
 
-          {/* Additional Creative Disciplines Strip */}
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-zinc-600">
-              ALSO AVAILABLE FOR:
+          {/* Compact Specialty Strip */}
+          <div className="mt-phi-2 flex flex-wrap items-center justify-between gap-3">
+            <span className="font-mono text-phi-xs font-bold uppercase text-zinc-600">
+              DIRECT BOOKING FOR:
             </span>
             <div className="flex flex-wrap gap-2">
               {servicesContent.additionalDisciplines.map((disc) => (
@@ -226,7 +220,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                   key={disc}
                   type="button"
                   onClick={() => selectServiceForEnquiry(disc)}
-                  className="rounded-full border border-black/15 bg-black/[0.04] px-4 py-1.5 text-xs font-semibold text-zinc-900 transition hover:border-purple-700 hover:bg-purple-700 hover:text-white"
+                  className="rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-zinc-900 transition hover:border-purple-700 hover:bg-purple-700 hover:text-white active:scale-[0.97]"
                 >
                   {disc}
                 </button>

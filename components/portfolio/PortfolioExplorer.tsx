@@ -90,21 +90,21 @@ export function PortfolioExplorer({
       id={isStandalonePage ? 'work-archive' : 'explorer'}
       aria-label="Complete Google Drive Portfolio Explorer"
       data-testid="portfolio-explorer"
-      className="relative bg-[#09090e] py-24"
+      className="relative bg-[#09090e] py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-8 lg:flex-row lg:items-end">
+        {/* Golden Ratio Header */}
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2.5 block font-mono text-xs uppercase tracking-[0.26em] text-purple-400">
-              GOOGLE DRIVE SYNCED ARCHIVE · {projects.length} VERIFIED WORKS
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+              VERIFIED CLIENT VAULT · {projects.length} REAL DELIVERIES
             </span>
             {isStandalonePage ? (
-              <h1 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="break-words font-display text-phi-xl font-extrabold uppercase text-white">
                 {heading}
               </h1>
             ) : (
-              <h2 className="break-words font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="break-words font-display text-phi-xl font-extrabold uppercase text-white">
                 {heading}
               </h2>
             )}
@@ -207,13 +207,13 @@ export function PortfolioExplorer({
             aria-selected={selectedCategory === 'ALL'}
             data-testid="category-filter-ALL"
             onClick={() => handleCategoryChange('ALL')}
-            className={`rounded-full px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] transition ${
+            className={`rounded-full px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] transition active:scale-[0.97] ${
               selectedCategory === 'ALL'
                 ? 'bg-purple-600 text-white shadow-[0_6px_20px_rgba(147,51,234,0.4)]'
                 : 'border border-white/12 bg-[#12121a] text-zinc-300 hover:border-purple-400/50 hover:text-white'
             }`}
           >
-            ALL CATEGORIES ({projects.length})
+            ALL ({projects.length})
           </button>
 
           {categories.map((cat) => {
@@ -364,19 +364,13 @@ export function PortfolioExplorer({
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col justify-between p-4">
-                  <div>
-                    <h3 className="line-clamp-1 font-sans text-base font-bold text-white group-hover:text-purple-200">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-zinc-400">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div className="mt-3 flex items-center justify-between border-t border-white/[0.06] pt-2.5 font-mono text-[10px] uppercase text-zinc-500">
-                    <span>{project.mediaType === 'video' ? 'VIDEO STREAM' : 'HIGH-RES VISUAL'}</span>
-                    <span>{project.year}</span>
-                  </div>
+                <div className="flex items-center justify-between gap-3 px-4 py-3.5">
+                  <h3 className="line-clamp-1 font-sans text-sm font-bold text-white group-hover:text-purple-200 sm:text-base">
+                    {project.title}
+                  </h3>
+                  <span className="shrink-0 font-mono text-[10px] tabular-nums text-zinc-500">
+                    {project.year}
+                  </span>
                 </div>
               </button>
             ))}

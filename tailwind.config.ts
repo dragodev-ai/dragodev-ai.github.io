@@ -24,9 +24,34 @@ const config: Config = {
       },
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],
+        serif: ['var(--font-serif)', 'serif'],
         condensed: ['var(--font-condensed)', 'sans-serif'],
         sans: ['var(--font-sans)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
+      },
+      fontSize: {
+        'phi-xs': ['0.688rem', { lineHeight: '1.382', letterSpacing: '0.22em' }],
+        'phi-sm': ['0.875rem', { lineHeight: '1.618' }],
+        'phi-base': ['clamp(1rem, 0.96rem + 0.22vw, 1.125rem)', { lineHeight: '1.618' }],
+        'phi-md': [
+          'clamp(1.25rem, 1.08rem + 0.65vw, 1.618rem)',
+          { lineHeight: '1.382', letterSpacing: '-0.015em' },
+        ],
+        'phi-lg': [
+          'clamp(1.618rem, 1.3rem + 1.3vw, 2.618rem)',
+          { lineHeight: '1.08', letterSpacing: '-0.028em' },
+        ],
+        'phi-xl': [
+          'clamp(2.35rem, 1.75rem + 2.8vw, 4.236rem)',
+          { lineHeight: '0.96', letterSpacing: '-0.035em' },
+        ],
+      },
+      spacing: {
+        'phi-1': '1rem',
+        'phi-2': '1.618rem',
+        'phi-3': '2.618rem',
+        'phi-4': '4.236rem',
+        'phi-5': '6.854rem',
       },
       keyframes: {
         'marquee-ltr': {

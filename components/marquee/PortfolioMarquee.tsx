@@ -105,17 +105,17 @@ export function PortfolioMarquee({
     <section
       aria-label="Featured Portfolio Reel Wall"
       data-testid="portfolio-marquee-section"
-      className="relative overflow-hidden border-y border-white/[0.07] bg-[#08080c] py-12 sm:py-16"
+      className="relative overflow-hidden border-y border-white/[0.07] bg-[#08080c] py-phi-3 sm:py-phi-4"
     >
-      <div className="mx-auto mb-7 flex max-w-7xl items-center justify-between px-4 sm:px-8">
+      <div className="mx-auto mb-phi-2 flex max-w-7xl items-center justify-between px-4 sm:px-8">
         <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-purple-500" />
-          <span className="font-mono text-xs uppercase tracking-[0.26em] text-zinc-400">
-            LIVE GOOGLE DRIVE ARCHIVE · CLICK ANY FRAME TO WATCH
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+          <span className="font-mono text-phi-xs font-semibold uppercase text-zinc-200">
+            232+ PROVEN CLIENT DELIVERIES · TAP ANY CUT TO WATCH
           </span>
         </div>
-        <span className="hidden font-mono text-xs text-zinc-500 sm:inline">
-          HOVER TO PAUSE REEL
+        <span className="hidden font-mono text-phi-xs uppercase text-zinc-500 sm:inline">
+          ZERO TEMPLATES · 100% REAL RESULTS
         </span>
       </div>
 
