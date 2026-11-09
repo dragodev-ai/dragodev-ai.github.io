@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   getFeaturedProjects,
-  getMarqueeProjects,
   getPublicProjects,
   projectsManifest,
 } from '@/lib/content';
@@ -19,15 +18,14 @@ import { StudioFooter } from '@/components/navigation/StudioFooter';
 export default function HomePage() {
   const allProjects = getPublicProjects();
   const featuredProjects = getFeaturedProjects();
-  const { row1, row2 } = getMarqueeProjects();
 
   return (
     <main className="relative min-h-screen bg-[#070709]">
       {/* Showcase Video Hero (DEV_KUMAWAT_SAAS_WEB.mp4) */}
       <VideoHeroSection />
 
-      {/* Phase 5: Dual-Row Opposite-Direction Infinite Portfolio Marquee */}
-      <PortfolioMarquee row1={row1} row2={row2} />
+      {/* Phase 5: Scrolling Verified Client Brand Logos Marquee */}
+      <PortfolioMarquee />
 
       {/* Phase 7: Editorial About Me + Floating 3D Objects + Verified Resume PDF */}
       <AboutSection />

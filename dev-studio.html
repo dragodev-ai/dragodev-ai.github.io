@@ -257,15 +257,18 @@
     </div>
   </section>
 
-  <!-- DUAL-ROW PORTFOLIO MARQUEE -->
-  <section class="border-y border-white/10 bg-[#0D0D12] py-12 overflow-hidden">
-    <div class="mx-auto mb-5 flex max-w-7xl items-center justify-between px-5">
-      <span class="font-mono text-xs uppercase tracking-[0.22em] text-[#C8A464]">232+ PROVEN CLIENT DELIVERIES · TAP ANY CUT TO WATCH</span>
-      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-[#C8A464]">ZERO TEMPLATES · 100% REAL RESULTS →</a>
+  <!-- SCROLLING VERIFIED CLIENT BRAND LOGOS MARQUEE -->
+  <section class="border-y border-white/10 bg-[#08080c] py-10 overflow-hidden">
+    <div class="mx-auto mb-6 flex max-w-7xl items-center justify-between px-5">
+      <div class="flex items-center gap-3">
+        <span class="inline-block h-2 w-2 rounded-full bg-[#3B63FF] shadow-[0_0_10px_rgba(59,99,255,0.85)]"></span>
+        <span class="font-mono text-xs uppercase tracking-[0.22em] text-zinc-300">BRANDS &amp; ORGANIZATIONS I'VE WORKED WITH</span>
+      </div>
+      <span class="hidden font-mono text-xs uppercase tracking-[0.18em] text-zinc-500 sm:inline">20+ VERIFIED CLIENTS · INDIA &amp; GLOBAL</span>
     </div>
-    <div class="marquee-track space-y-4">
-      <div id="marquee-row-1" class="flex w-max gap-4 animate-marquee-rtl"></div>
-      <div id="marquee-row-2" class="flex w-max gap-4 animate-marquee-ltr"></div>
+    <div class="marquee-track space-y-6" style="-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
+      <div id="marquee-row-1" class="flex w-max items-center gap-12 animate-marquee-ltr py-1"></div>
+      <div id="marquee-row-2" class="flex w-max items-center gap-12 animate-marquee-rtl py-1"></div>
     </div>
   </section>
 
@@ -760,26 +763,50 @@
       if (heroWasPlaying) heroVid.play().catch(() => {});
     });
 
-    // 4. Dual-Row Marquee
-    const marqueeItems = DATA.projects.filter((p) => p.inMarquee || p.featured).slice(0, 16);
+    // 4. Verified Client Brand Logos Marquee
+    const brandLogosRow1 = [
+      { name: 'Chaayos', font: 'font-sans font-extrabold tracking-tight text-xl', sub: '', svg: '<path d="M8 13.5h13.5l-1.6 11.2a3 3 0 0 1-2.97 2.55h-4.36a3 3 0 0 1-2.97-2.55L8 13.5Z" stroke="currentColor" stroke-width="1.9"/><path d="M21.2 15.5h2.3a2.75 2.75 0 0 1 0 5.5h-2.9M12.2 9.5c0-1.6 1.5-2.2 1.5-3.8M16.8 9.8c0-1.8 1.7-2.5 1.7-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>' },
+      { name: 'Mahanagar Times', font: 'font-serif text-xl tracking-wide', sub: 'BROADCAST & PRINT', svg: '<rect x="4.5" y="6" width="23" height="20" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 11h15M8.5 15.5h9M8.5 19.5h9M20.5 15.5h3v5h-3z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>' },
+      { name: 'AMITY', font: 'font-display font-bold uppercase tracking-[0.14em] text-base', sub: 'UNIVERSITY', svg: '<path d="M6.5 6.5h19v10.2c0 5.8-4.2 9.5-9.5 11.3-5.3-1.8-9.5-5.5-9.5-11.3V6.5Z" stroke="currentColor" stroke-width="1.85"/><path d="M10 11.5l12 8M10 16.5l8.5 5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' },
+      { name: 'ALICE BLUE', font: 'font-display font-extrabold uppercase tracking-[0.08em] text-base', sub: '', svg: '<path d="M16 5.5L26.5 24.5H19.8L16 17.2L12.2 24.5H5.5L16 5.5Z" stroke="currentColor" stroke-width="1.85" stroke-linejoin="round"/>' },
+      { name: 'LIVANTO', font: 'font-display font-extrabold uppercase tracking-[0.1em] text-base', sub: 'GREEN INFRA', svg: '<path d="M7.5 25.5V9.5l6.5-3v19M18 25.5V13.5l6.5-2.5v14.5M5.5 25.5h21" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { name: 'JP Vijayaa', font: 'font-serif text-lg tracking-wide', sub: 'FOODS', svg: '<circle cx="16" cy="16" r="10.5" stroke="currentColor" stroke-width="1.75"/><path d="M16 9.5c2.6 2.5 3.6 5.4 0 9.5-3.6-4.1-2.6-7 0-9.5Z" stroke="currentColor" stroke-width="1.65"/>' },
+      { name: 'TAASH', font: 'font-serif text-xl tracking-[0.14em]', sub: 'KITCHEN & BAR', svg: '<path d="M16 5.5L25.5 16L16 26.5L6.5 16L16 5.5Z" stroke="currentColor" stroke-width="1.8"/>' },
+      { name: 'malingo', font: 'font-sans font-extrabold tracking-tight text-xl', sub: '', svg: '<circle cx="14.5" cy="16" r="8.5" stroke="currentColor" stroke-width="1.85"/><circle cx="19.5" cy="13.5" r="5.5" stroke="currentColor" stroke-width="1.65"/>' },
+      { name: 'SIGN O', font: 'font-display font-bold uppercase tracking-[0.2em] text-base', sub: '', svg: '<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4.2" stroke="currentColor" stroke-width="1.8"/>' },
+      { name: 'JDH', font: 'font-display font-extrabold uppercase tracking-[0.1em] text-base', sub: 'IMMIGRATION', svg: '<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.75"/><ellipse cx="16" cy="16" rx="4.6" ry="10" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 16h19" stroke="currentColor" stroke-width="1.5"/>' }
+    ];
+    const brandLogosRow2 = [
+      { name: 'DrDermX', font: 'font-sans font-bold tracking-tight text-lg', sub: '', svg: '<path d="M16 5L25.5 10.5V21.5L16 27L6.5 21.5V10.5L16 5Z" stroke="currentColor" stroke-width="1.8"/><path d="M16 11.5v9M11.5 16h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' },
+      { name: 'Ratnaya', font: 'font-serif text-lg tracking-wide', sub: 'ORGANICS', svg: '<path d="M16 6.5c4.5 4.2 6.8 8.4 6.8 12.2a6.8 6.8 0 1 1-13.6 0c0-3.8 2.3-8 6.8-12.2Z" stroke="currentColor" stroke-width="1.8"/>' },
+      { name: 'PURE+', font: 'font-display font-extrabold uppercase tracking-[0.1em] text-lg', sub: '', svg: '<rect x="6" y="6" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.85"/><path d="M16 11.5v9M11.5 16h9" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>' },
+      { name: 'Assist MyDay', font: 'font-sans font-bold tracking-tight text-lg', sub: '', svg: '<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M11.8 16.4l2.9 2.9 6-6.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { name: 'SUFIWOOD', font: 'font-display font-semibold uppercase tracking-[0.22em] text-base', sub: '', svg: '<rect x="6" y="6" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="10.5" y="10.5" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.6"/>' },
+      { name: 'UNOVA', font: 'font-display font-extrabold uppercase tracking-[0.12em] text-base', sub: 'SOCKS', svg: '<path d="M9.5 7.5v9.5a6.5 6.5 0 0 0 13 0V7.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>' },
+      { name: 'PRIVINTAL', font: 'font-display font-bold uppercase tracking-[0.14em] text-base', sub: 'GREEN', svg: '<path d="M16 5.5l9.5 5.5v10L16 26.5 6.5 21V11L16 5.5Z" stroke="currentColor" stroke-width="1.8"/>' },
+      { name: 'KRISHAZ', font: 'font-serif uppercase tracking-[0.14em] text-xl', sub: '', svg: '<path d="M6.5 21.5L9 11l7 5.5L23 11l2.5 10.5H6.5ZM8 24.5h16" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' },
+      { name: 'SAVJI PRO', font: 'font-display font-extrabold uppercase tracking-[0.08em] text-base', sub: '', svg: '<rect x="5.5" y="5.5" width="21" height="21" rx="5" stroke="currentColor" stroke-width="1.8"/><path d="M19.5 11.5h-5.2a2.3 2.3 0 0 0 0 4.6h3.4a2.3 2.3 0 0 1 0 4.6h-5.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>' },
+      { name: 'IWSM', font: 'font-display font-bold uppercase tracking-[0.24em] text-lg', sub: '', svg: '<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.75"/><path d="M11 11.5v9M16 9.5v13M21 11.5v9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>' }
+    ];
     function renderMarqueeRow(elId, list) {
       const container = document.getElementById(elId);
-      [...list, ...list].forEach((p) => {
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'group relative h-44 w-72 shrink-0 overflow-hidden rounded-2xl border border-white/15 bg-[#14141A] text-left';
-        card.innerHTML = `
-          <img src="https://drive.google.com/thumbnail?id=${p.fileId}&sz=w640" loading="lazy" alt="${p.title}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent p-3.5 flex flex-col justify-end">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-[#C8A464]">${p.category} · ${p.mediaType.toUpperCase()}</span>
-            <span class="font-display text-sm font-bold text-white line-clamp-1">${p.title}</span>
-          </div>`;
-        card.addEventListener('click', () => openProjectModal(p));
-        container.appendChild(card);
+      [...list, ...list].forEach((b) => {
+        const item = document.createElement('div');
+        item.className = 'flex shrink-0 select-none items-center gap-12 text-zinc-400 transition-colors duration-300 hover:text-white';
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <svg viewBox="0 0 32 32" fill="none" class="h-8 w-8 shrink-0">${b.svg}</svg>
+            <div class="flex flex-col leading-none">
+              <span class="${b.font}">${b.name}</span>
+              ${b.sub ? `<span class="mt-0.5 font-mono text-[8px] uppercase tracking-[0.24em] opacity-65">${b.sub}</span>` : ''}
+            </div>
+          </div>
+          <span class="h-1 w-1 shrink-0 rounded-full bg-white/15"></span>`;
+        container.appendChild(item);
       });
     }
-    renderMarqueeRow('marquee-row-1', marqueeItems.slice(0, 8));
-    renderMarqueeRow('marquee-row-2', marqueeItems.slice(8, 16));
+    renderMarqueeRow('marquee-row-1', brandLogosRow1);
+    renderMarqueeRow('marquee-row-2', brandLogosRow2);
 
     // 5. Rounded White Services Sheet
     const servicesWrap = document.getElementById('services-accordion');

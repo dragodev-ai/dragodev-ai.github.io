@@ -96,26 +96,56 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     expect(pageErrors).toEqual([]);
   });
 
-  test('2. Dual-Row Marquee, Cinema Video Player Modal, About Me & Verified Resume PDF', async ({
+  test('2. Client Brand Logos Marquee, About Me, Verified Resume PDF & Cinema Video Player Modal', async ({
     page,
     request,
   }, testInfo) => {
     await page.goto('/');
     await expect(page.getByTestId('hero-video-stage')).toBeVisible();
 
-    // Dual-row opposite-direction marquee
+    // Verified Client Brand Logos Marquee (zero video thumbnails — pure brand logos only)
+    const marqueeSection = page.getByTestId('portfolio-marquee-section');
     const rowLtr = page.getByTestId('marquee-row-ltr');
     const rowRtl = page.getByTestId('marquee-row-rtl');
-    await rowLtr.scrollIntoViewIfNeeded();
+    await marqueeSection.scrollIntoViewIfNeeded();
+    await expect(marqueeSection).toBeVisible();
     await expect(rowLtr).toBeVisible();
     await expect(rowRtl).toBeVisible();
+    await expect(marqueeSection.locator('img, video')).toHaveCount(0);
+    await expect(marqueeSection).toContainText(/Chaayos/i);
+    await expect(marqueeSection).toContainText(/Mahanagar Times/i);
+    await expect(marqueeSection).toContainText(/AMITY/i);
+    await expect(marqueeSection).toContainText(/DrDermX/i);
 
-    // Click the marquee card currently inside the horizontal viewport -> opens Cinema Video Player Modal
-    // Note: animate-marquee-ltr starts at -50%, so the midpoint duplicate card starts directly at x >= 0
-    const buttons = rowLtr.locator('button');
-    const btnCount = await buttons.count();
-    const visibleMarqueeBtn = buttons.nth(Math.floor(btnCount / 2));
-    await visibleMarqueeBtn.dispatchEvent('click');
+    if (!testInfo.project.name.includes('mobile')) {
+      await page.waitForTimeout(600);
+      await page.screenshot({
+        path: path.join(QA_SCREENSHOT_DIR, '03-marquee-and-about.png'),
+      });
+    }
+
+    // About Me section + verified credentials + Resume PDF HTTP check
+    const aboutHeading = page.locator('#about-heading');
+    await aboutHeading.scrollIntoViewIfNeeded();
+    await expect(aboutHeading).toHaveText('ABOUT ME');
+    await expect(page.locator('#about')).toContainText(/Jaipur/i);
+    await expect(page.locator('#about')).toContainText(/Mahanagar Times/i);
+    await expect(page.locator('#about')).toContainText(/Rajasthan University/i);
+
+    const resumeBtn = page.getByTestId('resume-download-btn');
+    await expect(resumeBtn).toBeVisible();
+    const resumeHref = await resumeBtn.getAttribute('href');
+    expect(resumeHref).toBe('/assets/Dev-Kumawat-Resume.pdf');
+
+    const pdfRes = await request.get(resumeHref!);
+    expect(pdfRes.status()).toBe(200);
+    expect(pdfRes.headers()['content-type']).toContain('application/pdf');
+
+    // Open Cinema Video Player Modal from Featured Project Card 0
+    const stacked0 = page.getByTestId('stacked-project-card-0');
+    await stacked0.scrollIntoViewIfNeeded();
+    await stacked0.getByRole('button', { name: /WATCH PROOF/i }).click();
+
     const modal = page.getByTestId('cinema-player-modal');
     await expect(modal).toBeVisible();
 
@@ -137,30 +167,6 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
 
     await page.getByTestId('cinema-player-close').click();
     await expect(modal).toBeHidden();
-
-    // About Me section + verified credentials + Resume PDF HTTP check
-    const aboutHeading = page.locator('#about-heading');
-    await aboutHeading.scrollIntoViewIfNeeded();
-    await expect(aboutHeading).toHaveText('ABOUT ME');
-    await expect(page.locator('#about')).toContainText(/Jaipur/i);
-    await expect(page.locator('#about')).toContainText(/Mahanagar Times/i);
-    await expect(page.locator('#about')).toContainText(/Rajasthan University/i);
-
-    if (!testInfo.project.name.includes('mobile')) {
-      await page.waitForTimeout(600);
-      await page.screenshot({
-        path: path.join(QA_SCREENSHOT_DIR, '03-marquee-and-about.png'),
-      });
-    }
-
-    const resumeBtn = page.getByTestId('resume-download-btn');
-    await expect(resumeBtn).toBeVisible();
-    const resumeHref = await resumeBtn.getAttribute('href');
-    expect(resumeHref).toBe('/assets/Dev-Kumawat-Resume.pdf');
-
-    const pdfRes = await request.get(resumeHref!);
-    expect(pdfRes.status()).toBe(200);
-    expect(pdfRes.headers()['content-type']).toContain('application/pdf');
   });
 
   test('3. White Editorial Services Sheet, Custom-Quote Pricing, Sticky Stacked Projects & Conversion Wiring', async ({
