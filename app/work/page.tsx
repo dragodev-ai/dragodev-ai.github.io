@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getPublicProjects, projectsManifest } from '@/lib/content';
 import { PortfolioExplorer } from '@/components/portfolio/PortfolioExplorer';
 import { CinemaVideoPlayerModal } from '@/components/portfolio/CinemaVideoPlayerModal';
@@ -21,14 +21,24 @@ export default function WorkPortfolioPage() {
 
   return (
     <main className="relative min-h-screen bg-transparent pt-24">
-      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 pt-4 sm:px-8">
         <Link
           href="/"
           data-glow-btn=""
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-200 transition hover:text-white"
+          className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#070D22]/85 px-4 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_8px_24px_rgba(0,0,0,0.45)] backdrop-blur-xl transition hover:border-white/45"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           BACK TO STUDIO HOME
+        </Link>
+
+        <Link
+          href="/#contact"
+          data-glow-btn=""
+          data-cta-gold=""
+          className="btn-cta-gold inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-condensed text-xs font-extrabold uppercase tracking-[0.2em]"
+        >
+          HIRE ME NOW
+          <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
       </div>
 

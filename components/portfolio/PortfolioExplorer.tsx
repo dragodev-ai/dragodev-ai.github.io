@@ -100,17 +100,17 @@ export function PortfolioExplorer({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Header */}
-        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/15 pb-phi-2 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
+            <span className="mb-2 block font-mono text-phi-xs font-bold uppercase tracking-[0.2em] text-amber-300">
               VERIFIED CLIENT VAULT · {visibleProjects.length} REAL DELIVERIES
             </span>
             {isStandalonePage ? (
-              <h1 className="break-words font-display text-phi-xl font-extrabold uppercase text-white">
+              <h1 className="break-words font-display text-phi-xl font-extrabold uppercase text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.5)]">
                 {heading}
               </h1>
             ) : (
-              <h2 className="break-words font-display text-phi-xl font-extrabold uppercase text-white">
+              <h2 className="break-words font-display text-phi-xl font-extrabold uppercase text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.5)]">
                 {heading}
               </h2>
             )}
@@ -119,7 +119,7 @@ export function PortfolioExplorer({
           {/* Search Input + Grid/List + Sort Controls */}
           <div className="flex w-full flex-wrap items-center gap-3 lg:w-auto">
             <div className="relative min-w-0 flex-1 sm:min-w-[240px] sm:w-72">
-              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-300" />
               <input
                 type="search"
                 suppressHydrationWarning
@@ -131,37 +131,37 @@ export function PortfolioExplorer({
                 placeholder="Search brand, reel, category..."
                 aria-label="Search portfolio projects"
                 data-testid="portfolio-search-input"
-                className="w-full rounded-xl border border-white/15 bg-[#12121a] py-2.5 pl-10 pr-9 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                className="w-full rounded-xl border border-white/25 bg-[#070C1E]/90 py-2.5 pl-10 pr-9 text-sm text-white placeholder-zinc-300 focus:border-amber-400 focus:outline-none"
               />
               {searchQuery && (
                 <button
                   type="button"
                   aria-label="Clear search"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-300 hover:text-white"
                 >
                   <X className="h-4 w-4" />
                 </button>
               )}
             </div>
 
-            <div className="inline-flex items-center gap-1.5 rounded-xl border border-white/12 bg-[#12121a] px-2.5 py-2">
-              <SlidersHorizontal className="h-3.5 w-3.5 text-zinc-400" />
+            <div className="inline-flex items-center gap-1.5 rounded-xl border border-white/20 bg-[#070C1E]/90 px-2.5 py-2">
+              <SlidersHorizontal className="h-3.5 w-3.5 text-amber-300" />
               <select
                 suppressHydrationWarning
                 aria-label="Sort portfolio projects"
                 data-testid="portfolio-sort-select"
                 value={sortMode}
                 onChange={(e) => setSortMode(e.target.value as 'featured' | 'latest' | 'az')}
-                className="bg-transparent font-mono text-xs uppercase text-zinc-200 focus:outline-none"
+                className="bg-transparent font-mono text-xs font-semibold uppercase text-white focus:outline-none"
               >
-                <option value="featured" className="bg-[#12121a]">
+                <option value="featured" className="bg-[#070C1E]">
                   Featured First
                 </option>
-                <option value="latest" className="bg-[#12121a]">
+                <option value="latest" className="bg-[#070C1E]">
                   Latest Modified
                 </option>
-                <option value="az" className="bg-[#12121a]">
+                <option value="az" className="bg-[#070C1E]">
                   Title A–Z
                 </option>
               </select>
@@ -171,7 +171,7 @@ export function PortfolioExplorer({
             <div
               role="group"
               aria-label="Layout toggle"
-              className="inline-flex gap-1 rounded-xl border border-white/12 bg-[#12121a] p-1"
+              className="inline-flex gap-1 rounded-xl border border-white/20 bg-[#070C1E]/90 p-1"
             >
               <button
                 type="button"
@@ -182,8 +182,8 @@ export function PortfolioExplorer({
                 onClick={() => setLayoutMode('grid')}
                 className={`rounded-lg border p-1.5 transition ${
                   layoutMode === 'grid'
-                    ? 'border-[#60A5FA]/50 bg-[#3B63FF] text-white'
-                    : 'border-transparent text-zinc-400 hover:text-white'
+                    ? 'border-[#60A5FA]/60 bg-[#3B63FF] text-white'
+                    : 'border-transparent text-zinc-200 hover:text-white'
                 }`}
               >
                 <Grid className="h-4 w-4" />
@@ -197,8 +197,8 @@ export function PortfolioExplorer({
                 onClick={() => setLayoutMode('list')}
                 className={`rounded-lg border p-1.5 transition ${
                   layoutMode === 'list'
-                    ? 'border-[#60A5FA]/50 bg-[#3B63FF] text-white'
-                    : 'border-transparent text-zinc-400 hover:text-white'
+                    ? 'border-[#60A5FA]/60 bg-[#3B63FF] text-white'
+                    : 'border-transparent text-zinc-200 hover:text-white'
                 }`}
               >
                 <List className="h-4 w-4" />
@@ -222,8 +222,8 @@ export function PortfolioExplorer({
             onClick={() => handleCategoryChange('ALL')}
             className={`rounded-full border px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] transition active:scale-[0.97] ${
               selectedCategory === 'ALL'
-                ? 'border-[#60A5FA]/60 bg-[#3B63FF] text-white shadow-[0_6px_22px_rgba(59,99,255,0.45)]'
-                : 'border-white/12 bg-[#12121a] text-zinc-300 hover:text-white'
+                ? 'border-[#60A5FA]/70 bg-[#3B63FF] text-white shadow-[0_6px_22px_rgba(59,99,255,0.5)]'
+                : 'border-white/20 bg-[#070C1E]/85 text-zinc-100 hover:border-amber-300/60 hover:text-white'
             }`}
           >
             ALL ({projects.length})
@@ -244,8 +244,8 @@ export function PortfolioExplorer({
                 onClick={() => handleCategoryChange(cat.name)}
                 className={`rounded-full border px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.16em] transition ${
                   active
-                    ? 'border-[#60A5FA]/60 bg-[#3B63FF] text-white shadow-[0_6px_22px_rgba(59,99,255,0.45)]'
-                    : 'border-white/12 bg-[#12121a] text-zinc-300 hover:text-white'
+                    ? 'border-[#60A5FA]/70 bg-[#3B63FF] text-white shadow-[0_6px_22px_rgba(59,99,255,0.5)]'
+                    : 'border-white/20 bg-[#070C1E]/85 text-zinc-100 hover:border-amber-300/60 hover:text-white'
                 }`}
               >
                 {cat.name} ({count})
@@ -259,17 +259,17 @@ export function PortfolioExplorer({
           <div className="flex flex-wrap items-center gap-2">
             {activeCategoryNode && activeCategoryNode.subcategories.length > 0 && (
               <>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-500">
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-amber-300">
                   SUBFOLDERS:
                 </span>
                 <button
                   type="button"
                   data-glow-btn=""
                   onClick={() => setSelectedSubcategory('ALL')}
-                  className={`rounded-lg border px-3 py-1 font-mono text-xs ${
+                  className={`rounded-lg border px-3 py-1 font-mono text-xs font-medium ${
                     selectedSubcategory === 'ALL'
-                      ? 'border-[#60A5FA]/50 bg-[#3B63FF]/20 text-blue-200'
-                      : 'border-white/10 bg-white/5 text-zinc-300 hover:bg-white/10'
+                      ? 'border-[#60A5FA]/60 bg-[#3B63FF]/35 text-white'
+                      : 'border-white/20 bg-[#070C1E]/80 text-zinc-100 hover:bg-white/15'
                   }`}
                 >
                   All {activeCategoryNode.name}
@@ -280,10 +280,10 @@ export function PortfolioExplorer({
                     type="button"
                     data-glow-btn=""
                     onClick={() => setSelectedSubcategory(sub.name)}
-                    className={`rounded-lg border px-3 py-1 font-mono text-xs ${
+                    className={`rounded-lg border px-3 py-1 font-mono text-xs font-medium ${
                       selectedSubcategory === sub.name
-                        ? 'border-[#60A5FA]/50 bg-[#3B63FF]/20 text-blue-200'
-                        : 'border-white/10 bg-white/5 text-zinc-300 hover:bg-white/10'
+                        ? 'border-[#60A5FA]/60 bg-[#3B63FF]/35 text-white'
+                        : 'border-white/20 bg-[#070C1E]/80 text-zinc-100 hover:bg-white/15'
                     }`}
                   >
                     {sub.name}
@@ -303,10 +303,10 @@ export function PortfolioExplorer({
                   setMediaFilter(mf);
                   setVisibleCount(initialPageSize);
                 }}
-                className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1 font-mono text-[11px] uppercase ${
+                className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-mono text-[11px] font-semibold uppercase ${
                   mediaFilter === mf
-                    ? 'border-[#60A5FA]/50 bg-[#3B63FF]/20 text-white'
-                    : 'border-white/10 bg-white/[0.03] text-zinc-400 hover:text-zinc-200'
+                    ? 'border-[#60A5FA]/60 bg-[#3B63FF]/35 text-white'
+                    : 'border-white/20 bg-[#070C1E]/80 text-zinc-200 hover:text-white'
                 }`}
               >
                 {mf === 'video' && <Film className="h-3 w-3" />}
@@ -321,7 +321,7 @@ export function PortfolioExplorer({
         {displayedProjects.length === 0 ? (
           <div
             data-glow=""
-            className="rounded-3xl border border-white/10 bg-[#12121a] p-12 text-center"
+            className="rounded-3xl border border-white/20 bg-[#070D22]/85 p-12 text-center backdrop-blur-xl"
           >
             <p className="font-sans text-lg font-semibold text-white">
               No portfolio items matched your current filter.
@@ -329,13 +329,14 @@ export function PortfolioExplorer({
             <button
               type="button"
               data-glow-btn=""
+              data-cta-gold=""
               onClick={() => {
                 setSelectedCategory('ALL');
                 setSelectedSubcategory('ALL');
                 setMediaFilter('ALL');
                 setSearchQuery('');
               }}
-              className="mt-4 rounded-full border border-[#60A5FA]/50 bg-[#3B63FF] px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white"
+              className="btn-cta-gold mt-4 rounded-full px-6 py-2.5 font-condensed text-xs font-extrabold uppercase tracking-[0.2em]"
             >
               RESET FILTERS
             </button>
@@ -355,7 +356,7 @@ export function PortfolioExplorer({
                 onFocus={() => void warmProjectMedia(project)}
                 onTouchStart={() => void warmProjectMedia(project)}
                 data-testid={`explorer-card-${project.id}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.045] text-left backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#3B63FF]/60 hover:bg-white/[0.07] hover:shadow-[0_18px_40px_rgba(59,99,255,0.24)]"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-white/20 bg-[#070D22]/85 text-left shadow-[0_14px_34px_rgba(0,0,0,0.45)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-amber-300/60 hover:bg-[#0B1432]/90 hover:shadow-[0_18px_40px_rgba(59,99,255,0.28)]"
               >
                 <div className="relative aspect-video w-full overflow-hidden bg-black">
                   <img
@@ -379,11 +380,11 @@ export function PortfolioExplorer({
                     }}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent opacity-80" />
-                  <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/70 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-200 backdrop-blur-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-transparent to-transparent opacity-85" />
+                  <span className="absolute left-3 top-3 rounded-full border border-white/25 bg-[#050814]/85 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                     {project.subcategory ? `${project.category} · ${project.subcategory}` : project.category}
                   </span>
-                  <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white transition group-hover:border-[#60A5FA] group-hover:bg-[#3B63FF]">
+                  <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-[#050814]/85 text-white transition group-hover:border-amber-300 group-hover:bg-amber-400 group-hover:text-zinc-950">
                     {project.mediaType === 'video' ? (
                       <Play className="h-4 w-4 fill-current" />
                     ) : (
@@ -393,10 +394,10 @@ export function PortfolioExplorer({
                 </div>
 
                 <div className="flex items-center justify-between gap-3 px-4 py-3.5">
-                  <h3 className="line-clamp-1 font-sans text-sm font-bold text-white group-hover:text-blue-200 sm:text-base">
+                  <h3 className="line-clamp-1 font-sans text-sm font-bold text-white group-hover:text-amber-200 sm:text-base">
                     {project.title}
                   </h3>
-                  <span className="shrink-0 font-mono text-[10px] tabular-nums text-zinc-500">
+                  <span className="shrink-0 font-mono text-[11px] font-medium tabular-nums text-zinc-200">
                     {project.year}
                   </span>
                 </div>
@@ -407,7 +408,7 @@ export function PortfolioExplorer({
           <div
             data-glow=""
             data-testid="portfolio-list"
-            className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#12121a]"
+            className="divide-y divide-white/15 rounded-2xl border border-white/20 bg-[#070D22]/85 backdrop-blur-xl"
           >
             {displayedProjects.map((project) => (
               <button
@@ -417,7 +418,7 @@ export function PortfolioExplorer({
                 onMouseEnter={() => void warmProjectMedia(project)}
                 onFocus={() => void warmProjectMedia(project)}
                 onTouchStart={() => void warmProjectMedia(project)}
-                className="group flex w-full items-center justify-between gap-4 p-4 text-left transition hover:bg-white/[0.03]"
+                className="group flex w-full items-center justify-between gap-4 p-4 text-left transition hover:bg-white/[0.06]"
               >
                 <div className="flex min-w-0 items-center gap-4">
                   <div className="relative h-16 w-28 shrink-0 overflow-hidden rounded-xl bg-black">
@@ -443,10 +444,10 @@ export function PortfolioExplorer({
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="truncate font-sans text-sm font-bold text-white group-hover:text-blue-200 sm:text-base">
+                    <p className="truncate font-sans text-sm font-bold text-white group-hover:text-amber-200 sm:text-base">
                       {project.title}
                     </p>
-                    <p className="mt-0.5 font-mono text-xs text-zinc-400">
+                    <p className="mt-0.5 font-mono text-xs text-zinc-200">
                       {project.category}
                       {project.subcategory ? ` / ${project.subcategory}` : ''} · {project.year}
                     </p>
@@ -454,7 +455,7 @@ export function PortfolioExplorer({
                 </div>
                 <span
                   data-glow-btn=""
-                  className="shrink-0 rounded-full border border-white/15 px-3.5 py-1.5 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 group-hover:border-[#60A5FA] group-hover:bg-[#3B63FF] group-hover:text-white"
+                  className="shrink-0 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-white group-hover:border-amber-300 group-hover:bg-amber-400 group-hover:text-zinc-950"
                 >
                   {project.mediaType === 'video' ? 'WATCH' : 'VIEW'}
                 </span>
@@ -469,9 +470,10 @@ export function PortfolioExplorer({
             <button
               type="button"
               data-glow-btn=""
+              data-cta-gold=""
               onClick={() => setVisibleCount((prev) => prev + 24)}
               data-testid="explorer-load-more"
-              className="rounded-full border border-[#3B63FF]/55 bg-[#3B63FF]/20 px-8 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#3B63FF]"
+              className="btn-cta-gold rounded-full px-8 py-3.5 font-condensed text-xs font-extrabold uppercase tracking-[0.22em]"
             >
               LOAD MORE PROJECTS ({filteredProjects.length - visibleCount} REMAINING)
             </button>

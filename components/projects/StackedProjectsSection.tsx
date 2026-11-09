@@ -59,9 +59,9 @@ export function StackedProjectsSection({
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Section Header */}
-        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
+            <span className="mb-2 block font-mono text-phi-xs font-bold uppercase text-amber-300">
               04 · DON&apos;T TAKE MY WORD FOR IT — WATCH WHAT SHIPPED
             </span>
             <h2
@@ -75,8 +75,9 @@ export function StackedProjectsSection({
           <Link
             href="/work"
             data-glow-btn=""
+            data-cta-gold=""
             onClick={() => playUiTick()}
-            className="inline-flex items-center gap-2 self-start rounded-full border border-[#3B63FF]/55 bg-[#3B63FF]/20 px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#3B63FF] active:scale-[0.98] lg:self-auto"
+            className="btn-cta-gold inline-flex items-center gap-2 self-start rounded-full border px-6 py-3 font-condensed text-xs font-extrabold uppercase tracking-[0.22em] transition active:scale-[0.98] lg:self-auto"
           >
             WATCH ALL {allProjects.length} PROOFS
             <ArrowUpRight className="h-4 w-4" />
@@ -96,7 +97,7 @@ export function StackedProjectsSection({
               onTouchStart={() => void warmProjectMedia(project)}
               style={{ top: `${88 + idx * 18}px` }}
               data-testid={`stacked-project-card-${idx}`}
-              className="relative overflow-hidden rounded-[28px] border border-white/18 bg-[#0A0F22]/68 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.68)] backdrop-blur-2xl will-change-transform sm:rounded-[32px] sm:p-phi-3 lg:sticky"
+              className="relative overflow-hidden rounded-[28px] border border-white/20 bg-[#080F24]/85 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.72)] backdrop-blur-2xl will-change-transform sm:rounded-[32px] sm:p-phi-3 lg:sticky"
             >
               {/* Golden Ratio Split: 1fr (38.2% Crisp Hook Copy) : 1.618fr (61.8% Cinema Frame) */}
               <div className="relative z-10 grid gap-phi-2 lg:grid-cols-[1fr_1.618fr] lg:items-center lg:gap-phi-3">
@@ -107,11 +108,11 @@ export function StackedProjectsSection({
                       <span className="font-mono text-sm font-bold text-amber-400">
                         {String(idx + 1).padStart(2, '0')}
                       </span>
-                      <span className="rounded-full border border-white/15 bg-white/[0.04] px-3 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-200">
+                      <span className="rounded-full border border-white/25 bg-white/10 px-3 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-white">
                         {project.category}
                       </span>
                       {project.verifiedLabel && (
-                        <span className="rounded-full border border-[#3B63FF]/35 bg-[#3B63FF]/20 px-3 py-0.5 font-mono text-[10px] text-blue-200">
+                        <span className="rounded-full border border-[#60A5FA]/50 bg-[#3B63FF]/30 px-3 py-0.5 font-mono text-[10px] font-semibold text-blue-100">
                           {project.verifiedLabel}
                         </span>
                       )}
@@ -121,7 +122,7 @@ export function StackedProjectsSection({
                       {project.title}
                     </h3>
 
-                    <p className="mt-3 max-w-[38ch] text-phi-base text-zinc-300">
+                    <p className="mt-3 max-w-[38ch] text-phi-base font-medium text-zinc-100">
                       {project.description}
                     </p>
                   </div>
@@ -134,7 +135,7 @@ export function StackedProjectsSection({
                         playUiTick();
                         openProject(project);
                       }}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#60A5FA]/45 bg-[#3B63FF] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#4F75FF] active:scale-[0.98]"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#93C5FD]/60 bg-[#3B63FF] px-6 py-3 font-condensed text-xs font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_8px_24px_rgba(59,99,255,0.45)] transition hover:bg-[#4F75FF] active:scale-[0.98]"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
                       WATCH PROOF
@@ -145,7 +146,7 @@ export function StackedProjectsSection({
                       target="_blank"
                       rel="noopener noreferrer"
                       data-glow-btn=""
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-4 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 transition hover:text-white active:scale-[0.98]"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-4 py-3 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/20 active:scale-[0.98]"
                     >
                       RAW SOURCE
                       <ExternalLink className="h-3.5 w-3.5" />
@@ -160,7 +161,7 @@ export function StackedProjectsSection({
                     data-glow-btn=""
                     onClick={() => openProject(project)}
                     aria-label={`Play ${project.title}`}
-                    className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/12 bg-black text-left"
+                    className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-black text-left"
                   >
                     <img
                       src={getProjectThumbnailUrl(project, 'w800')}

@@ -429,14 +429,14 @@ function BrandLogoLockup({ brand }: { brand: ClientBrandLogo }) {
     <div
       data-testid="brand-logo-item"
       aria-label={brand.name}
-      className="group/logo flex shrink-0 select-none items-center gap-10 text-zinc-400/90 transition-colors duration-300 hover:text-white sm:gap-14"
+      className="group/logo flex shrink-0 select-none items-center gap-10 text-zinc-100/95 transition-colors duration-300 hover:text-amber-200 sm:gap-14"
     >
       <div className="transition-transform duration-300 group-hover/logo:scale-[1.04]">
         {brand.renderLogo()}
       </div>
       <span
         aria-hidden="true"
-        className="h-1 w-1 shrink-0 rounded-full bg-white/15"
+        className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300/40"
       />
     </div>
   );
@@ -454,16 +454,16 @@ export function PortfolioMarquee() {
     <section
       aria-label="Brands and Organizations Worked With"
       data-testid="portfolio-marquee-section"
-      className="relative overflow-hidden border-y border-white/[0.10] bg-white/[0.03] py-phi-3 backdrop-blur-xl"
+      className="relative overflow-hidden border-y border-white/15 bg-[#060B1D]/65 py-phi-3 backdrop-blur-xl"
     >
       <div className="mx-auto mb-phi-2 flex max-w-7xl items-center justify-between px-4 sm:px-8">
         <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-[#3B63FF] shadow-[0_0_10px_rgba(59,99,255,0.85)]" />
-          <span className="font-mono text-phi-xs font-semibold uppercase text-zinc-300">
+          <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.9)]" />
+          <span className="font-mono text-phi-xs font-bold uppercase text-white">
             BRANDS &amp; ORGANIZATIONS I&apos;VE WORKED WITH
           </span>
         </div>
-        <span className="hidden font-mono text-phi-xs uppercase text-zinc-500 sm:inline">
+        <span className="hidden font-mono text-phi-xs font-semibold uppercase text-amber-300 sm:inline">
           20+ VERIFIED CLIENTS · INDIA &amp; GLOBAL
         </span>
       </div>

@@ -307,6 +307,48 @@ nextjs-portal [data-nextjs-toast] {
 }
 
 /* ==========================================================================
+   HIGH-CONVERSION SOLAR-GOLD CTA ENGINE (.btn-cta-gold)
+   Applies Von Restorff complementary warmth + 13.5:1 obsidian-on-gold contrast
+   so primary selling actions ("Hire Me", "Contact Us", "Claim Slot") command
+   immediate focal priority over cool sapphire glass surfaces.
+   ========================================================================== */
+.btn-cta-gold {
+  background: linear-gradient(180deg, #fef08a 0%, #fbbf24 48%, #f59e0b 100%);
+  color: #050814 !important;
+  border-color: rgba(254, 240, 138, 0.85) !important;
+  box-shadow:
+    0 0 28px rgba(251, 191, 36, 0.42),
+    0 10px 26px rgba(2, 6, 23, 0.55),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-cta-gold:hover,
+.btn-cta-gold:focus-visible {
+  background: linear-gradient(180deg, #fef9c3 0%, #fcd34d 48%, #fbbf24 100%) !important;
+  color: #03050c !important;
+  border-color: #ffffff !important;
+  box-shadow:
+    0 0 36px rgba(251, 191, 36, 0.68),
+    0 12px 30px rgba(2, 6, 23, 0.62),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-glow-btn][data-cta-gold]::before {
+  background-image: conic-gradient(
+    from var(--liquid-angle),
+    rgba(255, 255, 255, 0.98) 0deg,
+    rgba(253, 224, 71, 0.96) 64deg,
+    rgba(245, 158, 11, 0.65) 128deg,
+    rgba(255, 255, 255, 0.98) 196deg,
+    rgba(251, 191, 36, 0.95) 268deg,
+    rgba(254, 240, 138, 0.95) 326deg,
+    rgba(255, 255, 255, 0.98) 360deg
+  );
+  opacity: 0.92;
+}
+
+/* ==========================================================================
    GLASSMORPHISM CURSOR OPTICS (Fine-Pointer Desktop Only)
    ========================================================================== */
 @media (pointer: fine) {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { Download, ExternalLink, GraduationCap, MapPin } from 'lucide-react';
+import { ArrowUpRight, Download, ExternalLink, GraduationCap, MapPin } from 'lucide-react';
 import { profileContent } from '@/lib/content';
 import { GlowCard } from '@/components/ui/spotlight-card';
 
@@ -23,9 +23,9 @@ export function AboutSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Section Header */}
-        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+            <span className="mb-2 block font-mono text-phi-xs font-bold uppercase text-amber-300">
               01 · WHY BRANDS &amp; LEADERS HIRE DEV
             </span>
             <h2
@@ -36,14 +36,23 @@ export function AboutSection() {
             </h2>
           </div>
 
-          {/* Verified Resume PDF Download & View CTA */}
+          {/* Primary Selling "HIRE ME" CTA + Verified Resume PDF & Portfolio Sheet */}
           <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#contact"
+              data-glow-btn=""
+              data-cta-gold=""
+              className="btn-cta-gold inline-flex items-center gap-2 rounded-full border px-6 py-3 font-condensed text-xs font-extrabold uppercase tracking-[0.22em] transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+            >
+              HIRE ME
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
             <a
               href={profileContent.resume.primaryPdfUrl}
               download={profileContent.resume.downloadFileName}
               data-glow-btn=""
               data-testid="resume-download-btn"
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 bg-white px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-blue-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/40 bg-white px-6 py-3 font-condensed text-xs font-extrabold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-blue-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
             >
               <Download className="h-4 w-4" />
               RESUME (PDF)
@@ -53,7 +62,7 @@ export function AboutSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-glow-btn=""
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.2em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#3B63FF]/30 active:scale-[0.98]"
             >
               PORTFOLIO SHEET
               <ExternalLink className="h-3.5 w-3.5" />
@@ -71,7 +80,7 @@ export function AboutSection() {
               </span>
             </p>
 
-            <p className="max-w-[50ch] text-phi-base text-zinc-300">
+            <p className="max-w-[52ch] text-phi-base font-medium text-zinc-100">
               {profileContent.bio.paragraphs[0]}
             </p>
 
@@ -82,12 +91,12 @@ export function AboutSection() {
                   key={st.label}
                   customSize
                   glowColor="blue"
-                  className="rounded-2xl border border-white/15 bg-white/[0.045] p-4 backdrop-blur-xl"
+                  className="rounded-2xl border border-white/20 bg-[#070D22]/80 p-4 backdrop-blur-xl"
                 >
                   <span className="block font-sans text-3xl font-extrabold tabular-nums tracking-[-0.03em] text-amber-300 sm:text-4xl">
                     {st.value}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-300">
+                  <span className="mt-1 block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-100">
                     {st.label}
                   </span>
                 </GlowCard>
@@ -98,7 +107,7 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="divide-y divide-white/[0.08] rounded-3xl border border-white/15 bg-white/[0.04] px-5 py-2 backdrop-blur-xl sm:px-6"
+              className="divide-y divide-white/10 rounded-3xl border border-white/20 bg-[#070D22]/80 px-5 py-2 backdrop-blur-xl sm:px-6"
             >
               {profileContent.highlights.map((hl) => (
                 <div
@@ -111,10 +120,10 @@ export function AboutSection() {
                       <h3 className="font-sans text-sm font-bold text-white sm:text-base">
                         {hl.title}
                       </h3>
-                      <p className="font-mono text-[11px] text-[#7C9BFF]">{hl.subtitle}</p>
+                      <p className="font-mono text-[11px] font-medium text-[#93C5FD]">{hl.subtitle}</p>
                     </div>
                   </div>
-                  <p className="max-w-[36ch] text-xs leading-[1.618] text-zinc-400 sm:text-right">
+                  <p className="max-w-[36ch] text-xs font-medium leading-[1.618] text-zinc-200 sm:text-right">
                     {hl.detail}
                   </p>
                 </div>
@@ -127,7 +136,7 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="overflow-hidden rounded-3xl border border-white/16 bg-white/[0.045] p-2.5 shadow-2xl backdrop-blur-xl"
+              className="overflow-hidden rounded-3xl border border-white/20 bg-[#070D22]/80 p-2.5 shadow-2xl backdrop-blur-xl"
             >
               <div className="relative aspect-[1/1.18] overflow-hidden rounded-2xl bg-[#0a0a0f]">
                 <img
@@ -136,11 +145,11 @@ export function AboutSection() {
                   loading="lazy"
                   className="h-full w-full object-cover object-top"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#070709] via-[#070709]/65 to-transparent p-5">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#050814] via-[#050814]/80 to-transparent p-5">
                   <p className="font-display text-xl font-bold uppercase tracking-tight text-white">
                     {profileContent.name}
                   </p>
-                  <p className="mt-0.5 flex items-center gap-1.5 font-mono text-xs text-amber-300">
+                  <p className="mt-0.5 flex items-center gap-1.5 font-mono text-xs font-semibold text-amber-300">
                     <MapPin className="h-3.5 w-3.5" />
                     {profileContent.location.display} · Worldwide
                   </p>
@@ -152,25 +161,25 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="rounded-2xl border border-white/15 bg-white/[0.045] p-5 backdrop-blur-xl"
+              className="rounded-2xl border border-white/20 bg-[#070D22]/80 p-5 backdrop-blur-xl"
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7C9BFF]">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber-300">
                   <GraduationCap className="h-3.5 w-3.5" />
                   VERIFIED CREDENTIAL
                 </span>
-                <span className="font-mono text-[11px] text-zinc-500">
+                <span className="font-mono text-[11px] font-medium text-zinc-200">
                   {profileContent.education.period}
                 </span>
               </div>
               <h3 className="mt-1.5 text-sm font-bold text-white">
                 {profileContent.education.degree} — {profileContent.education.institution}
               </h3>
-              <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.08] pt-3.5">
+              <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/10 pt-3.5">
                 {profileContent.software.map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-zinc-300"
+                    className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-[10px] font-medium text-zinc-100"
                   >
                     {tool}
                   </span>
@@ -181,12 +190,12 @@ export function AboutSection() {
         </div>
 
         {/* Single Clean Trusted-By Brand Proof Strip */}
-        <div className="mt-phi-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/[0.08] pt-phi-2">
-          <span className="font-mono text-phi-xs font-semibold uppercase text-zinc-500">
+        <div className="mt-phi-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/15 pt-phi-2">
+          <span className="font-mono text-phi-xs font-bold uppercase text-amber-300">
             PROVEN ACROSS 21+ BRANDS:
           </span>
           {profileContent.collaboratedBrands.slice(0, 10).map((brand) => (
-            <span key={brand} className="font-mono text-xs text-zinc-300">
+            <span key={brand} className="font-mono text-xs font-medium text-zinc-100">
               {brand}
             </span>
           ))}

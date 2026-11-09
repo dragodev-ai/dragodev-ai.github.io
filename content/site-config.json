@@ -23,7 +23,7 @@
       { "label": "PROJECTS", "href": "/#projects", "sectionId": "projects" },
       { "label": "WORK ARCHIVE", "href": "/work", "sectionId": "work" }
     ],
-    "right": [{ "label": "CONTACT", "href": "/#contact", "sectionId": "contact" }]
+    "right": [{ "label": "CONTACT US", "href": "/#contact", "sectionId": "contact" }]
   },
   "studio": {
     "characterModelPath": "/models/dev-character.glb",

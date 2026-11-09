@@ -67,8 +67,8 @@ export function FixedGlassNavbar() {
 
   const navLinkClass = (sectionId: string) => {
     const active = activeSection === sectionId;
-    return `relative inline-flex items-center whitespace-nowrap px-2.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] rounded-md ${
-      active ? 'text-white' : 'text-zinc-300/85 hover:text-white'
+    return `relative inline-flex items-center whitespace-nowrap px-2.5 py-1.5 font-condensed text-[13px] font-bold uppercase tracking-[0.22em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] rounded-md ${
+      active ? 'text-white' : 'text-zinc-100 hover:text-amber-300'
     }`;
   };
 
@@ -79,8 +79,8 @@ export function FixedGlassNavbar() {
         data-glow=""
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-7 ${
           scrolled
-            ? 'border-white/20 bg-[#080D1F]/58 shadow-[0_16px_44px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl backdrop-saturate-150'
-            : 'border-white/18 bg-[#080D1F]/44 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-2xl backdrop-saturate-150'
+            ? 'border-white/25 bg-[#050918]/90 shadow-[0_16px_44px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-2xl backdrop-saturate-150'
+            : 'border-white/20 bg-[#060B1D]/80 shadow-[0_12px_34px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl backdrop-saturate-150'
         }`}
       >
         {/* LEFT COLUMN: ABOUT (with subtle Studio Home dot) */}
@@ -91,12 +91,12 @@ export function FixedGlassNavbar() {
             aria-label="DEV STUDIO Home"
             className="group inline-flex items-center gap-2 rounded-md px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
           >
-            <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_10px_#f59e0b] transition-transform group-hover:scale-125" />
-            <span className="whitespace-nowrap font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300 group-hover:text-white">
+            <span className="h-2.5 w-2.5 rounded-full bg-amber-400 shadow-[0_0_12px_#fbbf24] transition-transform group-hover:scale-125" />
+            <span className="whitespace-nowrap font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-white group-hover:text-amber-200">
               DEV STUDIO
             </span>
           </Link>
-          <span className="hidden h-3.5 w-px bg-white/15 lg:inline-block" aria-hidden="true" />
+          <span className="hidden h-3.5 w-px bg-white/25 lg:inline-block" aria-hidden="true" />
           {siteConfigContent.navigation.left.map((item) => (
             <Link
               key={item.sectionId}
@@ -106,7 +106,7 @@ export function FixedGlassNavbar() {
             >
               {item.label}
               {activeSection === item.sectionId && (
-                <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-[#3B63FF] shadow-[0_0_8px_#3B63FF]" />
+                <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-amber-400 shadow-[0_0_8px_#fbbf24]" />
               )}
             </Link>
           ))}
@@ -117,7 +117,7 @@ export function FixedGlassNavbar() {
           {siteConfigContent.navigation.center.map((item, idx) => (
             <React.Fragment key={item.sectionId}>
               {idx > 0 && (
-                <span className="select-none text-[11px] text-white/20" aria-hidden="true">
+                <span className="select-none text-[11px] text-white/35" aria-hidden="true">
                   |
                 </span>
               )}
@@ -128,22 +128,33 @@ export function FixedGlassNavbar() {
               >
                 {item.label}
                 {activeSection === item.sectionId && (
-                  <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-[#3B63FF] shadow-[0_0_8px_#3B63FF]" />
+                  <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-amber-400 shadow-[0_0_8px_#fbbf24]" />
                 )}
               </Link>
             </React.Fragment>
           ))}
         </div>
 
-        {/* RIGHT COLUMN: CONTACT + Mobile/Tablet Menu Trigger */}
-        <div className="flex items-center justify-end gap-2.5">
+        {/* RIGHT COLUMN: HIGH-CONTRAST CONTACT US CTA + Mobile Quick-Hire & Menu Trigger */}
+        <div className="flex items-center justify-end gap-2 sm:gap-2.5">
+          <Link
+            href="/#contact"
+            data-glow-btn=""
+            data-cta-gold=""
+            onClick={(e) => handleNavClick(e, '/#contact', 'contact')}
+            className="btn-cta-gold inline-flex h-9 items-center justify-center rounded-full border px-3.5 font-condensed text-[11px] font-extrabold uppercase tracking-[0.16em] transition active:scale-[0.98] sm:hidden"
+          >
+            HIRE ME
+          </Link>
+
           {siteConfigContent.navigation.right.map((item) => (
             <LiquidMetalButton
               key={item.sectionId}
+              variant="cta"
               label={item.label}
               href={item.href}
-              width={118}
-              height={38}
+              width={142}
+              height={40}
               onClick={(e) =>
                 handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href, item.sectionId)
               }
@@ -161,7 +172,7 @@ export function FixedGlassNavbar() {
               playUiTick();
               setMobileOpen((prev) => !prev);
             }}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -172,7 +183,7 @@ export function FixedGlassNavbar() {
       {mobileOpen && (
         <div
           id="mobile-studio-nav"
-          className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0a0f]/95 p-4 shadow-2xl backdrop-blur-2xl sm:p-6 lg:hidden"
+          className="mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border border-white/20 bg-[#050918]/95 p-4 shadow-2xl backdrop-blur-2xl sm:p-6 lg:hidden"
         >
           <div className="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-2 sm:gap-x-8 sm:divide-y-0">
             {[
@@ -184,12 +195,12 @@ export function FixedGlassNavbar() {
                 key={item.sectionId}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-                className={`flex items-center justify-between border-white/10 py-3.5 font-condensed text-base font-semibold uppercase tracking-[0.22em] sm:border-b ${
-                  activeSection === item.sectionId ? 'text-[#7C9BFF]' : 'text-zinc-100'
+                className={`flex items-center justify-between border-white/10 py-3.5 font-condensed text-base font-bold uppercase tracking-[0.22em] sm:border-b ${
+                  activeSection === item.sectionId ? 'text-amber-300' : 'text-white'
                 }`}
               >
                 <span>{item.label}</span>
-                <span className="font-mono text-xs text-zinc-500">→</span>
+                <span className="font-mono text-xs text-amber-300">→</span>
               </Link>
             ))}
           </div>

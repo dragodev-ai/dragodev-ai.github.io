@@ -233,18 +233,18 @@ export function ContactAndBookingSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative scroll-mt-24 border-t border-white/12 bg-transparent py-phi-4 sm:py-phi-5"
+      className="relative scroll-mt-24 border-t border-white/20 bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Section Header */}
-        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
+            <span className="mb-2 block font-mono text-phi-xs font-bold uppercase tracking-[0.2em] text-amber-300">
               05 · STOP GAMBLING ON SLOW FREELANCERS
             </span>
             <h2
               id="contact-heading"
-              className="font-display text-phi-xl font-extrabold uppercase text-white"
+              className="font-display text-phi-xl font-extrabold uppercase text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.5)]"
             >
               HIRE DEV NOW
             </h2>
@@ -254,9 +254,9 @@ export function ContactAndBookingSection() {
             <a
               href={socialLinksContent.mailtoUrl}
               data-glow-btn=""
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 font-mono text-xs text-zinc-200 transition hover:text-white active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#070D22]/85 px-4 py-2.5 font-mono text-xs font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.4)] backdrop-blur-xl transition hover:border-amber-300/60 active:scale-[0.98]"
             >
-              <Mail className="h-3.5 w-3.5 text-[#7C9BFF]" />
+              <Mail className="h-3.5 w-3.5 text-amber-300" />
               {profileContent.contact.email}
             </a>
             <a
@@ -264,7 +264,7 @@ export function ContactAndBookingSection() {
               target="_blank"
               rel="noopener noreferrer"
               data-glow-btn=""
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-4 py-2.5 font-mono text-xs text-emerald-300 transition hover:bg-emerald-600 hover:text-white active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-400/50 bg-emerald-500/20 px-4 py-2.5 font-mono text-xs font-semibold text-emerald-200 shadow-[0_8px_20px_rgba(0,0,0,0.4)] backdrop-blur-xl transition hover:bg-emerald-600 hover:text-white active:scale-[0.98]"
             >
               <MessageCircle className="h-3.5 w-3.5" />
               {profileContent.contact.phone}
@@ -278,15 +278,16 @@ export function ContactAndBookingSection() {
           <GlowCard
             customSize
             glowColor="blue"
-            className="rounded-3xl border border-white/16 bg-white/[0.045] p-6 backdrop-blur-2xl sm:p-phi-3"
+            className="rounded-3xl border border-white/20 bg-[#070D22]/85 p-6 shadow-[0_24px_64px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-phi-3"
           >
             <div className="relative z-10">
               <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
                 SEND YOUR BRIEF
               </h3>
-              <p className="mt-1 text-sm text-zinc-400">
-                Direct to <span className="text-zinc-200">{profileContent.contact.email}</span> —
-                personal reply within hours.
+              <p className="mt-1 text-sm text-zinc-200">
+                Direct to{' '}
+                <span className="font-semibold text-amber-300">{profileContent.contact.email}</span>{' '}
+                — personal reply within hours.
               </p>
 
               <form
@@ -313,7 +314,7 @@ export function ContactAndBookingSection() {
                   <div>
                     <label
                       htmlFor="contact-fullname"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Full Name *
                     </label>
@@ -326,14 +327,14 @@ export function ContactAndBookingSection() {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="Your name or agency"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Email Address *
                     </label>
@@ -346,7 +347,7 @@ export function ContactAndBookingSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@company.com"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -355,7 +356,7 @@ export function ContactAndBookingSection() {
                   <div>
                     <label
                       htmlFor="contact-phone"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Phone / WhatsApp *
                     </label>
@@ -368,14 +369,14 @@ export function ContactAndBookingSection() {
                       value={phoneWhatsapp}
                       onChange={(e) => setPhoneWhatsapp(e.target.value)}
                       placeholder="+91 98XXXXXXXX"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-service"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Interested Service *
                     </label>
@@ -386,10 +387,10 @@ export function ContactAndBookingSection() {
                       data-testid="contact-service-select"
                       value={interestedService}
                       onChange={(e) => setInterestedService(e.target.value)}
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white focus:border-amber-400 focus:outline-none"
                     >
                       {siteConfigContent.enquiryServiceOptions.map((opt) => (
-                        <option key={opt} value={opt} className="bg-[#09090e]">
+                        <option key={opt} value={opt} className="bg-[#050814]">
                           {opt}
                         </option>
                       ))}
@@ -401,7 +402,7 @@ export function ContactAndBookingSection() {
                   <div className="sm:col-span-2 xl:col-span-1">
                     <label
                       htmlFor="contact-budget"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Project Budget *
                     </label>
@@ -411,10 +412,10 @@ export function ContactAndBookingSection() {
                       suppressHydrationWarning
                       value={projectBudget}
                       onChange={(e) => setProjectBudget(e.target.value)}
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-3 text-sm text-white focus:border-amber-400 focus:outline-none"
                     >
                       {siteConfigContent.budgetRanges.map((b) => (
-                        <option key={b} value={b} className="bg-[#09090e]">
+                        <option key={b} value={b} className="bg-[#050814]">
                           {b}
                         </option>
                       ))}
@@ -424,7 +425,7 @@ export function ContactAndBookingSection() {
                   <div>
                     <label
                       htmlFor="contact-date"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Preferred Meeting Date
                     </label>
@@ -435,14 +436,14 @@ export function ContactAndBookingSection() {
                       type="date"
                       value={preferredMeetingDate}
                       onChange={(e) => setPreferredMeetingDate(e.target.value)}
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-3 text-sm text-white focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-time"
-                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Preferred Time (IST)
                     </label>
@@ -454,7 +455,7 @@ export function ContactAndBookingSection() {
                       value={preferredMeetingTime}
                       onChange={(e) => setPreferredMeetingTime(e.target.value)}
                       placeholder="e.g. 4:00 PM IST"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
                 </div>
@@ -462,7 +463,7 @@ export function ContactAndBookingSection() {
                 <div>
                   <label
                     htmlFor="contact-ref"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                   >
                     Optional Reference Link (Drive, Instagram, YouTube, Brief)
                   </label>
@@ -474,14 +475,14 @@ export function ContactAndBookingSection() {
                     value={referenceLink}
                     onChange={(e) => setReferenceLink(e.target.value)}
                     placeholder="https://..."
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="contact-desc"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    className="mb-1.5 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                   >
                     Project Description *
                   </label>
@@ -494,11 +495,11 @@ export function ContactAndBookingSection() {
                     value={projectDescription}
                     onChange={(e) => setProjectDescription(e.target.value)}
                     placeholder="Tell Dev about your deliverables, style direction, platform, and target timeline..."
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-4 py-3 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                   />
                 </div>
 
-                <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-zinc-400">
+                <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-zinc-200">
                   <input
                     type="checkbox"
                     name="consent"
@@ -506,7 +507,7 @@ export function ContactAndBookingSection() {
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
                     data-testid="contact-consent-checkbox"
-                    className="mt-0.5 h-4 w-4 rounded border-white/25 bg-[#09090e] accent-[#3B63FF]"
+                    className="mt-0.5 h-4 w-4 rounded border-white/30 bg-[#050814] accent-amber-400"
                   />
                   <span>
                     Use my details solely to respond to this project brief. Never shared or sold.
@@ -519,12 +520,12 @@ export function ContactAndBookingSection() {
                     data-testid="contact-form-status"
                     className={`rounded-2xl border p-4 text-sm ${
                       contactStatus.type === 'success'
-                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
+                        ? 'border-emerald-400/50 bg-emerald-500/15 text-emerald-100'
                         : contactStatus.type === 'unconfigured'
-                        ? 'border-amber-500/40 bg-amber-500/10 text-amber-200'
+                        ? 'border-amber-400/50 bg-amber-500/15 text-amber-100'
                         : contactStatus.type === 'error'
-                        ? 'border-rose-500/40 bg-rose-500/10 text-rose-200'
-                        : 'border-white/15 bg-white/5 text-zinc-200'
+                        ? 'border-rose-400/50 bg-rose-500/15 text-rose-100'
+                        : 'border-white/20 bg-white/10 text-zinc-100'
                     }`}
                   >
                     <div className="flex items-start gap-2.5">
@@ -541,7 +542,7 @@ export function ContactAndBookingSection() {
                             <a
                               href={contactStatus.mailtoFallbackUrl}
                               data-glow-btn=""
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white px-3 py-1.5 font-mono text-xs font-bold text-zinc-950"
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-white/25 bg-white px-3 py-1.5 font-mono text-xs font-bold text-zinc-950"
                             >
                               OPEN PRE-FILLED EMAIL
                               <ExternalLink className="h-3 w-3" />
@@ -553,7 +554,7 @@ export function ContactAndBookingSection() {
                               target="_blank"
                               rel="noopener noreferrer"
                               data-glow-btn=""
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400/40 bg-emerald-600 px-3 py-1.5 font-mono text-xs font-bold text-white"
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400/50 bg-emerald-600 px-3 py-1.5 font-mono text-xs font-bold text-white"
                             >
                               SEND VIA WHATSAPP
                             </a>
@@ -567,16 +568,17 @@ export function ContactAndBookingSection() {
                 <button
                   type="submit"
                   data-glow-btn=""
+                  data-cta-gold=""
                   disabled={contactStatus.type === 'loading'}
                   data-testid="contact-submit-btn"
-                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-[#60A5FA]/50 bg-gradient-to-r from-[#3B63FF] to-[#2563EB] px-6 py-4 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-white shadow-[0_10px_30px_rgba(59,99,255,0.4)] transition hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
+                  className="btn-cta-gold inline-flex w-full items-center justify-center gap-2.5 rounded-2xl px-6 py-4 font-condensed text-sm font-extrabold uppercase tracking-[0.22em] disabled:opacity-60"
                 >
                   {contactStatus.type === 'loading' ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
                     <Send className="h-4 w-4" />
                   )}
-                  CLAIM YOUR PRODUCTION SLOT
+                  HIRE ME — CLAIM YOUR PRODUCTION SLOT
                 </button>
               </form>
             </div>
@@ -588,10 +590,10 @@ export function ContactAndBookingSection() {
             customSize
             glowColor="blue"
             data-testid="book-a-call-section"
-            className="flex flex-col justify-between rounded-3xl border border-white/16 bg-white/[0.045] p-6 backdrop-blur-2xl sm:p-phi-3"
+            className="flex flex-col justify-between rounded-3xl border border-white/20 bg-[#070D22]/85 p-6 shadow-[0_24px_64px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:p-phi-3"
           >
             <div className="relative z-10">
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-300">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/45 bg-amber-500/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber-200">
                 <Clock className="h-3.5 w-3.5" />
                 {siteConfigContent.booking.timezoneLabel}
               </div>
@@ -599,13 +601,13 @@ export function ContactAndBookingSection() {
               <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
                 15-MIN STRATEGY CALL
               </h3>
-              <p className="mt-2 text-sm leading-[1.618] text-zinc-400">
+              <p className="mt-2 text-sm leading-[1.618] text-zinc-200">
                 {siteConfigContent.booking.modeNote}
               </p>
 
               {configuredCalendlyUrl ? (
                 <div className="mt-6 space-y-4">
-                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#09090e]">
+                  <div className="overflow-hidden rounded-2xl border border-white/20 bg-[#050814]">
                     <iframe
                       src={configuredCalendlyUrl}
                       title="Schedule a call with Dev Kumawat"
@@ -617,7 +619,7 @@ export function ContactAndBookingSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-glow-btn=""
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white px-5 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-950"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white px-5 py-3 font-condensed text-xs font-extrabold uppercase tracking-[0.2em] text-zinc-950"
                   >
                     OPEN SCHEDULER IN NEW TAB
                     <ExternalLink className="h-4 w-4" />
@@ -644,7 +646,7 @@ export function ContactAndBookingSection() {
                   <div>
                     <label
                       htmlFor="book-name"
-                      className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Your Name *
                     </label>
@@ -656,7 +658,7 @@ export function ContactAndBookingSection() {
                       value={bookName}
                       onChange={(e) => setBookName(e.target.value)}
                       placeholder="Full name"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
@@ -664,7 +666,7 @@ export function ContactAndBookingSection() {
                     <div>
                       <label
                         htmlFor="book-email"
-                        className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                        className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                       >
                         Email *
                       </label>
@@ -676,13 +678,13 @@ export function ContactAndBookingSection() {
                         value={bookEmail}
                         onChange={(e) => setBookEmail(e.target.value)}
                         placeholder="you@domain.com"
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                        className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="book-phone"
-                        className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                        className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                       >
                         WhatsApp / Phone *
                       </label>
@@ -694,7 +696,7 @@ export function ContactAndBookingSection() {
                         value={bookPhone}
                         onChange={(e) => setBookPhone(e.target.value)}
                         placeholder="+91..."
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                        className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -703,7 +705,7 @@ export function ContactAndBookingSection() {
                     <div>
                       <label
                         htmlFor="book-date"
-                        className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                        className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                       >
                         Preferred Date *
                       </label>
@@ -714,14 +716,14 @@ export function ContactAndBookingSection() {
                         required
                         value={bookDate}
                         onChange={(e) => setBookDate(e.target.value)}
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                        className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="book-time"
-                        className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                        className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                       >
                         Preferred Window (IST) *
                       </label>
@@ -730,7 +732,7 @@ export function ContactAndBookingSection() {
                         suppressHydrationWarning
                         value={bookTime}
                         onChange={(e) => setBookTime(e.target.value)}
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                        className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
                       >
                         <option value="11:00 AM – 1:00 PM IST">11:00 AM – 1:00 PM IST</option>
                         <option value="2:00 PM – 5:00 PM IST">2:00 PM – 5:00 PM IST</option>
@@ -745,7 +747,7 @@ export function ContactAndBookingSection() {
                   <div>
                     <label
                       htmlFor="book-topic"
-                      className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Call Topic *
                     </label>
@@ -756,14 +758,14 @@ export function ContactAndBookingSection() {
                       required
                       value={bookTopic}
                       onChange={(e) => setBookTopic(e.target.value)}
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="book-notes"
-                      className="mb-1 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                      className="mb-1 block font-mono text-[11px] font-semibold uppercase tracking-wider text-zinc-100"
                     >
                       Agenda / Notes
                     </label>
@@ -774,18 +776,18 @@ export function ContactAndBookingSection() {
                       value={bookNotes}
                       onChange={(e) => setBookNotes(e.target.value)}
                       placeholder="Optional context for our 15-minute discovery call..."
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                      className="w-full rounded-xl border border-white/25 bg-[#050814]/95 px-3.5 py-2.5 text-sm text-white placeholder-zinc-400 focus:border-amber-400 focus:outline-none"
                     />
                   </div>
 
-                  <label className="flex cursor-pointer items-start gap-2.5 text-xs text-zinc-400">
+                  <label className="flex cursor-pointer items-start gap-2.5 text-xs text-zinc-200">
                     <input
                       type="checkbox"
                       suppressHydrationWarning
                       checked={bookConsent}
                       onChange={(e) => setBookConsent(e.target.checked)}
                       data-testid="booking-consent-checkbox"
-                      className="mt-0.5 h-4 w-4 rounded accent-[#3B63FF]"
+                      className="mt-0.5 h-4 w-4 rounded accent-amber-400"
                     />
                     <span>Confirm call request in Asia/Kolkata (IST) timezone.</span>
                   </label>
@@ -794,14 +796,14 @@ export function ContactAndBookingSection() {
                     <div
                       role="status"
                       data-testid="booking-form-status"
-                      className="rounded-2xl border border-white/15 bg-[#09090e] p-3.5 text-xs text-zinc-200"
+                      className="rounded-2xl border border-white/20 bg-[#050814] p-3.5 text-xs text-zinc-100"
                     >
                       <p>{bookingStatus.message}</p>
                       {bookingStatus.mailtoFallbackUrl && (
                         <a
                           href={bookingStatus.mailtoFallbackUrl}
                           data-glow-btn=""
-                          className="mt-2 inline-flex items-center gap-1 rounded-lg border border-amber-300/50 bg-amber-400 px-3 py-1.5 font-mono text-[11px] font-bold text-zinc-950"
+                          className="mt-2 inline-flex items-center gap-1 rounded-lg border border-amber-300/60 bg-amber-400 px-3 py-1.5 font-mono text-[11px] font-bold text-zinc-950"
                         >
                           CONFIRM SLOT VIA EMAIL →
                         </a>
@@ -814,7 +816,7 @@ export function ContactAndBookingSection() {
                     data-glow-btn=""
                     disabled={bookingStatus.type === 'loading'}
                     data-testid="booking-submit-btn"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white px-5 py-3.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-[#E8F0FF] active:scale-[0.98] disabled:opacity-60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/40 bg-white px-5 py-3.5 font-condensed text-xs font-extrabold uppercase tracking-[0.22em] text-[#050814] shadow-[0_10px_28px_rgba(255,255,255,0.2)] transition hover:bg-amber-300 active:scale-[0.98] disabled:opacity-60"
                   >
                     <Calendar className="h-4 w-4" />
                     LOCK IN STRATEGY CALL (IST)
@@ -823,13 +825,13 @@ export function ContactAndBookingSection() {
               )}
             </div>
 
-            <div className="relative z-10 mt-6 border-t border-white/10 pt-4 text-xs text-zinc-400">
+            <div className="relative z-10 mt-6 border-t border-white/15 pt-4 text-xs text-zinc-200">
               Need an answer right now? Ping{' '}
               <a
                 href={getWhatsappDeepLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-emerald-400 underline underline-offset-4 hover:text-emerald-300"
+                className="font-bold text-emerald-300 underline underline-offset-4 hover:text-emerald-200"
               >
                 WhatsApp (+91 9309425465)
               </a>

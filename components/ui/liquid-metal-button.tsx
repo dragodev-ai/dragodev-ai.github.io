@@ -10,6 +10,7 @@ export interface LiquidMetalButtonProps {
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   viewMode?: 'text' | 'icon';
+  variant?: 'cta' | 'obsidian';
   href?: string;
   target?: string;
   rel?: string;
@@ -27,6 +28,7 @@ export function LiquidMetalButton({
   label = 'Get Started',
   onClick,
   viewMode = 'text',
+  variant = 'cta',
   href,
   target,
   rel,
@@ -133,8 +135,8 @@ export function LiquidMetalButton({
             u_fit: 0,
             u_rotation: 0,
             u_isImage: false,
-            u_colorBack: [0.04, 0.06, 0.14, 1],
-            u_colorTint: [0.23, 0.39, 1.0, 0.22],
+            u_colorBack: variant === 'cta' ? [0.22, 0.14, 0.02, 1] : [0.04, 0.06, 0.14, 1],
+            u_colorTint: variant === 'cta' ? [1.0, 0.78, 0.22, 0.48] : [0.23, 0.39, 1.0, 0.22],
           },
           undefined,
           reducedMotion ? 0 : 0.6,
@@ -153,7 +155,7 @@ export function LiquidMetalButton({
         shaderMount.current = null;
       }
     };
-  }, []);
+  }, [variant]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -289,10 +291,18 @@ export function LiquidMetalButton({
                 <span
                   className="font-condensed uppercase tracking-[0.18em]"
                   style={{
-                    fontSize: '12px',
-                    color: isHovered ? '#FFFFFF' : '#E6ECFF',
-                    fontWeight: 700,
-                    textShadow: '0px 1px 3px rgba(0, 0, 0, 0.75)',
+                    fontSize: '12.5px',
+                    color:
+                      variant === 'cta'
+                        ? '#040712'
+                        : isHovered
+                        ? '#FFFFFF'
+                        : '#F1F5F9',
+                    fontWeight: 800,
+                    textShadow:
+                      variant === 'cta'
+                        ? '0px 1px 0px rgba(255, 255, 255, 0.45)'
+                        : '0px 1px 3px rgba(0, 0, 0, 0.85)',
                     transition: 'color 0.25s ease',
                     whiteSpace: 'nowrap',
                   }}
@@ -303,7 +313,7 @@ export function LiquidMetalButton({
             )}
           </div>
 
-          {/* Inner Metallic Obsidian Core Pill */}
+          {/* Inner Core Pill (High-Contrast Solar Gold for Primary CTAs vs Metallic Obsidian) */}
           <div
             style={{
               position: 'absolute',
@@ -326,12 +336,19 @@ export function LiquidMetalButton({
                 height: `${dimensions.innerHeight}px`,
                 margin: '2px',
                 borderRadius: '100px',
-                background: isHovered
-                  ? 'linear-gradient(180deg, #1a2342 0%, #070913 100%)'
-                  : 'linear-gradient(180deg, #1d1e26 0%, #060609 100%)',
+                background:
+                  variant === 'cta'
+                    ? isHovered
+                      ? 'linear-gradient(180deg, #FEF9C3 0%, #FCD34D 48%, #FBBF24 100%)'
+                      : 'linear-gradient(180deg, #FEF08A 0%, #FBBF24 48%, #F59E0B 100%)'
+                    : isHovered
+                    ? 'linear-gradient(180deg, #1a2342 0%, #070913 100%)'
+                    : 'linear-gradient(180deg, #1d1e26 0%, #060609 100%)',
                 boxShadow: isPressed
-                  ? 'inset 0px 2px 4px rgba(0, 0, 0, 0.55), inset 0px 1px 2px rgba(0, 0, 0, 0.4)'
-                  : 'inset 0px 1px 0px rgba(255, 255, 255, 0.12)',
+                  ? 'inset 0px 2px 4px rgba(0, 0, 0, 0.45)'
+                  : variant === 'cta'
+                  ? 'inset 0px 1.5px 0px rgba(255, 255, 255, 0.82), inset 0px -1px 0px rgba(180, 83, 9, 0.45)'
+                  : 'inset 0px 1px 0px rgba(255, 255, 255, 0.16)',
                 transition:
                   'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.4s ease, height 0.4s ease, box-shadow 0.15s ease, background 0.25s ease',
               }}
@@ -360,15 +377,24 @@ export function LiquidMetalButton({
                 height: `${dimensions.height}px`,
                 width: `${dimensions.width}px`,
                 borderRadius: '100px',
-                boxShadow: isPressed
-                  ? '0px 0px 0px 1px rgba(59, 99, 255, 0.45), 0px 1px 3px 0px rgba(0, 0, 0, 0.45)'
-                  : isHovered
-                  ? '0px 0px 24px -2px rgba(59, 99, 255, 0.65), 0px 8px 16px rgba(0, 0, 0, 0.35)'
-                  : '0px 0px 0px 1px rgba(255, 255, 255, 0.14), 0px 10px 20px rgba(0, 0, 0, 0.35)',
+                boxShadow:
+                  variant === 'cta'
+                    ? isPressed
+                      ? '0px 0px 16px rgba(251, 191, 36, 0.45), 0px 2px 6px rgba(0, 0, 0, 0.5)'
+                      : isHovered
+                      ? '0px 0px 34px rgba(251, 191, 36, 0.78), 0px 10px 24px rgba(0, 0, 0, 0.5)'
+                      : '0px 0px 24px rgba(251, 191, 36, 0.46), 0px 8px 20px rgba(0, 0, 0, 0.48)'
+                    : isPressed
+                    ? '0px 0px 0px 1px rgba(59, 99, 255, 0.45), 0px 1px 3px 0px rgba(0, 0, 0, 0.45)'
+                    : isHovered
+                    ? '0px 0px 24px -2px rgba(59, 99, 255, 0.65), 0px 8px 16px rgba(0, 0, 0, 0.35)'
+                    : '0px 0px 0px 1px rgba(255, 255, 255, 0.14), 0px 10px 20px rgba(0, 0, 0, 0.35)',
                 transition:
                   'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.4s ease, height 0.4s ease, box-shadow 0.2s ease',
                 background:
-                  'conic-gradient(from 45deg, #f8fafc, #3b63ff, #0f172a, #93c5fd, #e2e8f0, #1e3a8a, #f8fafc)',
+                  variant === 'cta'
+                    ? 'conic-gradient(from 45deg, #ffffff, #fef08a, #f59e0b, #ffffff, #fbbf24, #fde047, #ffffff)'
+                    : 'conic-gradient(from 45deg, #f8fafc, #3b63ff, #0f172a, #93c5fd, #e2e8f0, #1e3a8a, #f8fafc)',
               }}
             >
               <div

@@ -195,7 +195,7 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
       aria-modal="true"
       aria-label={`${activeProject.title} — Cinema Player`}
       data-testid="cinema-player-modal"
-      className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto bg-black/88 p-3 backdrop-blur-xl sm:p-6"
+      className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto bg-black/90 p-3 backdrop-blur-xl sm:p-6"
       onClick={closeProject}
     >
       <div

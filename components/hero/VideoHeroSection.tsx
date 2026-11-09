@@ -253,12 +253,12 @@ export function VideoHeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1640px] flex-col items-center px-3 sm:px-6 lg:px-8">
         {/* Crisp Golden-Ratio Authority Hook Strip Above Cinema Stage */}
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center sm:mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/50 bg-amber-400/15 px-3 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-amber-200 shadow-[0_0_18px_rgba(251,191,36,0.2)]">
             8+ YEARS · 500+ SHIPPED CUTS
           </span>
-          <p className="font-sans text-xs font-medium tracking-[-0.01em] text-zinc-200 sm:text-sm">
+          <p className="font-sans text-xs font-medium tracking-[-0.01em] text-zinc-100 sm:text-sm">
             Stop losing viewers in 3 seconds —{' '}
-            <span className="font-semibold text-white">
+            <span className="font-bold text-white">
               visuals engineered to hold attention &amp; win clients.
             </span>
           </p>
@@ -269,7 +269,7 @@ export function VideoHeroSection() {
           ref={stageRef}
           data-glow=""
           data-testid="hero-video-stage"
-          className="group relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto"
+          className="group relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/20 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.18)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto"
         >
           <video
             ref={videoRef}
@@ -292,17 +292,17 @@ export function VideoHeroSection() {
           />
         </div>
 
-        {/* Sleek Cinema Control & Action Bar Below Video (Spotlight GlowCard + Blue-Glow Border Buttons) */}
+        {/* Sleek Cinema Control & Action Bar Below Video (Golden-Ratio Conversion Focus) */}
         <GlowCard
           customSize
           glowColor="blue"
-          className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/16 bg-[#090F24]/52 px-3.5 py-3 shadow-[0_16px_45px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-5 lg:max-w-[840px] xl:max-w-[900px] 2xl:max-w-[1040px]"
+          className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/20 bg-[#060C20]/80 px-3.5 py-3 shadow-[0_18px_50px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:px-5 lg:max-w-[860px] xl:max-w-[920px] 2xl:max-w-[1040px]"
         >
           {/* Interactive Timeline Scrubber with 24px Touch Hit Area */}
           <div className="relative mb-2.5 flex h-5 items-center">
-            <div className="pointer-events-none relative h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+            <div className="pointer-events-none relative h-1.5 w-full overflow-hidden rounded-full bg-white/15">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#3B63FF] to-[#7C9BFF] transition-[width] duration-100"
+                className="h-full rounded-full bg-gradient-to-r from-[#3B63FF] via-[#60A5FA] to-amber-300 transition-[width] duration-100"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -328,10 +328,10 @@ export function VideoHeroSection() {
                   data-glow-btn=""
                   data-testid="hero-sound-toggle"
                   onClick={toggleSound}
-                  className={`inline-flex min-h-[38px] items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.13em] transition sm:px-4 sm:text-xs ${
+                  className={`inline-flex min-h-[40px] items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.13em] transition sm:px-4 sm:text-xs ${
                     isMuted
-                      ? 'border-[#7C9BFF]/50 bg-[#3B63FF] text-white shadow-[0_0_24px_rgba(59,99,255,0.5)] hover:bg-[#5277FF]'
-                      : 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/25'
+                      ? 'border-[#93C5FD]/60 bg-[#3B63FF] text-white shadow-[0_0_24px_rgba(59,99,255,0.55)] hover:bg-[#5277FF]'
+                      : 'border-emerald-400/50 bg-emerald-500/20 text-emerald-100 hover:bg-emerald-500/30'
                   }`}
                 >
                   {isMuted ? (
@@ -353,7 +353,7 @@ export function VideoHeroSection() {
                   data-testid="hero-play-toggle"
                   onClick={togglePlay}
                   aria-label={isPlaying ? 'Pause showcase video' : 'Play showcase video'}
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
+                  className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-3 py-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3B63FF]/30"
                 >
                   {isPlaying ? (
                     <>
@@ -374,7 +374,7 @@ export function VideoHeroSection() {
                   data-testid="hero-restart-button"
                   onClick={restartWithSound}
                   aria-label="Replay showcase video from 0:00 with sound"
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
+                  className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-3 py-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3B63FF]/30"
                 >
                   <RotateCcw className="h-3.5 w-3.5 shrink-0" />
                   <span className="hidden lg:inline">Replay 0:00</span>
@@ -385,33 +385,34 @@ export function VideoHeroSection() {
                   data-glow-btn=""
                   onClick={handleFullscreen}
                   aria-label="Fullscreen video"
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
+                  className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-white/25 bg-white/10 p-2 text-white transition hover:bg-[#3B63FF]/30"
                 >
                   <Maximize2 className="h-3.5 w-3.5" />
                 </button>
               </div>
 
-              <span className="font-mono text-[11px] tabular-nums text-zinc-400">
+              <span className="font-mono text-[11px] font-medium tabular-nums text-zinc-200">
                 {formatTimecode(currentTime)} / {formatTimecode(duration)}
               </span>
             </div>
 
-            {/* Right Quick Portfolio & Contact CTAs */}
-            <div className="flex flex-wrap items-center justify-between gap-2 sm:justify-end">
+            {/* Right Quick Portfolio & High-Contrast Golden Ratio Primary "HIRE ME NOW" CTA */}
+            <div className="flex flex-wrap items-center justify-between gap-2.5 sm:justify-end">
               <Link
                 href="/work"
                 data-glow-btn=""
-                className="inline-flex min-h-[38px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:bg-[#3B63FF]/20 sm:flex-initial"
+                className="inline-flex min-h-[42px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[#3B63FF]/30 sm:flex-initial"
               >
                 <span>226+ Proofs</span>
-                <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
+                <ArrowDownRight className="h-3.5 w-3.5 shrink-0 text-[#93C5FD]" />
               </Link>
               <LiquidMetalButton
-                label="Hire Dev"
+                variant="cta"
+                label="HIRE ME NOW"
                 href="#contact"
-                width={132}
-                height={38}
-                icon={<ArrowDownRight className="h-3.5 w-3.5 shrink-0 text-blue-300" />}
+                width={158}
+                height={42}
+                icon={<ArrowDownRight className="h-4 w-4 shrink-0 text-[#050814]" />}
               />
             </div>
           </div>

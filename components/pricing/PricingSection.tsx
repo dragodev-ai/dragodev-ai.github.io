@@ -17,9 +17,9 @@ export function PricingSection() {
       className="relative scroll-mt-24 bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
+        <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-amber-400">
+            <span className="mb-2 block font-mono text-phi-xs font-bold uppercase text-amber-300">
               03 · ZERO-FLUFF PARTNERSHIPS
             </span>
             <h2
@@ -29,7 +29,7 @@ export function PricingSection() {
               {pricingContent.headline}
             </h2>
           </div>
-          <p className="max-w-[34ch] font-serif text-xl italic leading-[1.35] text-zinc-300 sm:text-2xl">
+          <p className="max-w-[34ch] font-serif text-xl italic leading-[1.35] text-zinc-100 sm:text-2xl">
             {pricingContent.subheadline}
           </p>
         </div>
@@ -43,17 +43,17 @@ export function PricingSection() {
               data-testid={`pricing-card-${pkg.id}`}
               className={`flex flex-col justify-between rounded-3xl border p-phi-2 transition-all duration-300 backdrop-blur-2xl sm:p-phi-3 ${
                 pkg.featured
-                  ? 'border-[#3B63FF]/60 bg-[#0B1433]/55 shadow-[0_24px_60px_rgba(59,99,255,0.22)]'
-                  : 'border-white/15 bg-white/[0.045]'
+                  ? 'border-amber-400/60 bg-[#08122E]/85 shadow-[0_24px_70px_rgba(59,99,255,0.28)]'
+                  : 'border-white/20 bg-[#070D22]/80'
               }`}
             >
               <div>
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <span
-                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.18em] ${
                       pkg.featured
-                        ? 'bg-[#3B63FF] text-white shadow-[0_0_20px_rgba(59,99,255,0.45)]'
-                        : 'border border-white/12 bg-white/[0.04] text-zinc-300'
+                        ? 'bg-amber-400 text-zinc-950 shadow-[0_0_20px_rgba(251,191,36,0.5)]'
+                        : 'border border-white/20 bg-white/10 text-zinc-100'
                     }`}
                   >
                     {pkg.featured && <Sparkles className="h-3 w-3" />}
@@ -64,21 +64,21 @@ export function PricingSection() {
                 <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white sm:text-3xl">
                   {pkg.title}
                 </h3>
-                <p className="mt-2 max-w-[42ch] text-phi-sm text-zinc-300">
+                <p className="mt-2 max-w-[42ch] text-phi-sm font-medium text-zinc-100">
                   {pkg.shortDescription}
                 </p>
 
                 {/* Verified Non-Fabricated Custom Quote Display */}
-                <div className="my-5 rounded-2xl border border-white/12 bg-black/30 px-4 py-3.5 backdrop-blur-md">
+                <div className="my-5 rounded-2xl border border-amber-400/30 bg-[#040817]/85 px-4 py-3.5 backdrop-blur-md">
                   <p className="font-serif text-lg italic text-amber-300 sm:text-xl">
                     {pkg.price}
                   </p>
                 </div>
 
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                   {pkg.deliverables.map((del) => (
-                    <li key={del} className="flex items-start gap-2.5 text-sm text-zinc-200">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7C9BFF]" />
+                    <li key={del} className="flex items-start gap-2.5 text-sm font-medium text-white">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
                       <span>{del}</span>
                     </li>
                   ))}
@@ -88,18 +88,19 @@ export function PricingSection() {
               <button
                 type="button"
                 data-glow-btn=""
+                data-cta-gold={pkg.featured ? '' : undefined}
                 data-testid={`pricing-cta-${pkg.id}`}
                 onClick={() => {
                   playUiTick();
                   selectServiceForEnquiry(pkg.serviceSelection);
                 }}
-                className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-6 py-3.5 font-condensed text-sm font-bold uppercase tracking-[0.22em] transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] ${
+                className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-6 py-3.5 font-condensed text-sm font-extrabold uppercase tracking-[0.22em] transition active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 ${
                   pkg.featured
-                    ? 'border-[#7C9BFF]/50 bg-[#3B63FF] text-white hover:bg-[#4F75FF]'
-                    : 'border-white/30 bg-white text-zinc-950 hover:bg-blue-50'
+                    ? 'btn-cta-gold'
+                    : 'border-white/40 bg-white text-zinc-950 shadow-[0_10px_28px_rgba(255,255,255,0.18)] hover:bg-amber-300'
                 }`}
               >
-                CLAIM YOUR CUSTOM QUOTE
+                {pkg.featured ? 'HIRE ME — CLAIM CUSTOM QUOTE' : 'CLAIM YOUR CUSTOM QUOTE'}
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </GlowCard>
@@ -110,13 +111,14 @@ export function PricingSection() {
         <GlowCard
           customSize
           glowColor="blue"
-          className="mt-phi-2 flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/10 bg-[#111116]/85 p-5 sm:flex-row sm:items-center sm:px-6"
+          className="mt-phi-2 flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/20 bg-[#070D22]/85 p-5 sm:flex-row sm:items-center sm:px-6"
         >
-          <p className="text-sm font-medium text-zinc-200">{pricingContent.individualProjectNote}</p>
+          <p className="text-sm font-semibold text-white">{pricingContent.individualProjectNote}</p>
           <LiquidMetalButton
+            variant="cta"
             label="SINGLE PROJECT QUOTE →"
-            width={224}
-            height={42}
+            width={234}
+            height={44}
             onClick={() => selectServiceForEnquiry('Individual Project Quote')}
           />
         </GlowCard>

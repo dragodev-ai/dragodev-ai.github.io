@@ -228,7 +228,7 @@ const GlowCard = React.forwardRef<HTMLDivElement, GlowCardProps>(
         data-glow=""
         style={inlineStyles}
         className={cn(
-          'relative rounded-2xl border border-white/12 bg-[#111116]/90 shadow-[0_1rem_2rem_-1rem_rgba(0,0,0,0.85)] backdrop-blur-[6px] transition-colors duration-300',
+          'relative rounded-2xl border border-white/20 bg-[#070D22]/80 shadow-[0_1rem_2rem_-1rem_rgba(0,0,0,0.85)] backdrop-blur-xl transition-colors duration-300',
           !customSize && [sizeMap[size], 'aspect-[3/4] grid grid-rows-[1fr_auto] gap-4 p-4'],
           className
         )}
