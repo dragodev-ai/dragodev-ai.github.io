@@ -287,7 +287,7 @@ const html = `<!DOCTYPE html>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <a href="#archive" data-glow-btn="" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-wider text-zinc-100 transition hover:border-[#3B63FF]">
-              232+ Proofs ↓
+              ${publicProjects.length}+ Proofs ↓
             </a>
             <a href="#contact" data-glow-btn="" class="rounded-full border border-[#60A5FA]/50 bg-[#3B63FF] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-[#4F75FF]">
               Hire Dev
@@ -362,7 +362,7 @@ const html = `<!DOCTYPE html>
                 Resume PDF
               </a>
               <a href="${projectsManifest.rootFolderUrl}" target="_blank" rel="noopener" class="rounded-full border border-white/20 px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-zinc-200 transition hover:border-white/40">
-                232+ Drive Proofs ↗
+                ${publicProjects.length}+ Drive Proofs ↗
               </a>
             </div>
           </div>

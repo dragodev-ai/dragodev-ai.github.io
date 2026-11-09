@@ -47,7 +47,7 @@ export default function HomePage() {
         projects={allProjects}
         categories={projectsManifest.categories}
         initialPageSize={12}
-        heading="232+ CLIENT PROOFS"
+        heading={`${allProjects.length}+ CLIENT PROOFS`}
       />
 
       {/* Phase 12: Contact Form, WhatsApp & Asia/Kolkata Call Booking */}

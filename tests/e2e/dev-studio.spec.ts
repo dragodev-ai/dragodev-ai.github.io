@@ -237,7 +237,24 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     await expect(graphicsTab).toBeVisible();
     await graphicsTab.click();
     await expect(page.getByRole('button', { name: 'FOOD', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'COMPANY banners', exact: true })).toBeVisible();
+    const companyBannersBtn = page.getByRole('button', { name: 'COMPANY banners', exact: true });
+    await expect(companyBannersBtn).toBeVisible();
+
+    // Verify broken oversized banners are removed and every COMPANY banners graphic renders cleanly
+    await companyBannersBtn.click();
+    const grid = page.getByTestId('portfolio-grid');
+    await expect(grid).not.toContainText(/Banner 413x84/i);
+    await expect(grid).not.toContainText(/Change In Creame To Building/i);
+    await expect(grid).not.toContainText(/creame IWSM banner/i);
+    await expect(grid).not.toContainText(/Green 408x120/i);
+    await expect(grid).toContainText(/ground floor/i);
+
+    if (!testInfo.project.name.includes('mobile')) {
+      await page.waitForTimeout(800);
+      await page.screenshot({
+        path: path.join(QA_SCREENSHOT_DIR, '08-graphics-company-banners-clean.png'),
+      });
+    }
 
     // Filter by AI category
     await page.getByTestId('category-filter-AI- Artificial Intelligence').click();

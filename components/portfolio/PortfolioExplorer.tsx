@@ -40,23 +40,29 @@ export function PortfolioExplorer({
   const [layoutMode, setLayoutMode] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [visibleCount, setVisibleCount] = useState<number>(initialPageSize);
+  const [failedImageIds, setFailedImageIds] = useState<Record<string, boolean>>({});
 
   const activeCategoryNode = useMemo(
     () => categories.find((c) => c.name === selectedCategory),
     [categories, selectedCategory]
   );
 
+  const visibleProjects = useMemo(
+    () => projects.filter((p) => !failedImageIds[p.id]),
+    [projects, failedImageIds]
+  );
+
   const categoryCounts = useMemo(() => {
     const map = new Map<string, number>();
-    for (const p of projects) {
+    for (const p of visibleProjects) {
       map.set(p.category, (map.get(p.category) || 0) + 1);
     }
     return map;
-  }, [projects]);
+  }, [visibleProjects]);
 
   const filteredProjects = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    const list = projects.filter((p) => {
+    const list = visibleProjects.filter((p) => {
       if (selectedCategory !== 'ALL' && p.category !== selectedCategory) return false;
       if (selectedSubcategory !== 'ALL' && p.subcategory !== selectedSubcategory) return false;
       if (mediaFilter !== 'ALL' && p.mediaType !== mediaFilter) return false;
@@ -74,7 +80,7 @@ export function PortfolioExplorer({
       return [...list].sort((a, b) => a.title.localeCompare(b.title));
     }
     return [...list].sort((a, b) => a.order - b.order);
-  }, [projects, selectedCategory, selectedSubcategory, mediaFilter, searchQuery, sortMode]);
+  }, [visibleProjects, selectedCategory, selectedSubcategory, mediaFilter, searchQuery, sortMode]);
 
   const displayedProjects = filteredProjects.slice(0, visibleCount);
 
@@ -97,7 +103,7 @@ export function PortfolioExplorer({
         <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 lg:flex-row lg:items-end">
           <div>
             <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
-              VERIFIED CLIENT VAULT · {projects.length} REAL DELIVERIES
+              VERIFIED CLIENT VAULT · {visibleProjects.length} REAL DELIVERIES
             </span>
             {isStandalonePage ? (
               <h1 className="break-words font-display text-phi-xl font-extrabold uppercase text-white">
@@ -360,6 +366,12 @@ export function PortfolioExplorer({
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
+                      if (project.mediaType === 'image') {
+                        setFailedImageIds((prev) =>
+                          prev[project.id] ? prev : { ...prev, [project.id]: true }
+                        );
+                        return;
+                      }
                       e.currentTarget.src = getFallbackPosterDataUri(
                         project.title,
                         project.category
@@ -416,6 +428,12 @@ export function PortfolioExplorer({
                       referrerPolicy="no-referrer"
                       onError={(e) => {
                         e.currentTarget.onerror = null;
+                        if (project.mediaType === 'image') {
+                          setFailedImageIds((prev) =>
+                            prev[project.id] ? prev : { ...prev, [project.id]: true }
+                          );
+                          return;
+                        }
                         e.currentTarget.src = getFallbackPosterDataUri(
                           project.title,
                           project.category

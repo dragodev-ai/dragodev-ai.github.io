@@ -403,7 +403,7 @@ export function VideoHeroSection() {
                 data-glow-btn=""
                 className="inline-flex min-h-[38px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:bg-[#3B63FF]/20 sm:flex-initial"
               >
-                <span>232+ Proofs</span>
+                <span>226+ Proofs</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </Link>
               <LiquidMetalButton
