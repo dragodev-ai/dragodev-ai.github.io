@@ -153,13 +153,41 @@ nextjs-portal [data-nextjs-toast] {
   transition: opacity 200ms ease;
 }
 
-/* Cursor-Tracked Cobalt-Blue Border Glow for Studio Buttons ([data-glow-btn]) */
+/* ==========================================================================
+   LIQUID METAL & COBALT-BLUE BUTTON ENGINE ([data-glow-btn])
+   Powers continuous flowing liquid-chrome + cobalt-blue dispersive border rings,
+   hover speed acceleration, 3D spring press physics, and click ripple waves
+   across every button on the website.
+   ========================================================================== */
+@property --liquid-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes liquid-metal-spin {
+  to {
+    --liquid-angle: 360deg;
+  }
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4.2);
+    opacity: 0;
+  }
+}
+
 [data-glow-btn] {
   --gx: 50%;
   --gy: 50%;
   --glow-alpha: 0;
   transition:
-    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 220ms ease,
     border-color 220ms ease,
     background-color 220ms ease,
@@ -168,6 +196,10 @@ nextjs-portal [data-nextjs-toast] {
 
 [data-glow-btn]:not(.fixed):not(.absolute):not(.sticky) {
   position: relative;
+}
+
+[data-glow-btn]:active {
+  transform: translateY(1px) scale(0.98) !important;
 }
 
 [data-glow-btn]::before,
@@ -184,41 +216,86 @@ nextjs-portal [data-nextjs-toast] {
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
-  opacity: var(--glow-alpha, 0);
-  transition: opacity 160ms ease;
+  transition: opacity 180ms ease, filter 220ms ease;
   z-index: 3;
 }
 
+/* Layer 1: Continuous Flowing Liquid-Metal Chrome + Cobalt-Blue Dispersive Ring */
 [data-glow-btn]::before {
-  background-image: radial-gradient(
-    130px 130px at var(--gx) var(--gy),
-    rgba(124, 155, 255, 1) 0%,
-    rgba(59, 99, 255, 0.98) 38%,
-    rgba(37, 99, 235, 0.35) 70%,
-    transparent 100%
+  background-image: conic-gradient(
+    from var(--liquid-angle),
+    rgba(248, 250, 252, 0.96) 0deg,
+    rgba(124, 155, 255, 0.92) 52deg,
+    rgba(15, 23, 42, 0.35) 115deg,
+    rgba(59, 99, 255, 0.95) 178deg,
+    rgba(239, 246, 255, 0.98) 224deg,
+    rgba(30, 41, 59, 0.38) 292deg,
+    rgba(147, 197, 253, 0.92) 334deg,
+    rgba(248, 250, 252, 0.96) 360deg
   );
+  opacity: calc(0.56 + 0.44 * var(--glow-alpha, 0));
+  animation: liquid-metal-spin 5.4s linear infinite;
 }
 
+/* Layer 2: Cursor-Tracked Specular Liquid-Mercury & Ice-Blue Core */
 [data-glow-btn]::after {
   background-image: radial-gradient(
-    58px 58px at var(--gx) var(--gy),
-    rgba(239, 246, 255, 1) 0%,
-    rgba(96, 165, 250, 0.95) 46%,
+    96px 96px at var(--gx) var(--gy),
+    rgba(255, 255, 255, 1) 0%,
+    rgba(124, 155, 255, 0.98) 38%,
+    rgba(59, 99, 255, 0.62) 68%,
     transparent 100%
   );
+  opacity: var(--glow-alpha, 0);
 }
 
 [data-glow-btn]:hover,
 [data-glow-btn]:focus-visible {
-  border-color: rgba(96, 165, 250, 0.72) !important;
+  border-color: rgba(147, 197, 253, 0.78) !important;
   box-shadow:
     0 0 26px -3px rgba(59, 99, 255, 0.72),
-    0 0 10px rgba(124, 155, 255, 0.48);
+    0 0 12px rgba(226, 232, 240, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 [data-glow-btn]:hover::before,
+[data-glow-btn]:focus-visible::before {
+  opacity: 1;
+  filter: brightness(1.18) contrast(1.08);
+  animation-duration: 1.85s;
+}
+
+[data-glow-btn][data-liquid-surge='true']::before {
+  opacity: 1;
+  filter: brightness(1.32);
+  animation-duration: 0.65s;
+}
+
 [data-glow-btn]:hover::after,
-[data-glow-btn]:focus-visible::before,
 [data-glow-btn]:focus-visible::after {
   opacity: 1;
+}
+
+.liquid-btn-ripple-host {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.liquid-btn-ripple {
+  pointer-events: none;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(124, 155, 255, 0.36) 42%,
+    rgba(59, 99, 255, 0) 72%
+  );
+  animation: ripple-animation 0.6s ease-out forwards;
 }

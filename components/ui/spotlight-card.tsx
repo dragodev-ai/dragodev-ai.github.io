@@ -104,12 +104,53 @@ export function SpotlightGlobalTracker() {
       }
     };
 
+    // Global delegated liquid-metal click ripple + 2.4x speed surge on all [data-glow-btn] buttons
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      const btn = target?.closest?.('[data-glow-btn]') as HTMLElement | null;
+      if (!btn) return;
+
+      btn.setAttribute('data-liquid-surge', 'true');
+      window.setTimeout(() => {
+        if (btn.isConnected) {
+          btn.removeAttribute('data-liquid-surge');
+        }
+      }, 320);
+
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX > 0 ? e.clientX - rect.left : rect.width / 2;
+      const y = e.clientY > 0 ? e.clientY - rect.top : rect.height / 2;
+
+      let host = btn.querySelector<HTMLElement>(':scope > .liquid-btn-ripple-host');
+      if (!host) {
+        host = document.createElement('span');
+        host.className = 'liquid-btn-ripple-host';
+        host.setAttribute('aria-hidden', 'true');
+        btn.appendChild(host);
+      }
+
+      const ripple = document.createElement('span');
+      ripple.className = 'liquid-btn-ripple';
+      ripple.style.left = `${x.toFixed(1)}px`;
+      ripple.style.top = `${y.toFixed(1)}px`;
+      host.appendChild(ripple);
+
+      window.setTimeout(() => {
+        ripple.remove();
+        if (host && host.childElementCount === 0 && host.isConnected) {
+          host.remove();
+        }
+      }, 620);
+    };
+
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('pointerdown', onPointerDown, { passive: true });
     return () => {
       document.documentElement.removeAttribute('data-spotlight-tracker-mounted');
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('pointerdown', onPointerDown);
       if (rafId) window.cancelAnimationFrame(rafId);
     };
   }, []);

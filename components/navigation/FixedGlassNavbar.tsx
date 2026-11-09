@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { siteConfigContent } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 
 export function FixedGlassNavbar() {
   const pathname = usePathname();
@@ -137,19 +138,17 @@ export function FixedGlassNavbar() {
         {/* RIGHT COLUMN: CONTACT + Mobile/Tablet Menu Trigger */}
         <div className="flex items-center justify-end gap-2.5">
           {siteConfigContent.navigation.right.map((item) => (
-            <Link
+            <LiquidMetalButton
               key={item.sectionId}
+              label={item.label}
               href={item.href}
-              data-glow-btn=""
-              onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-              className={`hidden whitespace-nowrap sm:inline-flex items-center rounded-full border px-4 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] ${
-                activeSection === item.sectionId
-                  ? 'border-[#3B63FF]/70 bg-[#3B63FF]/25 text-white'
-                  : 'border-white/15 bg-white/[0.04] text-zinc-200 hover:border-[#3B63FF]/60 hover:bg-[#3B63FF]/15 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </Link>
+              width={118}
+              height={38}
+              onClick={(e) =>
+                handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, item.href, item.sectionId)
+              }
+              className="hidden sm:inline-block"
+            />
           ))}
 
           <button

@@ -14,6 +14,7 @@ import {
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { withBasePath } from '@/lib/content';
 import { GlowCard } from '@/components/ui/spotlight-card';
+import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 
 function formatTimecode(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
@@ -395,24 +396,23 @@ export function VideoHeroSection() {
               </span>
             </div>
 
-            {/* Right Quick Portfolio & Contact CTAs — symmetrical 2-col on mobile, inline on sm+ */}
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
+            {/* Right Quick Portfolio & Contact CTAs */}
+            <div className="flex flex-wrap items-center justify-between gap-2 sm:justify-end">
               <Link
                 href="/work"
                 data-glow-btn=""
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:bg-[#3B63FF]/20 active:scale-[0.97]"
+                className="inline-flex min-h-[38px] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:bg-[#3B63FF]/20 sm:flex-initial"
               >
                 <span>232+ Proofs</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </Link>
-              <a
+              <LiquidMetalButton
+                label="Hire Dev"
                 href="#contact"
-                data-glow-btn=""
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/30 bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-blue-50 active:scale-[0.97]"
-              >
-                <span>Hire Dev</span>
-                <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
-              </a>
+                width={132}
+                height={38}
+                icon={<ArrowDownRight className="h-3.5 w-3.5 shrink-0 text-blue-300" />}
+              />
             </div>
           </div>
         </GlowCard>

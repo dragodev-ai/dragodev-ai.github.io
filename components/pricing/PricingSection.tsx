@@ -5,6 +5,7 @@ import { ArrowUpRight, Check, Sparkles } from 'lucide-react';
 import { pricingContent } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { GlowCard } from '@/components/ui/spotlight-card';
+import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 
 export function PricingSection() {
   const { selectServiceForEnquiry, playUiTick } = useStudioExperience();
@@ -112,14 +113,12 @@ export function PricingSection() {
           className="mt-phi-2 flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/10 bg-[#111116]/85 p-5 sm:flex-row sm:items-center sm:px-6"
         >
           <p className="text-sm font-medium text-zinc-200">{pricingContent.individualProjectNote}</p>
-          <button
-            type="button"
-            data-glow-btn=""
+          <LiquidMetalButton
+            label="SINGLE PROJECT QUOTE →"
+            width={224}
+            height={42}
             onClick={() => selectServiceForEnquiry('Individual Project Quote')}
-            className="shrink-0 rounded-full border border-[#3B63FF]/55 bg-[#3B63FF]/15 px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-blue-200 transition hover:bg-[#3B63FF] hover:text-white active:scale-[0.98]"
-          >
-            SINGLE PROJECT QUOTE →
-          </button>
+          />
         </GlowCard>
       </div>
     </section>
