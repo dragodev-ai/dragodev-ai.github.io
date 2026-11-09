@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
 import { withBasePath } from '@/lib/content';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 function formatTimecode(seconds: number): string {
   if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
@@ -265,6 +266,7 @@ export function VideoHeroSection() {
         {/* Unobstructed 16:9 Full-HD Cinema Showcase Viewport — scales seamlessly from 320px phones to 4K monitors */}
         <div
           ref={stageRef}
+          data-glow=""
           data-testid="hero-video-stage"
           className="group relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto"
         >
@@ -289,8 +291,12 @@ export function VideoHeroSection() {
           />
         </div>
 
-        {/* Sleek Cinema Control & Action Bar Below Video (Centered & Symmetrical Across Mobile, Tablet & Desktop) */}
-        <div className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/10 bg-[#090C1C]/90 px-3.5 py-3 shadow-[0_16px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:px-5 lg:max-w-[840px] xl:max-w-[900px] 2xl:max-w-[1040px]">
+        {/* Sleek Cinema Control & Action Bar Below Video (Spotlight GlowCard + Blue-Glow Border Buttons) */}
+        <GlowCard
+          customSize
+          glowColor="blue"
+          className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/10 bg-[#090C1C]/90 px-3.5 py-3 shadow-[0_16px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:px-5 lg:max-w-[840px] xl:max-w-[900px] 2xl:max-w-[1040px]"
+        >
           {/* Interactive Timeline Scrubber with 24px Touch Hit Area */}
           <div className="relative mb-2.5 flex h-5 items-center">
             <div className="pointer-events-none relative h-1.5 w-full overflow-hidden rounded-full bg-white/10">
@@ -318,12 +324,13 @@ export function VideoHeroSection() {
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <button
                   type="button"
+                  data-glow-btn=""
                   data-testid="hero-sound-toggle"
                   onClick={toggleSound}
-                  className={`inline-flex min-h-[38px] items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.13em] transition sm:px-4 sm:text-xs ${
+                  className={`inline-flex min-h-[38px] items-center gap-2 whitespace-nowrap rounded-full border px-3.5 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.13em] transition sm:px-4 sm:text-xs ${
                     isMuted
-                      ? 'bg-[#3B63FF] text-white shadow-[0_0_24px_rgba(59,99,255,0.5)] hover:bg-[#5277FF]'
-                      : 'border border-emerald-400/40 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/25'
+                      ? 'border-[#7C9BFF]/50 bg-[#3B63FF] text-white shadow-[0_0_24px_rgba(59,99,255,0.5)] hover:bg-[#5277FF]'
+                      : 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/25'
                   }`}
                 >
                   {isMuted ? (
@@ -341,10 +348,11 @@ export function VideoHeroSection() {
 
                 <button
                   type="button"
+                  data-glow-btn=""
                   data-testid="hero-play-toggle"
                   onClick={togglePlay}
                   aria-label={isPlaying ? 'Pause showcase video' : 'Play showcase video'}
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:border-white/30 hover:bg-white/10"
+                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
                 >
                   {isPlaying ? (
                     <>
@@ -361,10 +369,11 @@ export function VideoHeroSection() {
 
                 <button
                   type="button"
+                  data-glow-btn=""
                   data-testid="hero-restart-button"
                   onClick={restartWithSound}
                   aria-label="Replay showcase video from 0:00 with sound"
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:border-white/30 hover:bg-white/10"
+                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
                 >
                   <RotateCcw className="h-3.5 w-3.5 shrink-0" />
                   <span className="hidden lg:inline">Replay 0:00</span>
@@ -372,9 +381,10 @@ export function VideoHeroSection() {
 
                 <button
                   type="button"
+                  data-glow-btn=""
                   onClick={handleFullscreen}
                   aria-label="Fullscreen video"
-                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-zinc-200 transition hover:border-white/30 hover:bg-white/10"
+                  className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white"
                 >
                   <Maximize2 className="h-3.5 w-3.5" />
                 </button>
@@ -389,21 +399,23 @@ export function VideoHeroSection() {
             <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
               <Link
                 href="/work"
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:border-[#3B63FF] hover:bg-[#3B63FF]/20 active:scale-[0.97]"
+                data-glow-btn=""
+                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-100 transition hover:bg-[#3B63FF]/20 active:scale-[0.97]"
               >
                 <span>232+ Proofs</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </Link>
               <a
                 href="#contact"
-                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-zinc-200 active:scale-[0.97]"
+                data-glow-btn=""
+                className="inline-flex min-h-[38px] items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/30 bg-white px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-zinc-950 transition hover:bg-blue-50 active:scale-[0.97]"
               >
                 <span>Hire Dev</span>
                 <ArrowDownRight className="h-3.5 w-3.5 shrink-0" />
               </a>
             </div>
           </div>
-        </div>
+        </GlowCard>
       </div>
     </section>
   );

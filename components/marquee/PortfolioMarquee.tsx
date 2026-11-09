@@ -17,12 +17,13 @@ function MarqueeCard({
   return (
     <button
       type="button"
+      data-glow=""
       onClick={() => onSelect(project)}
       onMouseEnter={() => void warmProjectMedia(project)}
       onFocus={() => void warmProjectMedia(project)}
       onTouchStart={() => void warmProjectMedia(project)}
       aria-label={`Open ${project.title} (${project.category})`}
-      className="group/card relative w-[275px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#111116] text-left transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-purple-500/70 hover:shadow-[0_18px_44px_rgba(124,58,237,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 sm:w-[330px]"
+      className="group/card relative w-[275px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-[#111116] text-left transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-[#3B63FF]/70 hover:shadow-[0_18px_44px_rgba(59,99,255,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] sm:w-[330px]"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-[#0a0a0f]">
         <img

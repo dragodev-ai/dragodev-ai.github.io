@@ -62,7 +62,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
           {/* Golden Ratio Editorial Header */}
           <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-black/15 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
             <div>
-              <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-700">
+              <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#3B63FF]">
                 02 · RESULT-PROVEN ARSENAL
               </span>
               <h2
@@ -96,10 +96,10 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                       playUiTick();
                       setExpandedId(isOpen ? '' : group.id);
                     }}
-                    className="group flex w-full items-center justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-700"
+                    className="group flex w-full items-center justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
                   >
                     <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6 lg:gap-8">
-                      <span className="font-mono text-sm font-bold text-purple-700 sm:text-base">
+                      <span className="font-mono text-sm font-bold text-[#3B63FF] sm:text-base">
                         {group.number}
                       </span>
                       <div className="min-w-0">
@@ -113,10 +113,11 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                     </div>
 
                     <span
+                      data-glow-btn=""
                       className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/20 transition-all duration-300 ${
                         isOpen
-                          ? 'rotate-180 border-purple-700 bg-purple-700 text-white'
-                          : 'bg-transparent text-[#0A0A0C] group-hover:bg-black group-hover:text-white'
+                          ? 'rotate-180 border-[#3B63FF] bg-[#3B63FF] text-white shadow-[0_0_20px_rgba(59,99,255,0.45)]'
+                          : 'bg-transparent text-[#0A0A0C] group-hover:border-[#3B63FF] group-hover:bg-[#0A0A0C] group-hover:text-white'
                       }`}
                     >
                       <ChevronDown className="h-5 w-5" />
@@ -139,7 +140,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                               key={cap}
                               className="flex items-center gap-2.5 text-sm font-semibold text-zinc-900"
                             >
-                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-purple-700" />
+                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3B63FF]" />
                               <span>{cap}</span>
                             </li>
                           ))}
@@ -148,8 +149,9 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                         <div className="pt-1">
                           <button
                             type="button"
+                            data-glow-btn=""
                             onClick={() => selectServiceForEnquiry(group.enquiryServiceValue)}
-                            className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0C] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-purple-700 active:scale-[0.98]"
+                            className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-[#0A0A0C] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#3B63FF] active:scale-[0.98]"
                           >
                             HIRE DEV FOR {group.title}
                             <ArrowUpRight className="h-4 w-4" />
@@ -167,10 +169,11 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                             <button
                               key={proj.id}
                               type="button"
+                              data-glow-btn=""
                               onClick={() => openProject(proj)}
                               onMouseEnter={() => void warmProjectMedia(proj)}
                               onTouchStart={() => void warmProjectMedia(proj)}
-                              className="group/item overflow-hidden rounded-2xl border border-black/12 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-purple-700 hover:shadow-md active:scale-[0.98]"
+                              className="group/item overflow-hidden rounded-2xl border border-black/12 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:border-[#3B63FF] hover:shadow-md active:scale-[0.98]"
                             >
                               <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
                                 <img
@@ -188,7 +191,7 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                                   className="h-full w-full object-cover transition-transform duration-300 group-hover/item:scale-105"
                                 />
                                 {proj.mediaType === 'video' && (
-                                  <span className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/75 text-white">
+                                  <span className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/75 text-white transition group-hover/item:bg-[#3B63FF]">
                                     <Play className="h-3 w-3 fill-current" />
                                   </span>
                                 )}
@@ -219,8 +222,9 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
                 <button
                   key={disc}
                   type="button"
+                  data-glow-btn=""
                   onClick={() => selectServiceForEnquiry(disc)}
-                  className="rounded-full border border-black/15 bg-black/[0.04] px-3.5 py-1.5 text-xs font-semibold text-zinc-900 transition hover:border-purple-700 hover:bg-purple-700 hover:text-white active:scale-[0.97]"
+                  className="rounded-full border border-black/15 bg-[#0A0A0C]/[0.05] px-3.5 py-1.5 text-xs font-semibold text-zinc-900 transition hover:border-[#3B63FF] hover:bg-[#0A0A0C] hover:text-white active:scale-[0.97]"
                 >
                   {disc}
                 </button>

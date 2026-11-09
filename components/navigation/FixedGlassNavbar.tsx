@@ -66,7 +66,7 @@ export function FixedGlassNavbar() {
 
   const navLinkClass = (sectionId: string) => {
     const active = activeSection === sectionId;
-    return `relative inline-flex items-center whitespace-nowrap px-2.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-md ${
+    return `relative inline-flex items-center whitespace-nowrap px-2.5 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] rounded-md ${
       active ? 'text-white' : 'text-zinc-300/85 hover:text-white'
     }`;
   };
@@ -75,6 +75,7 @@ export function FixedGlassNavbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8">
       <nav
         aria-label="Primary Studio Navigation"
+        data-glow=""
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-7 ${
           scrolled
             ? 'border-white/15 bg-[#070709]/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-xl'
@@ -87,7 +88,7 @@ export function FixedGlassNavbar() {
             href="/"
             onClick={() => playUiTick()}
             aria-label="DEV STUDIO Home"
-            className="group inline-flex items-center gap-2 rounded-md px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+            className="group inline-flex items-center gap-2 rounded-md px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
           >
             <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_10px_#f59e0b] transition-transform group-hover:scale-125" />
             <span className="whitespace-nowrap font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300 group-hover:text-white">
@@ -104,7 +105,7 @@ export function FixedGlassNavbar() {
             >
               {item.label}
               {activeSection === item.sectionId && (
-                <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-purple-400" />
+                <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-[#3B63FF] shadow-[0_0_8px_#3B63FF]" />
               )}
             </Link>
           ))}
@@ -126,7 +127,7 @@ export function FixedGlassNavbar() {
               >
                 {item.label}
                 {activeSection === item.sectionId && (
-                  <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-purple-400" />
+                  <span className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-[#3B63FF] shadow-[0_0_8px_#3B63FF]" />
                 )}
               </Link>
             </React.Fragment>
@@ -139,11 +140,12 @@ export function FixedGlassNavbar() {
             <Link
               key={item.sectionId}
               href={item.href}
+              data-glow-btn=""
               onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
-              className={`hidden whitespace-nowrap sm:inline-flex items-center rounded-full border px-4 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 ${
+              className={`hidden whitespace-nowrap sm:inline-flex items-center rounded-full border px-4 py-1.5 font-condensed text-[13px] font-semibold uppercase tracking-[0.22em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] ${
                 activeSection === item.sectionId
-                  ? 'border-purple-400/70 bg-purple-600/25 text-white'
-                  : 'border-white/15 bg-white/[0.04] text-zinc-200 hover:border-purple-400/50 hover:bg-purple-500/15 hover:text-white'
+                  ? 'border-[#3B63FF]/70 bg-[#3B63FF]/25 text-white'
+                  : 'border-white/15 bg-white/[0.04] text-zinc-200 hover:border-[#3B63FF]/60 hover:bg-[#3B63FF]/15 hover:text-white'
               }`}
             >
               {item.label}
@@ -152,6 +154,7 @@ export function FixedGlassNavbar() {
 
           <button
             type="button"
+            data-glow-btn=""
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-studio-nav"
@@ -159,7 +162,7 @@ export function FixedGlassNavbar() {
               playUiTick();
               setMobileOpen((prev) => !prev);
             }}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-100 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF] lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -183,7 +186,7 @@ export function FixedGlassNavbar() {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href, item.sectionId)}
                 className={`flex items-center justify-between border-white/10 py-3.5 font-condensed text-base font-semibold uppercase tracking-[0.22em] sm:border-b ${
-                  activeSection === item.sectionId ? 'text-purple-400' : 'text-zinc-100'
+                  activeSection === item.sectionId ? 'text-[#7C9BFF]' : 'text-zinc-100'
                 }`}
               >
                 <span>{item.label}</span>

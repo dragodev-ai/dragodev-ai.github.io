@@ -61,7 +61,7 @@ export function StackedProjectsSection({
         {/* Golden Ratio Section Header */}
         <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
               04 · DON&apos;T TAKE MY WORD FOR IT — WATCH WHAT SHIPPED
             </span>
             <h2
@@ -74,8 +74,9 @@ export function StackedProjectsSection({
 
           <Link
             href="/work"
+            data-glow-btn=""
             onClick={() => playUiTick()}
-            className="inline-flex items-center gap-2 self-start rounded-full border border-purple-400/50 bg-purple-600/20 px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-purple-600 active:scale-[0.98] lg:self-auto"
+            className="inline-flex items-center gap-2 self-start rounded-full border border-[#3B63FF]/55 bg-[#3B63FF]/20 px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#3B63FF] active:scale-[0.98] lg:self-auto"
           >
             WATCH ALL {allProjects.length} PROOFS
             <ArrowUpRight className="h-4 w-4" />
@@ -87,6 +88,7 @@ export function StackedProjectsSection({
           {featuredProjects.map((project, idx) => (
             <article
               key={project.id}
+              data-glow=""
               ref={(el) => {
                 cardsRef.current[idx] = el;
               }}
@@ -97,7 +99,7 @@ export function StackedProjectsSection({
               className="relative overflow-hidden rounded-[28px] border border-white/15 bg-[#111118] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.85)] will-change-transform sm:rounded-[32px] sm:p-phi-3 lg:sticky"
             >
               {/* Golden Ratio Split: 1fr (38.2% Crisp Hook Copy) : 1.618fr (61.8% Cinema Frame) */}
-              <div className="grid gap-phi-2 lg:grid-cols-[1fr_1.618fr] lg:items-center lg:gap-phi-3">
+              <div className="relative z-10 grid gap-phi-2 lg:grid-cols-[1fr_1.618fr] lg:items-center lg:gap-phi-3">
                 {/* Left 38.2%: Sharp Proof Headline & Actions */}
                 <div className="flex flex-col justify-between space-y-phi-2">
                   <div>
@@ -109,7 +111,7 @@ export function StackedProjectsSection({
                         {project.category}
                       </span>
                       {project.verifiedLabel && (
-                        <span className="rounded-full bg-purple-600/25 px-3 py-0.5 font-mono text-[10px] text-purple-200">
+                        <span className="rounded-full border border-[#3B63FF]/35 bg-[#3B63FF]/20 px-3 py-0.5 font-mono text-[10px] text-blue-200">
                           {project.verifiedLabel}
                         </span>
                       )}
@@ -127,11 +129,12 @@ export function StackedProjectsSection({
                   <div className="flex flex-wrap items-center gap-3 pt-1">
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={() => {
                         playUiTick();
                         openProject(project);
                       }}
-                      className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-purple-500 active:scale-[0.98]"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#60A5FA]/45 bg-[#3B63FF] px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#4F75FF] active:scale-[0.98]"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
                       WATCH PROOF
@@ -141,7 +144,8 @@ export function StackedProjectsSection({
                       href={project.driveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-4 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 transition hover:border-white/35 hover:text-white active:scale-[0.98]"
+                      data-glow-btn=""
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.04] px-4 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 transition hover:text-white active:scale-[0.98]"
                     >
                       RAW SOURCE
                       <ExternalLink className="h-3.5 w-3.5" />
@@ -153,6 +157,7 @@ export function StackedProjectsSection({
                 <div>
                   <button
                     type="button"
+                    data-glow-btn=""
                     onClick={() => openProject(project)}
                     aria-label={`Play ${project.title}`}
                     className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/12 bg-black text-left"
@@ -173,7 +178,7 @@ export function StackedProjectsSection({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/65 text-white shadow-2xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:border-purple-400 group-hover:bg-purple-600">
+                      <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/65 text-white shadow-2xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:border-[#60A5FA] group-hover:bg-[#3B63FF]">
                         <Play className="ml-0.5 h-6 w-6 fill-current" />
                       </span>
                     </div>

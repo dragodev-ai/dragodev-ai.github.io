@@ -199,14 +199,15 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
       onClick={closeProject}
     >
       <div
+        data-glow=""
         className="relative my-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-[#0b0b12] shadow-[0_30px_100px_rgba(0,0,0,0.9)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Modal Header */}
-        <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-3.5 sm:px-7">
+        <div className="relative z-10 flex items-center justify-between gap-4 border-b border-white/10 px-5 py-3.5 sm:px-7">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-purple-400">
+              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#7C9BFF]">
                 {activeProject.category}
                 {activeProject.subcategory ? ` / ${activeProject.subcategory}` : ''}
               </span>
@@ -226,17 +227,19 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
               href={activeProject.driveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.04] px-3 py-1.5 font-mono text-[11px] text-zinc-200 transition hover:border-purple-400 hover:text-white sm:inline-flex"
+              data-glow-btn=""
+              className="hidden items-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.04] px-3 py-1.5 font-mono text-[11px] text-zinc-200 transition hover:text-white sm:inline-flex"
             >
               ORIGINAL DRIVE FILE
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
             <button
               type="button"
+              data-glow-btn=""
               aria-label="Close player"
               data-testid="cinema-player-close"
               onClick={closeProject}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-200 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-zinc-200 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
             >
               <X className="h-4 w-4" />
             </button>
@@ -344,17 +347,18 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                   aria-label="Seek video timeline"
                   data-testid="cinema-seek-slider"
                   onChange={handleSeek}
-                  className="mb-2.5 h-1.5 w-full cursor-pointer accent-purple-500"
+                  className="mb-2.5 h-1.5 w-full cursor-pointer accent-[#3B63FF]"
                 />
 
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={togglePlay}
                       aria-label={isPlaying ? 'Pause video' : 'Play video'}
                       data-testid="cinema-play-toggle"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-purple-600"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white transition hover:bg-[#3B63FF]"
                     >
                       {isPlaying ? (
                         <Pause className="h-4 w-4" />
@@ -365,9 +369,10 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
 
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={togglePlayerMute}
                       aria-label={playerMuted ? 'Unmute video' : 'Mute video'}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-white/20"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white transition hover:bg-white/20"
                     >
                       {playerMuted || playerVolume === 0 ? (
                         <VolumeX className="h-4 w-4" />
@@ -384,7 +389,7 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                       value={playerMuted ? 0 : playerVolume}
                       aria-label="Video volume"
                       onChange={handleVolume}
-                      className="hidden h-1 w-20 cursor-pointer accent-purple-500 sm:block"
+                      className="hidden h-1 w-20 cursor-pointer accent-[#3B63FF] sm:block"
                     />
 
                     <span className="font-mono text-xs text-zinc-300">
@@ -395,13 +400,14 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={() => {
                         setIsBuffering(true);
                         setRetryKey((k) => k + 1);
                       }}
                       title="Reload stream"
                       aria-label="Reload video stream"
-                      className="inline-flex h-8 items-center gap-1 rounded-lg bg-white/10 px-2.5 font-mono text-[11px] text-zinc-200 transition hover:bg-white/20"
+                      className="inline-flex h-8 items-center gap-1 rounded-lg border border-white/15 bg-white/10 px-2.5 font-mono text-[11px] text-zinc-200 transition hover:bg-white/20"
                     >
                       <RefreshCw className="h-3.5 w-3.5" />
                       <span className="hidden md:inline">RETRY</span>
@@ -409,18 +415,20 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
 
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={() => setUseDrivePreviewFallback(true)}
-                      className="hidden rounded-lg bg-white/10 px-2.5 py-1.5 font-mono text-[11px] text-zinc-300 transition hover:bg-white/20 sm:inline-block"
+                      className="hidden rounded-lg border border-white/15 bg-white/10 px-2.5 py-1.5 font-mono text-[11px] text-zinc-300 transition hover:bg-white/20 sm:inline-block"
                     >
                       DRIVE PLAYER
                     </button>
 
                     <button
                       type="button"
+                      data-glow-btn=""
                       onClick={toggleFullscreen}
                       aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
                       data-testid="cinema-fullscreen-btn"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-white transition hover:bg-purple-600"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-white transition hover:bg-[#3B63FF]"
                     >
                       {isFullscreen ? (
                         <Minimize className="h-4 w-4" />
@@ -436,13 +444,14 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
         </div>
 
         {/* Footer Details + Enquiry Action + Related Projects */}
-        <div className="space-y-5 p-5 sm:p-7">
+        <div className="relative z-10 space-y-5 p-5 sm:p-7">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <p className="max-w-2xl text-sm leading-relaxed text-zinc-300">
               {activeProject.description}
             </p>
             <button
               type="button"
+              data-glow-btn=""
               onClick={() => {
                 const svc =
                   activeProject.serviceTag === 'ai-production'
@@ -455,7 +464,7 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                 closeProject();
                 selectServiceForEnquiry(svc);
               }}
-              className="shrink-0 rounded-full bg-purple-600 px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-purple-500"
+              className="shrink-0 rounded-full border border-[#60A5FA]/50 bg-[#3B63FF] px-5 py-2.5 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#4F75FF]"
             >
               ENQUIRE ABOUT SIMILAR WORK
             </button>
@@ -471,8 +480,9 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                   <button
                     key={rel.id}
                     type="button"
+                    data-glow-btn=""
                     onClick={() => openProject(rel)}
-                    className="group overflow-hidden rounded-xl border border-white/10 bg-[#12121a] text-left transition hover:border-purple-500/60"
+                    className="group overflow-hidden rounded-xl border border-white/10 bg-[#12121a] text-left transition hover:border-[#3B63FF]/60"
                   >
                     <div className="aspect-video w-full overflow-hidden bg-black">
                       <img
@@ -487,7 +497,7 @@ export function CinemaVideoPlayerModal({ allProjects }: { allProjects: Portfolio
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                    <p className=" truncate px-2.5 py-2 text-xs font-medium text-zinc-200 group-hover:text-purple-300">
+                    <p className="truncate px-2.5 py-2 text-xs font-medium text-zinc-200 group-hover:text-blue-200">
                       {rel.title}
                     </p>
                   </button>

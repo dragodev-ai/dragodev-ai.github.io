@@ -20,6 +20,7 @@ import {
   socialLinksContent,
 } from '@/lib/content';
 import { useStudioExperience } from '@/lib/audio/studio-audio-context';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 interface ApiStatusState {
   type: 'idle' | 'loading' | 'success' | 'unconfigured' | 'error';
@@ -238,7 +239,7 @@ export function ContactAndBookingSection() {
         {/* Golden Ratio Section Header */}
         <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-purple-400">
+            <span className="mb-2 block font-mono text-phi-xs font-semibold uppercase text-[#7C9BFF]">
               05 · STOP GAMBLING ON SLOW FREELANCERS
             </span>
             <h2
@@ -252,15 +253,17 @@ export function ContactAndBookingSection() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={socialLinksContent.mailtoUrl}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 font-mono text-xs text-zinc-200 transition hover:border-purple-400 hover:text-white active:scale-[0.98]"
+              data-glow-btn=""
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2.5 font-mono text-xs text-zinc-200 transition hover:text-white active:scale-[0.98]"
             >
-              <Mail className="h-3.5 w-3.5 text-purple-400" />
+              <Mail className="h-3.5 w-3.5 text-[#7C9BFF]" />
               {profileContent.contact.email}
             </a>
             <a
               href={getWhatsappDeepLink()}
               target="_blank"
               rel="noopener noreferrer"
+              data-glow-btn=""
               className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-4 py-2.5 font-mono text-xs text-emerald-300 transition hover:bg-emerald-600 hover:text-white active:scale-[0.98]"
             >
               <MessageCircle className="h-3.5 w-3.5" />
@@ -272,311 +275,322 @@ export function ContactAndBookingSection() {
         {/* Golden Ratio Split: 1.618fr (61.8% Project Brief) : 1fr (38.2% IST Strategy Call) */}
         <div className="grid gap-phi-3 lg:grid-cols-[1.618fr_1fr]">
           {/* LEFT 61.8%: PROJECT ENQUIRY FORM */}
-          <div className="rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3">
-            <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
-              SEND YOUR BRIEF
-            </h3>
-            <p className="mt-1 text-sm text-zinc-400">
-              Direct to <span className="text-zinc-200">{profileContent.contact.email}</span> —
-              personal reply within hours.
-            </p>
+          <GlowCard
+            customSize
+            glowColor="blue"
+            className="rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3"
+          >
+            <div className="relative z-10">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
+                SEND YOUR BRIEF
+              </h3>
+              <p className="mt-1 text-sm text-zinc-400">
+                Direct to <span className="text-zinc-200">{profileContent.contact.email}</span> —
+                personal reply within hours.
+              </p>
 
-            <form
-              onSubmit={handleContactSubmit}
-              noValidate
-              data-testid="contact-enquiry-form"
-              className="mt-7 space-y-5"
-            >
-              {/* Anti-spam Honeypot */}
-              <div className="hidden" aria-hidden="true">
-                <label htmlFor="contact-website-hp">Website</label>
-                <input
-                  id="contact-website-hp"
-                  suppressHydrationWarning
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={websiteHoneypot}
-                  onChange={(e) => setWebsiteHoneypot(e.target.value)}
-                />
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="contact-fullname"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Full Name *
-                  </label>
+              <form
+                onSubmit={handleContactSubmit}
+                noValidate
+                data-testid="contact-enquiry-form"
+                className="mt-7 space-y-5"
+              >
+                {/* Anti-spam Honeypot */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="contact-website-hp">Website</label>
                   <input
-                    id="contact-fullname"
-                    name="fullName"
+                    id="contact-website-hp"
                     suppressHydrationWarning
                     type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Your name or agency"
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={websiteHoneypot}
+                    onChange={(e) => setWebsiteHoneypot(e.target.value)}
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="contact-email"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Email Address *
-                  </label>
-                  <input
-                    id="contact-email"
-                    name="email"
-                    suppressHydrationWarning
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@company.com"
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
-                  />
-                </div>
-              </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contact-fullname"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Full Name *
+                    </label>
+                    <input
+                      id="contact-fullname"
+                      name="fullName"
+                      suppressHydrationWarning
+                      type="text"
+                      required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Your name or agency"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    />
+                  </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="contact-phone"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Phone / WhatsApp *
-                  </label>
-                  <input
-                    id="contact-phone"
-                    name="phoneWhatsapp"
-                    suppressHydrationWarning
-                    type="tel"
-                    required
-                    value={phoneWhatsapp}
-                    onChange={(e) => setPhoneWhatsapp(e.target.value)}
-                    placeholder="+91 98XXXXXXXX"
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="contact-service"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Interested Service *
-                  </label>
-                  <select
-                    id="contact-service"
-                    name="interestedService"
-                    suppressHydrationWarning
-                    data-testid="contact-service-select"
-                    value={interestedService}
-                    onChange={(e) => setInterestedService(e.target.value)}
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white focus:border-purple-500 focus:outline-none"
-                  >
-                    {siteConfigContent.enquiryServiceOptions.map((opt) => (
-                      <option key={opt} value={opt} className="bg-[#09090e]">
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                <div className="sm:col-span-2 xl:col-span-1">
-                  <label
-                    htmlFor="contact-budget"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Project Budget *
-                  </label>
-                  <select
-                    id="contact-budget"
-                    name="projectBudget"
-                    suppressHydrationWarning
-                    value={projectBudget}
-                    onChange={(e) => setProjectBudget(e.target.value)}
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-purple-500 focus:outline-none"
-                  >
-                    {siteConfigContent.budgetRanges.map((b) => (
-                      <option key={b} value={b} className="bg-[#09090e]">
-                        {b}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="contact-date"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Preferred Meeting Date
-                  </label>
-                  <input
-                    id="contact-date"
-                    name="preferredMeetingDate"
-                    suppressHydrationWarning
-                    type="date"
-                    value={preferredMeetingDate}
-                    onChange={(e) => setPreferredMeetingDate(e.target.value)}
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-purple-500 focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="contact-time"
-                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                  >
-                    Preferred Time (IST)
-                  </label>
-                  <input
-                    id="contact-time"
-                    name="preferredMeetingTime"
-                    suppressHydrationWarning
-                    type="text"
-                    value={preferredMeetingTime}
-                    onChange={(e) => setPreferredMeetingTime(e.target.value)}
-                    placeholder="e.g. 4:00 PM IST"
-                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="contact-ref"
-                  className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                >
-                  Optional Reference Link (Drive, Instagram, YouTube, Brief)
-                </label>
-                <input
-                  id="contact-ref"
-                  name="referenceLink"
-                  suppressHydrationWarning
-                  type="url"
-                  value={referenceLink}
-                  onChange={(e) => setReferenceLink(e.target.value)}
-                  placeholder="https://..."
-                  className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="contact-desc"
-                  className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
-                >
-                  Project Description *
-                </label>
-                <textarea
-                  id="contact-desc"
-                  name="projectDescription"
-                  suppressHydrationWarning
-                  rows={4}
-                  required
-                  value={projectDescription}
-                  onChange={(e) => setProjectDescription(e.target.value)}
-                  placeholder="Tell Dev about your deliverables, style direction, platform, and target timeline..."
-                  className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-purple-500 focus:outline-none"
-                />
-              </div>
-
-              <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-zinc-400">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  suppressHydrationWarning
-                  checked={consent}
-                  onChange={(e) => setConsent(e.target.checked)}
-                  data-testid="contact-consent-checkbox"
-                  className="mt-0.5 h-4 w-4 rounded border-white/25 bg-[#09090e] accent-purple-600"
-                />
-                <span>
-                  Use my details solely to respond to this project brief. Never shared or sold.
-                </span>
-              </label>
-
-              {contactStatus.type !== 'idle' && (
-                <div
-                  role="status"
-                  data-testid="contact-form-status"
-                  className={`rounded-2xl border p-4 text-sm ${
-                    contactStatus.type === 'success'
-                      ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
-                      : contactStatus.type === 'unconfigured'
-                      ? 'border-amber-500/40 bg-amber-500/10 text-amber-200'
-                      : contactStatus.type === 'error'
-                      ? 'border-rose-500/40 bg-rose-500/10 text-rose-200'
-                      : 'border-white/15 bg-white/5 text-zinc-200'
-                  }`}
-                >
-                  <div className="flex items-start gap-2.5">
-                    {contactStatus.type === 'success' && (
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
-                    )}
-                    {(contactStatus.type === 'unconfigured' || contactStatus.type === 'error') && (
-                      <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
-                    )}
-                    <div className="space-y-2">
-                      <p>{contactStatus.message}</p>
-                      {contactStatus.mailtoFallbackUrl && (
-                        <div className="flex flex-wrap gap-2 pt-1">
-                          <a
-                            href={contactStatus.mailtoFallbackUrl}
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 font-mono text-xs font-bold text-zinc-950"
-                          >
-                            OPEN PRE-FILLED EMAIL
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
-                          <a
-                            href={getWhatsappDeepLink(
-                              `Hi Dev! I'm ${fullName || 'reaching out'} regarding ${interestedService}. ${projectDescription}`
-                            )}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 font-mono text-xs font-bold text-white"
-                          >
-                            SEND VIA WHATSAPP
-                          </a>
-                        </div>
-                      )}
-                    </div>
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Email Address *
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      suppressHydrationWarning
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@company.com"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    />
                   </div>
                 </div>
-              )}
 
-              <button
-                type="submit"
-                disabled={contactStatus.type === 'loading'}
-                data-testid="contact-submit-btn"
-                className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-purple-600 to-violet-600 px-6 py-4 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-white shadow-lg transition hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
-              >
-                {contactStatus.type === 'loading' ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Send className="h-4 w-4" />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contact-phone"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Phone / WhatsApp *
+                    </label>
+                    <input
+                      id="contact-phone"
+                      name="phoneWhatsapp"
+                      suppressHydrationWarning
+                      type="tel"
+                      required
+                      value={phoneWhatsapp}
+                      onChange={(e) => setPhoneWhatsapp(e.target.value)}
+                      placeholder="+91 98XXXXXXXX"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-service"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Interested Service *
+                    </label>
+                    <select
+                      id="contact-service"
+                      name="interestedService"
+                      suppressHydrationWarning
+                      data-testid="contact-service-select"
+                      value={interestedService}
+                      onChange={(e) => setInterestedService(e.target.value)}
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                    >
+                      {siteConfigContent.enquiryServiceOptions.map((opt) => (
+                        <option key={opt} value={opt} className="bg-[#09090e]">
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  <div className="sm:col-span-2 xl:col-span-1">
+                    <label
+                      htmlFor="contact-budget"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Project Budget *
+                    </label>
+                    <select
+                      id="contact-budget"
+                      name="projectBudget"
+                      suppressHydrationWarning
+                      value={projectBudget}
+                      onChange={(e) => setProjectBudget(e.target.value)}
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                    >
+                      {siteConfigContent.budgetRanges.map((b) => (
+                        <option key={b} value={b} className="bg-[#09090e]">
+                          {b}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-date"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Preferred Meeting Date
+                    </label>
+                    <input
+                      id="contact-date"
+                      name="preferredMeetingDate"
+                      suppressHydrationWarning
+                      type="date"
+                      value={preferredMeetingDate}
+                      onChange={(e) => setPreferredMeetingDate(e.target.value)}
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-time"
+                      className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                    >
+                      Preferred Time (IST)
+                    </label>
+                    <input
+                      id="contact-time"
+                      name="preferredMeetingTime"
+                      suppressHydrationWarning
+                      type="text"
+                      value={preferredMeetingTime}
+                      onChange={(e) => setPreferredMeetingTime(e.target.value)}
+                      placeholder="e.g. 4:00 PM IST"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-ref"
+                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                  >
+                    Optional Reference Link (Drive, Instagram, YouTube, Brief)
+                  </label>
+                  <input
+                    id="contact-ref"
+                    name="referenceLink"
+                    suppressHydrationWarning
+                    type="url"
+                    value={referenceLink}
+                    onChange={(e) => setReferenceLink(e.target.value)}
+                    placeholder="https://..."
+                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-desc"
+                    className="mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-zinc-300"
+                  >
+                    Project Description *
+                  </label>
+                  <textarea
+                    id="contact-desc"
+                    name="projectDescription"
+                    suppressHydrationWarning
+                    rows={4}
+                    required
+                    value={projectDescription}
+                    onChange={(e) => setProjectDescription(e.target.value)}
+                    placeholder="Tell Dev about your deliverables, style direction, platform, and target timeline..."
+                    className="w-full rounded-xl border border-white/15 bg-[#09090e] px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
+                  />
+                </div>
+
+                <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-zinc-400">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    suppressHydrationWarning
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    data-testid="contact-consent-checkbox"
+                    className="mt-0.5 h-4 w-4 rounded border-white/25 bg-[#09090e] accent-[#3B63FF]"
+                  />
+                  <span>
+                    Use my details solely to respond to this project brief. Never shared or sold.
+                  </span>
+                </label>
+
+                {contactStatus.type !== 'idle' && (
+                  <div
+                    role="status"
+                    data-testid="contact-form-status"
+                    className={`rounded-2xl border p-4 text-sm ${
+                      contactStatus.type === 'success'
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
+                        : contactStatus.type === 'unconfigured'
+                        ? 'border-amber-500/40 bg-amber-500/10 text-amber-200'
+                        : contactStatus.type === 'error'
+                        ? 'border-rose-500/40 bg-rose-500/10 text-rose-200'
+                        : 'border-white/15 bg-white/5 text-zinc-200'
+                    }`}
+                  >
+                    <div className="flex items-start gap-2.5">
+                      {contactStatus.type === 'success' && (
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                      )}
+                      {(contactStatus.type === 'unconfigured' || contactStatus.type === 'error') && (
+                        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+                      )}
+                      <div className="space-y-2">
+                        <p>{contactStatus.message}</p>
+                        {contactStatus.mailtoFallbackUrl && (
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            <a
+                              href={contactStatus.mailtoFallbackUrl}
+                              data-glow-btn=""
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-white/20 bg-white px-3 py-1.5 font-mono text-xs font-bold text-zinc-950"
+                            >
+                              OPEN PRE-FILLED EMAIL
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                            <a
+                              href={getWhatsappDeepLink(
+                                `Hi Dev! I'm ${fullName || 'reaching out'} regarding ${interestedService}. ${projectDescription}`
+                              )}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              data-glow-btn=""
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400/40 bg-emerald-600 px-3 py-1.5 font-mono text-xs font-bold text-white"
+                            >
+                              SEND VIA WHATSAPP
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 )}
-                CLAIM YOUR PRODUCTION SLOT
-              </button>
-            </form>
-          </div>
+
+                <button
+                  type="submit"
+                  data-glow-btn=""
+                  disabled={contactStatus.type === 'loading'}
+                  data-testid="contact-submit-btn"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-[#60A5FA]/50 bg-gradient-to-r from-[#3B63FF] to-[#2563EB] px-6 py-4 font-condensed text-sm font-bold uppercase tracking-[0.22em] text-white shadow-[0_10px_30px_rgba(59,99,255,0.4)] transition hover:brightness-110 active:scale-[0.98] disabled:opacity-60"
+                >
+                  {contactStatus.type === 'loading' ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                  CLAIM YOUR PRODUCTION SLOT
+                </button>
+              </form>
+            </div>
+          </GlowCard>
 
           {/* RIGHT 38.2%: BOOK A CALL SECTION (Asia/Kolkata Timezone) */}
-          <div
+          <GlowCard
             id="book-call"
+            customSize
+            glowColor="blue"
             data-testid="book-a-call-section"
             className="flex flex-col justify-between rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3"
           >
-            <div>
+            <div className="relative z-10">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-300">
                 <Clock className="h-3.5 w-3.5" />
                 {siteConfigContent.booking.timezoneLabel}
@@ -602,7 +616,8 @@ export function ContactAndBookingSection() {
                     href={configuredCalendlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-950"
+                    data-glow-btn=""
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white px-5 py-3 font-condensed text-xs font-bold uppercase tracking-[0.2em] text-zinc-950"
                   >
                     OPEN SCHEDULER IN NEW TAB
                     <ExternalLink className="h-4 w-4" />
@@ -641,7 +656,7 @@ export function ContactAndBookingSection() {
                       value={bookName}
                       onChange={(e) => setBookName(e.target.value)}
                       placeholder="Full name"
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
                     />
                   </div>
 
@@ -661,7 +676,7 @@ export function ContactAndBookingSection() {
                         value={bookEmail}
                         onChange={(e) => setBookEmail(e.target.value)}
                         placeholder="you@domain.com"
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -679,7 +694,7 @@ export function ContactAndBookingSection() {
                         value={bookPhone}
                         onChange={(e) => setBookPhone(e.target.value)}
                         placeholder="+91..."
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -699,7 +714,7 @@ export function ContactAndBookingSection() {
                         required
                         value={bookDate}
                         onChange={(e) => setBookDate(e.target.value)}
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
+                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
                       />
                     </div>
 
@@ -715,7 +730,7 @@ export function ContactAndBookingSection() {
                         suppressHydrationWarning
                         value={bookTime}
                         onChange={(e) => setBookTime(e.target.value)}
-                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
+                        className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
                       >
                         <option value="11:00 AM – 1:00 PM IST">11:00 AM – 1:00 PM IST</option>
                         <option value="2:00 PM – 5:00 PM IST">2:00 PM – 5:00 PM IST</option>
@@ -741,7 +756,7 @@ export function ContactAndBookingSection() {
                       required
                       value={bookTopic}
                       onChange={(e) => setBookTopic(e.target.value)}
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white focus:border-[#3B63FF] focus:outline-none"
                     />
                   </div>
 
@@ -759,7 +774,7 @@ export function ContactAndBookingSection() {
                       value={bookNotes}
                       onChange={(e) => setBookNotes(e.target.value)}
                       placeholder="Optional context for our 15-minute discovery call..."
-                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+                      className="w-full rounded-xl border border-white/15 bg-[#09090e] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#3B63FF] focus:outline-none"
                     />
                   </div>
 
@@ -770,7 +785,7 @@ export function ContactAndBookingSection() {
                       checked={bookConsent}
                       onChange={(e) => setBookConsent(e.target.checked)}
                       data-testid="booking-consent-checkbox"
-                      className="mt-0.5 h-4 w-4 rounded accent-amber-500"
+                      className="mt-0.5 h-4 w-4 rounded accent-[#3B63FF]"
                     />
                     <span>Confirm call request in Asia/Kolkata (IST) timezone.</span>
                   </label>
@@ -785,7 +800,8 @@ export function ContactAndBookingSection() {
                       {bookingStatus.mailtoFallbackUrl && (
                         <a
                           href={bookingStatus.mailtoFallbackUrl}
-                          className="mt-2 inline-flex items-center gap-1 rounded-lg bg-amber-400 px-3 py-1.5 font-mono text-[11px] font-bold text-zinc-950"
+                          data-glow-btn=""
+                          className="mt-2 inline-flex items-center gap-1 rounded-lg border border-amber-300/50 bg-amber-400 px-3 py-1.5 font-mono text-[11px] font-bold text-zinc-950"
                         >
                           CONFIRM SLOT VIA EMAIL →
                         </a>
@@ -795,9 +811,10 @@ export function ContactAndBookingSection() {
 
                   <button
                     type="submit"
+                    data-glow-btn=""
                     disabled={bookingStatus.type === 'loading'}
                     data-testid="booking-submit-btn"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-amber-300 active:scale-[0.98] disabled:opacity-60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white px-5 py-3.5 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 transition hover:bg-[#E8F0FF] active:scale-[0.98] disabled:opacity-60"
                   >
                     <Calendar className="h-4 w-4" />
                     LOCK IN STRATEGY CALL (IST)
@@ -806,7 +823,7 @@ export function ContactAndBookingSection() {
               )}
             </div>
 
-            <div className="mt-6 border-t border-white/10 pt-4 text-xs text-zinc-400">
+            <div className="relative z-10 mt-6 border-t border-white/10 pt-4 text-xs text-zinc-400">
               Need an answer right now? Ping{' '}
               <a
                 href={getWhatsappDeepLink()}
@@ -818,7 +835,7 @@ export function ContactAndBookingSection() {
               </a>
               .
             </div>
-          </div>
+          </GlowCard>
         </div>
       </div>
     </section>

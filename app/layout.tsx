@@ -9,6 +9,7 @@ import {
 import { StudioExperienceProvider } from '@/lib/audio/studio-audio-context';
 import { FixedGlassNavbar } from '@/components/navigation/FixedGlassNavbar';
 import { FloatingWhatsAppButton } from '@/components/contact/FloatingWhatsAppButton';
+import { SpotlightGlobalTracker } from '@/components/ui/spotlight-card';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -120,6 +121,7 @@ export default function RootLayout({
         />
 
         <StudioExperienceProvider>
+          <SpotlightGlobalTracker />
           <FixedGlassNavbar />
           <div id="main-content">{children}</div>
           <FloatingWhatsAppButton />

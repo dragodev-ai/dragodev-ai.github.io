@@ -47,6 +47,72 @@
     @media (prefers-reduced-motion: reduce) {
       .animate-marquee-rtl, .animate-marquee-ltr { animation: none !important; }
     }
+    [data-glow] {
+      --gx: 50%;
+      --gy: 50%;
+      --glow-alpha: 0;
+      background-image: radial-gradient(250px 250px at var(--gx) var(--gy), rgba(59, 99, 255, calc(0.11 * var(--glow-alpha, 0))), transparent 76%);
+    }
+    [data-glow]:not(.fixed):not(.absolute):not(.sticky) { position: relative; }
+    [data-glow]::before, [data-glow]::after {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background-origin: border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: var(--glow-alpha, 0);
+      transition: opacity 180ms ease;
+      z-index: 2;
+    }
+    [data-glow]::before {
+      background-image: radial-gradient(220px 220px at var(--gx) var(--gy), rgba(59, 99, 255, 0.95), rgba(96, 165, 250, 0.45) 45%, transparent 100%);
+    }
+    [data-glow]::after {
+      background-image: radial-gradient(110px 110px at var(--gx) var(--gy), rgba(239, 246, 255, 0.95), rgba(59, 99, 255, 0.55) 50%, transparent 100%);
+    }
+    [data-glow-btn] {
+      --gx: 50%;
+      --gy: 50%;
+      --glow-alpha: 0;
+      transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+    }
+    [data-glow-btn]:not(.fixed):not(.absolute):not(.sticky) { position: relative; }
+    [data-glow-btn]::before, [data-glow-btn]::after {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background-origin: border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: var(--glow-alpha, 0);
+      transition: opacity 160ms ease;
+      z-index: 3;
+    }
+    [data-glow-btn]::before {
+      background-image: radial-gradient(130px 130px at var(--gx) var(--gy), rgba(124, 155, 255, 1) 0%, rgba(59, 99, 255, 0.98) 38%, rgba(37, 99, 235, 0.35) 70%, transparent 100%);
+    }
+    [data-glow-btn]::after {
+      background-image: radial-gradient(58px 58px at var(--gx) var(--gy), rgba(239, 246, 255, 1) 0%, rgba(96, 165, 250, 0.95) 46%, transparent 100%);
+    }
+    [data-glow-btn]:hover, [data-glow-btn]:focus-visible {
+      border-color: rgba(96, 165, 250, 0.72) !important;
+      box-shadow: 0 0 26px -3px rgba(59, 99, 255, 0.72), 0 0 10px rgba(124, 155, 255, 0.48);
+    }
+    [data-glow-btn]:hover::before, [data-glow-btn]:hover::after,
+    [data-glow-btn]:focus-visible::before, [data-glow-btn]:focus-visible::after {
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="bg-[#070709] text-[#F4F3EF] antialiased selection:bg-[#3B63FF] selection:text-white">
@@ -71,7 +137,7 @@
 
   <!-- Fixed 3-Column Glass Navbar -->
   <header class="sticky top-3 z-50 mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between rounded-2xl border border-white/15 bg-[#070709]/95 px-5 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl lg:grid lg:grid-cols-[1fr_auto_1fr]">
+    <nav data-glow="" class="flex items-center justify-between rounded-2xl border border-white/15 bg-[#070709]/95 px-5 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl lg:grid lg:grid-cols-[1fr_auto_1fr]">
       <div class="flex items-center gap-4">
         <a href="#hero" class="whitespace-nowrap font-display text-sm font-bold tracking-[0.18em] text-white">DEV STUDIO</a>
         <a href="#about" class="hidden whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:text-white lg:inline-block">ABOUT</a>
@@ -83,7 +149,7 @@
         <a href="#archive" class="whitespace-nowrap transition hover:text-white">ARCHIVE</a>
       </div>
       <div class="flex items-center justify-end gap-3">
-        <a href="#contact" class="whitespace-nowrap rounded-full bg-white px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#09090B] transition hover:bg-zinc-200">
+        <a href="#contact" data-glow-btn="" class="whitespace-nowrap rounded-full border border-[#60A5FA]/50 bg-[#3B63FF] px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#4F75FF]">
           CONTACT
         </a>
       </div>
@@ -100,7 +166,7 @@
         <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">8+ YEARS · 500+ SHIPPED CUTS</span>
         <p class="text-xs font-medium text-zinc-200 sm:text-sm">Stop losing viewers in 3 seconds — <strong class="text-white">visuals engineered to hold attention &amp; win clients.</strong></p>
       </div>
-      <div id="hero-stage" class="relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto">
+      <div id="hero-stage" data-glow="" class="relative aspect-video w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071A] shadow-[0_28px_90px_rgba(0,0,0,0.85),0_0_70px_rgba(59,99,255,0.14)] sm:rounded-3xl lg:max-h-[calc(100svh-14rem)] lg:w-auto">
         <video
           id="hero-video"
           src="./public/videos/DEV_KUMAWAT_SAAS_WEB.mp4"
@@ -113,7 +179,7 @@
         ></video>
       </div>
 
-      <div class="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/10 bg-[#090C1C]/90 px-4 py-2.5 shadow-2xl backdrop-blur-xl sm:px-5">
+      <div data-glow="" class="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/10 bg-[#090C1C]/90 px-4 py-2.5 shadow-2xl backdrop-blur-xl sm:px-5">
         <div class="relative mb-3 flex items-center">
           <div class="pointer-events-none relative h-1.5 w-full overflow-hidden rounded-full bg-white/10">
             <div id="hero-progress-bar" class="h-full w-0 rounded-full bg-gradient-to-r from-[#3B63FF] to-[#7C9BFF]"></div>
@@ -123,25 +189,25 @@
 
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap items-center gap-2">
-            <button id="btn-hero-sound" type="button" class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-emerald-200 transition hover:bg-emerald-500/25">
+            <button id="btn-hero-sound" data-glow-btn="" type="button" class="rounded-full border border-emerald-400/40 bg-emerald-500/15 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-emerald-200 transition hover:bg-emerald-500/25">
               SOUND ON
             </button>
-            <button id="btn-hero-play" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
+            <button id="btn-hero-play" data-glow-btn="" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
               PAUSE
             </button>
-            <button id="btn-hero-restart" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
+            <button id="btn-hero-restart" data-glow-btn="" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
               REPLAY 0:00
             </button>
-            <button id="btn-hero-fullscreen" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
+            <button id="btn-hero-fullscreen" data-glow-btn="" type="button" class="rounded-full border border-white/15 bg-white/5 px-3.5 py-2 font-mono text-xs uppercase tracking-wider text-zinc-200 transition hover:bg-white/10">
               FULLSCREEN
             </button>
             <span id="hero-timecode" class="ml-1 font-mono text-[11px] tabular-nums text-zinc-400">00:00 / 00:52</span>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="#archive" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-wider text-zinc-100 transition hover:border-[#3B63FF]">
+            <a href="#archive" data-glow-btn="" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-wider text-zinc-100 transition hover:border-[#3B63FF]">
               232+ Proofs ↓
             </a>
-            <a href="#contact" class="rounded-full bg-white px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#09090B] transition hover:bg-zinc-200">
+            <a href="#contact" data-glow-btn="" class="rounded-full border border-[#60A5FA]/50 bg-[#3B63FF] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-[#4F75FF]">
               Hire Dev
             </a>
           </div>
@@ -857,6 +923,36 @@
       const msg = 'Hi Dev! Name: ' + (fd.get('name') || '') + ' | Service: ' + (fd.get('serviceNeeded') || '') + ' | Brief: ' + (fd.get('projectDetails') || 'Let us discuss a project.');
       window.open('https://wa.me/919309425465?text=' + encodeURIComponent(msg), '_blank');
     });
+
+    // 9. Cobalt-Blue Spotlight Card & Button Border Tracker
+    document.querySelectorAll('button, a.rounded-full, a.rounded-2xl').forEach((el) => {
+      if (!el.hasAttribute('data-glow')) el.setAttribute('data-glow-btn', '');
+    });
+    let ptrX = -9999, ptrY = -9999, ptrRaf = 0;
+    function flushSpotlight() {
+      ptrRaf = 0;
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-glow], [data-glow-btn]').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -160 || r.top > vh + 160) return;
+        el.style.setProperty('--gx', (ptrX - r.left).toFixed(1) + 'px');
+        el.style.setProperty('--gy', (ptrY - r.top).toFixed(1) + 'px');
+        const dx = Math.max(r.left - ptrX, 0, ptrX - r.right);
+        const dy = Math.max(r.top - ptrY, 0, ptrY - r.bottom);
+        const dist = Math.hypot(dx, dy);
+        const reach = el.hasAttribute('data-glow-btn') ? 76 : 140;
+        el.style.setProperty('--glow-alpha', dist < reach ? (1 - dist / reach).toFixed(3) : '0');
+      });
+    }
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
+      ptrX = e.clientX;
+      ptrY = e.clientY;
+      if (!ptrRaf) ptrRaf = requestAnimationFrame(flushSpotlight);
+    }, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (ptrX > -1000 && !ptrRaf) ptrRaf = requestAnimationFrame(flushSpotlight);
+    }, { passive: true });
   </script>
 </body>
 </html>

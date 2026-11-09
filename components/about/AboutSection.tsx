@@ -4,6 +4,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Download, ExternalLink, GraduationCap, MapPin } from 'lucide-react';
 import { profileContent } from '@/lib/content';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 const AboutArtifactsScene = dynamic(
   () => import('@/three/scenes/AboutArtifactsScene').then((m) => m.AboutArtifactsScene),
@@ -40,8 +41,9 @@ export function AboutSection() {
             <a
               href={profileContent.resume.primaryPdfUrl}
               download={profileContent.resume.downloadFileName}
+              data-glow-btn=""
               data-testid="resume-download-btn"
-              className="inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-purple-100 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 bg-white px-6 py-3 font-condensed text-xs font-bold uppercase tracking-[0.22em] text-zinc-950 shadow-lg transition hover:bg-blue-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B63FF]"
             >
               <Download className="h-4 w-4" />
               RESUME (PDF)
@@ -50,7 +52,8 @@ export function AboutSection() {
               href={profileContent.resume.portfolioOverviewPdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.2em] text-zinc-200 transition hover:border-purple-400 hover:text-white active:scale-[0.98]"
+              data-glow-btn=""
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 font-condensed text-xs font-semibold uppercase tracking-[0.2em] text-zinc-200 transition hover:bg-[#3B63FF]/15 hover:text-white active:scale-[0.98]"
             >
               PORTFOLIO SHEET
               <ExternalLink className="h-3.5 w-3.5" />
@@ -72,11 +75,13 @@ export function AboutSection() {
               {profileContent.bio.paragraphs[0]}
             </p>
 
-            {/* 4 Verified Hard-Number Proof Blocks */}
+            {/* 4 Verified Hard-Number Proof Blocks (Spotlight GlowCards) */}
             <div className="grid grid-cols-2 gap-3 pt-2 sm:grid-cols-4">
               {profileContent.stats.map((st) => (
-                <div
+                <GlowCard
                   key={st.label}
+                  customSize
+                  glowColor="blue"
                   className="rounded-2xl border border-white/10 bg-[#111116]/90 p-4 backdrop-blur-md"
                 >
                   <span className="block font-sans text-3xl font-extrabold tabular-nums tracking-[-0.03em] text-amber-300 sm:text-4xl">
@@ -85,12 +90,16 @@ export function AboutSection() {
                   <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
                     {st.label}
                   </span>
-                </div>
+                </GlowCard>
               ))}
             </div>
 
             {/* 3 Streamlined Result-Proven Track-Record Rows */}
-            <div className="divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-[#111116]/85 px-5 py-2 sm:px-6">
+            <GlowCard
+              customSize
+              glowColor="blue"
+              className="divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-[#111116]/85 px-5 py-2 sm:px-6"
+            >
               {profileContent.highlights.map((hl) => (
                 <div
                   key={hl.number}
@@ -102,7 +111,7 @@ export function AboutSection() {
                       <h3 className="font-sans text-sm font-bold text-white sm:text-base">
                         {hl.title}
                       </h3>
-                      <p className="font-mono text-[11px] text-purple-300">{hl.subtitle}</p>
+                      <p className="font-mono text-[11px] text-[#7C9BFF]">{hl.subtitle}</p>
                     </div>
                   </div>
                   <p className="max-w-[36ch] text-xs leading-[1.618] text-zinc-400 sm:text-right">
@@ -110,12 +119,16 @@ export function AboutSection() {
                   </p>
                 </div>
               ))}
-            </div>
+            </GlowCard>
           </div>
 
           {/* Right 38.2% Golden Column: Studio Portrait + Compact Credential & Toolkit */}
           <div className="space-y-phi-2">
-            <div className="overflow-hidden rounded-3xl border border-white/12 bg-[#111116] p-2.5 shadow-2xl">
+            <GlowCard
+              customSize
+              glowColor="blue"
+              className="overflow-hidden rounded-3xl border border-white/12 bg-[#111116] p-2.5 shadow-2xl"
+            >
               <div className="relative aspect-[1/1.18] overflow-hidden rounded-2xl bg-[#0a0a0f]">
                 <img
                   src={profileContent.portraitUrl}
@@ -133,12 +146,16 @@ export function AboutSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </GlowCard>
 
             {/* Compact Verified Credential & Studio Arsenal Card */}
-            <div className="rounded-2xl border border-white/10 bg-[#111116]/90 p-5">
+            <GlowCard
+              customSize
+              glowColor="blue"
+              className="rounded-2xl border border-white/10 bg-[#111116]/90 p-5"
+            >
               <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-purple-400">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7C9BFF]">
                   <GraduationCap className="h-3.5 w-3.5" />
                   VERIFIED CREDENTIAL
                 </span>
@@ -159,7 +176,7 @@ export function AboutSection() {
                   </span>
                 ))}
               </div>
-            </div>
+            </GlowCard>
           </div>
         </div>
 
