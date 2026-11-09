@@ -10,6 +10,7 @@ import { StudioExperienceProvider } from '@/lib/audio/studio-audio-context';
 import { FixedGlassNavbar } from '@/components/navigation/FixedGlassNavbar';
 import { FloatingWhatsAppButton } from '@/components/contact/FloatingWhatsAppButton';
 import { SpotlightGlobalTracker } from '@/components/ui/spotlight-card';
+import { InteractiveGlassAtmosphere } from '@/components/ui/interactive-glass-atmosphere';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -106,7 +107,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-[#070709] font-sans text-zinc-100 antialiased"
+        className="min-h-screen bg-transparent font-sans text-zinc-100 antialiased"
       >
         <a
           href="#main-content"
@@ -121,9 +122,10 @@ export default function RootLayout({
         />
 
         <StudioExperienceProvider>
+          <InteractiveGlassAtmosphere />
           <SpotlightGlobalTracker />
           <FixedGlassNavbar />
-          <div id="main-content">{children}</div>
+          <div id="main-content" className="relative">{children}</div>
           <FloatingWhatsAppButton />
         </StudioExperienceProvider>
       </body>

@@ -55,7 +55,7 @@ export function StackedProjectsSection({
       id="projects"
       aria-labelledby="projects-heading"
       ref={containerRef}
-      className="relative scroll-mt-24 bg-[#070709] py-phi-4 sm:py-phi-5"
+      className="relative scroll-mt-24 bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Section Header */}
@@ -96,7 +96,7 @@ export function StackedProjectsSection({
               onTouchStart={() => void warmProjectMedia(project)}
               style={{ top: `${88 + idx * 18}px` }}
               data-testid={`stacked-project-card-${idx}`}
-              className="relative overflow-hidden rounded-[28px] border border-white/15 bg-[#111118] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.85)] will-change-transform sm:rounded-[32px] sm:p-phi-3 lg:sticky"
+              className="relative overflow-hidden rounded-[28px] border border-white/18 bg-[#0A0F22]/68 p-5 shadow-[0_28px_90px_rgba(0,0,0,0.68)] backdrop-blur-2xl will-change-transform sm:rounded-[32px] sm:p-phi-3 lg:sticky"
             >
               {/* Golden Ratio Split: 1fr (38.2% Crisp Hook Copy) : 1.618fr (61.8% Cinema Frame) */}
               <div className="relative z-10 grid gap-phi-2 lg:grid-cols-[1fr_1.618fr] lg:items-center lg:gap-phi-3">

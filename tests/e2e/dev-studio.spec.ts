@@ -42,7 +42,13 @@ test.describe('DEV STUDIO — Comprehensive Phase 18 End-to-End Journeys', () =>
     await expect(soundToggle).toContainText(/Sound On/i);
 
     const isMobile = testInfo.project.name.includes('mobile');
+    await expect(page.getByTestId('interactive-ambient-background')).toBeAttached();
+    await expect(page.getByTestId('ambient-grain-layer')).toBeAttached();
+
     if (!isMobile) {
+      await page.mouse.move(460, 320);
+      await page.mouse.move(680, 290, { steps: 6 });
+      await expect(page.getByTestId('glassmorphism-cursor')).toBeVisible();
       await page.screenshot({
         path: path.join(QA_SCREENSHOT_DIR, '01-hero-video-showcase.png'),
       });

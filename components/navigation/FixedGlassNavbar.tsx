@@ -79,8 +79,8 @@ export function FixedGlassNavbar() {
         data-glow=""
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-7 ${
           scrolled
-            ? 'border-white/15 bg-[#070709]/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-xl'
-            : 'border-white/15 bg-[#070709]/90 backdrop-blur-xl'
+            ? 'border-white/20 bg-[#080D1F]/58 shadow-[0_16px_44px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-2xl backdrop-saturate-150'
+            : 'border-white/18 bg-[#080D1F]/44 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-2xl backdrop-saturate-150'
         }`}
       >
         {/* LEFT COLUMN: ABOUT (with subtle Studio Home dot) */}

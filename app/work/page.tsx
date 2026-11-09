@@ -20,7 +20,7 @@ export default function WorkPortfolioPage() {
   const allProjects = getPublicProjects();
 
   return (
-    <main className="min-h-screen bg-[#09090e] pt-24">
+    <main className="relative min-h-screen bg-transparent pt-24">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-8">
         <Link
           href="/"

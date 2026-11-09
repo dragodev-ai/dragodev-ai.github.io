@@ -4,7 +4,7 @@ import { profileContent, socialLinksContent } from '@/lib/content';
 
 export function StudioFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#050507] pb-24 pt-14 text-zinc-400 sm:pb-16">
+    <footer className="relative border-t border-white/12 bg-[#040610]/55 pb-24 pt-14 text-zinc-400 backdrop-blur-2xl sm:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">

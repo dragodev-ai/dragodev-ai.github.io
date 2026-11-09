@@ -14,7 +14,7 @@ export function PricingSection() {
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
-      className="relative scroll-mt-24 bg-[#070709] py-phi-4 sm:py-phi-5"
+      className="relative scroll-mt-24 bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-phi-3 flex flex-col justify-between gap-phi-2 border-b border-white/10 pb-phi-2 sm:mb-phi-4 lg:flex-row lg:items-end">
@@ -41,10 +41,10 @@ export function PricingSection() {
               customSize
               glowColor="blue"
               data-testid={`pricing-card-${pkg.id}`}
-              className={`flex flex-col justify-between rounded-3xl border p-phi-2 transition-all duration-300 sm:p-phi-3 ${
+              className={`flex flex-col justify-between rounded-3xl border p-phi-2 transition-all duration-300 backdrop-blur-2xl sm:p-phi-3 ${
                 pkg.featured
-                  ? 'border-[#3B63FF]/60 bg-gradient-to-b from-[#0C142E] to-[#0E1019] shadow-[0_24px_60px_rgba(59,99,255,0.20)]'
-                  : 'border-white/10 bg-[#111116]'
+                  ? 'border-[#3B63FF]/60 bg-[#0B1433]/55 shadow-[0_24px_60px_rgba(59,99,255,0.22)]'
+                  : 'border-white/15 bg-white/[0.045]'
               }`}
             >
               <div>
@@ -69,7 +69,7 @@ export function PricingSection() {
                 </p>
 
                 {/* Verified Non-Fabricated Custom Quote Display */}
-                <div className="my-5 rounded-2xl border border-white/10 bg-[#09090e] px-4 py-3.5">
+                <div className="my-5 rounded-2xl border border-white/12 bg-black/30 px-4 py-3.5 backdrop-blur-md">
                   <p className="font-serif text-lg italic text-amber-300 sm:text-xl">
                     {pkg.price}
                   </p>

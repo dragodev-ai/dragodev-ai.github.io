@@ -20,7 +20,7 @@ export default function HomePage() {
   const featuredProjects = getFeaturedProjects();
 
   return (
-    <main className="relative min-h-screen bg-[#070709]">
+    <main className="relative min-h-screen bg-transparent">
       {/* Showcase Video Hero (DEV_KUMAWAT_SAAS_WEB.mp4) */}
       <VideoHeroSection />
 

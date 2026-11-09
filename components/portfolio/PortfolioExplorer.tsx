@@ -96,7 +96,7 @@ export function PortfolioExplorer({
       id={isStandalonePage ? 'work-archive' : 'explorer'}
       aria-label="Complete Google Drive Portfolio Explorer"
       data-testid="portfolio-explorer"
-      className="relative bg-[#09090e] py-phi-4 sm:py-phi-5"
+      className="relative bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Header */}
@@ -355,7 +355,7 @@ export function PortfolioExplorer({
                 onFocus={() => void warmProjectMedia(project)}
                 onTouchStart={() => void warmProjectMedia(project)}
                 data-testid={`explorer-card-${project.id}`}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#12121a] text-left transition duration-300 hover:-translate-y-1 hover:border-[#3B63FF]/60 hover:shadow-[0_18px_40px_rgba(59,99,255,0.2)]"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.045] text-left backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#3B63FF]/60 hover:bg-white/[0.07] hover:shadow-[0_18px_40px_rgba(59,99,255,0.24)]"
               >
                 <div className="relative aspect-video w-full overflow-hidden bg-black">
                   <img

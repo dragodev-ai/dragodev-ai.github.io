@@ -195,12 +195,28 @@ const html = `<!DOCTYPE html>
       background: radial-gradient(circle, rgba(255, 255, 255, 0.58) 0%, rgba(124, 155, 255, 0.36) 42%, rgba(59, 99, 255, 0) 72%);
       animation: ripple-animation 0.6s ease-out forwards;
     }
+    [data-glow] {
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+    }
+    @media (pointer: fine) {
+      html.has-glass-cursor, html.has-glass-cursor * { cursor: none !important; }
+    }
   </style>
 </head>
-<body class="bg-[#070709] text-[#F4F3EF] antialiased selection:bg-[#3B63FF] selection:text-white">
+<body class="bg-transparent text-[#F4F3EF] antialiased selection:bg-[#3B63FF] selection:text-white" style="background-color:#04060E;">
+  <!-- Interactive Cursor-Reactive Mesh Gradient + Film Grain + Glassmorphism Cursor -->
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <canvas id="ambient-mesh-canvas" class="h-full w-full scale-[1.03] object-cover opacity-95"></canvas>
+    <div id="ambient-grain" class="absolute inset-0 bg-repeat opacity-[0.22] mix-blend-overlay"></div>
+  </div>
+  <div id="glass-cursor-wrap" aria-hidden="true" class="pointer-events-none fixed inset-0 z-[9999] hidden overflow-hidden">
+    <div id="glass-cursor-lens" style="width:36px;height:36px;backdrop-filter:blur(9px) saturate(185%) brightness(1.15);-webkit-backdrop-filter:blur(9px) saturate(185%) brightness(1.15);background:radial-gradient(circle at 28% 28%,rgba(255,255,255,0.28) 0%,rgba(147,197,253,0.12) 52%,rgba(59,99,255,0.06) 100%);box-shadow:inset 0 1.5px 2px rgba(255,255,255,0.65),inset 0 -1.5px 3px rgba(59,99,255,0.35),0 10px 28px rgba(4,8,24,0.42),0 0 20px rgba(96,165,250,0.22);" class="fixed left-0 top-0 rounded-full border border-white/45 transition-[width,height] duration-200"></div>
+    <div id="glass-cursor-dot" class="fixed left-0 top-0 h-[5px] w-[5px] rounded-full bg-white shadow-[0_0_10px_#fff,0_0_18px_#3B63FF]"></div>
+  </div>
 
   <!-- Top Live Server Bridge Ribbon -->
-  <div class="relative z-[60] border-b border-white/10 bg-[#090B14] px-4 py-2 text-xs text-zinc-300">
+  <div class="relative z-[60] border-b border-white/10 bg-[#090B14]/70 px-4 py-2 text-xs text-zinc-300 backdrop-blur-xl">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2 font-mono">
         <span id="server-dot" class="inline-block h-2 w-2 rounded-full bg-amber-400"></span>
@@ -219,7 +235,7 @@ const html = `<!DOCTYPE html>
 
   <!-- Fixed 3-Column Glass Navbar -->
   <header class="sticky top-3 z-50 mx-auto mt-3 max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav data-glow="" class="flex items-center justify-between rounded-2xl border border-white/15 bg-[#070709]/95 px-5 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl lg:grid lg:grid-cols-[1fr_auto_1fr]">
+    <nav data-glow="" class="flex items-center justify-between rounded-2xl border border-white/20 bg-[#080D1F]/55 px-5 py-3 shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-2xl lg:grid lg:grid-cols-[1fr_auto_1fr]">
       <div class="flex items-center gap-4">
         <a href="#hero" class="whitespace-nowrap font-display text-sm font-bold tracking-[0.18em] text-white">DEV STUDIO</a>
         <a href="#about" class="hidden whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-zinc-300 transition hover:text-white lg:inline-block">ABOUT</a>
@@ -239,7 +255,7 @@ const html = `<!DOCTYPE html>
   </header>
 
   <!-- SHOWCASE VIDEO HERO (DEV_KUMAWAT_SAAS_WEB.mp4) -->
-  <section id="hero" class="relative w-full overflow-hidden bg-gradient-to-b from-[#04071A] via-[#060919] to-[#070709] pb-10 pt-6 sm:pb-14 sm:pt-8">
+  <section id="hero" class="relative w-full overflow-hidden bg-transparent pb-10 pt-6 sm:pb-14 sm:pt-8">
     <h1 class="sr-only">Dev Kumawat — Creative Director, Video Editor, Graphic Designer &amp; AI Creative Specialist</h1>
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(59,99,255,0.20),transparent_70%)]"></div>
 
@@ -299,7 +315,7 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- SCROLLING VERIFIED CLIENT BRAND LOGOS MARQUEE -->
-  <section class="border-y border-white/10 bg-[#08080c] py-10 overflow-hidden">
+  <section class="relative border-y border-white/12 bg-white/[0.03] py-10 overflow-hidden backdrop-blur-xl">
     <div class="mx-auto mb-6 flex max-w-7xl items-center justify-between px-5">
       <div class="flex items-center gap-3">
         <span class="inline-block h-2 w-2 rounded-full bg-[#3B63FF] shadow-[0_0_10px_rgba(59,99,255,0.85)]"></span>
@@ -314,7 +330,7 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- EDITORIAL ABOUT ME SECTION (GOLDEN RATIO 1.618fr : 1fr) -->
-  <section id="about" class="mx-auto max-w-7xl px-5 py-24 md:px-8">
+  <section id="about" class="relative mx-auto max-w-7xl px-5 py-24 md:px-8">
     <div class="grid gap-10 lg:grid-cols-[1.618fr_1fr] lg:items-start">
       <div>
         <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">01 · WHY BRANDS &amp; LEADERS HIRE DEV</span>
@@ -327,15 +343,15 @@ const html = `<!DOCTYPE html>
           ${profile.stats
             .map(
               (s) => `
-            <div class="rounded-2xl border border-white/10 bg-[#121216] p-4">
+            <div data-glow="" class="rounded-2xl border border-white/15 bg-white/[0.045] p-4 backdrop-blur-xl">
               <div class="font-display text-2xl font-extrabold text-[#C8A464] sm:text-3xl">${s.value}</div>
-              <div class="mt-1 font-mono text-[10px] uppercase tracking-wider text-zinc-400">${s.label}</div>
+              <div class="mt-1 font-mono text-[10px] uppercase tracking-wider text-zinc-300">${s.label}</div>
             </div>`
             )
             .join('')}
         </div>
 
-        <div class="mt-7 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#121216]/85 px-5 py-2">
+        <div data-glow="" class="mt-7 divide-y divide-white/10 rounded-2xl border border-white/15 bg-white/[0.045] px-5 py-2 backdrop-blur-xl">
           ${profile.highlights
             .map(
               (h) => `
@@ -344,7 +360,7 @@ const html = `<!DOCTYPE html>
                 <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C8A464]">${h.number} · ${h.subtitle}</span>
                 <h3 class="mt-0.5 font-display text-sm font-bold text-white">${h.title}</h3>
               </div>
-              <p class="max-w-[34ch] text-xs leading-[1.618] text-zinc-400 sm:text-right">${h.detail}</p>
+              <p class="max-w-[34ch] text-xs leading-[1.618] text-zinc-300 sm:text-right">${h.detail}</p>
             </div>`
             )
             .join('')}
@@ -352,7 +368,7 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="space-y-4">
-        <div class="overflow-hidden rounded-3xl border border-white/15 bg-[#121216] shadow-2xl">
+        <div data-glow="" class="overflow-hidden rounded-3xl border border-white/18 bg-white/[0.05] shadow-2xl backdrop-blur-2xl">
           <img id="about-portrait" alt="Dev Kumawat Studio Portrait" class="h-[410px] w-full object-cover object-top" />
           <div class="border-t border-white/10 p-5">
             <p class="font-mono text-xs uppercase tracking-[0.2em] text-[#C8A464]">JAIPUR, RAJASTHAN · WORLDWIDE</p>
@@ -368,7 +384,7 @@ const html = `<!DOCTYPE html>
           </div>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-[#121216]/75 p-4 text-xs text-zinc-300">
+        <div data-glow="" class="rounded-2xl border border-white/15 bg-white/[0.045] p-4 text-xs text-zinc-300 backdrop-blur-xl">
           <span class="font-mono uppercase tracking-wider text-[#C8A464]">Credential:</span>
           <strong class="ml-1 text-white">${profile.education.degree}</strong> — ${profile.education.institution} (${profile.education.period})
         </div>
@@ -377,8 +393,8 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- HIGH-CONTRAST ROUNDED WHITE SERVICES SHEET -->
-  <section id="services" class="mx-auto max-w-[96rem] px-3 py-6 sm:px-6">
-    <div class="rounded-[2.25rem] bg-[#F7F6F2] px-5 py-16 text-[#09090B] shadow-2xl sm:px-10 md:py-24">
+  <section id="services" class="relative mx-auto max-w-[96rem] px-3 py-6 sm:px-6">
+    <div class="rounded-[2.25rem] border border-white/60 bg-[#F7F6F2]/92 px-5 py-16 text-[#09090B] shadow-2xl backdrop-blur-2xl sm:px-10 md:py-24">
       <div class="mx-auto max-w-6xl">
         <div class="flex flex-col justify-between gap-4 border-b border-black/15 pb-8 md:flex-row md:items-end">
           <div>
@@ -393,28 +409,28 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- CONFIGURABLE PRICING PACKAGES -->
-  <section id="pricing" class="mx-auto max-w-7xl px-5 py-24 md:px-8">
+  <section id="pricing" class="relative mx-auto max-w-7xl px-5 py-24 md:px-8">
     <div class="max-w-2xl">
       <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">TRANSPARENT STUDIO SCOPING</span>
       <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">${pricing.headline}</h2>
-      <p class="mt-3 text-sm leading-relaxed text-zinc-400">${pricing.subheadline}</p>
+      <p class="mt-3 text-sm leading-relaxed text-zinc-300">${pricing.subheadline}</p>
     </div>
 
     <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       ${pricing.packages
         .map(
           (pkg) => `
-        <div class="flex flex-col justify-between rounded-3xl border ${
-          pkg.featured ? 'border-[#C8A464] bg-[#151310]' : 'border-white/10 bg-[#121216]'
-        } p-6 shadow-xl">
+        <div data-glow="" class="flex flex-col justify-between rounded-3xl border ${
+          pkg.featured ? 'border-[#60A5FA]/60 bg-[#0B1433]/55' : 'border-white/15 bg-white/[0.045]'
+        } p-6 shadow-xl backdrop-blur-2xl">
           <div>
             <span class="inline-block rounded-full ${
               pkg.featured ? 'bg-[#C8A464] text-[#09090B]' : 'bg-white/10 text-[#C8A464]'
             } px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">${pkg.badge}</span>
             <h3 class="mt-4 font-display text-xl font-bold text-white">${pkg.title}</h3>
-            <p class="mt-2 text-xs leading-relaxed text-zinc-400">${pkg.shortDescription}</p>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-300">${pkg.shortDescription}</p>
             <div class="my-5 border-y border-white/10 py-3 font-serif text-xl italic text-[#C8A464]">${pkg.price}</div>
-            <ul class="space-y-2 text-xs text-zinc-300">
+            <ul class="space-y-2 text-xs text-zinc-200">
               ${pkg.deliverables.map((d) => `<li class="flex gap-2"><span class="text-[#C8A464]">✦</span><span>${d}</span></li>`).join('')}
             </ul>
           </div>
@@ -432,28 +448,28 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- STICKY STACKED FEATURED PROJECTS -->
-  <section id="projects" class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+  <section id="projects" class="relative mx-auto max-w-7xl px-5 py-16 md:px-8">
     <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
       <div>
         <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">04 · DON'T TAKE MY WORD FOR IT — WATCH WHAT SHIPPED</span>
         <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">PROVEN PROJECTS</h2>
       </div>
-      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-[#C8A464] hover:underline">WATCH ALL 232 PROOFS ↓</a>
+      <a href="#archive" class="font-mono text-xs uppercase tracking-[0.18em] text-[#C8A464] hover:underline">WATCH ALL ${publicProjects.length} PROOFS ↓</a>
     </div>
     <div id="featured-stack" class="space-y-6"></div>
   </section>
 
   <!-- INTERACTIVE GOOGLE DRIVE PORTFOLIO ARCHIVE EXPLORER -->
-  <section id="archive" class="mx-auto max-w-7xl px-5 py-20 md:px-8">
-    <div class="rounded-3xl border border-white/10 bg-[#101015] p-6 sm:p-10">
+  <section id="archive" class="relative mx-auto max-w-7xl px-5 py-20 md:px-8">
+    <div data-glow="" class="rounded-3xl border border-white/15 bg-white/[0.045] p-6 backdrop-blur-2xl sm:p-10">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
           <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">VERIFIED CLIENT VAULT</span>
-          <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">232+ CLIENT PROOFS</h2>
+          <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">${publicProjects.length}+ CLIENT PROOFS</h2>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <input id="archive-search" type="search" placeholder="Search brand, shoot, motion, AI..." class="rounded-full border border-white/15 bg-[#09090B] px-4 py-2 text-xs text-white placeholder-zinc-500 focus:border-[#C8A464] focus:outline-none" />
-          <select id="archive-media-filter" class="rounded-full border border-white/15 bg-[#09090B] px-3.5 py-2 font-mono text-xs text-zinc-200 focus:border-[#C8A464] focus:outline-none">
+          <input id="archive-search" type="search" placeholder="Search brand, shoot, motion, AI..." class="rounded-full border border-white/15 bg-[#090D1D]/70 px-4 py-2 text-xs text-white placeholder-zinc-400 backdrop-blur-xl focus:border-[#C8A464] focus:outline-none" />
+          <select id="archive-media-filter" class="rounded-full border border-white/15 bg-[#090D1D]/70 px-3.5 py-2 font-mono text-xs text-zinc-200 backdrop-blur-xl focus:border-[#C8A464] focus:outline-none">
             <option value="all">All Media</option>
             <option value="video">Videos Only</option>
             <option value="image">Graphics &amp; Photos</option>
@@ -472,50 +488,50 @@ const html = `<!DOCTYPE html>
   </section>
 
   <!-- CONTACT, DISCOVERY CALL & WHATSAPP -->
-  <section id="contact" class="mx-auto max-w-7xl px-5 py-24 md:px-8">
+  <section id="contact" class="relative mx-auto max-w-7xl px-5 py-24 md:px-8">
     <div class="grid gap-10 lg:grid-cols-[1fr_1.618fr]">
       <div>
         <span class="font-mono text-xs uppercase tracking-[0.24em] text-[#C8A464]">05 · STOP GAMBLING ON SLOW FREELANCERS</span>
         <h2 class="mt-2 font-display text-3xl font-extrabold text-white sm:text-5xl">HIRE DEV NOW.</h2>
-        <p class="mt-4 text-sm leading-[1.618] text-zinc-400">
+        <p class="mt-4 text-sm leading-[1.618] text-zinc-300">
           Send your brief or book a 15-minute IST strategy call. Direct reply from <strong class="text-white">${profile.contact.email}</strong> within hours.
         </p>
 
         <div class="mt-6 space-y-3 text-sm">
-          <a href="mailto:${profile.contact.email}" class="flex items-center justify-between rounded-2xl border border-white/10 bg-[#121216] p-4 transition hover:border-[#C8A464]/50">
-            <span class="font-mono text-xs uppercase text-zinc-400">Email</span>
+          <a href="mailto:${profile.contact.email}" data-glow="" class="flex items-center justify-between rounded-2xl border border-white/15 bg-white/[0.045] p-4 backdrop-blur-xl transition hover:border-[#C8A464]/50">
+            <span class="font-mono text-xs uppercase text-zinc-300">Email</span>
             <span class="font-medium text-white">${profile.contact.email}</span>
           </a>
-          <a href="https://wa.me/${profile.contact.whatsappNumber}?text=${encodeURIComponent(profile.contact.whatsappPreFilledMessage)}" target="_blank" rel="noopener" class="flex items-center justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 transition hover:border-emerald-400">
+          <a href="https://wa.me/${profile.contact.whatsappNumber}?text=${encodeURIComponent(profile.contact.whatsappPreFilledMessage)}" target="_blank" rel="noopener" class="flex items-center justify-between rounded-2xl border border-emerald-500/35 bg-emerald-500/12 p-4 backdrop-blur-xl transition hover:border-emerald-400">
             <span class="font-mono text-xs uppercase text-emerald-300">WhatsApp Instant Chat</span>
             <span class="font-medium text-white">${profile.contact.phone} ↗</span>
           </a>
-          <a href="https://www.instagram.com/lenswithdragodev" target="_blank" rel="noopener" class="flex items-center justify-between rounded-2xl border border-white/10 bg-[#121216] p-4 transition hover:border-[#C8A464]/50">
-            <span class="font-mono text-xs uppercase text-zinc-400">Instagram</span>
+          <a href="https://www.instagram.com/lenswithdragodev" target="_blank" rel="noopener" data-glow="" class="flex items-center justify-between rounded-2xl border border-white/15 bg-white/[0.045] p-4 backdrop-blur-xl transition hover:border-[#C8A464]/50">
+            <span class="font-mono text-xs uppercase text-zinc-300">Instagram</span>
             <span class="font-medium text-white">@lenswithdragodev ↗</span>
           </a>
         </div>
       </div>
 
       <div>
-        <form id="contact-form" class="rounded-3xl border border-white/15 bg-[#121216] p-6 shadow-2xl sm:p-8">
+        <form id="contact-form" data-glow="" class="rounded-3xl border border-white/18 bg-white/[0.05] p-6 shadow-2xl backdrop-blur-2xl sm:p-8">
           <h3 class="font-display text-xl font-bold uppercase text-white">Send Your Brief — Claim Your Slot</h3>
           <div class="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
-              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Your Name *</label>
-              <input name="name" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="Alex Rivera" />
+              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-300">Your Name *</label>
+              <input name="name" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#070B1A]/75 px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="Alex Rivera" />
             </div>
             <div>
-              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Email Address *</label>
-              <input name="email" type="email" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="you@company.com" />
+              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-300">Email Address *</label>
+              <input name="email" type="email" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#070B1A]/75 px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="you@company.com" />
             </div>
             <div>
-              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Phone / WhatsApp</label>
-              <input name="phone" class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="+91 ..." />
+              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-300">Phone / WhatsApp</label>
+              <input name="phone" class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#070B1A]/75 px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="+91 ..." />
             </div>
             <div>
-              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Service Needed *</label>
-              <select id="contact-service-select" name="serviceNeeded" class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none">
+              <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-300">Service Needed *</label>
+              <select id="contact-service-select" name="serviceNeeded" class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#070B1A]/75 px-3.5 py-2.5 text-sm text-white focus:border-[#C8A464] focus:outline-none">
                 <option value="Video Editing & Post-Production">Video Editing &amp; Post-Production</option>
                 <option value="Graphic Design & Branding">Graphic Design &amp; Branding</option>
                 <option value="Motion Graphics & VFX">Motion Graphics &amp; VFX</option>
@@ -526,8 +542,8 @@ const html = `<!DOCTYPE html>
             </div>
           </div>
           <div class="mt-4">
-            <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-400">Project Details, Goals &amp; Preferred Call Time (IST) *</label>
-            <textarea name="projectDetails" rows="4" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#09090B] p-3.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="Tell Dev about your campaign, timeline, deliverables, or preferred discovery call window..."></textarea>
+            <label class="block font-mono text-[11px] uppercase tracking-wider text-zinc-300">Project Details, Goals &amp; Preferred Call Time (IST) *</label>
+            <textarea name="projectDetails" rows="4" required class="mt-1.5 w-full rounded-xl border border-white/15 bg-[#070B1A]/75 p-3.5 text-sm text-white focus:border-[#C8A464] focus:outline-none" placeholder="Tell Dev about your campaign, timeline, deliverables, or preferred discovery call window..."></textarea>
           </div>
           <div id="contact-status" class="mt-4 hidden rounded-xl border border-[#C8A464]/40 bg-[#C8A464]/10 p-3.5 text-xs text-zinc-200"></div>
           <div class="mt-5 flex flex-wrap gap-3">
@@ -543,7 +559,7 @@ const html = `<!DOCTYPE html>
     </div>
   </section>
 
-  <footer class="border-t border-white/10 py-10 text-center font-mono text-xs text-zinc-500">
+  <footer class="relative border-t border-white/12 bg-[#040610]/55 py-10 text-center font-mono text-xs text-zinc-400 backdrop-blur-2xl">
     © ${new Date().getFullYear()} ${profile.name} · ${profile.studioName} · Jaipur, Rajasthan, India
   </footer>
 
@@ -1036,6 +1052,80 @@ const html = `<!DOCTYPE html>
         if (host && host.childElementCount === 0 && host.isConnected) host.remove();
       }, 620);
     }, { passive: true });
+
+    // 10. Interactive Cursor-Stretching Mesh Gradient + Film Grain + Glassmorphism Cursor
+    (() => {
+      const cv = document.getElementById('ambient-mesh-canvas');
+      const grainEl = document.getElementById('ambient-grain');
+      const lensWrap = document.getElementById('glass-cursor-wrap');
+      const lens = document.getElementById('glass-cursor-lens');
+      const dot = document.getElementById('glass-cursor-dot');
+      if (!cv) return;
+      const g = document.createElement('canvas'); g.width = 140; g.height = 140;
+      const gctx = g.getContext('2d');
+      if (gctx && grainEl) {
+        const img = gctx.createImageData(140, 140);
+        let s = 1337;
+        for (let i = 0; i < img.data.length; i += 4) {
+          s = (s * 16807) % 2147483647;
+          const v = Math.floor(((s - 1) / 2147483646) * 255);
+          img.data[i] = v; img.data[i + 1] = v; img.data[i + 2] = v; img.data[i + 3] = 42;
+        }
+        gctx.putImageData(img, 0, 0);
+        grainEl.style.backgroundImage = 'url(' + g.toDataURL() + ')';
+      }
+      const ctx = cv.getContext('2d', { alpha: false });
+      const S = 0.35;
+      let vw = innerWidth, vh = innerHeight, cw = 400, ch = 300;
+      const resize = () => { vw = innerWidth; vh = innerHeight; cw = Math.max(320, Math.round(vw * S)); ch = Math.max(200, Math.round(vh * S)); cv.width = cw; cv.height = ch; };
+      resize();
+      addEventListener('resize', resize, { passive: true });
+      let rx = vw * 0.28, ry = vh * 0.32, px = rx, py = ry, sx = rx, sy = ry, lx = rx, ly = ry, vx = 0, vy = 0, ang = 0, boost = 0;
+      const fine = matchMedia('(pointer: fine)').matches;
+      addEventListener('pointermove', (e) => {
+        if (fine && e.pointerType === 'mouse' && lensWrap.classList.contains('hidden')) {
+          px = e.clientX; py = e.clientY; lx = e.clientX; ly = e.clientY; sx = e.clientX; sy = e.clientY;
+          lensWrap.classList.remove('hidden');
+          document.documentElement.classList.add('has-glass-cursor');
+        }
+        rx = e.clientX; ry = e.clientY;
+        vx = vx * 0.76 + (rx - px) * 0.24; vy = vy * 0.76 + (ry - py) * 0.24;
+        px = rx; py = ry;
+        const hit = e.target && e.target.closest && e.target.closest('a,button,input,select,textarea,video');
+        if (lens) { lens.style.width = hit ? '54px' : '36px'; lens.style.height = hit ? '54px' : '36px'; }
+        boost = hit ? 0.38 : 0;
+        if (dot) dot.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
+      }, { passive: true });
+      const lobe = (x, y, r1, r2, rot, c1, c2) => {
+        ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(1, r2 / Math.max(1, r1));
+        const gr = ctx.createRadialGradient(0, 0, 0, 0, 0, r1);
+        gr.addColorStop(0, c1); gr.addColorStop(0.46, c2); gr.addColorStop(1, 'rgba(4,6,16,0)');
+        ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(0, 0, r1, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+      };
+      const t0 = performance.now();
+      const tick = (now) => {
+        const t = (now - t0) * 0.001;
+        sx += (rx - sx) * 0.11; sy += (ry - sy) * 0.11; lx += (rx - lx) * 0.52; ly += (ry - ly) * 0.52;
+        vx *= 0.91; vy *= 0.91;
+        const sp = Math.hypot(vx, vy);
+        if (sp > 0.35) ang += Math.atan2(Math.sin(Math.atan2(vy, vx) - ang), Math.cos(Math.atan2(vy, vx) - ang)) * 0.24;
+        if (dot) dot.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
+        if (lens) {
+          const stx = 1 + Math.min(sp * 0.009, 0.2), sty = Math.max(0.84, 1 / Math.sqrt(stx));
+          lens.style.transform = 'translate3d(' + lx.toFixed(1) + 'px,' + ly.toFixed(1) + 'px,0) translate(-50%,-50%) rotate(' + ang.toFixed(3) + 'rad) scale(' + stx.toFixed(3) + ',' + sty.toFixed(3) + ')';
+        }
+        ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#04060E'; ctx.fillRect(0, 0, cw, ch);
+        ctx.globalCompositeOperation = 'screen';
+        const d = Math.hypot(cw, ch);
+        lobe(cw * (0.16 + Math.sin(t * 0.27) * 0.05), ch * (0.22 + Math.cos(t * 0.21) * 0.06), d * 0.48, d * 0.39, -0.38, 'rgba(224,238,255,0.34)', 'rgba(124,155,255,0.16)');
+        lobe(cw * (0.84 + Math.cos(t * 0.23) * 0.06), ch * (0.36 + Math.sin(t * 0.29) * 0.07), d * 0.58, d * 0.46, 0.42, 'rgba(43,95,255,0.44)', 'rgba(29,58,192,0.21)');
+        lobe(cw * (0.22 + Math.cos(t * 0.19) * 0.06), ch * (0.84 + Math.sin(t * 0.24) * 0.05), d * 0.52, d * 0.38, 0.28, 'rgba(56,189,248,0.22)', 'rgba(109,40,217,0.24)');
+        const st = 1 + Math.min(sp * 0.058, 1.55), sq = Math.max(0.54, 1 / Math.sqrt(st)), cr = d * (0.23 + boost * 0.14);
+        lobe(sx * S, sy * S, cr * st, cr * sq, ang, 'rgba(219,234,254,0.24)', 'rgba(59,99,255,0.22)');
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    })();
   </script>
 </body>
 </html>`;

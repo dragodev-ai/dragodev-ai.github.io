@@ -233,7 +233,7 @@ export function ContactAndBookingSection() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative scroll-mt-24 border-t border-white/10 bg-[#070709] py-phi-4 sm:py-phi-5"
+      className="relative scroll-mt-24 border-t border-white/12 bg-transparent py-phi-4 sm:py-phi-5"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Golden Ratio Section Header */}
@@ -278,7 +278,7 @@ export function ContactAndBookingSection() {
           <GlowCard
             customSize
             glowColor="blue"
-            className="rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3"
+            className="rounded-3xl border border-white/16 bg-white/[0.045] p-6 backdrop-blur-2xl sm:p-phi-3"
           >
             <div className="relative z-10">
               <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-white">
@@ -588,7 +588,7 @@ export function ContactAndBookingSection() {
             customSize
             glowColor="blue"
             data-testid="book-a-call-section"
-            className="flex flex-col justify-between rounded-3xl border border-white/12 bg-[#111116] p-6 sm:p-phi-3"
+            className="flex flex-col justify-between rounded-3xl border border-white/16 bg-white/[0.045] p-6 backdrop-blur-2xl sm:p-phi-3"
           >
             <div className="relative z-10">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-300">

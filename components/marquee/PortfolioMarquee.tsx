@@ -454,7 +454,7 @@ export function PortfolioMarquee() {
     <section
       aria-label="Brands and Organizations Worked With"
       data-testid="portfolio-marquee-section"
-      className="relative overflow-hidden border-y border-white/[0.07] bg-[#08080c] py-phi-3"
+      className="relative overflow-hidden border-y border-white/[0.10] bg-white/[0.03] py-phi-3 backdrop-blur-xl"
     >
       <div className="mx-auto mb-phi-2 flex max-w-7xl items-center justify-between px-4 sm:px-8">
         <div className="flex items-center gap-3">

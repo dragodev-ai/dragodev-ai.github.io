@@ -16,7 +16,7 @@ export function AboutSection() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative scroll-mt-24 overflow-hidden bg-[#070709] py-phi-4 sm:py-phi-5"
+      className="relative scroll-mt-24 overflow-hidden bg-transparent py-phi-4 sm:py-phi-5"
     >
       {/* Floating Reactive 3D Studio Objects */}
       <AboutArtifactsScene />
@@ -82,12 +82,12 @@ export function AboutSection() {
                   key={st.label}
                   customSize
                   glowColor="blue"
-                  className="rounded-2xl border border-white/10 bg-[#111116]/90 p-4 backdrop-blur-md"
+                  className="rounded-2xl border border-white/15 bg-white/[0.045] p-4 backdrop-blur-xl"
                 >
                   <span className="block font-sans text-3xl font-extrabold tabular-nums tracking-[-0.03em] text-amber-300 sm:text-4xl">
                     {st.value}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
+                  <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-300">
                     {st.label}
                   </span>
                 </GlowCard>
@@ -98,7 +98,7 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-[#111116]/85 px-5 py-2 sm:px-6"
+              className="divide-y divide-white/[0.08] rounded-3xl border border-white/15 bg-white/[0.04] px-5 py-2 backdrop-blur-xl sm:px-6"
             >
               {profileContent.highlights.map((hl) => (
                 <div
@@ -127,7 +127,7 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="overflow-hidden rounded-3xl border border-white/12 bg-[#111116] p-2.5 shadow-2xl"
+              className="overflow-hidden rounded-3xl border border-white/16 bg-white/[0.045] p-2.5 shadow-2xl backdrop-blur-xl"
             >
               <div className="relative aspect-[1/1.18] overflow-hidden rounded-2xl bg-[#0a0a0f]">
                 <img
@@ -152,7 +152,7 @@ export function AboutSection() {
             <GlowCard
               customSize
               glowColor="blue"
-              className="rounded-2xl border border-white/10 bg-[#111116]/90 p-5"
+              className="rounded-2xl border border-white/15 bg-white/[0.045] p-5 backdrop-blur-xl"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7C9BFF]">

@@ -236,7 +236,7 @@ export function VideoHeroSection() {
     <section
       id="hero"
       aria-label="Dev Kumawat Creative Portfolio Showcase Film"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#04071A] via-[#060919] to-[#070709] pb-8 pt-[5.6rem] sm:pb-10 sm:pt-[5.85rem]"
+      className="relative w-full overflow-hidden bg-transparent pb-8 pt-[5.6rem] sm:pb-10 sm:pt-[5.85rem]"
     >
       {/* Screen-reader & SEO primary heading without overlaying baked-in film typography */}
       <h1 className="sr-only">
@@ -296,7 +296,7 @@ export function VideoHeroSection() {
         <GlowCard
           customSize
           glowColor="blue"
-          className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/10 bg-[#090C1C]/90 px-3.5 py-3 shadow-[0_16px_45px_rgba(0,0,0,0.55)] backdrop-blur-xl sm:px-5 lg:max-w-[840px] xl:max-w-[900px] 2xl:max-w-[1040px]"
+          className="mt-3 w-full max-w-[1040px] rounded-2xl border border-white/16 bg-[#090F24]/52 px-3.5 py-3 shadow-[0_16px_45px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-5 lg:max-w-[840px] xl:max-w-[900px] 2xl:max-w-[1040px]"
         >
           {/* Interactive Timeline Scrubber with 24px Touch Hit Area */}
           <div className="relative mb-2.5 flex h-5 items-center">

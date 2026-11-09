@@ -50,13 +50,13 @@ export function ServicesSection({ allProjects }: { allProjects: PortfolioProject
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative z-20 -mt-6 scroll-mt-20 bg-[#070709] pt-6"
+      className="relative z-20 -mt-6 scroll-mt-20 bg-transparent pt-6"
     >
-      {/* Premium White Editorial Sheet Sliding Upward Over Dark Studio */}
+      {/* Premium Frosted Alabaster Editorial Sheet Sliding Upward Over Dark Studio */}
       <div
         ref={sheetRef}
         data-testid="services-editorial-sheet"
-        className="rounded-t-[40px] bg-[#F7F6F2] px-4 py-phi-4 text-[#0A0A0C] shadow-[0_-28px_80px_rgba(0,0,0,0.75)] sm:rounded-t-[56px] sm:px-8 sm:py-phi-5"
+        className="rounded-t-[40px] border-t border-white/70 bg-[#F7F6F2]/92 px-4 py-phi-4 text-[#0A0A0C] shadow-[0_-28px_80px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:rounded-t-[56px] sm:px-8 sm:py-phi-5"
       >
         <div className="mx-auto max-w-7xl px-0 sm:px-2 lg:px-4">
           {/* Golden Ratio Editorial Header */}
